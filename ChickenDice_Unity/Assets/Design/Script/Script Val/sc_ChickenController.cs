@@ -5,18 +5,21 @@ using UnityEngine;
 public class sc_ChickenController : MonoBehaviour
 {
     [SerializeField] private float _moveSpeed = 5f;
-    [SerializeField] private float _sensibility = 0.19f;
+    [SerializeField] private float _Lsensibility = 0.19f;
+    public GameObject _skin;
 
     float leftVertAxe = 0f;
     float leftHorizAxe = 0f;
     float rightVertAxe = 0f;
     float rightHorizAxe = 0f;
 
-    Vector3 lookVector;
     Vector3 brutAppliedForce;
-    Vector3 lastAngle;
+    Vector3 lookVector;
     Rigidbody rb;
-    public GameObject _skin;
+    Quaternion rot;
+
+    bool Jleft = false;
+    bool Jright = false;
 
     // Start is called before the first frame update
     void Start()
@@ -44,49 +47,41 @@ public class sc_ChickenController : MonoBehaviour
 
     void LeftJoy ()
     {
-        if (Input.GetAxis("LJoyVertical") > _sensibility ||
-            Input.GetAxis("LJoyVertical") < -_sensibility)
+        if (Input.GetAxis("LJoyVertical") > _Lsensibility ||
+            Input.GetAxis("LJoyVertical") < -_Lsensibility ||
+            Input.GetAxis("LJoyHorizontal") > _Lsensibility ||
+            Input.GetAxis("LJoyHorizontal") < -_Lsensibility)
         {
+            leftHorizAxe = Input.GetAxis("LJoyHorizontal");
             leftVertAxe = -Input.GetAxis("LJoyVertical");
+
+            brutAppliedForce = new Vector3(Input.GetAxis("LJoyHorizontal"), 0, -Input.GetAxis("LJoyVertical"));
+            Jleft = true;
         }
         else
         {
             leftVertAxe = 0f;
-        }
-
-        if (Input.GetAxis("LJoyHorizontal") > _sensibility ||
-            Input.GetAxis("LJoyHorizontal") < -_sensibility)
-        {
-            leftHorizAxe = Input.GetAxis("LJoyHorizontal");
-        }
-        else
-        {
             leftHorizAxe = 0f;
+            Jleft = false;
         }
-
-        brutAppliedForce = new Vector3(Input.GetAxis("LJoyHorizontal"), 0, -Input.GetAxis("LJoyVertical"));
     }
     void RightJoy ()
     {
-        if (Input.GetAxis("RJoyVertical") != 0f)
+        if (Input.GetAxis("RJoyVertical") > 0 ||
+            Input.GetAxis("RJoyVertical") < 0 ||
+            Input.GetAxis("RJoyHorizontal") > 0 ||
+            Input.GetAxis("RJoyHorizontal") < 0)
         {
             rightVertAxe = -Input.GetAxis("RJoyVertical");
-        }
-        else
-        {
-            rightVertAxe = brutAppliedForce.z;
-        }
-
-        if (Input.GetAxis("RJoyHorizontal") != 0f)
-        {
             rightHorizAxe = Input.GetAxis("RJoyHorizontal");
+
+            lookVector = new Vector3(rightHorizAxe, 0, rightVertAxe);
+            Jright = true;
         }
         else
         {
-            rightHorizAxe = brutAppliedForce.x;
+            Jright = false;
         }
-
-        lookVector = new Vector3(rightHorizAxe, 0, rightVertAxe);
     }
     void FourButtons ()
     {
@@ -111,15 +106,23 @@ public class sc_ChickenController : MonoBehaviour
     }
     void SkinRotation ()
     {
-        if (lookVector != Vector3.zero)
+        if (Jleft)
         {
-            lastAngle = lookVector; // PROBLEME DE RETOUR A ZERO
+            if (Jright == false)
+            {
+                rot = Quaternion.LookRotation(brutAppliedForce.normalized, Vector3.up);
+                lookVector = brutAppliedForce;
+            }
+            else
+            {
+                rot = Quaternion.LookRotation(lookVector.normalized, Vector3.up);
+            }
         }
         else
         {
-            lastAngle = new Vector3(0f, _skin.transform.rotation.y, 0f);
+            rot = Quaternion.LookRotation(lookVector.normalized, Vector3.up);
         }
-        Quaternion rot = Quaternion.LookRotation(lastAngle, Vector3.up);
+
         _skin.transform.rotation = rot;
     }
 }
