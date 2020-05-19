@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class sc_ChickenController : MonoBehaviour
 {
+    [Header("Variables")]
     [SerializeField] private float _moveSpeed = 5f;
     [SerializeField] private float _Lsensibility = 0.19f;
+    [Space(10)]
+    [Header("Rotating Child")]
     public GameObject _skin;
 
     float leftVertAxe = 0f;
