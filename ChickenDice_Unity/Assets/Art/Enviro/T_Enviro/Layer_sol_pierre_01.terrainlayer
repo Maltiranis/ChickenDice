@@ -7,15 +7,15 @@ TerrainLayer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Layer_sol_pierre_01
-  m_DiffuseTexture: {fileID: 2800000, guid: 454651f5634f0b449920f2f172603ba3, type: 3}
-  m_NormalMapTexture: {fileID: 2800000, guid: ccca8331b03da204dadd2d85d423ca19, type: 3}
+  m_DiffuseTexture: {fileID: 2800000, guid: 116c584367fbf32498cc34c9bad4fc21, type: 3}
+  m_NormalMapTexture: {fileID: 2800000, guid: 96731270b5118b84a9e460c291a63641, type: 3}
   m_MaskMapTexture: {fileID: 0}
   m_TileSize: {x: 8.5, y: 8.5}
   m_TileOffset: {x: 0, y: 0}
   m_Specular: {r: 0, g: 0, b: 0, a: 0}
   m_Metallic: 0
   m_Smoothness: 0
-  m_NormalScale: 1
+  m_NormalScale: 0.5
   m_DiffuseRemapMin: {x: 0, y: 0, z: 0, w: 0}
   m_DiffuseRemapMax: {x: 1, y: 1, z: 1, w: 1}
   m_MaskMapRemapMin: {x: 0, y: 0, z: 0, w: 0}
