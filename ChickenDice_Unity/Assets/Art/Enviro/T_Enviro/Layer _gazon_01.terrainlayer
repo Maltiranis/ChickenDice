@@ -7,7 +7,7 @@ TerrainLayer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Layer _gazon_01
-  m_DiffuseTexture: {fileID: 2800000, guid: 82506d7eb116a4447a80548c6378c7dc, type: 3}
+  m_DiffuseTexture: {fileID: 2800000, guid: 1f4d11585bd1dac4196e543e87e163d5, type: 3}
   m_NormalMapTexture: {fileID: 0}
   m_MaskMapTexture: {fileID: 0}
   m_TileSize: {x: 7, y: 7}
