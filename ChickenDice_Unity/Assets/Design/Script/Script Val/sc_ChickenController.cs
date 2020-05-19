@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class sc_ChickenController : MonoBehaviour
 {
+    [Header("Chicken ID")]
+    [SerializeField] private sc_Chicken_ID _myID;
+    int _id;
+    [Space(10)]
     [Header("Variables")]
     [SerializeField] private float _moveSpeed = 5f;
     [SerializeField] private float _Lsensibility = 0.19f;
@@ -27,10 +31,11 @@ public class sc_ChickenController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        leftVertAxe = Input.GetAxis("LJoyVertical");
-        leftHorizAxe = Input.GetAxis("LJoyHorizontal");
-        rightVertAxe = Input.GetAxis("RJoyVertical");
-        rightHorizAxe = Input.GetAxis("RJoyHorizontal");
+        _id = _myID.ID;
+        leftVertAxe = Input.GetAxis("LJoyVertical_" + _id.ToString());
+        leftHorizAxe = Input.GetAxis("LJoyHorizontal_" + _id.ToString());
+        rightVertAxe = Input.GetAxis("RJoyVertical_" + _id.ToString());
+        rightHorizAxe = Input.GetAxis("RJoyHorizontal_" + _id.ToString());
         rb = GetComponent<Rigidbody>();
     }
 
@@ -50,15 +55,15 @@ public class sc_ChickenController : MonoBehaviour
 
     void LeftJoy ()
     {
-        if (Input.GetAxis("LJoyVertical") > _Lsensibility ||
-            Input.GetAxis("LJoyVertical") < -_Lsensibility ||
-            Input.GetAxis("LJoyHorizontal") > _Lsensibility ||
-            Input.GetAxis("LJoyHorizontal") < -_Lsensibility)
+        if (Input.GetAxis("LJoyVertical_" + _id.ToString()) > _Lsensibility ||
+            Input.GetAxis("LJoyVertical_" + _id.ToString()) < -_Lsensibility ||
+            Input.GetAxis("LJoyHorizontal_" + _id.ToString()) > _Lsensibility ||
+            Input.GetAxis("LJoyHorizontal_" + _id.ToString()) < -_Lsensibility)
         {
-            leftHorizAxe = Input.GetAxis("LJoyHorizontal");
-            leftVertAxe = -Input.GetAxis("LJoyVertical");
+            leftHorizAxe = Input.GetAxis("LJoyHorizontal_" + _id.ToString());
+            leftVertAxe = -Input.GetAxis("LJoyVertical_" + _id.ToString());
 
-            brutAppliedForce = new Vector3(Input.GetAxis("LJoyHorizontal"), 0, -Input.GetAxis("LJoyVertical"));
+            brutAppliedForce = new Vector3(Input.GetAxis("LJoyHorizontal_" + _id.ToString()), 0, -Input.GetAxis("LJoyVertical_" + _id.ToString()));
             Jleft = true;
         }
         else
@@ -70,13 +75,13 @@ public class sc_ChickenController : MonoBehaviour
     }
     void RightJoy ()
     {
-        if (Input.GetAxis("RJoyVertical") > 0 ||
-            Input.GetAxis("RJoyVertical") < 0 ||
-            Input.GetAxis("RJoyHorizontal") > 0 ||
-            Input.GetAxis("RJoyHorizontal") < 0)
+        if (Input.GetAxis("RJoyVertical_" + _id.ToString()) > 0 ||
+            Input.GetAxis("RJoyVertical_" + _id.ToString()) < 0 ||
+            Input.GetAxis("RJoyHorizontal_" + _id.ToString()) > 0 ||
+            Input.GetAxis("RJoyHorizontal_" + _id.ToString()) < 0)
         {
-            rightVertAxe = -Input.GetAxis("RJoyVertical");
-            rightHorizAxe = Input.GetAxis("RJoyHorizontal");
+            rightVertAxe = -Input.GetAxis("RJoyVertical_" + _id.ToString());
+            rightHorizAxe = Input.GetAxis("RJoyHorizontal_" + _id.ToString());
 
             lookVector = new Vector3(rightHorizAxe, 0, rightVertAxe);
             Jright = true;

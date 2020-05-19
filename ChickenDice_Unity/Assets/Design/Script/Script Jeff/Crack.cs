@@ -89,7 +89,7 @@ public class Crack : MonoBehaviour
     }
 
 
-
+/*
     //CHANGER UNE FOIS RELIER AU SCRIPT PLAYER
     private void OnTriggerEnter(Collider other)
     {
@@ -103,7 +103,7 @@ public class Crack : MonoBehaviour
         }
     }
 
-
+    */
 
 }
     

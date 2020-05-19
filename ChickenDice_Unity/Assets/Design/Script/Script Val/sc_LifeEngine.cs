@@ -7,14 +7,17 @@ public class sc_LifeEngine : MonoBehaviour
     [SerializeField] public int _life = 100;
     [SerializeField] public bool _respawn = true;
     [SerializeField] public float _respawnDelay = 2.0f;
+
     Vector3 startPos;
     float startY;
+    int startLife;
 
     // Start is called before the first frame update
     void Start()
     {
         startPos = transform.position;
-        startY = transform.rotation.y;
+        startY = transform.localEulerAngles.y;
+        startLife = _life;
     }
 
     // Update is called once per frame
@@ -27,6 +30,7 @@ public class sc_LifeEngine : MonoBehaviour
     {
         if (_life - dmg <= 0)
         {
+            _life = 0;
             Death();
         }
         else
@@ -37,18 +41,29 @@ public class sc_LifeEngine : MonoBehaviour
 
     public void Death()
     {
-        Respawn();
+        if (_respawn == true)
+        {
+            //Anim?
+            Respawn();
+        }
+        else
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     public void Respawn()
     {
-
+        GetComponent<sc_ChickenController>().enabled = false;
+        StartCoroutine(RespawnIEnumerator());
     }
 
-    public IEnumerator DamageIEnumerator()
+    public IEnumerator RespawnIEnumerator()
     {
         yield return new WaitForSeconds(_respawnDelay);
         transform.position = startPos;
-        //transform.rotation = new Vector3(0f, startY, 0f, 0f);
+        transform.rotation = Quaternion.Euler(0f, startY, 0f);
+        _life = startLife;
+        GetComponent<sc_ChickenController>().enabled = true;
     }
 }
