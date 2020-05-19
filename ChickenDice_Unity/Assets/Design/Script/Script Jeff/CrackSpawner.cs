@@ -26,7 +26,7 @@ public class CrackSpawner : MonoBehaviour
     {
         _RandomCrack = Random.Range(0, _CrackToSpawn.Length);
 
-        Debug.Log(_RandomCrack);
+        //Debug.Log(_RandomCrack);
 
         if (!_CrackToSpawn[_RandomCrack].activeSelf)
         {
