@@ -6,7 +6,7 @@ public class Crack : MonoBehaviour
 {
     [SerializeField] private float _LifeTime = 0f;
     [SerializeField] public int _CrackLife = 0;
-    //[SerializeField] private Collider _CrackCollider = null;
+  
 
     //Variables cachées
     private int _CrackLifeBase;
@@ -93,16 +93,11 @@ public class Crack : MonoBehaviour
     //CHANGER UNE FOIS RELIER AU SCRIPT PLAYER
     private void OnTriggerEnter(Collider other)
     {
-        //Debug.Log("atouchéqlqlchose");
-
         if(other.name == "Player")
         {
-            //Debug.Log("areconulenomjoueur");
-
             _CrackLife = _CrackLife-1;
         }
     }
-
     */
 
 }
