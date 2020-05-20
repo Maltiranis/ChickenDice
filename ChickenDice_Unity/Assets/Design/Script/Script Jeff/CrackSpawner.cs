@@ -6,11 +6,19 @@ public class CrackSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject[] _CrackToSpawn = null;
     [SerializeField] private float _TimeBetweenCrack = 0f;
+    [SerializeField] private float _TimeBeforStartToSpawn = 0f;
     [SerializeField] private int _RandomCrack = 0;
 
 
     private void Start()
     {
+        StartCoroutine(DelaisForStart());
+    }
+
+    private IEnumerator DelaisForStart()
+    {
+        yield return new WaitForSeconds(_TimeBeforStartToSpawn);
+        SpawnCrackFonction();
         StartCoroutine(LoopSpawn());
     }
 
