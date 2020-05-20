@@ -7,8 +7,8 @@ TerrainLayer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Layer_sol_pierre_01
-  m_DiffuseTexture: {fileID: 2800000, guid: 116c584367fbf32498cc34c9bad4fc21, type: 3}
-  m_NormalMapTexture: {fileID: 2800000, guid: 96731270b5118b84a9e460c291a63641, type: 3}
+  m_DiffuseTexture: {fileID: 2800000, guid: fc07a29a5476a264bbee1ae07071fcc5, type: 3}
+  m_NormalMapTexture: {fileID: 2800000, guid: e8b041d18e6422f42b3f93ee3a58460c, type: 3}
   m_MaskMapTexture: {fileID: 0}
   m_TileSize: {x: 8.5, y: 8.5}
   m_TileOffset: {x: 0, y: 0}
