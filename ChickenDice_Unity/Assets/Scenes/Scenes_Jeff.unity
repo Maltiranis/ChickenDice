@@ -23062,8 +23062,11 @@ MonoBehaviour:
   _Player04: {fileID: 1263598520}
   _LootArena: {fileID: 710897624}
   _FightArena: {fileID: 433127436}
-  _TimeLootPhase: 180
-  _TimeFightPhase: 180
+  _Mode01: 1
+  _Mode02: 0
+  _Cover01: {fileID: 474181669}
+  _TimeLootPhase: 10
+  _TimeFightPhase: 10
   _SpawnFightP1: {fileID: 1525487232}
   _SpawnFightP2: {fileID: 1307710520}
   _SpawnFightP3: {fileID: 136385859}
