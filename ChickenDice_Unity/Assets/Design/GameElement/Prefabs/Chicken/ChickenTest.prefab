@@ -63,6 +63,7 @@ MonoBehaviour:
   _pushForce: 5
   _radius: 2
   _peckOffsetObject: {fileID: 1008034807327810324}
+  _am: {fileID: 0}
   _chicken: {fileID: 1008034808911037729}
 --- !u!1 &1008034807669030688
 GameObject:
@@ -497,6 +498,11 @@ MonoBehaviour:
   _onHit: 0
   _onPeck: 0
   _onTaunt: 0
+  chicken: {fileID: 1008034808911037729}
+  rb: {fileID: 1008034808911037757}
+  _cc: {fileID: 1008034808911037758}
+  _pk: {fileID: 1008034808911037759}
+  _le: {fileID: 1008034808911037756}
 --- !u!1 &1008034808790118729
 GameObject:
   m_ObjectHideFlags: 0
@@ -556,7 +562,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1008034808911037729}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 10.01, y: 0, z: 2.59}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -590,8 +596,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _myID: {fileID: 1008034808911037731}
-  _moveSpeed: 20
   _Lsensibility: 0.19
+  _moveSpeed: 25
+  _rotationSpeed: 2000
   _skin: {fileID: 1008034808199728111}
 --- !u!114 &1008034808911037759
 MonoBehaviour:
@@ -611,6 +618,7 @@ MonoBehaviour:
   _pushForce: 200
   _radius: 2
   _peckOffsetObject: {fileID: 1008034807327810324}
+  _am: {fileID: 1008034808738638851}
 --- !u!114 &1008034808911037756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -626,6 +634,8 @@ MonoBehaviour:
   _life: 100
   _respawn: 1
   _respawnDelay: 2
+  onRepop: 0
+  _am: {fileID: 1008034808738638851}
 --- !u!54 &1008034808911037757
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -634,8 +644,8 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1008034808911037729}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 8
+  m_Mass: 500
+  m_Drag: 9
   m_AngularDrag: 10
   m_UseGravity: 0
   m_IsKinematic: 0

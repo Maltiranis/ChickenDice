@@ -14,7 +14,7 @@ public class sc_LifeEngine : MonoBehaviour
     [HideInInspector]
     [SerializeField] public bool onRepop = false;
     Rigidbody rb;
-    sc_AnimManagement _am;
+    [SerializeField] private sc_AnimManagement _am;
 
     // Start is called before the first frame update
     void Start()
@@ -23,10 +23,6 @@ public class sc_LifeEngine : MonoBehaviour
         startY = transform.localEulerAngles.y;
         startLife = _life;
         rb = GetComponent<Rigidbody>();
-        if (GetComponent <sc_AnimManagement>() != null)
-        {
-            _am = GetComponent<sc_AnimManagement>();
-        }
     }
 
     // Update is called once per frame
@@ -51,6 +47,7 @@ public class sc_LifeEngine : MonoBehaviour
 
     public void Death()
     {
+        _am.RandomDeath();
         if (_respawn == true)
         {
             Respawn();
@@ -79,6 +76,8 @@ public class sc_LifeEngine : MonoBehaviour
     public IEnumerator RespawnIEnumerator()
     {
         yield return new WaitForSeconds(_respawnDelay);
+        _am.newDeath = 100;
+        _am.newHead = 100;
         transform.position = startPos;
         transform.rotation = Quaternion.Euler(0f, startY, 0f);
         _life = startLife;
