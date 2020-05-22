@@ -788,17 +788,17 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: d8db8ec7faff7004e90c0e1aad21b389,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.51
+      value: -5.44
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: d8db8ec7faff7004e90c0e1aad21b389,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.86
+      value: 2.815
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: d8db8ec7faff7004e90c0e1aad21b389,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.18
+      value: 4.22
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: d8db8ec7faff7004e90c0e1aad21b389,
         type: 3}
@@ -865,10 +865,35 @@ PrefabInstance:
       propertyPath: m_DynamicOccludee
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: d8db8ec7faff7004e90c0e1aad21b389,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: d8db8ec7faff7004e90c0e1aad21b389,
+        type: 3}
+      propertyPath: m_LightProbeUsage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: d8db8ec7faff7004e90c0e1aad21b389,
+        type: 3}
+      propertyPath: m_ReflectionProbeUsage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: d8db8ec7faff7004e90c0e1aad21b389,
+        type: 3}
+      propertyPath: m_MotionVectors
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: d8db8ec7faff7004e90c0e1aad21b389,
         type: 3}
       propertyPath: m_Name
       value: sm_vegetation_herbes_01
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: d8db8ec7faff7004e90c0e1aad21b389,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8db8ec7faff7004e90c0e1aad21b389, type: 3}
