@@ -9,8 +9,9 @@ public class sc_ChickenController : MonoBehaviour
     int _id;
     [Space(10)]
     [Header("Variables")]
-    [SerializeField] private float _moveSpeed = 5f;
     [SerializeField] private float _Lsensibility = 0.19f;
+    [SerializeField] private float _moveSpeed = 5f;
+    [SerializeField] private float _rotationSpeed = 1f;
     [Space(10)]
     [Header("Rotating Child")]
     public GameObject _skin;
@@ -64,6 +65,8 @@ public class sc_ChickenController : MonoBehaviour
             leftVertAxe = -Input.GetAxis("LJoyVertical_" + _id.ToString());
 
             brutAppliedForce = new Vector3(Input.GetAxis("LJoyHorizontal_" + _id.ToString()), 0, -Input.GetAxis("LJoyVertical_" + _id.ToString()));
+            brutAppliedForce.Normalize();
+            brutAppliedForce = Vector3.ClampMagnitude(brutAppliedForce, 1);
             Jleft = true;
         }
         else
@@ -114,21 +117,29 @@ public class sc_ChickenController : MonoBehaviour
     }
     void SkinRotation ()
     {
+        Quaternion actualRot = _skin.transform.rotation;
+
+        Quaternion brutRot = Quaternion.LookRotation(brutAppliedForce, Vector3.up);
+        Quaternion lookRot = Quaternion.LookRotation(lookVector.normalized, Vector3.up);
+
+        Quaternion lerpedBrutRot = Quaternion.RotateTowards(actualRot, brutRot, Time.deltaTime * _rotationSpeed);
+        Quaternion lerpedLookRot = Quaternion.RotateTowards(actualRot, lookRot, Time.deltaTime * _rotationSpeed);
+
         if (Jleft)
         {
             if (Jright == false)
             {
-                rot = Quaternion.LookRotation(brutAppliedForce.normalized, Vector3.up);
+                rot = lerpedBrutRot;
                 lookVector = brutAppliedForce;
             }
             else
             {
-                rot = Quaternion.LookRotation(lookVector.normalized, Vector3.up);
+                rot = lerpedLookRot;
             }
         }
         else
         {
-            rot = Quaternion.LookRotation(lookVector.normalized, Vector3.up);
+            rot = lerpedLookRot;
         }
 
         _skin.transform.rotation = rot;
