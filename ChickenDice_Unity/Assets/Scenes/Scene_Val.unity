@@ -8081,6 +8081,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChickenTest
       objectReference: {fileID: 0}
+    - target: {fileID: 1008034808911037758, guid: 7c1da6a24e77d694196bac36a484c2ab,
+        type: 3}
+      propertyPath: _rotationSpeed
+      value: 2000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c1da6a24e77d694196bac36a484c2ab, type: 3}
 --- !u!1 &2224076429423075736

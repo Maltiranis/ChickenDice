@@ -48,13 +48,19 @@ public class sc_LifeEngine : MonoBehaviour
         }
         else
         {
-            gameObject.SetActive(false);
+            UnactivateSystems();
         }
+    }
+
+    void UnactivateSystems ()
+    {
+        gameObject.SetActive(false);
+        GetComponent<sc_ChickenController>().enabled = false;
     }
 
     public void Respawn()
     {
-        GetComponent<sc_ChickenController>().enabled = false;
+        UnactivateSystems();
         StartCoroutine(RespawnIEnumerator());
     }
 

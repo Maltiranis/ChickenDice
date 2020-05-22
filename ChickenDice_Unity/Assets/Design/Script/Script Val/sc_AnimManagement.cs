@@ -35,10 +35,17 @@ public class sc_AnimManagement : MonoBehaviour
         GetStates();
     }
 
-    public void GetStates()
+    public void GetStates ()
     {
         _speed = anim.GetFloat("floatSpeed");
         _deaths = anim.GetInteger("intDeath");
         _head = anim.GetInteger("intHead");
+    }
+
+    public void SetStates (float _newSpeed, int _newDeath, int _newHead)
+    {
+        anim.SetFloat("floatSpeed", _newSpeed);
+        anim.SetInteger("intDeath", _newDeath);
+        anim.SetInteger("intHead", _newHead);
     }
 }
