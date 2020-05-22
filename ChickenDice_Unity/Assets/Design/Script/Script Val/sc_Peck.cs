@@ -15,18 +15,13 @@ public class sc_Peck : MonoBehaviour
     [Header("Damages Object")]
     [SerializeField] private GameObject _peckOffsetObject;
     SphereCollider col;
-    sc_AnimManagement _am;
+    [SerializeField] private sc_AnimManagement _am;
 
     // Start is called before the first frame update
     void Start()
     {
         _id = _myID.ID;
         col = _peckOffsetObject.GetComponent<SphereCollider>();
-
-        if (GetComponent<sc_AnimManagement>() != null)
-        {
-            _am = GetComponent<sc_AnimManagement>();
-        }
     }
 
     // Update is called once per frame

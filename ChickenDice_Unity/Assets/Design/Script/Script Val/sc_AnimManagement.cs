@@ -7,6 +7,7 @@ public class sc_AnimManagement : MonoBehaviour
     [Header("Speed variation")]
     [Range(0f, 1f)]
     [SerializeField] private float _speed = 0f;
+    [SerializeField] private float _maxVelDiv = 6f;
     [Space(10)]
     [Header("Kind of Death")]
     [Range(0, 3)]
@@ -21,24 +22,26 @@ public class sc_AnimManagement : MonoBehaviour
     [SerializeField] public bool _onPeck;
     [SerializeField] public bool _onTaunt;
 
-    private GameObject chicken;
-    Rigidbody rb;
-    sc_ChickenController _cc;
-    sc_Peck _pk;
-    sc_LifeEngine _le;
+    [SerializeField] private GameObject chicken;
+    [SerializeField] private Rigidbody rb;
+    [SerializeField] private sc_ChickenController _cc;
+    [SerializeField] private sc_Peck _pk;
+    [SerializeField] private sc_LifeEngine _le;
     Animator anim;
 
     float actualVelocity;
-    int newDeath = 100;
-    int newHead = 100;
+    [HideInInspector]
+    [SerializeField] public int newDeath = 100;
+    [HideInInspector]
+    [SerializeField] public int newHead = 100;
+    Vector3 lastPos;
 
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
-        chicken = gameObject;
-        rb = GetComponent<Rigidbody>();
-        StartCoroutine(ChickenBrain(2f));
+        StartCoroutine(ChickenBrain(1f));
+        StartCoroutine(CalcVelocity());
     }
 
     // Update is called once per frame
@@ -57,29 +60,47 @@ public class sc_AnimManagement : MonoBehaviour
 
     public void SendStates ()
     {
-        actualVelocity = (Mathf.Abs(rb.velocity.x) + Mathf.Abs(rb.velocity.z)) / 2;
-        Debug.Log(actualVelocity);
+        //Vector3 normVel = Vector3.ClampMagnitude(rb.velocity.normalized, 1);
+        //actualVelocity = (Mathf.Abs(normVel.x) + Mathf.Abs(normVel.z)) / 2;
 
-        if (_le._life == 0 && _le.onRepop == false)
-        {
-            _le.onRepop = true;
-
-            newDeath = Random.Range(0, 3);
-
-        }
-        else
-        {
-            newDeath = 100;
-        }
-
-        SetStates(actualVelocity, newDeath, newHead);
+        SetSpeed(actualVelocity / _maxVelDiv);
     }
 
-    public void SetStates (float _newSpeed, int _newDeath, int _newHead)
+    public void SetSpeed (float _newSpeed)
     {
         anim.SetFloat("floatSpeed", _newSpeed);
-        anim.SetInteger("intDeath", _newDeath);
-        anim.SetInteger("intHead", _newHead);
+    }
+
+    public void DoRandomHead()
+    {
+        newHead = Random.Range(0, 4);
+
+        switch (newHead)
+        {
+            case 0:
+                anim.SetTrigger("headLeft");
+                break;
+            case 1:
+                anim.SetTrigger("headRight");
+                break;
+            case 2:
+                anim.SetTrigger("headUp");
+                break;
+            case 3:
+                anim.SetTrigger("headCot");
+                break;
+            default:
+                break;
+        }
+
+        StartCoroutine(ChickenBrain(Random.Range(1f, 2.0f)));
+    }
+
+    public void RandomDeath()
+    {
+        newDeath = Random.Range(0, 3);
+
+        anim.SetInteger("intDeath", newDeath);
     }
 
     public void Hitted()
@@ -98,8 +119,17 @@ public class sc_AnimManagement : MonoBehaviour
     public IEnumerator ChickenBrain(float newDealay)
     {
         yield return new WaitForSeconds(newDealay);
+        DoRandomHead();
+    }
 
-        newHead = Random.Range(0, 4);
-        StartCoroutine(ChickenBrain(Random.Range(1.5f, 4.0f)));
+    IEnumerator CalcVelocity()
+    {
+        while (Application.isPlaying)
+        {
+            lastPos = chicken.transform.position;
+            yield return new WaitForFixedUpdate();
+            actualVelocity = Mathf.RoundToInt(Vector3.Distance(chicken.transform.position, lastPos) / Time.fixedDeltaTime);
+            Debug.Log(actualVelocity);
+        }
     }
 }
