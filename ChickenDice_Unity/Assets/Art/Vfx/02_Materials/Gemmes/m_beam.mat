@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: m_gemme 2
-  m_Shader: {fileID: 4800000, guid: 3872b22bc3e01db4fba57c1a99dc2af2, type: 3}
+  m_Name: m_beam
+  m_Shader: {fileID: 4800000, guid: a6599779aba46434f92a05947bd01e3b, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
@@ -55,17 +55,20 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _TextureSample0:
+        m_Texture: {fileID: 2800000, guid: e7aab5bc639b604468de875c991e4286, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _texcoord:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _ASEOutlineWidth: 0.01
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _EdgeLength: 15
+    - _Emiss: 1.5
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
@@ -73,26 +76,13 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
+    - _Passedevant: 0
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
     - __dirty: 0
-    - _bias: 0
-    - _emiss: 2
-    - _oui: 10.3
-    - _range: 1.8
-    - _scale: 5000
-    - _str: 16.07
-    - _tesspower: 10
-    - _tesssuibdiv: 30
-    - _width: 0.03
     m_Colors:
-    - _ASEOutlineColor: {r: 0.30322987, g: 0.42352942, b: 0.25490198, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Color0: {r: 0.38409042, g: 0.36966002, b: 0.6698113, a: 0}
-    - _Color1: {r: 0.39248842, g: 0.4948793, b: 0.7924528, a: 0}
-    - _Color2: {r: 0.6650944, g: 0.70759505, b: 1, a: 0}
-    - _Color3: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

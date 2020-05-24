@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: m_gemme
+  m_Name: m_gemS_normal
   m_Shader: {fileID: 4800000, guid: 3872b22bc3e01db4fba57c1a99dc2af2, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 0
@@ -84,7 +84,7 @@ Material:
     - _oui: 10.3
     - _range: 1.8
     - _scale: 5000
-    - _str: 10.3
+    - _str: 16.07
     - _tesspower: 10
     - _tesssuibdiv: 30
     - _width: 0.03
