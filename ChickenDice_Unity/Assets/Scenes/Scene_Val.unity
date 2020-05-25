@@ -8303,6 +8303,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 600539987}
     m_Modifications:
+    - target: {fileID: 1008034807669030691, guid: 7c1da6a24e77d694196bac36a484c2ab,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -13.137155
+      objectReference: {fileID: 0}
+    - target: {fileID: 1008034808014322651, guid: 7c1da6a24e77d694196bac36a484c2ab,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1008034808073918150, guid: 7c1da6a24e77d694196bac36a484c2ab,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -51.259964
+      objectReference: {fileID: 0}
+    - target: {fileID: 1008034808581148344, guid: 7c1da6a24e77d694196bac36a484c2ab,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -32.39984
+      objectReference: {fileID: 0}
     - target: {fileID: 1008034808911037728, guid: 7c1da6a24e77d694196bac36a484c2ab,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8362,6 +8382,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ChickenTest0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1008034809165226735, guid: 7c1da6a24e77d694196bac36a484c2ab,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 83.6598
       objectReference: {fileID: 0}
     - target: {fileID: 7878372503103714130, guid: 7c1da6a24e77d694196bac36a484c2ab,
         type: 3}

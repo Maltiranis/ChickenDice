@@ -12,6 +12,7 @@ public class sc_AnimManagement : MonoBehaviour
     [Header("Kind of Death")]
     [Range(0, 3)]
     [SerializeField] private int _deaths = 100;
+    public bool _canRandomHead = true;
     [Space(10)]
     [Header("Mental Disease")]
     [Range(0, 3)]
@@ -58,10 +59,20 @@ public class sc_AnimManagement : MonoBehaviour
         _head = anim.GetInteger("intHead");
     }
 
+    public void CanRandHead()
+    {
+        _canRandomHead = true;
+    }
+    public void CantRandHead()
+    {
+        _canRandomHead = false;
+    }
+
     public void SendStates ()
     {
         //Vector3 normVel = Vector3.ClampMagnitude(rb.velocity.normalized, 1);
         //actualVelocity = (Mathf.Abs(normVel.x) + Mathf.Abs(normVel.z)) / 2;
+        anim.SetBool("CanHaveDisease", _canRandomHead);
 
         SetSpeed(actualVelocity / _maxVelDiv);
     }
@@ -75,22 +86,25 @@ public class sc_AnimManagement : MonoBehaviour
     {
         newHead = Random.Range(0, 4);
 
-        switch (newHead)
+        if (_canRandomHead == true)
         {
-            case 0:
-                anim.SetTrigger("headLeft");
-                break;
-            case 1:
-                anim.SetTrigger("headRight");
-                break;
-            case 2:
-                anim.SetTrigger("headUp");
-                break;
-            case 3:
-                anim.SetTrigger("headCot");
-                break;
-            default:
-                break;
+            switch (newHead)
+            {
+                case 0:
+                    anim.SetTrigger("headLeft");
+                    break;
+                case 1:
+                    anim.SetTrigger("headRight");
+                    break;
+                case 2:
+                    anim.SetTrigger("headUp");
+                    break;
+                case 3:
+                    anim.SetTrigger("headCot");
+                    break;
+                default:
+                    break;
+            }
         }
 
         StartCoroutine(ChickenBrain(Random.Range(1f, 2.0f)));
