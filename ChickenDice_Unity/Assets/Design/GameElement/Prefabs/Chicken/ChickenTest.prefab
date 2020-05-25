@@ -1107,7 +1107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _myID: {fileID: 1008034808911037731}
-  _Lsensibility: 0.19
+  _Lsensibility: 0
   _moveSpeed: 25
   _rotationSpeed: 2000
   _skin: {fileID: 1008034808199728111}
