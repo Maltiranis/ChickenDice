@@ -4,14 +4,11 @@ using UnityEngine;
 
 public class ScarecrowMode : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public int _PeckCounter = 0;
+    [SerializeField] private GameObject _ToScale = null;
+    
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         
     }
