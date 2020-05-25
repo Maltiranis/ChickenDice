@@ -3122,10 +3122,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 981125879}
-  - {fileID: 873194979}
   - {fileID: 474181670}
-  - {fileID: 1482500026}
   - {fileID: 485431659}
+  - {fileID: 873194979}
+  - {fileID: 1482500026}
   m_Father: {fileID: 1564539674}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6819,12 +6819,12 @@ GameObject:
   m_Component:
   - component: {fileID: 474181670}
   m_Layer: 0
-  m_Name: 01
+  m_Name: Arena01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &474181670
 Transform:
   m_ObjectHideFlags: 0
@@ -6857,7 +6857,7 @@ Transform:
   - {fileID: 494840124}
   - {fileID: 1184563092}
   m_Father: {fileID: 227624163}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &485431658
 GameObject:
@@ -6869,7 +6869,7 @@ GameObject:
   m_Component:
   - component: {fileID: 485431659}
   m_Layer: 0
-  m_Name: 04
+  m_Name: Arena02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6900,7 +6900,7 @@ Transform:
   - {fileID: 943748539}
   - {fileID: 562558513}
   m_Father: {fileID: 227624163}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &494200251
 GameObject:
@@ -13328,12 +13328,12 @@ GameObject:
   m_Component:
   - component: {fileID: 873194979}
   m_Layer: 0
-  m_Name: 03
+  m_Name: Arena03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &873194979
 Transform:
   m_ObjectHideFlags: 0
@@ -13352,7 +13352,7 @@ Transform:
   - {fileID: 1830169144}
   - {fileID: 2008957056}
   m_Father: {fileID: 227624163}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &877789562
 GameObject:
@@ -16643,6 +16643,12 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &1070594132 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4738407491182901934, guid: 9c9a98ab93b56434ea06e792e20f8a4e,
+    type: 3}
+  m_PrefabInstance: {fileID: 4270738562141119260}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1070594133 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4738407491182901921, guid: 9c9a98ab93b56434ea06e792e20f8a4e,
@@ -22960,7 +22966,7 @@ Transform:
   - {fileID: 107888791}
   - {fileID: 43879019}
   m_Father: {fileID: 227624163}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1486736242
 GameObject:
@@ -24181,17 +24187,30 @@ MonoBehaviour:
   _Player04: {fileID: 1263598520}
   _LootArena: {fileID: 710897624}
   _FightArena: {fileID: 433127436}
-  _Mode01: 1
-  _Mode02: 0
-  _Cover01: {fileID: 474181669}
+  _IndexScarcrow01: 0
+  _IndexScarcrow02: 0
+  _ModeWin: 0
   _TimeLootPhase: 10
   _TimeFightPhase: 10
-  _SpawnFightP1: {fileID: 1525487232}
-  _SpawnFightP2: {fileID: 1307710520}
-  _SpawnFightP3: {fileID: 136385859}
-  _SpawnFightP4: {fileID: 2028364494}
+  _CoverA101: {fileID: 474181669}
+  _CoverA201: {fileID: 485431658}
+  _CoverA301: {fileID: 873194978}
+  _SpawnFightA1P1: {fileID: 1525487232}
+  _SpawnFightA1P2: {fileID: 1307710520}
+  _SpawnFightA1P3: {fileID: 136385859}
+  _SpawnFightA1P4: {fileID: 2028364494}
+  _SpawnFightA2P1: {fileID: 818491887}
+  _SpawnFightA2P2: {fileID: 1274113984}
+  _SpawnFightA2P3: {fileID: 1329496186}
+  _SpawnFightA2P4: {fileID: 444304752}
+  _SpawnFightA3P1: {fileID: 40013145}
+  _SpawnFightA3P2: {fileID: 1873889451}
+  _SpawnFightA3P3: {fileID: 1745093761}
+  _SpawnFightA3P4: {fileID: 1007629149}
   _LootCam: {fileID: 1187678225}
   _FightCam: {fileID: 371569000}
+  _Scarcrow01: {fileID: 1070594132}
+  _Scarcrow02: {fileID: 7200901009213783980}
 --- !u!1 &1525487231
 GameObject:
   m_ObjectHideFlags: 0
@@ -33539,6 +33558,12 @@ PrefabInstance:
 --- !u!4 &7200901009213783971 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 875848746885809393, guid: 9d02913b1eade074a81acd30a9cc2667,
+    type: 3}
+  m_PrefabInstance: {fileID: 8055003062414736210}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7200901009213783980 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 875848746885809406, guid: 9d02913b1eade074a81acd30a9cc2667,
     type: 3}
   m_PrefabInstance: {fileID: 8055003062414736210}
   m_PrefabAsset: {fileID: 0}

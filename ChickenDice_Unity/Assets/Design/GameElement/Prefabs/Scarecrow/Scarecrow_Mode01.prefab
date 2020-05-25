@@ -327,6 +327,10 @@ MonoBehaviour:
   _PeckCounter: 1
   _ToScale: {fileID: 4738407491639503928}
   _ScaleFactor: 0.05
+  _ModeSelect: 0
+  _Mode01: 0
+  _Mode02: 0
+  _Mode03: 0
 --- !u!1 &4738407491639503928
 GameObject:
   m_ObjectHideFlags: 0
