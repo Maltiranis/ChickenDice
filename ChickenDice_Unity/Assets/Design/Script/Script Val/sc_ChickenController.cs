@@ -96,7 +96,22 @@ public class sc_ChickenController : MonoBehaviour
     }
     void FourButtons ()
     {
-
+        //Scripts
+        sc_Peck scp = GetComponent<sc_Peck>();
+        //Pecking
+        if (Input.GetButtonDown("xA_" + _id.ToString()))
+        {
+            scp.Pecking();
+        }
+        if (Input.GetButtonUp("xA_" + _id.ToString()))
+        {
+            scp.Unpeck();
+        }
+        //Taunt
+        if (Input.GetButtonDown("xB_" + _id.ToString()))
+        {
+            scp._am.Taunted();
+        }
     }
     void Cross ()
     {
@@ -108,7 +123,14 @@ public class sc_ChickenController : MonoBehaviour
     }
     void Bumpers ()
     {
-
+        //Scripts
+        sc_Shooting scs = GetComponent<sc_Shooting>();
+        //Shoot
+        if (Input.GetButtonDown("LB_" + _id.ToString()) ||
+            Input.GetButtonDown("RB_" + _id.ToString()))
+        {
+            scs.Shoot();
+        }
     }
     void Movements ()
     {

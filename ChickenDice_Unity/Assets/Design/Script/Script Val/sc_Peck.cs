@@ -15,7 +15,7 @@ public class sc_Peck : MonoBehaviour
     [Header("Damages Object")]
     [SerializeField] private GameObject _peckOffsetObject;
     SphereCollider col;
-    [SerializeField] private sc_AnimManagement _am;
+    [SerializeField] public sc_AnimManagement _am;
 
     // Start is called before the first frame update
     void Start()
@@ -27,30 +27,19 @@ public class sc_Peck : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Pecking();
-        Taunting();
+        
     }
 
-    void Pecking()
+    public void Pecking()
     {
-        if (Input.GetButtonDown("xA_" + _id.ToString()))
-        {
-            _peckOffsetObject.SetActive(true);
-            StartCoroutine(DamageIEnumerator());
-            _am.Pecked();
-        }
-        if (Input.GetButtonUp("xA_" + _id.ToString()))
-        {
-            _peckOffsetObject.SetActive(false);
-        }
+        _peckOffsetObject.SetActive(true);
+        StartCoroutine(DamageIEnumerator());
+        _am.Pecked();
     }
 
-    void Taunting()
+    public void Unpeck()
     {
-        if (Input.GetButtonDown("xB_" + _id.ToString()))
-        {
-            _am.Taunted();
-        }
+        _peckOffsetObject.SetActive(false);
     }
 
     public IEnumerator DamageIEnumerator()
