@@ -9,7 +9,7 @@ public class sc_ChickenController : MonoBehaviour
     int _id;
     [Space(10)]
     [Header("Variables")]
-    [SerializeField] private float _Lsensibility = 0.19f;
+    [SerializeField] private float _sensibility = 0.19f;
     [SerializeField] private float _moveSpeed = 5f;
     [SerializeField] private float _rotationSpeed = 1f;
     [Space(10)]
@@ -25,6 +25,11 @@ public class sc_ChickenController : MonoBehaviour
     Vector3 lookVector;
     Rigidbody rb;
     Quaternion rot;
+    Quaternion actualRot;
+    Quaternion brutRot;
+    Quaternion lookRot;
+    Quaternion lerpedBrutRot;
+    Quaternion lerpedLookRot;
 
     bool Jleft = false;
     bool Jright = false;
@@ -56,41 +61,37 @@ public class sc_ChickenController : MonoBehaviour
 
     void LeftJoy ()
     {
-        if (Input.GetAxis("LJoyVertical_" + _id.ToString()) > _Lsensibility ||
-            Input.GetAxis("LJoyVertical_" + _id.ToString()) < -_Lsensibility ||
-            Input.GetAxis("LJoyHorizontal_" + _id.ToString()) > _Lsensibility ||
-            Input.GetAxis("LJoyHorizontal_" + _id.ToString()) < -_Lsensibility)
-        {
-            leftHorizAxe = Input.GetAxis("LJoyHorizontal_" + _id.ToString());
-            leftVertAxe = -Input.GetAxis("LJoyVertical_" + _id.ToString());
+        leftHorizAxe = Input.GetAxis("LJoyHorizontal_" + _id.ToString());
+        leftVertAxe = -Input.GetAxis("LJoyVertical_" + _id.ToString());
 
-            brutAppliedForce = new Vector3(Input.GetAxis("LJoyHorizontal_" + _id.ToString()), 0, -Input.GetAxis("LJoyVertical_" + _id.ToString()));
-            brutAppliedForce.Normalize();
-            brutAppliedForce = Vector3.ClampMagnitude(brutAppliedForce, 1);
+        brutAppliedForce = new Vector3(leftHorizAxe, 0, leftVertAxe);
+        if (brutAppliedForce.magnitude > _sensibility)
+        {
+            brutAppliedForce = brutAppliedForce.normalized * ((brutAppliedForce.magnitude - _sensibility) / (1 - _sensibility));
             Jleft = true;
         }
         else
         {
-            leftVertAxe = 0f;
-            leftHorizAxe = 0f;
+            brutAppliedForce = Vector3.zero;
             Jleft = false;
         }
+        //brutAppliedForce.Normalize();
+        //brutAppliedForce = Vector3.ClampMagnitude(brutAppliedForce, 1);
     }
     void RightJoy ()
     {
-        if (Input.GetAxis("RJoyVertical_" + _id.ToString()) > 0 ||
-            Input.GetAxis("RJoyVertical_" + _id.ToString()) < 0 ||
-            Input.GetAxis("RJoyHorizontal_" + _id.ToString()) > 0 ||
-            Input.GetAxis("RJoyHorizontal_" + _id.ToString()) < 0)
-        {
-            rightVertAxe = -Input.GetAxis("RJoyVertical_" + _id.ToString());
-            rightHorizAxe = Input.GetAxis("RJoyHorizontal_" + _id.ToString());
+        rightVertAxe = -Input.GetAxis("RJoyVertical_" + _id.ToString());
+        rightHorizAxe = Input.GetAxis("RJoyHorizontal_" + _id.ToString());
 
-            lookVector = new Vector3(rightHorizAxe, 0, rightVertAxe);
+        lookVector = new Vector3(rightHorizAxe, 0, rightVertAxe);
+        if (lookVector.magnitude > _sensibility)
+        {
+            lookVector = lookVector.normalized * ((lookVector.magnitude - _sensibility) / (1 - _sensibility));
             Jright = true;
         }
         else
         {
+            lookVector = brutAppliedForce;
             Jright = false;
         }
     }
@@ -134,34 +135,35 @@ public class sc_ChickenController : MonoBehaviour
     }
     void Movements ()
     {
-        Vector3 dirVector = new Vector3(leftHorizAxe, 0, leftVertAxe);
-        rb.AddForce(_moveSpeed * dirVector, ForceMode.Acceleration);
+        //Vector3 dirVector = new Vector3(leftHorizAxe, 0, leftVertAxe);
+        rb.AddForce(_moveSpeed * brutAppliedForce, ForceMode.Acceleration);
     }
     void SkinRotation ()
     {
-        Quaternion actualRot = _skin.transform.rotation;
+        actualRot = _skin.transform.rotation;
 
-        Quaternion brutRot = Quaternion.LookRotation(brutAppliedForce, Vector3.up);
-        Quaternion lookRot = Quaternion.LookRotation(lookVector.normalized, Vector3.up);
+        brutRot = Quaternion.LookRotation(brutAppliedForce, Vector3.up);
+        lookRot = Quaternion.LookRotation(lookVector, Vector3.up);
 
-        Quaternion lerpedBrutRot = Quaternion.RotateTowards(actualRot, brutRot, Time.deltaTime * _rotationSpeed);
-        Quaternion lerpedLookRot = Quaternion.RotateTowards(actualRot, lookRot, Time.deltaTime * _rotationSpeed);
+        lerpedBrutRot = Quaternion.RotateTowards(actualRot, brutRot, Time.deltaTime * _rotationSpeed);
+        lerpedLookRot = Quaternion.RotateTowards(actualRot, lookRot, Time.deltaTime * _rotationSpeed);
 
         if (Jleft)
         {
-            if (Jright == false)
+            if (Jright == false && brutAppliedForce != Vector3.zero)
             {
                 rot = lerpedBrutRot;
-                lookVector = brutAppliedForce;
             }
             else
             {
-                rot = lerpedLookRot;
+                if (lookVector != Vector3.zero)
+                    rot = lerpedLookRot;
             }
         }
         else
         {
-            rot = lerpedLookRot;
+            if (lookVector != Vector3.zero)
+                rot = lerpedLookRot;
         }
 
         _skin.transform.rotation = rot;

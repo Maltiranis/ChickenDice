@@ -34,6 +34,8 @@ public class sc_PeckOffset : sc_Peck
                     other.gameObject.GetComponent<sc_LifeEngine>().TakeDamage(_damages);
                 if (other.gameObject.GetComponent<Crack>() != null)
                     CrackDetected(other.gameObject);
+                if (other.gameObject.GetComponent<ScarecrowMode>() != null)
+                    other.gameObject.GetComponent<ScarecrowMode>()._PeckCounter++;
                 other.gameObject.GetComponent<Rigidbody>().AddExplosionForce(_pushForce, transform.position, _radius, 0, ForceMode.Impulse);
             }
         }
