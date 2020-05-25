@@ -34,6 +34,8 @@ public class sc_ChickenController : MonoBehaviour
     bool Jleft = false;
     bool Jright = false;
 
+    sc_Peck scp;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,17 +45,22 @@ public class sc_ChickenController : MonoBehaviour
         rightVertAxe = Input.GetAxis("RJoyVertical_" + _id.ToString());
         rightHorizAxe = Input.GetAxis("RJoyHorizontal_" + _id.ToString());
         rb = GetComponent<Rigidbody>();
+        scp = GetComponent<sc_Peck>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        LeftJoy();
-        RightJoy();
         FourButtons();
         Cross();
         Triggers();
         Bumpers();
+    }
+
+    void FixedUpdate ()
+    {
+        LeftJoy();
+        RightJoy();
 
         Movements();
         SkinRotation();
@@ -135,8 +142,14 @@ public class sc_ChickenController : MonoBehaviour
     }
     void Movements ()
     {
-        //Vector3 dirVector = new Vector3(leftHorizAxe, 0, leftVertAxe);
-        rb.AddForce(_moveSpeed * brutAppliedForce, ForceMode.Acceleration);
+        if (!scp._pecking)
+        {
+            rb.AddForce(_moveSpeed * brutAppliedForce, ForceMode.Acceleration);
+        }
+        else
+        {
+            rb.velocity = Vector3.zero;
+        }
     }
     void SkinRotation ()
     {

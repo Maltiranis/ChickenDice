@@ -11,12 +11,13 @@ public class sc_Peck : MonoBehaviour
     [SerializeField] public int _damages = 10;
     [SerializeField] public float _pushForce = 100f;
     [SerializeField] public float _radius = 2f;
+    [SerializeField] public bool _pecking = false;
     [Space(10)]
     [Header("Damages Object")]
     [SerializeField] private GameObject _peckOffsetObject;
     [SerializeField] private GameObject _root;
     [Space(10)]
-    [Header("Damages Object")]
+    [Header("VFX Object")]
     [SerializeField] private GameObject _vfx;
     SphereCollider col;
     [SerializeField] public sc_AnimManagement _am;
@@ -43,6 +44,7 @@ public class sc_Peck : MonoBehaviour
         _peckOffsetObject.SetActive(true);
         StartCoroutine(DamageIEnumerator());
         _am.Pecked();
+        _pecking = true;
     }
 
     public void Unpeck()
@@ -54,5 +56,6 @@ public class sc_Peck : MonoBehaviour
     {
         yield return new WaitForSeconds(0.1f);
         _peckOffsetObject.SetActive(false);
+        _pecking = false;
     }
 }
