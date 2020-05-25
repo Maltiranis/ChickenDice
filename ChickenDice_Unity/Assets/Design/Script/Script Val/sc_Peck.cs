@@ -14,6 +14,10 @@ public class sc_Peck : MonoBehaviour
     [Space(10)]
     [Header("Damages Object")]
     [SerializeField] private GameObject _peckOffsetObject;
+    [SerializeField] private GameObject _root;
+    [Space(10)]
+    [Header("Damages Object")]
+    [SerializeField] private GameObject _vfx;
     SphereCollider col;
     [SerializeField] public sc_AnimManagement _am;
 
@@ -32,6 +36,10 @@ public class sc_Peck : MonoBehaviour
 
     public void Pecking()
     {
+        GameObject newVFX = Instantiate(_vfx, _root.transform.position, _root.transform.rotation);
+        newVFX.transform.parent = _root.transform;
+        newVFX.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f) ;
+        Destroy(newVFX, 1.5f);
         _peckOffsetObject.SetActive(true);
         StartCoroutine(DamageIEnumerator());
         _am.Pecked();

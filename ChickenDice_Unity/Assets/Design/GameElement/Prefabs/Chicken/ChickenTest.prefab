@@ -276,6 +276,36 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1260479638
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1260479639}
+  m_Layer: 0
+  m_Name: _rootFX
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1260479639
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1260479638}
+  m_LocalRotation: {x: -0.19727555, y: 0.6790305, z: -0.19727555, w: 0.6790305}
+  m_LocalPosition: {x: 0, y: 0.46604267, z: -0.0060265064}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1008034808199728110}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1450519243
 GameObject:
   m_ObjectHideFlags: 0
@@ -567,6 +597,8 @@ MonoBehaviour:
   _pushForce: 5
   _radius: 2
   _peckOffsetObject: {fileID: 1008034807327810324}
+  _root: {fileID: 0}
+  _vfx: {fileID: 0}
   _am: {fileID: 1008034808738638851}
   _chicken: {fileID: 1008034808911037729}
 --- !u!1 &1008034807669030688
@@ -662,7 +694,7 @@ Transform:
   - {fileID: 1008034808581148344}
   m_Father: {fileID: 1008034809174037737}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1008034808073918151
 GameObject:
   m_ObjectHideFlags: 0
@@ -760,6 +792,7 @@ Transform:
   - {fileID: 1008034807327810327}
   - {fileID: 1008034808738638848}
   - {fileID: 752666749}
+  - {fileID: 1260479639}
   m_Father: {fileID: 1008034808911037728}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1107,7 +1140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _myID: {fileID: 1008034808911037731}
-  _Lsensibility: 0
+  _sensibility: 0.19
   _moveSpeed: 25
   _rotationSpeed: 2000
   _skin: {fileID: 1008034808199728111}
@@ -1129,6 +1162,8 @@ MonoBehaviour:
   _pushForce: 200
   _radius: 2
   _peckOffsetObject: {fileID: 1008034807327810324}
+  _root: {fileID: 1260479638}
+  _vfx: {fileID: 6464160373560290321, guid: 230a23da024aec24aacc9c1e7e851802, type: 3}
   _am: {fileID: 1008034808738638851}
 --- !u!114 &1008034808911037756
 MonoBehaviour:
