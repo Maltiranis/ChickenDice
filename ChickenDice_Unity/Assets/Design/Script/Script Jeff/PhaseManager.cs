@@ -49,6 +49,7 @@ public class PhaseManager : MonoBehaviour
         _LootArena.SetActive(false);
         StartCoroutine(FightPhaseTimer());
 
+
         if(_Mode01 == true)
         {
             _Cover01.SetActive(true);
