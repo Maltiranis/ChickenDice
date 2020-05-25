@@ -41,3 +41,5 @@ sysinfo.txt
 /Assets/__Addons/Odin/Demos
 /Assets/__Addons/Odin/Demos.meta
 ChickenDice_Unity/ProjectSettings/Packages/com.unity.probuilder/Settings.json
+
+ChickenDice_Unity/Assets/Addons/AmplifyShaderEditor/Plugins/Editor/Templates/TemplateMenuItems.cs
