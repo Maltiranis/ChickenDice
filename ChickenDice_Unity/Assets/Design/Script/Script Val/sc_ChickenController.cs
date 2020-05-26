@@ -41,6 +41,7 @@ public class sc_ChickenController : MonoBehaviour
     bool Jright = false;
 
     sc_Peck scp;
+    sc_SkillManagement scsm;
 
     // Start is called before the first frame update
     void Start()

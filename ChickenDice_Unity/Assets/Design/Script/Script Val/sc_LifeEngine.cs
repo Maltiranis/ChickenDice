@@ -20,7 +20,6 @@ public class sc_LifeEngine : MonoBehaviour
     void Start()
     {
         transform.position = _startPosTransform.position;
-        startY = transform.localEulerAngles.y;
         startLife = _life;
         rb = GetComponent<Rigidbody>();
     }
@@ -28,7 +27,7 @@ public class sc_LifeEngine : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        startY = _startPosTransform.localEulerAngles.y;
     }
 
     public void TakeDamage(int dmg)
