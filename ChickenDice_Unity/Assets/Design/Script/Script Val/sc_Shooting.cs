@@ -30,14 +30,22 @@ public class sc_Shooting : MonoBehaviour
     [SerializeField] private float _refillSpeed = 0.1f;
     [Space(10)]
     [Header("UI")]
-    [SerializeField] private Image _bar;
-    [SerializeField] private TextMeshProUGUI _timeText;
+    [SerializeField] private Image[] _bar;
+    [SerializeField] private TextMeshProUGUI[] _timeText;
+
+    [SerializeField] private GameObject[] _UI;
 
     // Start is called before the first frame update
     void Start()
     {
         _id = _myID.ID;
         _refreshValue = _coolDown;
+
+        foreach (GameObject ui in _UI)
+        {
+            ui.SetActive(false);
+        }
+        _UI[_id].SetActive(true);
     }
 
     // Update is called once per frame
@@ -51,17 +59,17 @@ public class sc_Shooting : MonoBehaviour
         float amount = _refreshValue;
         float buttonAngle = amount * 360;
 
-        _bar.fillAmount = amount;
+        _bar[_id].fillAmount = amount;
 
         if (_refreshValue < _coolDown)
         {
             _refreshValue += Time.deltaTime * _refillSpeed;
-            _timeText.text = (_coolDown - System.Math.Round(_refreshValue,1)).ToString();
+            _timeText[_id].text = (_coolDown - System.Math.Round(_refreshValue,1)).ToString();
         }
         if (_refreshValue >= _coolDown)
         {
             _refreshValue = _coolDown;
-            _timeText.text = "Fire !";
+            _timeText[_id].text = "Fire !";
         }
     }
 
