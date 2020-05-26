@@ -143,7 +143,7 @@ public class sc_AnimManagement : MonoBehaviour
             lastPos = chicken.transform.position;
             yield return new WaitForFixedUpdate();
             actualVelocity = Mathf.RoundToInt(Vector3.Distance(chicken.transform.position, lastPos) / Time.fixedDeltaTime);
-            Debug.Log(actualVelocity);
+            //Debug.Log(actualVelocity);
         }
     }
 }
