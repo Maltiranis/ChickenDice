@@ -66,6 +66,8 @@ public class sc_LifeEngine : MonoBehaviour
     public void DisapearOnDeath ()
     {
         PolySurface.SetActive(false);
+        _am.anim.SetInteger("intDeath", 100);
+        GetComponent<CapsuleCollider>().enabled = false;
     }
 
     void UnactivateSystems ()
@@ -88,7 +90,6 @@ public class sc_LifeEngine : MonoBehaviour
         yield return new WaitForSeconds(_respawnDelay);
         PolySurface.SetActive(true);
         _am.newHead = 100;
-        _am.anim.SetInteger("intDeath", 100);
         transform.position = _startPosTransform.position;
         skin.transform.localEulerAngles = new Vector3(0, startY, 0);
         _life = startLife;
@@ -98,6 +99,7 @@ public class sc_LifeEngine : MonoBehaviour
         rb.constraints = RigidbodyConstraints.FreezePositionY |
                          RigidbodyConstraints.FreezeRotationX |
                          RigidbodyConstraints.FreezeRotationZ;
+        GetComponent<CapsuleCollider>().enabled = true;
         onRepop = false;
     }
 }
