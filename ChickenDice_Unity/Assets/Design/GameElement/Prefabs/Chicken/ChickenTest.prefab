@@ -2316,7 +2316,7 @@ MonoBehaviour:
   _startPosTransform: {fileID: 0}
   onRepop: 0
   _am: {fileID: 1008034808738638851}
-  PolySurface: {fileID: 0}
+  PolySurface: {fileID: 1008034809310153548}
 --- !u!54 &1008034808911037757
 Rigidbody:
   m_ObjectHideFlags: 0
