@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e00b8d19ab2df314da8fb7d628e78e53
+guid: cc173c8751799e94eb2b7e93c7dec6a8
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable: []
@@ -8,7 +8,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: L_objet_scene
-    second: {fileID: 2100000, guid: 19bc2ccc1ad46e4438d8381bb8caf82b, type: 2}
+    second: {fileID: 2100000, guid: 81b5f5d2ca31f8445ac85794c0a849ba, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
