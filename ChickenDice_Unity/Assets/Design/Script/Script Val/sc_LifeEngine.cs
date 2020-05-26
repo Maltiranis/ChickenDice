@@ -16,6 +16,7 @@ public class sc_LifeEngine : MonoBehaviour
     Rigidbody rb;
     [SerializeField] private sc_AnimManagement _am;
     GameObject skin;
+    [SerializeField] public GameObject PolySurface;
 
     // Start is called before the first frame update
     void Start()
@@ -62,6 +63,11 @@ public class sc_LifeEngine : MonoBehaviour
         }
     }
 
+    public void DisapearOnDeath ()
+    {
+        PolySurface.SetActive(false);
+    }
+
     void UnactivateSystems ()
     {
         //gameObject.SetActive(false);
@@ -91,6 +97,7 @@ public class sc_LifeEngine : MonoBehaviour
         rb.constraints = RigidbodyConstraints.FreezePositionY |
                          RigidbodyConstraints.FreezeRotationX |
                          RigidbodyConstraints.FreezeRotationZ;
+        PolySurface.SetActive(true);
         onRepop = false;
     }
 }
