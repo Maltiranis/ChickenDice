@@ -23572,7 +23572,7 @@ MonoBehaviour:
   _IndexScarcrow01: 0
   _IndexScarcrow02: 0
   _ModeWin: 0
-  _TimeLootPhase: 5
+  _TimeLootPhase: 120
   _TimeFightPhase: 300
   _CoverA101: {fileID: 474181669}
   _CoverA201: {fileID: 485431658}
