@@ -88,6 +88,7 @@ public class sc_LifeEngine : MonoBehaviour
         yield return new WaitForSeconds(_respawnDelay);
         PolySurface.SetActive(true);
         _am.newHead = 100;
+        _am.anim.SetInteger("intDeath", 100);
         transform.position = _startPosTransform.position;
         skin.transform.localEulerAngles = new Vector3(0, startY, 0);
         _life = startLife;

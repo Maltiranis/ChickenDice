@@ -24,7 +24,8 @@ public class sc_AnimManagement : MonoBehaviour
     [SerializeField] private sc_ChickenController _cc;
     [SerializeField] private sc_Peck _pk;
     [SerializeField] private sc_LifeEngine _le;
-    Animator anim;
+    [HideInInspector]
+    public Animator anim;
 
     float actualVelocity;
     [HideInInspector]
