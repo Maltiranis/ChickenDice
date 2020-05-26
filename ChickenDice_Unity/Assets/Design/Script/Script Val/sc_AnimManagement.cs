@@ -108,6 +108,7 @@ public class sc_AnimManagement : MonoBehaviour
     public void DisapearOnDeath()
     {
         _le.DisapearOnDeath();
+        newDeath = 100;
     }
 
     public void RandomDeath()
