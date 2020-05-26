@@ -6,6 +6,8 @@ public class Crack : MonoBehaviour
 {
     [SerializeField] private float _LifeTime = 0f;
     [SerializeField] public int _CrackLife = 0;
+    [SerializeField] private Transform _SpawnGem = null;
+    [SerializeField] private GameObject _GemToLoot = null;
   
 
     //Variables cachées
@@ -25,7 +27,7 @@ public class Crack : MonoBehaviour
     [SerializeField] private GameObject[] _RareGem = null;
     [Header("Unique Gem")]
     [SerializeField] private int _RangeUnique = 0;
-    [SerializeField] private GameObject[] _UniqueGem = null;
+    [SerializeField] private GameObject[] _LegendaryGem = null;
 
 
     private void Start()
@@ -49,6 +51,7 @@ public class Crack : MonoBehaviour
 
         if(_CrackLife <= 0)
         {
+            LootGem();
             _RarityDef = false;
             _CanbeDesactive = true;
             _CrackLife = _CrackLifeBase;
@@ -73,32 +76,28 @@ public class Crack : MonoBehaviour
         {
             int _RandomRange = Random.Range(0, _CommunGem.Length);
             Debug.Log(_CommunGem[_RandomRange]);
+            _GemToLoot = _CommunGem[_RandomRange];
         }
         if(_RarityPick > _RangeCommun && _RarityPick <= _RangeRare)
         {
             int _RandomRange = Random.Range(0, _RareGem.Length);
             Debug.Log(_RareGem[_RandomRange]);
+            _GemToLoot = _RareGem[_RandomRange];
+            
         }
         if(_RarityPick > _RangeRare)
         {
-            int _RandomRange = Random.Range(0, _UniqueGem.Length);
-            Debug.Log(_UniqueGem[_RandomRange]);
+            int _RandomRange = Random.Range(0, _LegendaryGem.Length);
+            Debug.Log(_LegendaryGem[_RandomRange]);
+            _GemToLoot = _LegendaryGem[_RandomRange];
+           
         }
 
 
     }
-
-
-/*
-    //CHANGER UNE FOIS RELIER AU SCRIPT PLAYER
-    private void OnTriggerEnter(Collider other)
+    private void LootGem()
     {
-        if(other.name == "Player")
-        {
-            _CrackLife = _CrackLife-1;
-        }
+        Instantiate(_GemToLoot, _SpawnGem.position, _SpawnGem.rotation);
     }
-    */
-
 }
     
