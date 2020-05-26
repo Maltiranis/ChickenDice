@@ -86,7 +86,7 @@ public class sc_LifeEngine : MonoBehaviour
     public IEnumerator RespawnIEnumerator()
     {
         yield return new WaitForSeconds(_respawnDelay);
-        _am.newDeath = 100;
+        PolySurface.SetActive(true);
         _am.newHead = 100;
         transform.position = _startPosTransform.position;
         skin.transform.localEulerAngles = new Vector3(0, startY, 0);
@@ -97,7 +97,6 @@ public class sc_LifeEngine : MonoBehaviour
         rb.constraints = RigidbodyConstraints.FreezePositionY |
                          RigidbodyConstraints.FreezeRotationX |
                          RigidbodyConstraints.FreezeRotationZ;
-        PolySurface.SetActive(true);
         onRepop = false;
     }
 }
