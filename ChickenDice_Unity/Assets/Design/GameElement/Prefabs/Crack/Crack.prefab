@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2309906770989225959
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9197276300927480216}
+  m_Layer: 0
+  m_Name: _SpawnGem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9197276300927480216
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2309906770989225959}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1574049808105145250}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3494874507667507494
 GameObject:
   m_ObjectHideFlags: 0
@@ -110,6 +140,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1588485124355684459}
+  - {fileID: 9197276300927480216}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -127,23 +158,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _LifeTime: 30
   _CrackLife: 50
+  _SpawnGem: {fileID: 9197276300927480216}
   _RarityDef: 0
   _RarityPick: 0
   _RangeCommun: 50
   _CommunGem:
   - {fileID: 2727020384961002940, guid: 6903bf434550c9d4c8f24158f83c8fd4, type: 3}
-  - {fileID: 2727020384961002940, guid: 854f94e476ae67d4486c15c53a9f8fdb, type: 3}
-  - {fileID: 2727020384961002940, guid: b254bf3d84e9621488c07a433bba3e97, type: 3}
   _RangeRare: 85
   _RareGem:
   - {fileID: 2727020384961002940, guid: d9146276d898a414986274fa8887cb0b, type: 3}
-  - {fileID: 2727020384961002940, guid: b31bd2a7b2a7d174f88925ba96cc3dec, type: 3}
-  - {fileID: 2727020384961002940, guid: 8a95ec4153681f24f9f23d3422f70efd, type: 3}
   _RangeUnique: 100
-  _UniqueGem:
+  _LegendaryGem:
   - {fileID: 2727020384961002940, guid: 87a6c70791f5a504dbec294751b4cadf, type: 3}
-  - {fileID: 2727020384961002940, guid: e06d7ec9d59997f4ba6a14be014bf043, type: 3}
-  - {fileID: 2727020384961002940, guid: 78efc98672b17624598f30f0223c958d, type: 3}
 --- !u!54 &225643015
 Rigidbody:
   m_ObjectHideFlags: 0
