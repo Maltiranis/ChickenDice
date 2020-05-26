@@ -6976,7 +6976,7 @@ Transform:
   m_Children:
   - {fileID: 1564539674}
   m_Father: {fileID: 1966337673}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &443072962
 Mesh:
@@ -11062,7 +11062,7 @@ Transform:
   - {fileID: 1930988812}
   - {fileID: 1995662927}
   m_Father: {fileID: 1966337673}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &729325895
 GameObject:
@@ -12397,7 +12397,6 @@ Transform:
   - {fileID: 1070594133}
   - {fileID: 7200901009213783971}
   - {fileID: 565098603}
-  - {fileID: 1732298987}
   m_Father: {fileID: 1930988812}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -13409,6 +13408,12 @@ Transform:
   m_Father: {fileID: 227624163}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &877356253 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1008034808911037729, guid: 7c1da6a24e77d694196bac36a484c2ab,
+    type: 3}
+  m_PrefabInstance: {fileID: 696332854}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &877356254 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1008034808911037728, guid: 7c1da6a24e77d694196bac36a484c2ab,
@@ -14076,6 +14081,12 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &918210169 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1008034808911037729, guid: 7c1da6a24e77d694196bac36a484c2ab,
+    type: 3}
+  m_PrefabInstance: {fileID: 1870385254}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &918210170 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1008034808911037728, guid: 7c1da6a24e77d694196bac36a484c2ab,
@@ -20184,6 +20195,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1279268410}
   m_Mesh: {fileID: 337776248}
+--- !u!1 &1281135062 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1008034808911037729, guid: 7c1da6a24e77d694196bac36a484c2ab,
+    type: 3}
+  m_PrefabInstance: {fileID: 1993915978}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1281135063 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1008034808911037728, guid: 7c1da6a24e77d694196bac36a484c2ab,
@@ -22579,7 +22596,7 @@ Transform:
   - {fileID: 2018107218}
   - {fileID: 1263598521}
   m_Father: {fileID: 1966337673}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1482500025
 GameObject:
@@ -23545,16 +23562,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50f92c8b557dfe049939663c6f65ccd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Player01: {fileID: 1209830051}
-  _Player02: {fileID: 403423336}
-  _Player03: {fileID: 2018107217}
-  _Player04: {fileID: 1263598520}
+  _Player01: {fileID: 918210169}
+  _Player02: {fileID: 1681319684}
+  _Player03: {fileID: 1281135062}
+  _Player04: {fileID: 877356253}
   _LootArena: {fileID: 710897624}
   _FightArena: {fileID: 433127436}
   _IndexScarcrow01: 0
   _IndexScarcrow02: 0
   _ModeWin: 0
-  _TimeLootPhase: 200
+  _TimeLootPhase: 5
   _TimeFightPhase: 300
   _CoverA101: {fileID: 474181669}
   _CoverA201: {fileID: 485431658}
@@ -23639,7 +23656,7 @@ Transform:
   - {fileID: 1522451344}
   - {fileID: 1467236870}
   m_Father: {fileID: 1966337673}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1538671633
 GameObject:
@@ -26039,6 +26056,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1669169499}
   m_Mesh: {fileID: 963060530}
+--- !u!1 &1681319684 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1008034808911037729, guid: 7c1da6a24e77d694196bac36a484c2ab,
+    type: 3}
+  m_PrefabInstance: {fileID: 1372353020}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1681319685 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1008034808911037728, guid: 7c1da6a24e77d694196bac36a484c2ab,
@@ -26712,8 +26735,8 @@ Transform:
   - {fileID: 1983704173}
   - {fileID: 988337768}
   - {fileID: 174343594}
-  m_Father: {fileID: 823608929}
-  m_RootOrder: 3
+  m_Father: {fileID: 1966337673}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &1741930062
 Mesh:
@@ -31109,6 +31132,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1732298987}
   - {fileID: 710897625}
   - {fileID: 433127437}
   - {fileID: 1480689268}

@@ -122,19 +122,19 @@ public class PhaseManager : MonoBehaviour
         {
             _CoverA101.SetActive(true);
 
-            _ChangeSpawnP01.position = _SpawnFightA1P1.transform.position;
+            _ChangeSpawnP01.position = _SpawnFightA1P1.position;
             _Player01.transform.position = _SpawnFightA1P1.transform.position;
             _Player01.transform.rotation = _SpawnFightA1P1.transform.rotation;
 
-            _ChangeSpawnP02.position = _SpawnFightA1P2.transform.position;
+            _ChangeSpawnP02.position = _SpawnFightA1P2.position;
             _Player02.transform.position = _SpawnFightA1P2.transform.position;
             _Player02.transform.rotation = _SpawnFightA1P2.transform.rotation;
 
-            _ChangeSpawnP03.position = _SpawnFightA1P3.transform.position;
+            _ChangeSpawnP03.position = _SpawnFightA1P3.position;
             _Player03.transform.position = _SpawnFightA1P3.transform.position;
             _Player03.transform.rotation = _SpawnFightA1P3.transform.rotation;
 
-            _ChangeSpawnP04.position = _SpawnFightA1P4.transform.position;
+            _ChangeSpawnP04.position = _SpawnFightA1P4.position;
             _Player04.transform.position = _SpawnFightA1P4.transform.position;
             _Player04.transform.rotation = _SpawnFightA1P4.transform.rotation;
 
@@ -143,7 +143,7 @@ public class PhaseManager : MonoBehaviour
         {
             _CoverA201.SetActive(true);
 
-            _ChangeSpawnP01.position = _SpawnFightA2P1.transform.position;
+            _ChangeSpawnP01.position = _SpawnFightA2P1.position;
             _Player01.transform.position = _SpawnFightA2P1.transform.position;
             _Player01.transform.rotation = _SpawnFightA2P1.transform.rotation;
 
@@ -151,11 +151,11 @@ public class PhaseManager : MonoBehaviour
             _Player02.transform.position = _SpawnFightA2P2.transform.position;
             _Player02.transform.rotation = _SpawnFightA2P2.transform.rotation;
 
-            _ChangeSpawnP03.position = _SpawnFightA2P3.transform.position;
+             _ChangeSpawnP03.position = _SpawnFightA2P3.position;
             _Player03.transform.position = _SpawnFightA2P3.transform.position;
             _Player03.transform.rotation = _SpawnFightA2P3.transform.rotation;
 
-            _ChangeSpawnP04.position = _SpawnFightA2P4.transform.position;
+             _ChangeSpawnP04.position = _SpawnFightA2P4.position;
             _Player04.transform.position = _SpawnFightA2P4.transform.position;
             _Player04.transform.rotation = _SpawnFightA2P4.transform.rotation;
         }
@@ -163,19 +163,19 @@ public class PhaseManager : MonoBehaviour
         {
             _CoverA301.SetActive(true);
 
-            _ChangeSpawnP01.position = _SpawnFightA3P1.transform.position;
+            _ChangeSpawnP01.position = _SpawnFightA3P1.position;
             _Player01.transform.position = _SpawnFightA3P1.transform.position;
             _Player01.transform.rotation = _SpawnFightA3P1.transform.rotation;
 
-            _ChangeSpawnP02.position = _SpawnFightA3P2.transform.position;
+            _ChangeSpawnP02.position = _SpawnFightA3P2.position;
             _Player02.transform.position = _SpawnFightA3P2.transform.position;
             _Player02.transform.rotation = _SpawnFightA3P2.transform.rotation;
 
-            _ChangeSpawnP03.position = _SpawnFightA3P3.transform.position;
+            _ChangeSpawnP03.position = _SpawnFightA3P3.position;
             _Player03.transform.position = _SpawnFightA3P3.transform.position;
             _Player03.transform.rotation = _SpawnFightA3P3.transform.rotation;
 
-            _ChangeSpawnP04.position = _SpawnFightA3P4.transform.position;
+            _ChangeSpawnP04.position = _SpawnFightA3P4.position;
             _Player04.transform.position = _SpawnFightA3P4.transform.position;
             _Player04.transform.rotation = _SpawnFightA3P4.transform.rotation;
         }
