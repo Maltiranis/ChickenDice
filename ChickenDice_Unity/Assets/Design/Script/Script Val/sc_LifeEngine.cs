@@ -8,7 +8,7 @@ public class sc_LifeEngine : MonoBehaviour
     [SerializeField] public bool _respawn = true;
     [SerializeField] public float _respawnDelay = 2.0f;
 
-    Vector3 startPos;
+    public Transform _startPosTransform;
     float startY;
     int startLife;
     [HideInInspector]
@@ -19,7 +19,7 @@ public class sc_LifeEngine : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        startPos = transform.position;
+        transform.position = _startPosTransform.position;
         startY = transform.localEulerAngles.y;
         startLife = _life;
         rb = GetComponent<Rigidbody>();
@@ -78,7 +78,7 @@ public class sc_LifeEngine : MonoBehaviour
         yield return new WaitForSeconds(_respawnDelay);
         _am.newDeath = 100;
         _am.newHead = 100;
-        transform.position = startPos;
+        transform.position = _startPosTransform.position;
         transform.rotation = Quaternion.Euler(0f, startY, 0f);
         _life = startLife;
         GetComponent<sc_ChickenController>().enabled = true;

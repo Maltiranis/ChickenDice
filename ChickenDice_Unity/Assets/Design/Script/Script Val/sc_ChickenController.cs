@@ -12,6 +12,12 @@ public class sc_ChickenController : MonoBehaviour
     [SerializeField] private float _sensibility = 0.19f;
     [SerializeField] private float _moveSpeed = 5f;
     [SerializeField] private float _rotationSpeed = 1f;
+    [Space(5)]
+    [SerializeField] private float _gasgasgasTimer = 2f;
+    [SerializeField] private float _timerAjustement = 0.8f;
+    [SerializeField] private float _gasgasgasSpeed = 2f;
+    float oldTimer = 0f;
+    private float _newSpeed = 0f;
     [Space(10)]
     [Header("Rotating Child")]
     public GameObject _skin;
@@ -40,12 +46,16 @@ public class sc_ChickenController : MonoBehaviour
     void Start()
     {
         _id = _myID.ID;
+
         leftVertAxe = Input.GetAxis("LJoyVertical_" + _id.ToString());
         leftHorizAxe = Input.GetAxis("LJoyHorizontal_" + _id.ToString());
         rightVertAxe = Input.GetAxis("RJoyVertical_" + _id.ToString());
         rightHorizAxe = Input.GetAxis("RJoyHorizontal_" + _id.ToString());
+
         rb = GetComponent<Rigidbody>();
         scp = GetComponent<sc_Peck>();
+
+        _newSpeed = _moveSpeed;
     }
 
     // Update is called once per frame
@@ -83,7 +93,7 @@ public class sc_ChickenController : MonoBehaviour
             Jleft = false;
         }
         //brutAppliedForce.Normalize();
-        //brutAppliedForce = Vector3.ClampMagnitude(brutAppliedForce, 1);
+        brutAppliedForce = Vector3.ClampMagnitude(brutAppliedForce, 1f);
     }
     void RightJoy ()
     {
@@ -110,15 +120,29 @@ public class sc_ChickenController : MonoBehaviour
         if (Input.GetButtonDown("xA_" + _id.ToString()))
         {
             scp.Pecking();
+            _newSpeed = _moveSpeed;
+            oldTimer = 0f;
         }
         if (Input.GetButtonUp("xA_" + _id.ToString()))
         {
             scp.Unpeck();
+            oldTimer = 0f;
         }
         //Taunt
         if (Input.GetButtonDown("xB_" + _id.ToString()))
         {
             scp._am.Taunted();
+        }
+
+        //speed ajustement
+        if (oldTimer < _gasgasgasTimer)
+        {
+            oldTimer += Time.fixedDeltaTime * _timerAjustement;
+            _newSpeed = _moveSpeed;
+        }
+        else
+        {
+            _newSpeed = _gasgasgasSpeed;
         }
     }
     void Cross ()
@@ -144,7 +168,7 @@ public class sc_ChickenController : MonoBehaviour
     {
         if (!scp._pecking)
         {
-            rb.AddForce(_moveSpeed * brutAppliedForce, ForceMode.Acceleration);
+            rb.AddForce(_newSpeed * brutAppliedForce, ForceMode.Acceleration);
         }
         else
         {
@@ -155,8 +179,10 @@ public class sc_ChickenController : MonoBehaviour
     {
         actualRot = _skin.transform.rotation;
 
-        brutRot = Quaternion.LookRotation(brutAppliedForce, Vector3.up);
-        lookRot = Quaternion.LookRotation(lookVector, Vector3.up);
+        if (brutAppliedForce != Vector3.zero)
+            brutRot = Quaternion.LookRotation(brutAppliedForce, Vector3.up);
+        if (lookVector != Vector3.zero)
+            lookRot = Quaternion.LookRotation(lookVector, Vector3.up);
 
         lerpedBrutRot = Quaternion.RotateTowards(actualRot, brutRot, Time.deltaTime * _rotationSpeed);
         lerpedLookRot = Quaternion.RotateTowards(actualRot, lookRot, Time.deltaTime * _rotationSpeed);
