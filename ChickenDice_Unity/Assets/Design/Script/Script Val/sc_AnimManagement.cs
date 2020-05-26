@@ -14,10 +14,6 @@ public class sc_AnimManagement : MonoBehaviour
     [SerializeField] private int _deaths = 100;
     public bool _canRandomHead = true;
     [Space(10)]
-    [Header("Mental Disease")]
-    [Range(0, 3)]
-    [SerializeField] private int _head = 100;
-    [Space(10)]
     [Header("Combat State")]
     [SerializeField] public bool _onHit;
     [SerializeField] public bool _onPeck;
@@ -56,7 +52,6 @@ public class sc_AnimManagement : MonoBehaviour
     {
         _speed = anim.GetFloat("floatSpeed");
         _deaths = anim.GetInteger("intDeath");
-        _head = anim.GetInteger("intHead");
     }
 
     public void CanRandHead()

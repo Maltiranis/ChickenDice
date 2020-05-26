@@ -15,13 +15,18 @@ public class sc_LifeEngine : MonoBehaviour
     [SerializeField] public bool onRepop = false;
     Rigidbody rb;
     [SerializeField] private sc_AnimManagement _am;
+    GameObject skin;
 
     // Start is called before the first frame update
     void Start()
     {
         transform.position = _startPosTransform.position;
+        startY = _startPosTransform.localEulerAngles.y;
         startLife = _life;
         rb = GetComponent<Rigidbody>();
+        skin = GetComponent<sc_ChickenController>().gameObject;
+
+        skin.transform.localEulerAngles = new Vector3(0, startY, 0);
     }
 
     // Update is called once per frame
@@ -78,7 +83,7 @@ public class sc_LifeEngine : MonoBehaviour
         _am.newDeath = 100;
         _am.newHead = 100;
         transform.position = _startPosTransform.position;
-        transform.rotation = Quaternion.Euler(0f, startY, 0f);
+        skin.transform.localEulerAngles = new Vector3(0, startY, 0);
         _life = startLife;
         GetComponent<sc_ChickenController>().enabled = true;
         GetComponent<sc_Peck>().enabled = true;
