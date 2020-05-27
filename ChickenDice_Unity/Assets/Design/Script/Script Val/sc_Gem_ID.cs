@@ -8,6 +8,10 @@ public class sc_Gem_ID : MonoBehaviour
     [SerializeField] public int _rarity = 0; // Rareté de 0 à 2
     [HideInInspector]
     [SerializeField] public GameObject[] _spells;
+    [HideInInspector]
+    [SerializeField] public GameObject _preEstablishedSpell = null;
+
+    [SerializeField] public GameObject _ParentGemContainer;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +28,15 @@ public class sc_Gem_ID : MonoBehaviour
         Debug.Log("Le spell n°= " + r + " sur le max : " + _spells.Length);
 
         return r;
+    }
+
+    public GameObject RandomSelectedSpell()
+    {
+        GameObject rss;
+
+        rss = _spells[SpellInCollection()];
+
+        return rss;
     }
 
     // Update is called once per frame
