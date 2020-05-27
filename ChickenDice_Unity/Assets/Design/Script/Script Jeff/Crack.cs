@@ -11,6 +11,7 @@ public class Crack : MonoBehaviour
     private int _CrackLifeBase;
     private bool _CanbeDesactive = true;
     [SerializeField] private bool _RarityDef = false;
+    [SerializeField] private GameObject _MainCam = null;
 
     //Rareté Variable
     [Header("Variable automatique")]
@@ -40,10 +41,12 @@ public class Crack : MonoBehaviour
     private void Start()
     {
         _CrackLifeBase = _CrackLife;
+        _MainCam = GameObject.FindGameObjectWithTag("MainCamera");
     }
 
     void Update()
     {
+        
         if (gameObject.activeSelf && _CanbeDesactive == true)
         {
             StartCoroutine(Lifeduration());
@@ -114,13 +117,33 @@ public class Crack : MonoBehaviour
     }
     private void VfxToShow()
     {
+        Vector3 camPos;
+        if (_MainCam != null)
+        {
+            camPos = new Vector3(_MainCam.transform.position.x, 0, _MainCam.transform.position.z);
+        }
+        else
+        {
+            camPos = Vector3.zero;
+        }
+
         if (_CrackLife <=_CrackLifeBase *70/100 && _CrackLife > _CrackLifeBase *40/100 && !_Vfx30RarityToShow.activeSelf)
         {
             _Vfx30RarityToShow.SetActive(true);
+
+            if (_MainCam != null)
+            {
+                _Vfx30RarityToShow.transform.LookAt(camPos);
+            }
+
         }
 
         if(_CrackLife<= _CrackLifeBase *40 / 100 && !_Vfx60RarityToShow.activeSelf)
         {
+            if (_MainCam != null)
+            {
+                _Vfx60RarityToShow.transform.LookAt(camPos);
+            }
             _Vfx30RarityToShow.SetActive(false);
             _Vfx60RarityToShow.SetActive(true);
         }
