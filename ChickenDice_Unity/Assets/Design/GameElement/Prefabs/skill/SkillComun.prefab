@@ -44,9 +44,10 @@ GameObject:
   - component: {fileID: 8322648397593106292}
   - component: {fileID: 214251938107592838}
   - component: {fileID: 3982891906311657528}
+  - component: {fileID: 3988797986854719624}
   m_Layer: 9
   m_Name: Sphere
-  m_TagString: Untagged
+  m_TagString: Gem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -142,6 +143,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
+--- !u!114 &3988797986854719624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9125773513872657851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca77f2f353ad140488ae55ee90079766, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _type: A
+  _rarity: 0
+  _spells: []
 --- !u!1001 &4610988835938011484
 PrefabInstance:
   m_ObjectHideFlags: 0
