@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Deathcter : MonoBehaviour
 {
@@ -24,17 +25,55 @@ public class Deathcter : MonoBehaviour
         _Player01 = _scPhaseManagement.GetComponent<PhaseManager>()._Player01;
         _Player02 = _scPhaseManagement.GetComponent<PhaseManager>()._Player02;
         _Player03 = _scPhaseManagement.GetComponent<PhaseManager>()._Player03;
-        _Player04 = _scPhaseManagement.GetComponent<PhaseManager>()._Player04;
-        
+        _Player04 = _scPhaseManagement.GetComponent<PhaseManager>()._Player04;   
     }
 
     private void FixedUpdate()
     {
-        //MODE SURVIE
+        //MODE SURVIE en att d'avoir la variable dans life engine de qui a kill
         if(_Player01.GetComponent<sc_LifeEngine>()._life <= 0)
         {
             _CounterPlayer01 = +1;
         }
+        if (_Player02.GetComponent<sc_LifeEngine>()._life <= 0)
+        {
+            _CounterPlayer02 = +1;
+        }
+        if (_Player03.GetComponent<sc_LifeEngine>()._life <= 0)
+        {
+            _CounterPlayer03 = +1;
+        }
+        if (_Player04.GetComponent<sc_LifeEngine>()._life <= 0)
+        {
+            _CounterPlayer04 = +1;
+        }
+
+        if (_CounterPlayer01 >= _ValeurToWin)
+        {
+            //Afficher player 1 WIN
+            StartCoroutine(RestartGame());
+        }
+        if (_CounterPlayer02 >= _ValeurToWin)
+        {
+            //Afficher player 2 WIN
+            StartCoroutine(RestartGame());
+        }
+        if (_CounterPlayer03 >= _ValeurToWin)
+        {
+            //Afficher player 3 WIN
+            StartCoroutine(RestartGame());
+        }
+        if (_CounterPlayer04 >= _ValeurToWin)
+        {
+            //Afficher player 4 WIN
+            StartCoroutine(RestartGame());
+        }
+    }
+
+    private IEnumerator RestartGame()
+    {
+        yield return new WaitForSeconds(_TimeBeforeRestart);
+        SceneManager.LoadScene("Scenes_Jeff");
     }
 
 }
