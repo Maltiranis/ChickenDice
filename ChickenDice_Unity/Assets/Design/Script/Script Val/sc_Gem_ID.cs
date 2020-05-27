@@ -6,13 +6,13 @@ public class sc_Gem_ID : MonoBehaviour
 {
     [SerializeField] public string _type = ""; // Active = A ; Passive = P
     [SerializeField] public int _rarity = 0; // Rareté de 0 à 2
-
+    [HideInInspector]
     [SerializeField] public GameObject[] _spells;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        _spells = GameObject.Find("SkillBoard").GetComponent<sc_SkillBoard>()._spells;
     }
 
     public int SpellInCollection () // Le Spell en question

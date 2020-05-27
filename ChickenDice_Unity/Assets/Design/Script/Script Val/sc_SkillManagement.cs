@@ -20,6 +20,9 @@ public class sc_SkillManagement : MonoBehaviour
     [Space(10)]
     [Header("Offset")]
     [SerializeField] public GameObject _shootOffset;
+    [Space(10)]
+    [Header("Variables")]
+    [SerializeField] public float _actionRange = 1.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -58,12 +61,25 @@ public class sc_SkillManagement : MonoBehaviour
         {
             if (_Xempty == true)
             {
+                GameObject[] Gem = GameObject.FindGameObjectsWithTag("Gem");
+
+                /*for (int i = 0; i < Gem.Length; i++)
+                {
+                    if ()
+                }*/
+            }
+            else
+            {
 
             }
         }
         if (_slot == "Y")
         {
             if (_Yempty == true)
+            {
+
+            }
+            else
             {
 
             }
