@@ -6,10 +6,10 @@ using UnityEngine.SceneManagement;
 public class PhaseManager : MonoBehaviour
 {
     [Header("Prefab Players")]
-    [SerializeField] private GameObject _Player01 = null;
-    [SerializeField] private GameObject _Player02 = null;
-    [SerializeField] private GameObject _Player03 = null;
-    [SerializeField] private GameObject _Player04 = null;
+    [SerializeField] public GameObject _Player01 = null;
+    [SerializeField] public GameObject _Player02 = null;
+    [SerializeField] public GameObject _Player03 = null;
+    [SerializeField] public GameObject _Player04 = null;
 
     [Header("Prefab Arena")]
     [SerializeField] private GameObject _LootArena = null;
@@ -108,7 +108,6 @@ public class PhaseManager : MonoBehaviour
         {
             _ModeWin = _IndexScarcrow02;
         }
-
         PhaseSetup();
     }
 
