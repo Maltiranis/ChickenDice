@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: m_speedpeck 1
+  m_Name: m_speed
   m_Shader: {fileID: 4800000, guid: c0b7bd2ff064759498c4d48752acc900, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 0
