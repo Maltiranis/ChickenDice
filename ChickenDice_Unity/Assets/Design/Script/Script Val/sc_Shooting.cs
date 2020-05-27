@@ -73,7 +73,7 @@ public class sc_Shooting : MonoBehaviour
         }
     }
 
-    public void Shoot ()
+    public void Shoot (GameObject A, GameObject P)
     {
         if (_refreshValue == _coolDown)
         {

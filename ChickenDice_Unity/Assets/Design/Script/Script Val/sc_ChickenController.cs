@@ -163,24 +163,28 @@ public class sc_ChickenController : MonoBehaviour
     }
     void Triggers ()
     {
+        //Scripts
+        sc_Shooting scs = GetComponent<sc_Shooting>();// a mettre dans Triggers ()
+
         if (Input.GetAxis("RT_" + _id.ToString()) > 0.85f)
         {
-            scsm.UseGem("X");
+            scsm.UseGem("RT");
+            //scs.Shoot();
         }
         if (Input.GetAxis("LT_" + _id.ToString()) > 0.85f)
         {
-            scsm.UseGem("Y");
+            scsm.UseGem("LT");
         }
     }
     void Bumpers ()
     {
-        //Scripts
-        sc_Shooting scs = GetComponent<sc_Shooting>();
-        //Shoot
-        if (Input.GetButtonDown("LB_" + _id.ToString()) ||
-            Input.GetButtonDown("RB_" + _id.ToString()))
+        if (Input.GetButtonDown("LB_" + _id.ToString()))
         {
-            scs.Shoot();
+            scsm.GetDropGem("LB");
+        }
+        if (Input.GetButtonDown("RB_" + _id.ToString()))
+        {
+            scsm.GetDropGem("RB");
         }
     }
     void Movements ()
