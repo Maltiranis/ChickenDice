@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GoldenEgg : MonoBehaviour
 {
@@ -53,6 +54,28 @@ public class GoldenEgg : MonoBehaviour
         {
             _IsPick = false;
         }
+
+
+        if (_CounterPlayer01 >= _ValeurToWin)
+        {
+            //Afficher player 1 WIN
+            StartCoroutine(RestartGame());
+        }
+        if (_CounterPlayer02 >= _ValeurToWin)
+        {
+            //Afficher player 2 WIN
+            StartCoroutine(RestartGame());
+        }
+        if (_CounterPlayer03 >= _ValeurToWin)
+        {
+            //Afficher player 3 WIN
+            StartCoroutine(RestartGame());
+        }
+        if (_CounterPlayer04 >= _ValeurToWin)
+        {
+            //Afficher player 4 WIN
+            StartCoroutine(RestartGame());
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -63,9 +86,14 @@ public class GoldenEgg : MonoBehaviour
         {
             _TargetFollow = other.gameObject;
             _IsPick = true;
-
         }
         
     }
-   
+
+    private IEnumerator RestartGame()
+    {
+        yield return new WaitForSeconds(_TimeBeforeRestart);
+        SceneManager.LoadScene("Scenes_Jeff");
+    }
+
 }
