@@ -40,6 +40,7 @@ public class sc_AnimManagement : MonoBehaviour
         anim = GetComponent<Animator>();
         StartCoroutine(ChickenBrain(1f));
         StartCoroutine(CalcVelocity());
+        _canRandomHead = true;
     }
 
     // Update is called once per frame

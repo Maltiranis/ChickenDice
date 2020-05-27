@@ -145,6 +145,17 @@ public class sc_ChickenController : MonoBehaviour
         {
             _newSpeed = _gasgasgasSpeed;
         }
+
+        //Get Gem
+        if (Input.GetButtonDown("xX_" + _id.ToString()))
+        {
+            scsm.GetDropGem("X");
+        }
+        //Drop Gem
+        if (Input.GetButtonDown("xY_" + _id.ToString()))
+        {
+            scsm.GetDropGem("Y");
+        }
     }
     void Cross ()
     {
@@ -152,7 +163,14 @@ public class sc_ChickenController : MonoBehaviour
     }
     void Triggers ()
     {
-
+        if (Input.GetAxis("RT_" + _id.ToString()) > 0.85f)
+        {
+            scsm.UseGem("X");
+        }
+        if (Input.GetAxis("LT_" + _id.ToString()) > 0.85f)
+        {
+            scsm.UseGem("Y");
+        }
     }
     void Bumpers ()
     {
