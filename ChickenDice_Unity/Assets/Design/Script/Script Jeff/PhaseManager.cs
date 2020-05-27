@@ -6,10 +6,10 @@ using UnityEngine.SceneManagement;
 public class PhaseManager : MonoBehaviour
 {
     [Header("Prefab Players")]
-    [SerializeField] private GameObject _Player01 = null;
-    [SerializeField] private GameObject _Player02 = null;
-    [SerializeField] private GameObject _Player03 = null;
-    [SerializeField] private GameObject _Player04 = null;
+    [SerializeField] public GameObject _Player01 = null;
+    [SerializeField] public GameObject _Player02 = null;
+    [SerializeField] public GameObject _Player03 = null;
+    [SerializeField] public GameObject _Player04 = null;
 
     [Header("Prefab Arena")]
     [SerializeField] private GameObject _LootArena = null;
@@ -19,7 +19,6 @@ public class PhaseManager : MonoBehaviour
     [SerializeField] private int _IndexScarcrow01 = 0;
     [SerializeField] private int _IndexScarcrow02 = 0;
     [SerializeField] private int _ModeWin = 0;
-
 
     [Header("Time Phase")]
     [SerializeField] private int _TimeLootPhase = 0;
@@ -52,7 +51,7 @@ public class PhaseManager : MonoBehaviour
     [SerializeField] private GameObject _LootCam = null;
     [SerializeField] private GameObject _FightCam = null;
 
-    [Header("Scarcrow")]
+    [Header("Scarcrow Loot Arena")]
     [SerializeField] private GameObject _Scarcrow01 = null;
     [SerializeField] private GameObject _Scarcrow02 = null;
 
@@ -91,7 +90,9 @@ public class PhaseManager : MonoBehaviour
         _FightCam.SetActive(true);
         _LootArena.SetActive(false);
         SelectMode();
-        StartCoroutine(FightPhaseTimer());
+
+        //Lancement de la fin du mode fight a supr une fois les modes codés
+       // StartCoroutine(FightPhaseTimer());
     }
 
     private void SelectMode()
@@ -107,12 +108,13 @@ public class PhaseManager : MonoBehaviour
         {
             _ModeWin = _IndexScarcrow02;
         }
-
-        SetupMode();
+        PhaseSetup();
     }
 
-    private void SetupMode()
+ 
+    private void PhaseSetup()
     {
+
         Transform _ChangeSpawnP01 = _Player01.GetComponent<sc_LifeEngine>()._startPosTransform;
         Transform _ChangeSpawnP02 = _Player02.GetComponent<sc_LifeEngine>()._startPosTransform;
         Transform _ChangeSpawnP03 = _Player03.GetComponent<sc_LifeEngine>()._startPosTransform;
@@ -121,40 +123,31 @@ public class PhaseManager : MonoBehaviour
         if(_ModeWin == 1)
         {
             _CoverA101.SetActive(true);
-
             _ChangeSpawnP01.position = _SpawnFightA1P1.position;
             _Player01.transform.position = _SpawnFightA1P1.transform.position;
             _Player01.transform.rotation = _SpawnFightA1P1.transform.rotation;
-
             _ChangeSpawnP02.position = _SpawnFightA1P2.position;
             _Player02.transform.position = _SpawnFightA1P2.transform.position;
             _Player02.transform.rotation = _SpawnFightA1P2.transform.rotation;
-
             _ChangeSpawnP03.position = _SpawnFightA1P3.position;
             _Player03.transform.position = _SpawnFightA1P3.transform.position;
             _Player03.transform.rotation = _SpawnFightA1P3.transform.rotation;
-
             _ChangeSpawnP04.position = _SpawnFightA1P4.position;
             _Player04.transform.position = _SpawnFightA1P4.transform.position;
             _Player04.transform.rotation = _SpawnFightA1P4.transform.rotation;
-
         }
         if(_ModeWin == 2)
         {
             _CoverA201.SetActive(true);
-
             _ChangeSpawnP01.position = _SpawnFightA2P1.position;
             _Player01.transform.position = _SpawnFightA2P1.transform.position;
             _Player01.transform.rotation = _SpawnFightA2P1.transform.rotation;
-
             _ChangeSpawnP02.position = _SpawnFightA2P2.transform.position;
             _Player02.transform.position = _SpawnFightA2P2.transform.position;
             _Player02.transform.rotation = _SpawnFightA2P2.transform.rotation;
-
              _ChangeSpawnP03.position = _SpawnFightA2P3.position;
             _Player03.transform.position = _SpawnFightA2P3.transform.position;
             _Player03.transform.rotation = _SpawnFightA2P3.transform.rotation;
-
              _ChangeSpawnP04.position = _SpawnFightA2P4.position;
             _Player04.transform.position = _SpawnFightA2P4.transform.position;
             _Player04.transform.rotation = _SpawnFightA2P4.transform.rotation;
@@ -162,19 +155,15 @@ public class PhaseManager : MonoBehaviour
         if(_ModeWin == 3)
         {
             _CoverA301.SetActive(true);
-
             _ChangeSpawnP01.position = _SpawnFightA3P1.position;
             _Player01.transform.position = _SpawnFightA3P1.transform.position;
             _Player01.transform.rotation = _SpawnFightA3P1.transform.rotation;
-
             _ChangeSpawnP02.position = _SpawnFightA3P2.position;
             _Player02.transform.position = _SpawnFightA3P2.transform.position;
             _Player02.transform.rotation = _SpawnFightA3P2.transform.rotation;
-
             _ChangeSpawnP03.position = _SpawnFightA3P3.position;
             _Player03.transform.position = _SpawnFightA3P3.transform.position;
             _Player03.transform.rotation = _SpawnFightA3P3.transform.rotation;
-
             _ChangeSpawnP04.position = _SpawnFightA3P4.position;
             _Player04.transform.position = _SpawnFightA3P4.transform.position;
             _Player04.transform.rotation = _SpawnFightA3P4.transform.rotation;
@@ -182,10 +171,13 @@ public class PhaseManager : MonoBehaviour
 
     }
 
-    private IEnumerator FightPhaseTimer()
-    {
-        yield return new WaitForSeconds(_TimeFightPhase);
-        SceneManager.LoadScene("Scenes_Jeff");
-    }
+
+
+    //Lancement de la fin du mode fight a supprimer une fois les modes codés
+    //private IEnumerator FightPhaseTimer()
+    //{
+    //    yield return new WaitForSeconds(_TimeFightPhase);
+    //    SceneManager.LoadScene("Scenes_Jeff");
+    //}
 
 }
