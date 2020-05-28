@@ -40,11 +40,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 009ca8c5467524b458a708cb5717e86f, type: 3}
+        m_Texture: {fileID: 2800000, guid: 2cd3960c304a43147ba19f7c03616c08, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: 40b4f89d6dfb9b344ac280ad22dba5a7, type: 3}
+        m_Texture: {fileID: 2800000, guid: 51da6aa04d2cf26478682e3851e682fe, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:

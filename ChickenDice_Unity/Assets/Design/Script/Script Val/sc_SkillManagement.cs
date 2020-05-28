@@ -101,15 +101,18 @@ public class sc_SkillManagement : MonoBehaviour
             {
                 SpellAttribution(_tempGameObject);//On la place où il faut
 
+                _tempGameObject.SetActive(false);
+
                 _xPassive = _newPassive;
                 _Xempty = false;
             }
             else
             {
-                if (_previousPassiveGem != null)
-                    SwitchGems(_previousPassiveGem, _tempGameObject.transform);//On echange les gemmes
+                SwitchGems(_previousPassiveGem, _tempGameObject.transform);//On echange les gemmes
                     
                 SpellAttribution(_tempGameObject);//On la place où il faut
+
+                _tempGameObject.SetActive(false);
 
                 _xPassive = _newPassive;
                 _Xempty = false;
@@ -121,15 +124,18 @@ public class sc_SkillManagement : MonoBehaviour
             {
                 SpellAttribution(_tempGameObject);//On la place où il faut
 
+                _tempGameObject.SetActive(false);
+
                 _yPassive = _newPassive;
                 _Yempty = false;
             }
             else
             {
-                if (_previousPassiveGem != null)
-                        SwitchGems(_previousPassiveGem, _tempGameObject.transform);//On echange les gemmes
+                SwitchGems(_previousPassiveGem, _tempGameObject.transform);//On echange les gemmes
 
                 SpellAttribution(_tempGameObject);//On la place où il faut
+
+                _tempGameObject.SetActive(false);
 
                 _yPassive = _newPassive;
                 _Yempty = false;
@@ -141,15 +147,18 @@ public class sc_SkillManagement : MonoBehaviour
             {
                 SpellAttribution(_tempGameObject);//On la place où il faut
 
+                _tempGameObject.SetActive(false);
+
                 _lbActive = _newActive;
                 _lbEmpty = false;
             }
             else
             {
-                if (_previousActiveGem != null)
-                        SwitchGems(_previousActiveGem, _tempGameObject.transform);//On echange les gemmes
+                SwitchGems(_previousActiveGem, _tempGameObject.transform);//On echange les gemmes
 
                 SpellAttribution(_tempGameObject);//On la place où il faut
+
+                _tempGameObject.SetActive(false);
 
                 _lbActive = _newActive;
                 _lbEmpty = false;
@@ -161,15 +170,18 @@ public class sc_SkillManagement : MonoBehaviour
             {
                 SpellAttribution(_tempGameObject);//On la place où il faut
 
+                _tempGameObject.SetActive(false);
+
                 _rbActive = _newActive;
                 _rbEmpty = false;
             }
             else
             {
-                if (_previousActiveGem != null)
-                        SwitchGems(_previousActiveGem, _tempGameObject.transform);//On echange les gemmes
+                SwitchGems(_previousActiveGem, _tempGameObject.transform);//On echange les gemmes
 
                 SpellAttribution(_tempGameObject);//On la place où il faut
+
+                _tempGameObject.SetActive(false);
 
                 _rbActive = _newActive;
                 _rbEmpty = false;
@@ -180,9 +192,9 @@ public class sc_SkillManagement : MonoBehaviour
     public void SwitchGems (GameObject g, Transform pos)
     {
         GameObject newGem = Instantiate(g, pos.position, pos.rotation);
-        newGem.transform.parent = pos.parent;
+        //newGem.transform.parent = pos.parent;
 
-        //_tempGameObject.SetActive(false);
+        newGem.SetActive(true);
         //Destroy(newGem, 10.0f);//A méditer
 
         //
@@ -206,9 +218,6 @@ public class sc_SkillManagement : MonoBehaviour
             {
                 _newActive = id.RandomSelectedSpell();
             }
-
-            _previousActiveGem = newO;
-            o.SetActive(false);
         }
         if (id._type == "P")
         {
@@ -220,10 +229,8 @@ public class sc_SkillManagement : MonoBehaviour
             {
                 _newPassive = id.RandomSelectedSpell();
             }
-
-            _previousPassiveGem = newO;
-            o.SetActive(false);
         }
+        _previousActiveGem = newO;
     }
 
     GameObject GetClosest(GameObject[] gem)
