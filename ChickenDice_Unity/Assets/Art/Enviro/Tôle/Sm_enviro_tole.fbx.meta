@@ -8,7 +8,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: L_objet_scene
-    second: {fileID: 2100000, guid: 755c14aba5120ec42b6476929289d124, type: 2}
+    second: {fileID: 2100000, guid: 11591582be6d1bb47aed1f2f040aa2b0, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0

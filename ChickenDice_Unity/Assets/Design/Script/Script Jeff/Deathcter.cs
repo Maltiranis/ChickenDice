@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
+using UnityEngine.UI;
 
 public class Deathcter : MonoBehaviour
 {
@@ -9,16 +11,24 @@ public class Deathcter : MonoBehaviour
     [SerializeField] private GameObject _Player02 = null;
     [SerializeField] private GameObject _Player03 = null;
     [SerializeField] private GameObject _Player04 = null;
+    [SerializeField] public float[] _CounterPlayer;
+    [SerializeField] public int _TheKillerID = 0;
 
-    [SerializeField] public int _CounterPlayer01 = 0;
-    [SerializeField] public int _CounterPlayer02 = 0;
-    [SerializeField] public int _CounterPlayer03 = 0;
-    [SerializeField] public int _CounterPlayer04 = 0;
+    private bool _P01IsDeath = true;
+    private bool _P02IsDeath = true;
+    private bool _P03IsDeath = true;
+    private bool _P04IsDeath = true;
 
-    [SerializeField] private int _ValeurToWin = 0;
-    [SerializeField] private float _TimeBeforeRestart = 0f;
+    [SerializeField] private float _ValeurToWin = 0;
+    [SerializeField] private float _TimeRespawnPlayer = 5.0f;
+    private float _TimeBeforeRestart = 0f;
 
     [SerializeField] private PhaseManager _scPhaseManagement;
+    [Header("UI")]
+    [SerializeField] private Image[] _bar;
+    [SerializeField] private TextMeshProUGUI[] _PointText;
+    [SerializeField] private GameObject[] _UI;
+
 
     private void Start()
     {
@@ -30,44 +40,49 @@ public class Deathcter : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //MODE SURVIE en att d'avoir la variable dans life engine de qui a kill
-        if(_Player01.GetComponent<sc_LifeEngine>()._life <= 0)
+        if(_Player01.GetComponent<sc_LifeEngine>()._life <= 0 && _P01IsDeath == true)
         {
-            _CounterPlayer01 = +1;
+            _P01IsDeath = false;
+            _TheKillerID = _Player01.GetComponent<sc_LifeEngine>()._killer_ID;
+            StartCoroutine(SetPoint());
         }
-        if (_Player02.GetComponent<sc_LifeEngine>()._life <= 0)
+        if (_Player02.GetComponent<sc_LifeEngine>()._life <= 0 && _P02IsDeath == true)
         {
-            _CounterPlayer02 = +1;
+            _P02IsDeath = false;
+            _TheKillerID = _Player02.GetComponent<sc_LifeEngine>()._killer_ID;
+            StartCoroutine(SetPoint());
         }
-        if (_Player03.GetComponent<sc_LifeEngine>()._life <= 0)
+        if (_Player03.GetComponent<sc_LifeEngine>()._life <= 0 && _P03IsDeath == true)
         {
-            _CounterPlayer03 = +1;
+            _P03IsDeath = false;
+            _TheKillerID = _Player03.GetComponent<sc_LifeEngine>()._killer_ID;
+            StartCoroutine(SetPoint());
         }
-        if (_Player04.GetComponent<sc_LifeEngine>()._life <= 0)
+        if (_Player04.GetComponent<sc_LifeEngine>()._life <= 0 && _P04IsDeath == true)
         {
-            _CounterPlayer04 = +1;
+            _P04IsDeath = false;
+            _TheKillerID = _Player04.GetComponent<sc_LifeEngine>()._killer_ID;
+            StartCoroutine(SetPoint());
         }
+    }
 
-        if (_CounterPlayer01 >= _ValeurToWin)
+    private IEnumerator SetPoint()
+    {
+        _CounterPlayer[_TheKillerID] = _CounterPlayer[_TheKillerID] + 1;
+        _PointText[_TheKillerID].text = _CounterPlayer[_TheKillerID].ToString();
+        float Amont = _CounterPlayer[_TheKillerID] / _ValeurToWin;
+        _bar[_TheKillerID].fillAmount = Amont;
+        yield return new WaitForSeconds(_TimeRespawnPlayer);
+        _P01IsDeath = true;
+        _P02IsDeath = true;
+        _P03IsDeath = true;
+        _P04IsDeath = true;
+
+        if(_CounterPlayer[_TheKillerID] >= _ValeurToWin)
         {
-            //Afficher player 1 WIN
+            // Afficher le player qui win
             StartCoroutine(RestartGame());
-        }
-        if (_CounterPlayer02 >= _ValeurToWin)
-        {
-            //Afficher player 2 WIN
-            StartCoroutine(RestartGame());
-        }
-        if (_CounterPlayer03 >= _ValeurToWin)
-        {
-            //Afficher player 3 WIN
-            StartCoroutine(RestartGame());
-        }
-        if (_CounterPlayer04 >= _ValeurToWin)
-        {
-            //Afficher player 4 WIN
-            StartCoroutine(RestartGame());
-        }
+        }        
     }
 
     private IEnumerator RestartGame()
@@ -75,5 +90,4 @@ public class Deathcter : MonoBehaviour
         yield return new WaitForSeconds(_TimeBeforeRestart);
         SceneManager.LoadScene("Scenes_Jeff");
     }
-
 }

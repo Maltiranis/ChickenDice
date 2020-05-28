@@ -133,6 +133,33 @@ public class sc_AnimManagement : MonoBehaviour
         anim.SetTrigger("triggerTaunt");
     }
 
+    public void Hit()
+    {
+        _onHit = true;
+    }
+    public void UnHit()
+    {
+        _onHit = false;
+    }
+
+    public void Peck()
+    {
+        _onPeck = true;
+    }
+    public void UnPeck()
+    {
+        _onPeck = false;
+    }
+
+    public void Taunt()
+    {
+        _onTaunt = true;
+    }
+    public void UnTaunt()
+    {
+        _onTaunt = false;
+    }
+
     public IEnumerator ChickenBrain(float newDealay)
     {
         yield return new WaitForSeconds(newDealay);
