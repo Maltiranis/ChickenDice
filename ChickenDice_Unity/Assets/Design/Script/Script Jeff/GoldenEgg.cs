@@ -2,14 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
+using UnityEngine.UI;
 
 public class GoldenEgg : MonoBehaviour
 {
 
-    [SerializeField] public int[] _CounterPlayer;
+    [SerializeField] public float[] _CounterPlayer;
     [SerializeField] public int _IdPlayerHaveEgg;
 
-    [SerializeField] private int _ValeurToWin = 0;
+    [SerializeField] private float _ValeurToWin = 0f;
     [SerializeField] private float _TimeBeforeRestart = 0f;
     [SerializeField] private float _TimeBeforeSetPoint = 0f;
 
@@ -17,7 +19,12 @@ public class GoldenEgg : MonoBehaviour
     [SerializeField] private GameObject _TargetFollow = null;
     [SerializeField] private bool _IsPick = false;
     [SerializeField] private bool _PlayerWinPoint = false;
-   
+
+    [Header("UI")]
+    [SerializeField] private Image[] _bar;  
+    [SerializeField] private TextMeshProUGUI[] _PointText;
+    [SerializeField] private GameObject[] _UI;
+
     private void FixedUpdate()
     {
         if(_TargetFollow == null)
@@ -43,7 +50,7 @@ public class GoldenEgg : MonoBehaviour
             }
 
             //LA POULE SE FAIT TOUCHER ELLE PERD L'OEUF
-            if (_TargetFollow.GetComponent<sc_AnimManagement>()._onHit == true)
+            if (_TargetFollow.GetComponentInChildren<sc_AnimManagement>()._onHit == true)
             {
                 _IsPick = false;
 
@@ -59,6 +66,9 @@ public class GoldenEgg : MonoBehaviour
         if(_IsPick == true)
         {
             _CounterPlayer[_IdPlayerHaveEgg] = _CounterPlayer[_IdPlayerHaveEgg] + 1;
+            _PointText[_IdPlayerHaveEgg].text = _CounterPlayer[_IdPlayerHaveEgg].ToString();
+            float Amont = _CounterPlayer[_IdPlayerHaveEgg] /_ValeurToWin;
+            _bar[_IdPlayerHaveEgg].fillAmount = Amont;
             if(_CounterPlayer[_IdPlayerHaveEgg] >= _ValeurToWin)
             {
                 StartCoroutine(RestartGame());

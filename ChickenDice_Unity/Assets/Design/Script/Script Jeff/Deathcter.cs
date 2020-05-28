@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
+using UnityEngine.UI;
 
 public class Deathcter : MonoBehaviour
 {
@@ -9,7 +11,7 @@ public class Deathcter : MonoBehaviour
     [SerializeField] private GameObject _Player02 = null;
     [SerializeField] private GameObject _Player03 = null;
     [SerializeField] private GameObject _Player04 = null;
-    [SerializeField] public int[] _CounterPlayer;
+    [SerializeField] public float[] _CounterPlayer;
     [SerializeField] public int _TheKillerID = 0;
 
     private bool _P01IsDeath = true;
@@ -17,11 +19,16 @@ public class Deathcter : MonoBehaviour
     private bool _P03IsDeath = true;
     private bool _P04IsDeath = true;
 
-    [SerializeField] private int _ValeurToWin = 0;
+    [SerializeField] private float _ValeurToWin = 0;
     [SerializeField] private float _TimeRespawnPlayer = 5.0f;
     private float _TimeBeforeRestart = 0f;
 
     [SerializeField] private PhaseManager _scPhaseManagement;
+    [Header("UI")]
+    [SerializeField] private Image[] _bar;
+    [SerializeField] private TextMeshProUGUI[] _PointText;
+    [SerializeField] private GameObject[] _UI;
+
 
     private void Start()
     {
@@ -62,6 +69,9 @@ public class Deathcter : MonoBehaviour
     private IEnumerator SetPoint()
     {
         _CounterPlayer[_TheKillerID] = _CounterPlayer[_TheKillerID] + 1;
+        _PointText[_TheKillerID].text = _CounterPlayer[_TheKillerID].ToString();
+        float Amont = _CounterPlayer[_TheKillerID] / _ValeurToWin;
+        _bar[_TheKillerID].fillAmount = Amont;
         yield return new WaitForSeconds(_TimeRespawnPlayer);
         _P01IsDeath = true;
         _P02IsDeath = true;
