@@ -166,7 +166,7 @@ public class sc_SkillManagement : MonoBehaviour
         }
         if (_slot == "RB" && id._type == "A")
         {
-            if (_lbEmpty == true)
+            if (_rbEmpty == true)
             {
                 SpellAttribution(_tempGameObject);//On la place où il faut
 
@@ -218,6 +218,7 @@ public class sc_SkillManagement : MonoBehaviour
             {
                 _newActive = id.RandomSelectedSpell();
             }
+            _previousActiveGem = newO;
         }
         if (id._type == "P")
         {
@@ -229,8 +230,8 @@ public class sc_SkillManagement : MonoBehaviour
             {
                 _newPassive = id.RandomSelectedSpell();
             }
+            _previousPassiveGem = newO;
         }
-        _previousActiveGem = newO;
     }
 
     GameObject GetClosest(GameObject[] gem)
