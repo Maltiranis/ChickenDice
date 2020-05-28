@@ -25,6 +25,12 @@ public class sc_Shooting : MonoBehaviour
     [SerializeField] private float _coolDown = 1.0f;
     private float _refreshValue = 1.0f;
     [SerializeField] private float _refillSpeed = 0.1f;
+    //
+    [Header("Minimal bullet")]
+    [SerializeField] private int _minimalDamage = 10;
+    [SerializeField] private float _minimalSpeed = 10f;
+    [SerializeField] private float _minimalRadius = 1f;
+    //
     [Space(10)]
     [Header("UI")]
     [SerializeField] private Image[] _bar;
@@ -84,9 +90,9 @@ public class sc_Shooting : MonoBehaviour
             float speed;
             float radius;
 
-            dmg = 0;
-            speed = 0f;
-            radius = 0f;
+            dmg = _minimalDamage;
+            speed = _minimalSpeed;
+            radius = _minimalRadius;
 
             if (P1 != null)
             {
