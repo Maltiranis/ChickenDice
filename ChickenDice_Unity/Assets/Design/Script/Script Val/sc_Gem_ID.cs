@@ -65,7 +65,7 @@ public class sc_Gem_ID : MonoBehaviour
 
         r = Random.Range(0, _spells.Length);
 
-        Debug.Log("Le spell n°= " + (r + 1) + " sur le max : " + _spells.Length);
+        //Debug.Log("Le spell n°= " + (r + 1) + " sur le max : " + _spells.Length);
 
         return r;
     }

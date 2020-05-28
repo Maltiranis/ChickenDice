@@ -2314,6 +2314,7 @@ MonoBehaviour:
   _life: 100
   _respawn: 1
   _respawnDelay: 3
+  _killer_ID: 100
   _startPosTransform: {fileID: 0}
   onRepop: 0
   _am: {fileID: 1008034808738638851}
@@ -2364,8 +2365,6 @@ MonoBehaviour:
   _projectilePrefab: {fileID: 7801322916539727426, guid: f81841fe07696ec4483114401413db53,
     type: 3}
   _shootOffset: {fileID: 752666748}
-  _projectileSpeed: 100
-  _projDuration: 1
   _coolDown: 1
   _refillSpeed: 2
   _bar:
@@ -2395,6 +2394,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16494a024307da14baac0e57ee0c32fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _lbEmpty: 1
+  _rbEmpty: 1
+  _Xempty: 1
+  _Yempty: 1
+  _lbActive: {fileID: 0}
+  _rbActive: {fileID: 0}
+  _xPassive: {fileID: 0}
+  _yPassive: {fileID: 0}
+  _newPassive: {fileID: 0}
+  _newActive: {fileID: 0}
+  _tempGameObject: {fileID: 0}
+  _shootOffset: {fileID: 752666748}
+  _actionRange: 1
 --- !u!1 &1008034809165226732
 GameObject:
   m_ObjectHideFlags: 0

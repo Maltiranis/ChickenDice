@@ -70,146 +70,109 @@ public class sc_SkillManagement : MonoBehaviour
         {
             GetSlot(_slot);
         }
-
-        _tempGameObject.SetActive(false);
+        /*if (_tempGameObject != null)
+            _tempGameObject.SetActive(false);*/
     }
 
     public void GetSlot (string _slot)
     {
-        if (_slot == "X")
+        GameObject[] Gem = GameObject.FindGameObjectsWithTag("Gem");
+        sc_Gem_ID id;
+
+        if (GetClosest(Gem) != null)
+        {
+            _tempGameObject = GetClosest(Gem);//On garde en mémoire la gemme la plus proche
+        }
+        else
+        {
+            return;
+        }
+
+        if (_tempGameObject == null)
+        {
+            return;
+        }
+
+        id = _tempGameObject.GetComponent<sc_Gem_ID>();
+
+        if (_slot == "X" && id._type == "P")
         {
             if (_Xempty == true)
             {
-                GameObject[] Gem = GameObject.FindGameObjectsWithTag("Gem");
+                SpellAttribution(_tempGameObject);//On la place où il faut
 
-                if (GetClosest(Gem) != null)
-                {
-                    _tempGameObject = GetClosest(Gem);//On garde en mémoire la gemme la plus proche
-
-                    SpellAttribution(_tempGameObject);//On la place où il faut
-
-                    _xPassive = _newPassive;
-                    _Xempty = false;
-                }
+                _xPassive = _newPassive;
+                _Xempty = false;
             }
             else
             {
-                GameObject[] Gem = GameObject.FindGameObjectsWithTag("Gem");
-
-                if (GetClosest(Gem) != null)
-                {
-                    _tempGameObject = GetClosest(Gem);//On garde en mémoire la gemme la plus proche
-
-                    if (_previousPassiveGem != null)
-                        SwitchGems(_previousPassiveGem, _tempGameObject.transform);//On echange les gemmes
+                if (_previousPassiveGem != null)
+                    SwitchGems(_previousPassiveGem, _tempGameObject.transform);//On echange les gemmes
                     
-                    SpellAttribution(_tempGameObject);//On la place où il faut
+                SpellAttribution(_tempGameObject);//On la place où il faut
 
-                    _xPassive = _newPassive;
-                    _Xempty = false;
-                }
+                _xPassive = _newPassive;
+                _Xempty = false;
             }
         }
-        if (_slot == "Y")
+        if (_slot == "Y" && id._type == "P")
         {
             if (_Yempty == true)
             {
-                GameObject[] Gem = GameObject.FindGameObjectsWithTag("Gem");
+                SpellAttribution(_tempGameObject);//On la place où il faut
 
-                if (GetClosest(Gem) != null)
-                {
-                    _tempGameObject = GetClosest(Gem);//On garde en mémoire la gemme la plus proche
-
-                    SpellAttribution(_tempGameObject);//On la place où il faut
-
-                    _yPassive = _newPassive;
-                    _Yempty = false;
-                }
+                _yPassive = _newPassive;
+                _Yempty = false;
             }
             else
             {
-                GameObject[] Gem = GameObject.FindGameObjectsWithTag("Gem");
-
-                if (GetClosest(Gem) != null)
-                {
-                    _tempGameObject = GetClosest(Gem);//On garde en mémoire la gemme la plus proche
-
-                    if (_previousPassiveGem != null)
+                if (_previousPassiveGem != null)
                         SwitchGems(_previousPassiveGem, _tempGameObject.transform);//On echange les gemmes
 
-                    SpellAttribution(_tempGameObject);//On la place où il faut
+                SpellAttribution(_tempGameObject);//On la place où il faut
 
-                    _yPassive = _newPassive;
-                    _Yempty = false;
-                }
+                _yPassive = _newPassive;
+                _Yempty = false;
             }
         }
-        if (_slot == "LB")
+        if (_slot == "LB" && id._type == "A")
         {
             if (_lbEmpty == true)
             {
-                GameObject[] Gem = GameObject.FindGameObjectsWithTag("Gem");
+                SpellAttribution(_tempGameObject);//On la place où il faut
 
-                if (GetClosest(Gem) != null)
-                {
-                    _tempGameObject = GetClosest(Gem);//On garde en mémoire la gemme la plus proche
-
-                    SpellAttribution(_tempGameObject);//On la place où il faut
-
-                    _lbActive = _newActive;
-                    _lbEmpty = false;
-                }
+                _lbActive = _newActive;
+                _lbEmpty = false;
             }
             else
             {
-                GameObject[] Gem = GameObject.FindGameObjectsWithTag("Gem");
-
-                if (GetClosest(Gem) != null)
-                {
-                    _tempGameObject = GetClosest(Gem);//On garde en mémoire la gemme la plus proche
-
-                    if (_previousActiveGem != null)
+                if (_previousActiveGem != null)
                         SwitchGems(_previousActiveGem, _tempGameObject.transform);//On echange les gemmes
 
-                    SpellAttribution(_tempGameObject);//On la place où il faut
+                SpellAttribution(_tempGameObject);//On la place où il faut
 
-                    _lbActive = _newActive;
-                    _lbEmpty = false;
-                }
+                _lbActive = _newActive;
+                _lbEmpty = false;
             }
         }
-        if (_slot == "RB")
+        if (_slot == "RB" && id._type == "A")
         {
             if (_lbEmpty == true)
             {
-                GameObject[] Gem = GameObject.FindGameObjectsWithTag("Gem");
+                SpellAttribution(_tempGameObject);//On la place où il faut
 
-                if (GetClosest(Gem) != null)
-                {
-                    _tempGameObject = GetClosest(Gem);//On garde en mémoire la gemme la plus proche
-
-                    SpellAttribution(_tempGameObject);//On la place où il faut
-
-                    _rbActive = _newActive;
-                    _rbEmpty = false;
-                }
+                _rbActive = _newActive;
+                _rbEmpty = false;
             }
             else
             {
-                GameObject[] Gem = GameObject.FindGameObjectsWithTag("Gem");
-
-                if (GetClosest(Gem) != null)
-                {
-                    _tempGameObject = GetClosest(Gem);//On garde en mémoire la gemme la plus proche
-
-                    if (_previousActiveGem != null)
+                if (_previousActiveGem != null)
                         SwitchGems(_previousActiveGem, _tempGameObject.transform);//On echange les gemmes
 
-                    SpellAttribution(_tempGameObject);//On la place où il faut
+                SpellAttribution(_tempGameObject);//On la place où il faut
 
-                    _rbActive = _newActive;
-                    _rbEmpty = false;
-                }
+                _rbActive = _newActive;
+                _rbEmpty = false;
             }
         }
     }
@@ -218,13 +181,20 @@ public class sc_SkillManagement : MonoBehaviour
     {
         GameObject newGem = Instantiate(g, pos.position, pos.rotation);
         newGem.transform.parent = pos.parent;
-        Destroy(newGem, 10.0f);//A méditer
+
+        //_tempGameObject.SetActive(false);
+        //Destroy(newGem, 10.0f);//A méditer
+
+        //
+        Debug.Log("On a remplacé le biniou !");
+        //
     }
 
     public void SpellAttribution (GameObject o)
     {
         sc_Gem_ID id;
         id = o.GetComponent<sc_Gem_ID>();
+        GameObject newO = o;
 
         if (id._type == "A")
         {
@@ -237,7 +207,8 @@ public class sc_SkillManagement : MonoBehaviour
                 _newActive = id.RandomSelectedSpell();
             }
 
-            _previousActiveGem = o;
+            _previousActiveGem = newO;
+            o.SetActive(false);
         }
         if (id._type == "P")
         {
@@ -250,7 +221,8 @@ public class sc_SkillManagement : MonoBehaviour
                 _newPassive = id.RandomSelectedSpell();
             }
 
-            _previousPassiveGem = o;
+            _previousPassiveGem = newO;
+            o.SetActive(false);
         }
     }
 
@@ -291,13 +263,13 @@ public class sc_SkillManagement : MonoBehaviour
     {
         if (_slot == "RT")
         {
-            if (_rbActive != null && _yPassive != null)
-                scs.Shoot(_rbActive, _yPassive);
+            if (_rbActive != null)
+                scs.Shoot(_rbActive, _yPassive, _xPassive);
         }
         if (_slot == "LT")
         {
-            if (_lbActive != null && _xPassive != null)
-                scs.Shoot(_lbActive, _xPassive);
+            if (_lbActive != null)
+                scs.Shoot(_lbActive, _yPassive, _xPassive);
         }
     }
 }
