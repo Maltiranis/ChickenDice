@@ -22,9 +22,9 @@ public class ScarecrowFight : MonoBehaviour
             int IdPlayer = other.gameObject.GetComponent<sc_Peck>()._id;
 
             _CounterPlayer[IdPlayer] = _CounterPlayer[IdPlayer] + 1;
-            _CounterPlayer[IdPlayer] = _CounterPlayer[IdPlayer] + 1;
             _PointText[IdPlayer].text = _CounterPlayer[IdPlayer].ToString();
             float Amont = _CounterPlayer[IdPlayer] / _ValeurToWin;
+            _bar[IdPlayer].fillAmount = Amont;
             if (_CounterPlayer[IdPlayer] >= _ValeurToWin)
             {
                 StartCoroutine(RestartGame());

@@ -53,7 +53,7 @@ MonoBehaviour:
   _IndexScarcrow02: 0
   _ModeWin: 0
   _TimeLootPhase: 5
-  _TimeFightPhase: 300
+  _TimeFightPhase: 30000
   _CoverA101: {fileID: 0}
   _CoverA201: {fileID: 0}
   _CoverA301: {fileID: 0}

@@ -1020,7 +1020,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18c300e39d173e54094aafffe0606cd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _CounterPlayer: []
+  _CounterPlayer:
+  - 0
+  - 0
+  - 0
+  - 0
   _ValeurToWin: 40
   _TimeBeforeRestart: 5
   _bar:
