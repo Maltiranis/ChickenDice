@@ -70,8 +70,8 @@ public class sc_SkillManagement : MonoBehaviour
         {
             GetSlot(_slot);
         }
-
-        _tempGameObject.SetActive(false);
+        /*if (_tempGameObject != null)
+            _tempGameObject.SetActive(false);*/
     }
 
     public void GetSlot (string _slot)
@@ -100,8 +100,7 @@ public class sc_SkillManagement : MonoBehaviour
                 {
                     _tempGameObject = GetClosest(Gem);//On garde en mémoire la gemme la plus proche
 
-                    if (_previousPassiveGem != null)
-                        SwitchGems(_previousPassiveGem, _tempGameObject.transform);//On echange les gemmes
+                    SwitchGems(_previousPassiveGem, _tempGameObject.transform);//On echange les gemmes
                     
                     SpellAttribution(_tempGameObject);//On la place où il faut
 
@@ -134,8 +133,7 @@ public class sc_SkillManagement : MonoBehaviour
                 {
                     _tempGameObject = GetClosest(Gem);//On garde en mémoire la gemme la plus proche
 
-                    if (_previousPassiveGem != null)
-                        SwitchGems(_previousPassiveGem, _tempGameObject.transform);//On echange les gemmes
+                    SwitchGems(_previousPassiveGem, _tempGameObject.transform);//On echange les gemmes
 
                     SpellAttribution(_tempGameObject);//On la place où il faut
 
@@ -168,8 +166,7 @@ public class sc_SkillManagement : MonoBehaviour
                 {
                     _tempGameObject = GetClosest(Gem);//On garde en mémoire la gemme la plus proche
 
-                    if (_previousActiveGem != null)
-                        SwitchGems(_previousActiveGem, _tempGameObject.transform);//On echange les gemmes
+                    SwitchGems(_previousActiveGem, _tempGameObject.transform);//On echange les gemmes
 
                     SpellAttribution(_tempGameObject);//On la place où il faut
 
@@ -202,8 +199,7 @@ public class sc_SkillManagement : MonoBehaviour
                 {
                     _tempGameObject = GetClosest(Gem);//On garde en mémoire la gemme la plus proche
 
-                    if (_previousActiveGem != null)
-                        SwitchGems(_previousActiveGem, _tempGameObject.transform);//On echange les gemmes
+                    SwitchGems(_previousActiveGem, _tempGameObject.transform);//On echange les gemmes
 
                     SpellAttribution(_tempGameObject);//On la place où il faut
 
@@ -218,7 +214,11 @@ public class sc_SkillManagement : MonoBehaviour
     {
         GameObject newGem = Instantiate(g, pos.position, pos.rotation);
         newGem.transform.parent = pos.parent;
-        Destroy(newGem, 10.0f);//A méditer
+        //Destroy(newGem, 10.0f);//A méditer
+
+        //
+        Debug.Log("T");
+        //
     }
 
     public void SpellAttribution (GameObject o)
@@ -292,12 +292,12 @@ public class sc_SkillManagement : MonoBehaviour
         if (_slot == "RT")
         {
             if (_rbActive != null && _yPassive != null)
-                scs.Shoot(_rbActive, _yPassive);
+                scs.Shoot(_rbActive, _yPassive, _xPassive);
         }
         if (_slot == "LT")
         {
             if (_lbActive != null && _xPassive != null)
-                scs.Shoot(_lbActive, _xPassive);
+                scs.Shoot(_lbActive, _yPassive, _xPassive);
         }
     }
 }

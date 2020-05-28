@@ -22,9 +22,6 @@ public class sc_Shooting : MonoBehaviour
     public GameObject _shootOffset;
     [Space(10)]
     [Header("Variables")]
-    [SerializeField] private float _projectileSpeed = 5.0f;
-    [SerializeField] private float _projDuration = 1f;
-    [Space(5)]
     [SerializeField] private float _coolDown = 1.0f;
     private float _refreshValue = 1.0f;
     [SerializeField] private float _refillSpeed = 0.1f;
@@ -73,13 +70,52 @@ public class sc_Shooting : MonoBehaviour
         }
     }
 
-    public void Shoot (GameObject A, GameObject P)
+    public void Shoot (GameObject A, GameObject P1, GameObject P2)
     {
         if (_refreshValue == _coolDown)
         {
-            GameObject shot = Instantiate(_projectilePrefab, _shootOffset.transform.position, transform.rotation);
-            shot.GetComponent<Rigidbody>().AddForce(_shootOffset.transform.forward * _projectileSpeed, ForceMode.Impulse);
-            Destroy(shot, _projDuration);
+            GameObject shot = null;
+
+            sc_VariablesManager s_svm = null;
+            sc_VariablesManager p1_svm = null;
+            sc_VariablesManager p2_svm = null;
+
+            int dmg;
+            float speed;
+            float radius;
+
+            dmg = 0;
+            speed = 0f;
+            radius = 0f;
+
+            if (P1 != null)
+            {
+                p1_svm = P1.GetComponent<sc_VariablesManager>();
+                dmg += p1_svm._damage;
+                speed += p1_svm._speed;
+                radius += p1_svm._radius;
+            }
+            if (P2 != null)
+            {
+                p2_svm = P2.GetComponent<sc_VariablesManager>();
+                dmg += p2_svm._damage;
+                speed += p2_svm._speed;
+                radius += p2_svm._radius;
+            }
+            if (A != null)
+            {
+                shot = Instantiate(A, _shootOffset.transform.position, _shootOffset.transform.rotation);
+                s_svm = shot.GetComponent<sc_VariablesManager>();
+
+                s_svm._damage = dmg;
+                s_svm._speed = speed;
+                s_svm._radius = radius;
+            }
+            else
+            {
+                Debug.Log("Y'a rien frère !");
+                shot = null;
+            }
             _refreshValue = 0.0f;
         }
     }

@@ -55,6 +55,7 @@ public class sc_ChickenController : MonoBehaviour
 
         rb = GetComponent<Rigidbody>();
         scp = GetComponent<sc_Peck>();
+        scsm = GetComponent<sc_SkillManagement>();
 
         _newSpeed = _moveSpeed;
     }
