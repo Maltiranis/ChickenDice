@@ -5,6 +5,8 @@ using UnityEngine;
 public class sc_SkillManagement : MonoBehaviour
 {
     [Header("Equiped Spell")]
+    [SerializeField] public bool _lbEmpty = true;
+    [SerializeField] public bool _rbEmpty = true;
     [SerializeField] public bool _Xempty = true;
     [SerializeField] public bool _Yempty = true;
     [Space(10)]
@@ -29,10 +31,12 @@ public class sc_SkillManagement : MonoBehaviour
     GameObject _previousActiveGem;
     GameObject _previousPassiveGem;
 
+    sc_Shooting scs;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        scs = GetComponent<sc_Shooting>();
     }
 
     // Update is called once per frame
@@ -48,7 +52,7 @@ public class sc_SkillManagement : MonoBehaviour
      * LT : Tire la gemme active ramassée avec LB -> gemme Slot 1
      * RT : Tire la gemme active ramassée avec RB -> gemme Slot 2
      */
-    public void GetDropGem(string _slot)//X ; Y
+    public void GetDropGem(string _slot)//X ; Y ; LB ; RB
     {
         if (_slot == "X")
         {
@@ -58,6 +62,16 @@ public class sc_SkillManagement : MonoBehaviour
         {
             GetSlot(_slot);
         }
+        if (_slot == "LB")
+        {
+            GetSlot(_slot);
+        }
+        if (_slot == "RB")
+        {
+            GetSlot(_slot);
+        }
+
+        _tempGameObject.SetActive(false);
     }
 
     public void GetSlot (string _slot)
@@ -100,18 +114,111 @@ public class sc_SkillManagement : MonoBehaviour
         {
             if (_Yempty == true)
             {
-                //la
+                GameObject[] Gem = GameObject.FindGameObjectsWithTag("Gem");
+
+                if (GetClosest(Gem) != null)
+                {
+                    _tempGameObject = GetClosest(Gem);//On garde en mémoire la gemme la plus proche
+
+                    SpellAttribution(_tempGameObject);//On la place où il faut
+
+                    _yPassive = _newPassive;
+                    _Yempty = false;
+                }
             }
             else
             {
+                GameObject[] Gem = GameObject.FindGameObjectsWithTag("Gem");
 
+                if (GetClosest(Gem) != null)
+                {
+                    _tempGameObject = GetClosest(Gem);//On garde en mémoire la gemme la plus proche
+
+                    if (_previousPassiveGem != null)
+                        SwitchGems(_previousPassiveGem, _tempGameObject.transform);//On echange les gemmes
+
+                    SpellAttribution(_tempGameObject);//On la place où il faut
+
+                    _yPassive = _newPassive;
+                    _Yempty = false;
+                }
+            }
+        }
+        if (_slot == "LB")
+        {
+            if (_lbEmpty == true)
+            {
+                GameObject[] Gem = GameObject.FindGameObjectsWithTag("Gem");
+
+                if (GetClosest(Gem) != null)
+                {
+                    _tempGameObject = GetClosest(Gem);//On garde en mémoire la gemme la plus proche
+
+                    SpellAttribution(_tempGameObject);//On la place où il faut
+
+                    _lbActive = _newActive;
+                    _lbEmpty = false;
+                }
+            }
+            else
+            {
+                GameObject[] Gem = GameObject.FindGameObjectsWithTag("Gem");
+
+                if (GetClosest(Gem) != null)
+                {
+                    _tempGameObject = GetClosest(Gem);//On garde en mémoire la gemme la plus proche
+
+                    if (_previousActiveGem != null)
+                        SwitchGems(_previousActiveGem, _tempGameObject.transform);//On echange les gemmes
+
+                    SpellAttribution(_tempGameObject);//On la place où il faut
+
+                    _lbActive = _newActive;
+                    _lbEmpty = false;
+                }
+            }
+        }
+        if (_slot == "RB")
+        {
+            if (_lbEmpty == true)
+            {
+                GameObject[] Gem = GameObject.FindGameObjectsWithTag("Gem");
+
+                if (GetClosest(Gem) != null)
+                {
+                    _tempGameObject = GetClosest(Gem);//On garde en mémoire la gemme la plus proche
+
+                    SpellAttribution(_tempGameObject);//On la place où il faut
+
+                    _rbActive = _newActive;
+                    _rbEmpty = false;
+                }
+            }
+            else
+            {
+                GameObject[] Gem = GameObject.FindGameObjectsWithTag("Gem");
+
+                if (GetClosest(Gem) != null)
+                {
+                    _tempGameObject = GetClosest(Gem);//On garde en mémoire la gemme la plus proche
+
+                    if (_previousActiveGem != null)
+                        SwitchGems(_previousActiveGem, _tempGameObject.transform);//On echange les gemmes
+
+                    SpellAttribution(_tempGameObject);//On la place où il faut
+
+                    _rbActive = _newActive;
+                    _rbEmpty = false;
+                }
             }
         }
     }
 
     public void SwitchGems (GameObject g, Transform pos)
     {
-        Instantiate(g, pos.position, pos.rotation);
+        GameObject newGem = Instantiate(g, pos.position, pos.rotation);
+        newGem.transform.parent = pos.parent;
+        Destroy(newGem, 10.0f);//A méditer
     }
 
     public void SpellAttribution (GameObject o)
@@ -130,7 +237,7 @@ public class sc_SkillManagement : MonoBehaviour
                 _newActive = id.RandomSelectedSpell();
             }
 
-            _previousActiveGem = id._ParentGemContainer;
+            _previousActiveGem = o;
         }
         if (id._type == "P")
         {
@@ -143,23 +250,7 @@ public class sc_SkillManagement : MonoBehaviour
                 _newPassive = id.RandomSelectedSpell();
             }
 
-            _previousPassiveGem = id._ParentGemContainer;
-        }
-
-        switch (id._rarity)
-        {
-            case 0:
-                //set rarity
-                break;
-            case 1:
-                //set rarity
-                break;
-            case 2:
-                //set rarity
-                break;
-            //-----------------//
-            default:
-                break;
+            _previousPassiveGem = o;
         }
     }
 
@@ -190,20 +281,23 @@ public class sc_SkillManagement : MonoBehaviour
         return bestTarget;
     }
 
+    /*
+    _lbActive
+    _rbActive
+    _xPassive
+    _yPassive
+    */
     public void UseGem(string _slot)
     {
-        if (_slot == "X")
+        if (_slot == "RT")
         {
-            
+            if (_rbActive != null && _yPassive != null)
+                scs.Shoot(_rbActive, _yPassive);
         }
-        if (_slot == "Y")
+        if (_slot == "LT")
         {
-
+            if (_lbActive != null && _xPassive != null)
+                scs.Shoot(_lbActive, _xPassive);
         }
-    }
-
-    public void NeedInstance (GameObject prefab, GameObject modifier)
-    {
-        GameObject xA = Instantiate(prefab, transform.position, transform.rotation);
     }
 }

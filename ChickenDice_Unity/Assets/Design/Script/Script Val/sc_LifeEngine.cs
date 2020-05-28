@@ -7,7 +7,10 @@ public class sc_LifeEngine : MonoBehaviour
     [SerializeField] public int _life = 100;
     [SerializeField] public bool _respawn = true;
     [SerializeField] public float _respawnDelay = 2.0f;
-
+    [Space(10)]
+    [Header("Who killed me ???")]
+    [SerializeField] public int _killer_ID = 100;
+    [Space(10)]
     public Transform _startPosTransform;
     float startY;
     int startLife;
@@ -36,12 +39,12 @@ public class sc_LifeEngine : MonoBehaviour
         startY = _startPosTransform.localEulerAngles.y;
     }
 
-    public void TakeDamage(int dmg)
+    public void TakeDamage(int dmg, int id)
     {
         if (_life - dmg <= 0)
         {
             _life = 0;
-            Death();
+            Death(id);
         }
         else
         {
@@ -50,8 +53,9 @@ public class sc_LifeEngine : MonoBehaviour
         }
     }
 
-    public void Death()
+    public void Death(int id)
     {
+        _killer_ID = id;
         _am.RandomDeath();
         if (_respawn == true)
         {

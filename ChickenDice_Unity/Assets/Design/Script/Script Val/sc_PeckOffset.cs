@@ -5,12 +5,14 @@ using UnityEngine;
 public class sc_PeckOffset : sc_Peck
 {
     [SerializeField] private GameObject _chicken;
+    private int _my_ID;
 
     // Start is called before the first frame update
     void Start()
     {
         if (this.gameObject.activeSelf)
             gameObject.SetActive(false);
+        _my_ID = _chicken.GetComponent<sc_Chicken_ID>().ID;
     }
 
     // Update is called once per frame
@@ -31,7 +33,7 @@ public class sc_PeckOffset : sc_Peck
             if (other.gameObject.GetComponent<Rigidbody>() != null)
             {
                 if (other.gameObject.GetComponent<sc_LifeEngine>() != null)
-                    other.gameObject.GetComponent<sc_LifeEngine>().TakeDamage(_damages);
+                    other.gameObject.GetComponent<sc_LifeEngine>().TakeDamage(_damages, _my_ID);
                 if (other.gameObject.GetComponent<Crack>() != null)
                     CrackDetected(other.gameObject);
                 if (other.gameObject.GetComponent<ScarecrowMode>() != null)
