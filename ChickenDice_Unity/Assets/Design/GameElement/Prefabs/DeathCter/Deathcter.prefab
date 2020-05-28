@@ -51,6 +51,6 @@ MonoBehaviour:
   _CounterPlayer02: 0
   _CounterPlayer03: 0
   _CounterPlayer04: 0
-  _ValeurToWin: 10
+  _ValeurToWin: 3
   _TimeBeforeRestart: 5
   _scPhaseManagement: {fileID: 0}

@@ -33,19 +33,19 @@ public class Deathcter : MonoBehaviour
         //MODE SURVIE en att d'avoir la variable dans life engine de qui a kill
         if(_Player01.GetComponent<sc_LifeEngine>()._life <= 0)
         {
-            _CounterPlayer01 = +1;
+            _CounterPlayer01 = _CounterPlayer01 + 1;
         }
         if (_Player02.GetComponent<sc_LifeEngine>()._life <= 0)
         {
-            _CounterPlayer02 = +1;
+            _CounterPlayer02 = _CounterPlayer02 + 1;
         }
         if (_Player03.GetComponent<sc_LifeEngine>()._life <= 0)
         {
-            _CounterPlayer03 = +1;
+            _CounterPlayer03 = _CounterPlayer03 + 1;
         }
         if (_Player04.GetComponent<sc_LifeEngine>()._life <= 0)
         {
-            _CounterPlayer04 = +1;
+            _CounterPlayer04 = _CounterPlayer04 + 1;
         }
 
         if (_CounterPlayer01 >= _ValeurToWin)
