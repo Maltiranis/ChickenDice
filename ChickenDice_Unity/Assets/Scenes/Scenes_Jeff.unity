@@ -11542,6 +11542,11 @@ PrefabInstance:
       propertyPath: _startPosTransform
       value: 
       objectReference: {fileID: 174343594}
+    - target: {fileID: 1008034808911037758, guid: 7c1da6a24e77d694196bac36a484c2ab,
+        type: 3}
+      propertyPath: _rotationSpeed
+      value: 5000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c1da6a24e77d694196bac36a484c2ab, type: 3}
 --- !u!1 &710897624
@@ -32858,16 +32863,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2024177482737661115, guid: 98d40847d0b13f940ab6454fbf14c064,
-        type: 3}
-      propertyPath: _TimeBeforeRestart
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2024177482737661115, guid: 98d40847d0b13f940ab6454fbf14c064,
-        type: 3}
-      propertyPath: _ValeurToWin
-      value: 20000
-      objectReference: {fileID: 0}
     - target: {fileID: 7266370058493944872, guid: 98d40847d0b13f940ab6454fbf14c064,
         type: 3}
       propertyPath: m_Name
@@ -33754,6 +33749,11 @@ PrefabInstance:
       propertyPath: _Scarcrow02
       value: 
       objectReference: {fileID: 7200901009213783980}
+    - target: {fileID: 5776713285029500429, guid: f94b289ee5056624b9ecdf5feeb318d3,
+        type: 3}
+      propertyPath: _TimeLootPhase
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 5776713285029500435, guid: f94b289ee5056624b9ecdf5feeb318d3,
         type: 3}
       propertyPath: m_Name
@@ -33771,7 +33771,7 @@ PrefabInstance:
     - target: {fileID: 3352117958320626477, guid: 32bebf14388d71449b0249a839464cd1,
         type: 3}
       propertyPath: _ValeurToWin
-      value: 80
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 3352117958320626477, guid: 32bebf14388d71449b0249a839464cd1,
         type: 3}

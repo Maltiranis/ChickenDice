@@ -127,9 +127,11 @@ MonoBehaviour:
   _CounterPlayer02: 0
   _CounterPlayer03: 0
   _CounterPlayer04: 0
-  _ValeurToWin: 0
-  _TimeBeforeRestart: 0
+  _ValeurToWin: 1500
+  _TimeBeforeRestart: 5
   _GoldenEgg: {fileID: 7266370058493944872}
+  _TargetFollow: {fileID: 0}
+  _IsPick: 0
 --- !u!1 &7266370058493944872
 GameObject:
   m_ObjectHideFlags: 0
