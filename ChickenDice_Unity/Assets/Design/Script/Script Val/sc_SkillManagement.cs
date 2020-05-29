@@ -79,14 +79,7 @@ public class sc_SkillManagement : MonoBehaviour
         GameObject[] Gem = GameObject.FindGameObjectsWithTag("Gem");
         sc_Gem_ID id;
 
-        if (GetClosest(Gem) != null)
-        {
-            _tempGameObject = GetClosest(Gem);//On garde en mémoire la gemme la plus proche
-        }
-        else
-        {
-            return;
-        }
+        _tempGameObject = GetClosest(Gem);//On garde en mémoire la gemme la plus proche
 
         if (_tempGameObject == null)
         {
@@ -108,7 +101,7 @@ public class sc_SkillManagement : MonoBehaviour
             }
             else
             {
-                SwitchGems(_previousPassiveGem, _tempGameObject.transform);//On echange les gemmes
+                SwitchGems(_previousPassiveGem, GetClosest(Gem).transform);//On echange les gemmes
                     
                 SpellAttribution(_tempGameObject);//On la place où il faut
 
@@ -131,7 +124,7 @@ public class sc_SkillManagement : MonoBehaviour
             }
             else
             {
-                SwitchGems(_previousPassiveGem, _tempGameObject.transform);//On echange les gemmes
+                SwitchGems(_previousPassiveGem, GetClosest(Gem).transform);//On echange les gemmes
 
                 SpellAttribution(_tempGameObject);//On la place où il faut
 
@@ -154,7 +147,7 @@ public class sc_SkillManagement : MonoBehaviour
             }
             else
             {
-                SwitchGems(_previousActiveGem, _tempGameObject.transform);//On echange les gemmes
+                SwitchGems(_previousActiveGem, GetClosest(Gem).transform);//On echange les gemmes
 
                 SpellAttribution(_tempGameObject);//On la place où il faut
 
@@ -177,7 +170,8 @@ public class sc_SkillManagement : MonoBehaviour
             }
             else
             {
-                SwitchGems(_previousActiveGem, _tempGameObject.transform);//On echange les gemmes
+                //if (GetClosest(Gem).GetComponent<)
+                SwitchGems(_previousActiveGem, GetClosest(Gem).transform);//On echange les gemmes
 
                 SpellAttribution(_tempGameObject);//On la place où il faut
 
