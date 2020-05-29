@@ -19,9 +19,12 @@ public class ScarecrowFight : MonoBehaviour
     {
         if (other.gameObject.GetComponent<sc_Peck>() != null)
         {
-            int IdPlayer = other.gameObject.GetComponent<sc_Peck>()._id;
+            int IdPlayer = other.gameObject.GetComponentInParent<sc_Chicken_ID>().ID;
+
+            Debug.Log(IdPlayer);
 
             _CounterPlayer[IdPlayer] = _CounterPlayer[IdPlayer] + 1;
+
             _PointText[IdPlayer].text = _CounterPlayer[IdPlayer].ToString();
             float Amont = _CounterPlayer[IdPlayer] / _ValeurToWin;
             _bar[IdPlayer].fillAmount = Amont;
