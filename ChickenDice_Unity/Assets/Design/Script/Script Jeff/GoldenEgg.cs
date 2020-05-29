@@ -39,7 +39,7 @@ public class GoldenEgg : MonoBehaviour
             if (_PlayerWinPoint == false)
             {
                 _PlayerWinPoint = true;
-                _IdPlayerHaveEgg = _TargetFollow.GetComponent<sc_Peck>()._id;
+                _IdPlayerHaveEgg = _TargetFollow.gameObject.GetComponentInParent<sc_Chicken_ID>().ID;
                 StartCoroutine(SetPoint());
             }
 

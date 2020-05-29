@@ -72,6 +72,7 @@ public class Deathcter : MonoBehaviour
         _PointText[_TheKillerID].text = _CounterPlayer[_TheKillerID].ToString();
         float Amont = _CounterPlayer[_TheKillerID] / _ValeurToWin;
         _bar[_TheKillerID].fillAmount = Amont;
+
         yield return new WaitForSeconds(_TimeRespawnPlayer);
         _P01IsDeath = true;
         _P02IsDeath = true;
