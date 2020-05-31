@@ -19,8 +19,12 @@ public class sc_SkillManagement : MonoBehaviour
     [Header("New Spell")]
     [SerializeField] public GameObject _newPassive = null;
     [SerializeField] public GameObject _newActive = null;
-    [HideInInspector]
-    [SerializeField] public GameObject _tempGameObject = null;
+    [Space(10)]
+    [Header("Previous Gem")]
+    [SerializeField] public GameObject _previous_lb_Gem = null;
+    [SerializeField] public GameObject _previous_rb_Gem = null;
+    [SerializeField] public GameObject _previous_x_Gem = null;
+    [SerializeField] public GameObject _previous_y_Gem = null;
     [Space(10)]
     [Header("Offset")]
     [SerializeField] public GameObject _shootOffset;
@@ -28,10 +32,11 @@ public class sc_SkillManagement : MonoBehaviour
     [Header("Variables")]
     [SerializeField] public float _actionRange = 1.0f;
 
-    GameObject _previousActiveGem;
-    GameObject _previousPassiveGem;
+    [SerializeField] private GameObject[] nearest = null;
+    [SerializeField] private GameObject bestTarget = null;
 
     sc_Shooting scs;
+    sc_Gem_ID id;
 
     // Start is called before the first frame update
     void Start()
@@ -42,7 +47,9 @@ public class sc_SkillManagement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        nearest = null;
+        nearest = GameObject.FindGameObjectsWithTag("Gem");
+        bestTarget = GetClosest();
     }
     /*
      * X: ramasse ou échange gemme PASSIVE déjà équipée
@@ -54,205 +61,147 @@ public class sc_SkillManagement : MonoBehaviour
      */
     public void GetDropGem(string _slot)//X ; Y ; LB ; RB
     {
-        if (_slot == "X")
+        if (bestTarget != null)
         {
-            GetSlot(_slot);
-        }
-        if (_slot == "Y")
-        {
-            GetSlot(_slot);
-        }
-        if (_slot == "LB")
-        {
-            GetSlot(_slot);
-        }
-        if (_slot == "RB")
-        {
-            GetSlot(_slot);
-        }
-        /*if (_tempGameObject != null)
-            _tempGameObject.SetActive(false);*/
-    }
+            id = bestTarget.GetComponent<sc_Gem_ID>();
 
-    public void GetSlot (string _slot)
-    {
-        GameObject[] Gem = GameObject.FindGameObjectsWithTag("Gem");
-        sc_Gem_ID id;
-
-        _tempGameObject = GetClosest(Gem);//On garde en mémoire la gemme la plus proche
-
-        if (_tempGameObject == null)
-        {
-            return;
-        }
-
-        id = _tempGameObject.GetComponent<sc_Gem_ID>();
-
-        if (_slot == "X" && id._type == "P")
-        {
-            if (_Xempty == true)
+            if (_slot == "X")
             {
-                SpellAttribution(_tempGameObject);//On la place où il faut
-
-                _tempGameObject.SetActive(false);
-
-                _xPassive = _newPassive;
-                _Xempty = false;
+                GetSlot(_slot);
             }
-            else
+            if (_slot == "Y")
             {
-                SwitchGems(_previousPassiveGem, GetClosest(Gem).transform);//On echange les gemmes
-                    
-                SpellAttribution(_tempGameObject);//On la place où il faut
-
-                _tempGameObject.SetActive(false);
-
-                _xPassive = _newPassive;
-                _Xempty = false;
+                GetSlot(_slot);
             }
-        }
-        if (_slot == "Y" && id._type == "P")
-        {
-            if (_Yempty == true)
+            if (_slot == "LB")
             {
-                SpellAttribution(_tempGameObject);//On la place où il faut
-
-                _tempGameObject.SetActive(false);
-
-                _yPassive = _newPassive;
-                _Yempty = false;
+                GetSlot(_slot);
             }
-            else
+            if (_slot == "RB")
             {
-                SwitchGems(_previousPassiveGem, GetClosest(Gem).transform);//On echange les gemmes
-
-                SpellAttribution(_tempGameObject);//On la place où il faut
-
-                _tempGameObject.SetActive(false);
-
-                _yPassive = _newPassive;
-                _Yempty = false;
-            }
-        }
-        if (_slot == "LB" && id._type == "A")
-        {
-            if (_lbEmpty == true)
-            {
-                SpellAttribution(_tempGameObject);//On la place où il faut
-
-                _tempGameObject.SetActive(false);
-
-                _lbActive = _newActive;
-                _lbEmpty = false;
-            }
-            else
-            {
-                SwitchGems(_previousActiveGem, GetClosest(Gem).transform);//On echange les gemmes
-
-                SpellAttribution(_tempGameObject);//On la place où il faut
-
-                _tempGameObject.SetActive(false);
-
-                _lbActive = _newActive;
-                _lbEmpty = false;
-            }
-        }
-        if (_slot == "RB" && id._type == "A")
-        {
-            if (_rbEmpty == true)
-            {
-                SpellAttribution(_tempGameObject);//On la place où il faut
-
-                _tempGameObject.SetActive(false);
-
-                _rbActive = _newActive;
-                _rbEmpty = false;
-            }
-            else
-            {
-                //if (GetClosest(Gem).GetComponent<)
-                SwitchGems(_previousActiveGem, GetClosest(Gem).transform);//On echange les gemmes
-
-                SpellAttribution(_tempGameObject);//On la place où il faut
-
-                _tempGameObject.SetActive(false);
-
-                _rbActive = _newActive;
-                _rbEmpty = false;
+                GetSlot(_slot);
             }
         }
     }
 
-    public void SwitchGems (GameObject g, Transform pos)
+    public void GetSlot(string _slot)
     {
-        GameObject newGem = Instantiate(g, pos.position, pos.rotation);
-        //newGem.transform.parent = pos.parent;
+        if (_slot == "X" && id._type == "P" && bestTarget.GetComponent<sc_Gem_ID>()._type == "P")
+        {
+            if (_Xempty == false)
+            {
+                SwitchGems(_previous_x_Gem, bestTarget.transform);//On echange les gemmes
+            }
 
-        newGem.SetActive(true);
-        //Destroy(newGem, 10.0f);//A méditer
+            SpellAttribution(_slot);//On la place où il faut
+            _xPassive = _newPassive;
+            _Xempty = false;
+        }
+        if (_slot == "Y" && id._type == "P" && bestTarget.GetComponent<sc_Gem_ID>()._type == "P")
+        {
+            if (_Yempty == false)
+            {
+                SwitchGems(_previous_y_Gem, bestTarget.transform);//On echange les gemmes
+            }
 
+            SpellAttribution(_slot);//On la place où il faut
+            _yPassive = _newPassive;
+            _Yempty = false;
+        }
+        if (_slot == "LB" && id._type == "A" && bestTarget.GetComponent<sc_Gem_ID>()._type == "A")
+        {
+            if (_lbEmpty == false)
+            {
+                SwitchGems(_previous_lb_Gem, bestTarget.transform);//On echange les gemmes
+            }
+
+            SpellAttribution(_slot);//On la place où il faut
+            _lbActive = _newActive;
+            _lbEmpty = false;
+        }
+        if (_slot == "RB" && id._type == "A" && bestTarget.GetComponent<sc_Gem_ID>()._type == "A")
+        {
+            if (_rbEmpty == false)
+            {
+                SwitchGems(_previous_rb_Gem, bestTarget.transform);//On echange les gemmes
+            }
+
+            SpellAttribution(_slot);//On la place où il faut
+            _rbActive = _newActive;
+            _rbEmpty = false;
+        }
+    }
+
+    public void SwitchGems(GameObject g, Transform pos)
+    {
+        g.transform.position = pos.position;
+        g.transform.rotation = pos.rotation;
+
+        g.SetActive(true);
         //
         Debug.Log("On a remplacé le biniou !");
         //
     }
 
-    public void SpellAttribution (GameObject o)
+    public void SpellAttribution(string s)
     {
-        sc_Gem_ID id;
-        id = o.GetComponent<sc_Gem_ID>();
-        GameObject newO = o;
+        if (bestTarget.GetComponent<sc_Gem_ID>()._type == "A")
+        {
+            if (bestTarget.GetComponent<sc_Gem_ID>()._preEstablishedSpell != null)
+            {
+                _newActive = bestTarget.GetComponent<sc_Gem_ID>()._preEstablishedSpell;
+            }
+            else
+            {
+                _newActive = bestTarget.GetComponent<sc_Gem_ID>().RandomSelectedSpell();
+            }
 
-        if (id._type == "A")
-        {
-            if (id._preEstablishedSpell != null)
-            {
-                _newActive = id._preEstablishedSpell;
-            }
-            else
-            {
-                _newActive = id.RandomSelectedSpell();
-            }
-            _previousActiveGem = newO;
+            if (s == "LB")
+                _previous_lb_Gem = bestTarget;
+            if (s == "RB")
+                _previous_rb_Gem = bestTarget;
+
+            bestTarget.SetActive(false);
         }
-        if (id._type == "P")
+        if (bestTarget.GetComponent<sc_Gem_ID>()._type == "P")
         {
-            if (id._preEstablishedSpell != null)
+            if (bestTarget.GetComponent<sc_Gem_ID>()._preEstablishedSpell != null)
             {
-                _newPassive = id._preEstablishedSpell;
+                _newPassive = bestTarget.GetComponent<sc_Gem_ID>()._preEstablishedSpell;
             }
             else
             {
-                _newPassive = id.RandomSelectedSpell();
+                _newPassive = bestTarget.GetComponent<sc_Gem_ID>().RandomSelectedSpell();
             }
-            _previousPassiveGem = newO;
+
+            if (s == "X")
+                _previous_x_Gem = bestTarget;
+            if (s == "Y")
+                _previous_y_Gem = bestTarget;
+
+            bestTarget.SetActive(false);
         }
     }
 
-    GameObject GetClosest(GameObject[] gem)
+    GameObject GetClosest()
     {
-        GameObject bestTarget = null;
-        float closestDistanceSqr = _actionRange; //Ou Mathf.Infinity;
-        Vector3 currentPosition = transform.position;
+        GameObject newGo = null;
 
-        foreach (GameObject g in gem)
+        foreach (GameObject g in nearest)//_agl.Gem
         {
             if (g.activeSelf == true)
             {
-                Vector3 directionToTarget = g.transform.position - currentPosition;
+                Vector3 directionToTarget = g.transform.position - transform.position;
                 float dSqrToTarget = directionToTarget.sqrMagnitude;
-                if (dSqrToTarget < closestDistanceSqr)
+                if (dSqrToTarget < _actionRange)
                 {
-                    closestDistanceSqr = dSqrToTarget;
-                    bestTarget = g;
-                }
-                else
-                {
-                    bestTarget = null;
+                    newGo = g;
+                    return newGo;
                 }
             }
         }
 
-        return bestTarget;
+        return newGo;
     }
 
     /*

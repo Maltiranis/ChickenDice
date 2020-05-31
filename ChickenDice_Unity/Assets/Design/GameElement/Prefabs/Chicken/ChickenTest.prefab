@@ -1726,7 +1726,7 @@ MonoBehaviour:
   _radius: 2
   _pecking: 0
   _peckOffsetObject: {fileID: 1008034807327810324}
-  _root: {fileID: 0}
+  _root: {fileID: 1260479638}
   _vfx: {fileID: 0}
   _am: {fileID: 1008034808738638851}
   _chicken: {fileID: 1008034808911037729}
@@ -2319,6 +2319,7 @@ MonoBehaviour:
   onRepop: 0
   _am: {fileID: 1008034808738638851}
   PolySurface: {fileID: 1008034809310153548}
+  _myOriginalPrefab: {fileID: 1008034808911037729}
 --- !u!54 &1008034808911037757
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2328,7 +2329,7 @@ Rigidbody:
   m_GameObject: {fileID: 1008034808911037729}
   serializedVersion: 2
   m_Mass: 500
-  m_Drag: 10
+  m_Drag: 9
   m_AngularDrag: 10
   m_UseGravity: 0
   m_IsKinematic: 0
@@ -2342,7 +2343,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1008034808911037729}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 73e1bf265a7158341a7d26dee2fb3749, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.4
@@ -2407,9 +2408,14 @@ MonoBehaviour:
   _yPassive: {fileID: 0}
   _newPassive: {fileID: 0}
   _newActive: {fileID: 0}
-  _tempGameObject: {fileID: 0}
+  _previous_lb_Gem: {fileID: 0}
+  _previous_rb_Gem: {fileID: 0}
+  _previous_x_Gem: {fileID: 0}
+  _previous_y_Gem: {fileID: 0}
   _shootOffset: {fileID: 752666748}
   _actionRange: 2
+  nearest: []
+  bestTarget: {fileID: 0}
 --- !u!1 &1008034809165226732
 GameObject:
   m_ObjectHideFlags: 0

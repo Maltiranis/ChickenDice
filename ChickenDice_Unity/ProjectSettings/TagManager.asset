@@ -6,6 +6,7 @@ TagManager:
   tags:
   - veg
   - Gem
+  - ActiveGemList
   layers:
   - Default
   - TransparentFX
