@@ -8,6 +8,7 @@ Shader "sh_projbowl"
 		_Color1("Color 1", Color) = (0,0,0,0)
 		_scale("scale", Float) = 0
 		_power("power", Float) = 0
+		_emisspow("emisspow", Float) = 0
 		[HideInInspector] __dirty( "", Int ) = 1
 	}
 
@@ -27,6 +28,7 @@ Shader "sh_projbowl"
 			float3 worldNormal;
 		};
 
+		uniform float _emisspow;
 		uniform float4 _Color1;
 		uniform float _bias;
 		uniform float _scale;
@@ -45,7 +47,7 @@ Shader "sh_projbowl"
 			float3 ase_worldNormal = i.worldNormal;
 			float fresnelNdotV4 = dot( ase_worldNormal, ase_worldViewDir );
 			float fresnelNode4 = ( _bias + _scale * pow( 1.0 - fresnelNdotV4, _power ) );
-			float4 lerpResult5 = lerp( ( (0.8 + (sin( mulTime10 ) - 0.0) * (1.0 - 0.8) / (1.0 - 0.0)) * i.vertexColor ) , _Color1 , fresnelNode4);
+			float4 lerpResult5 = lerp( ( (0.8 + (sin( mulTime10 ) - 0.0) * (1.0 - 0.8) / (1.0 - 0.0)) * i.vertexColor * _emisspow ) , _Color1 , fresnelNode4);
 			o.Emission = lerpResult5.rgb;
 			o.Alpha = 1;
 		}
@@ -128,7 +130,7 @@ Shader "sh_projbowl"
 }
 /*ASEBEGIN
 Version=17700
--1920;36;1920;983;2471.463;946.3586;1.317328;True;True
+-1920;36;1920;983;1540.526;849.6801;1;True;True
 Node;AmplifyShaderEditor.VertexColorNode;1;-1966.187,-409.4354;Inherit;False;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.TFHCRemapNode;12;-1626.451,-561.2302;Inherit;False;5;0;FLOAT;0;False;1;FLOAT;1;False;2;FLOAT;0;False;3;FLOAT;3;False;4;FLOAT;30;False;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleTimeNode;10;-1330.772,-556.6361;Inherit;False;1;0;FLOAT;1;False;1;FLOAT;0
@@ -137,11 +139,11 @@ Node;AmplifyShaderEditor.RangedFloatNode;6;-1070.501,52.76489;Inherit;False;Prop
 Node;AmplifyShaderEditor.RangedFloatNode;7;-1076.501,199.7649;Inherit;False;Property;_scale;scale;2;0;Create;True;0;0;False;0;0;1.5;0;0;0;1;FLOAT;0
 Node;AmplifyShaderEditor.RangedFloatNode;8;-1092.309,305.8149;Inherit;False;Property;_power;power;3;0;Create;True;0;0;False;0;0;1;0;0;0;1;FLOAT;0
 Node;AmplifyShaderEditor.TFHCRemapNode;14;-914.4913,-497.664;Inherit;True;5;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;1;False;3;FLOAT;0.8;False;4;FLOAT;1;False;1;FLOAT;0
+Node;AmplifyShaderEditor.RangedFloatNode;16;-677.7402,-674.4493;Inherit;False;Property;_emisspow;emisspow;4;0;Create;True;0;0;False;0;0;2;0;0;0;1;FLOAT;0
 Node;AmplifyShaderEditor.FresnelNode;4;-860.4756,6.242065;Inherit;False;Standard;WorldNormal;ViewDir;False;False;5;0;FLOAT3;0,0,1;False;4;FLOAT3;0,0,0;False;1;FLOAT;0;False;2;FLOAT;1;False;3;FLOAT;5;False;1;FLOAT;0
-Node;AmplifyShaderEditor.ColorNode;3;-875.6738,-236.842;Inherit;False;Property;_Color1;Color 1;1;0;Create;True;0;0;False;0;0,0,0,0;0.2564061,0.2476415,0.3301887,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.SimpleMultiplyOpNode;15;-442.8378,-300.4189;Inherit;True;2;2;0;FLOAT;0;False;1;COLOR;0,0,0,0;False;1;COLOR;0
+Node;AmplifyShaderEditor.SimpleMultiplyOpNode;15;-438.8156,-350.6968;Inherit;True;3;3;0;FLOAT;0;False;1;COLOR;0,0,0,0;False;2;FLOAT;0;False;1;COLOR;0
+Node;AmplifyShaderEditor.ColorNode;3;-917.9073,-214.7197;Inherit;False;Property;_Color1;Color 1;1;0;Create;True;0;0;False;0;0,0,0,0;0.2564061,0.2476415,0.3301887,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.LerpOp;5;-220.7468,-58.1543;Inherit;False;3;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;2;FLOAT;0;False;1;COLOR;0
-Node;AmplifyShaderEditor.SimpleMultiplyOpNode;9;-647.6353,-622.7083;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.StandardSurfaceOutputNode;0;226.7933,-25.70324;Float;False;True;-1;2;ASEMaterialInspector;0;0;Unlit;sh_projbowl;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;Back;0;False;-1;0;False;-1;False;0;False;-1;0;False;-1;False;0;Opaque;5;True;True;0;False;Opaque;;Geometry;All;14;all;True;True;True;True;0;False;-1;False;0;False;-1;255;False;-1;255;False;-1;0;False;-1;0;False;-1;0;False;-1;0;False;-1;0;False;-1;0;False;-1;0;False;-1;0;False;-1;False;2;15;10;25;False;5;True;0;0;False;-1;0;False;-1;0;0;False;-1;0;False;-1;0;False;-1;0;False;-1;0;False;0;0,0,0,0;VertexOffset;True;False;Cylindrical;False;Relative;0;;-1;-1;-1;-1;0;False;0;0;False;-1;-1;0;False;-1;0;0;0;False;1;False;-1;0;False;-1;15;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;2;FLOAT3;0,0,0;False;3;FLOAT;0;False;4;FLOAT;0;False;6;FLOAT3;0,0,0;False;7;FLOAT3;0,0,0;False;8;FLOAT;0;False;9;FLOAT;0;False;10;FLOAT;0;False;13;FLOAT3;0,0,0;False;11;FLOAT3;0,0,0;False;12;FLOAT3;0,0,0;False;14;FLOAT4;0,0,0,0;False;15;FLOAT3;0,0,0;False;0
 WireConnection;12;0;1;4
 WireConnection;10;0;12;0
@@ -152,9 +154,10 @@ WireConnection;4;2;7;0
 WireConnection;4;3;8;0
 WireConnection;15;0;14;0
 WireConnection;15;1;1;0
+WireConnection;15;2;16;0
 WireConnection;5;0;15;0
 WireConnection;5;1;3;0
 WireConnection;5;2;4;0
 WireConnection;0;2;5;0
 ASEEND*/
-//CHKSM=BA4AFBB3201FD2E3FFE9678C7B5C5BC5CF38188B
+//CHKSM=62F2E36A8D07633C0C80EC1486D8BA4F7BC41E1B

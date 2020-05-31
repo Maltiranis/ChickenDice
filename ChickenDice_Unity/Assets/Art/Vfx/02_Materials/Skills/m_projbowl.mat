@@ -74,6 +74,7 @@ Material:
     - _ZWrite: 1
     - __dirty: 0
     - _bias: 0
+    - _emisspow: 2
     - _power: 1
     - _scale: 1.5
     m_Colors:
