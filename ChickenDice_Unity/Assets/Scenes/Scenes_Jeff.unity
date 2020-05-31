@@ -10389,6 +10389,11 @@ PrefabInstance:
       propertyPath: ID
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1008034808911037756, guid: 7c1da6a24e77d694196bac36a484c2ab,
+        type: 3}
+      propertyPath: _startPosTransform
+      value: 
+      objectReference: {fileID: 174343594}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c1da6a24e77d694196bac36a484c2ab, type: 3}
 --- !u!1 &710897624
@@ -31359,7 +31364,7 @@ PrefabInstance:
     - target: {fileID: 5776713285029500429, guid: f94b289ee5056624b9ecdf5feeb318d3,
         type: 3}
       propertyPath: _TimeLootPhase
-      value: 2000
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5776713285029500435, guid: f94b289ee5056624b9ecdf5feeb318d3,
         type: 3}
