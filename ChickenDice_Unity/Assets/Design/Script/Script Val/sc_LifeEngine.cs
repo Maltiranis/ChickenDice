@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class sc_LifeEngine : MonoBehaviour
 {
+    [Header("Variables")]
     [SerializeField] public int _life = 100;
     [SerializeField] public bool _respawn = true;
     [SerializeField] public float _respawnDelay = 2.0f;
@@ -11,6 +12,7 @@ public class sc_LifeEngine : MonoBehaviour
     [Header("Who killed me ???")]
     [SerializeField] public int _killer_ID = 100;
     [Space(10)]
+    [Header("Respawn Management")]
     public Transform _startPosTransform;
     float startY;
     int startLife;
@@ -20,6 +22,10 @@ public class sc_LifeEngine : MonoBehaviour
     [SerializeField] private sc_AnimManagement _am;
     GameObject skin;
     [SerializeField] public GameObject PolySurface;
+    [Header("Chicken Prefab")]
+    [SerializeField] public GameObject _myOriginalPrefab;
+    string myName;
+    Transform myParent;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +37,9 @@ public class sc_LifeEngine : MonoBehaviour
         skin = GetComponent<sc_ChickenController>().gameObject;
 
         skin.transform.localEulerAngles = new Vector3(0, startY, 0);
+        name = gameObject.name;
+        myParent = transform.parent;
+        gameObject.name = "A Chicken" + " numeroted " + GetComponent<sc_Chicken_ID>().ID.ToString();
     }
 
     // Update is called once per frame
@@ -89,21 +98,29 @@ public class sc_LifeEngine : MonoBehaviour
         StartCoroutine(RespawnIEnumerator());
     }
 
-    public IEnumerator RespawnIEnumerator()
+    public void LaunchSystems(GameObject go)
     {
-        yield return new WaitForSeconds(_respawnDelay);
-        PolySurface.SetActive(true);
-        _am.newHead = 100;
-        transform.position = _startPosTransform.position;
-        skin.transform.localEulerAngles = new Vector3(0, startY, 0);
-        _life = startLife;
-        GetComponent<sc_ChickenController>().enabled = true;
-        GetComponent<sc_Peck>().enabled = true;
+        go.GetComponent<sc_LifeEngine>().PolySurface.SetActive(true);
+        go.GetComponent<sc_ChickenController>().enabled = true;
+        go.GetComponent<sc_Peck>().enabled = true;
+        go.GetComponent<CapsuleCollider>().enabled = true;
         rb.constraints = RigidbodyConstraints.None;
         rb.constraints = RigidbodyConstraints.FreezePositionY |
                          RigidbodyConstraints.FreezeRotationX |
+                         RigidbodyConstraints.FreezeRotationY |
                          RigidbodyConstraints.FreezeRotationZ;
-        GetComponent<CapsuleCollider>().enabled = true;
-        onRepop = false;
+        go.GetComponent<sc_LifeEngine>()._life = startLife;
+        go.transform.parent = myParent;
+        go.name = "A Chicken" + " numeroted " + GetComponent<sc_Chicken_ID>().ID.ToString();
+    }
+
+    public IEnumerator RespawnIEnumerator()
+    {
+        yield return new WaitForSeconds(_respawnDelay);
+        Quaternion trueRot = Quaternion.Euler(0, startY, 0);
+        GameObject jesusChicken = Instantiate(_myOriginalPrefab, _startPosTransform.position, trueRot);
+        jesusChicken.GetComponent<sc_Chicken_ID>().ID = gameObject.GetComponent<sc_Chicken_ID>().ID;
+        LaunchSystems(jesusChicken);
+        Destroy(gameObject);
     }
 }

@@ -43,3 +43,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 158e33388f7e9914689091b77133f328, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _comunActiveSpells:
+  - {fileID: 7801322916539727426, guid: f81841fe07696ec4483114401413db53, type: 3}
+  _rareActiveSpells:
+  - {fileID: 7801322916539727426, guid: 9ea9ae2fcaa6abf47a536c13c4141fd5, type: 3}
+  _legActiveSpells:
+  - {fileID: 7801322916539727426, guid: d1e2bb5b351d8c540883c3fdfe37cbc8, type: 3}
+  _comunPassiveSpells:
+  - {fileID: 405060781911362435, guid: a3dc875fe7af38640bba7819b342335d, type: 3}
+  _rarePassiveSpells:
+  - {fileID: 405060781911362435, guid: a3dc875fe7af38640bba7819b342335d, type: 3}
+  _legPassiveSpells:
+  - {fileID: 405060781911362435, guid: a3dc875fe7af38640bba7819b342335d, type: 3}

@@ -36,12 +36,16 @@ public class Crack : MonoBehaviour
     [SerializeField] private GameObject _VFXLeg30 = null;
     [SerializeField] private GameObject _VFXLeg60 = null;
     [SerializeField] private GameObject[] _LegendaryGem = null;
+    sc_ActiveGemList _agl;
+    bool spawnedOnce = false;
 
 
     private void Start()
     {
         _CrackLifeBase = _CrackLife;
         _MainCam = GameObject.FindGameObjectWithTag("MainCamera");
+        _agl = GameObject.FindGameObjectWithTag("ActiveGemList").GetComponent<sc_ActiveGemList>();
+        spawnedOnce = false;
     }
 
     void Update()
@@ -51,6 +55,7 @@ public class Crack : MonoBehaviour
         {
             StartCoroutine(Lifeduration());
             _CanbeDesactive = false;
+            spawnedOnce = false;
         }
 
         if(_CrackLife !=_CrackLifeBase)
@@ -148,7 +153,11 @@ public class Crack : MonoBehaviour
     }
     private void LootGem()
     {
-        Instantiate(_GemToLoot, _SpawnGem.position, _SpawnGem.rotation);
+        if (spawnedOnce == false)
+        {
+            Instantiate(_GemToLoot, _SpawnGem.position, _SpawnGem.rotation);
+            spawnedOnce = true;
+        }
     }
 }
     
