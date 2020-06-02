@@ -2366,11 +2366,13 @@ MonoBehaviour:
   _projectilePrefab: {fileID: 7801322916539727426, guid: f81841fe07696ec4483114401413db53,
     type: 3}
   _shootOffset: {fileID: 752666748}
-  _coolDown: 1
   _refillSpeed: 2
   _minimalDamage: 10
+  _minimalRange: 10
   _minimalSpeed: 10
   _minimalRadius: 1
+  _coolDown: 1
+  _minimalLifeTime: 1
   _bar:
   - {fileID: 14754424}
   - {fileID: 1759629906}

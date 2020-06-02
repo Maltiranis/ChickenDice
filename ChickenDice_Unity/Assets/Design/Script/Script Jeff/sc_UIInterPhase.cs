@@ -38,6 +38,12 @@ public class sc_UIInterPhase : MonoBehaviour
             _Ready[3].SetActive(true);
         }
 
+        if(_ScPhaseManager._ModeWin != 0 && _Isaffiche == false)
+        {
+            _Isaffiche = true;
+            _ModeToAffiche[_ScPhaseManager._ModeWin -1].SetActive(true);
+        }
+
         // POUR 4 PLAYER
         if(_Ready[0].activeSelf && _Ready[1].activeSelf && _Ready[2].activeSelf && _Ready[3].activeSelf)
         {
@@ -51,11 +57,6 @@ public class sc_UIInterPhase : MonoBehaviour
 
         }
         
-        if(_ScPhaseManager._ModeWin != 0 && _Isaffiche == false)
-        {
-            _Isaffiche = true;
-            _ModeToAffiche[_ScPhaseManager._ModeWin -1].SetActive(true);
-        }
     }
 
 

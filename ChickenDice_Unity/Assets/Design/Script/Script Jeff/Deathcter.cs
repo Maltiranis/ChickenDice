@@ -19,6 +19,8 @@ public class Deathcter : MonoBehaviour
     private bool _P03IsDeath;
     private bool _P04IsDeath;
 
+    private bool _havewin;
+
     [SerializeField] private float _ValeurToWin = 0;
     [SerializeField] private float _TimeRespawnPlayer = 5.0f;
     private float _TimeBeforeRestart = 0f;
@@ -27,20 +29,35 @@ public class Deathcter : MonoBehaviour
     [Header("UI")]
     [SerializeField] private Image[] _bar;
     [SerializeField] private TextMeshProUGUI[] _PointText;
-    [SerializeField] private GameObject[] _UI;
+    [SerializeField] private GameObject _UIMode;
 
+    [Header("UI WINER")]
+    [SerializeField] private GameObject _CanvasWiner;
+    [SerializeField] private GameObject[] _UIWiner;
+    [SerializeField] private Image[] _barInWin;
+    [SerializeField] private TextMeshProUGUI[] _PointTextInWin;
 
-    private void Start()
-    {
-        _Player01 = _scPhaseManagement.GetComponent<PhaseManager>()._Player01;
-        _Player02 = _scPhaseManagement.GetComponent<PhaseManager>()._Player02;
-        _Player03 = _scPhaseManagement.GetComponent<PhaseManager>()._Player03;
-        _Player04 = _scPhaseManagement.GetComponent<PhaseManager>()._Player04;   
-    }
 
     private void FixedUpdate()
     {
-        if(_Player01.GetComponent<sc_LifeEngine>()._life <= 0 && _P01IsDeath == false)
+        if (_Player01 == null)
+        {
+            _Player01 = GameObject.Find("A Chicken numeroted 0");
+        }
+        if (_Player02 == null)
+        {
+            _Player02 = GameObject.Find("A Chicken numeroted 1");
+        }
+        if (_Player03 == null)
+        {
+            _Player03 = GameObject.Find("A Chicken numeroted 2");
+        }
+        if (_Player04 == null)
+        {
+            _Player04 = GameObject.Find("A Chicken numeroted 3");
+        }
+
+        if (_Player01.GetComponent<sc_LifeEngine>()._life <= 0 && _P01IsDeath == false)
         {
             _P01IsDeath = true;
             _TheKillerID = _Player01.GetComponent<sc_LifeEngine>()._killer_ID;
@@ -68,68 +85,92 @@ public class Deathcter : MonoBehaviour
 
     private IEnumerator SetPoint0()
     {
-        _CounterPlayer[_TheKillerID] = _CounterPlayer[_TheKillerID] + 1;
-        _PointText[_TheKillerID].text = _CounterPlayer[_TheKillerID].ToString();
-        float Amont = _CounterPlayer[_TheKillerID] / _ValeurToWin;
-        _bar[_TheKillerID].fillAmount = Amont;
+        if (_CounterPlayer[_TheKillerID] < _ValeurToWin && _havewin == false) {
+            _CounterPlayer[_TheKillerID] = _CounterPlayer[_TheKillerID] + 1;
+            _PointText[_TheKillerID].text = _CounterPlayer[_TheKillerID].ToString();
+            _PointTextInWin[_TheKillerID].text = _PointText[_TheKillerID].text;
+            float Amont = _CounterPlayer[_TheKillerID] / _ValeurToWin;
+            _bar[_TheKillerID].fillAmount = Amont;
+            _barInWin[_TheKillerID].fillAmount = Amont;
+        }
 
         yield return new WaitForSeconds(_TimeRespawnPlayer);
         _P01IsDeath = false;
-        if(_CounterPlayer[_TheKillerID] >= _ValeurToWin)
+        if(_CounterPlayer[_TheKillerID] >= _ValeurToWin && _havewin == false)
         {
             // Afficher le player qui win
-            StartCoroutine(RestartGame());
+            _havewin = true;
+            _CanvasWiner.SetActive(true);
+            _UIWiner[_TheKillerID].SetActive(true);
+            _UIMode.SetActive(false);
         }        
     }
     private IEnumerator SetPoint1()
     {
-        _CounterPlayer[_TheKillerID] = _CounterPlayer[_TheKillerID] + 1;
-        _PointText[_TheKillerID].text = _CounterPlayer[_TheKillerID].ToString();
-        float Amont = _CounterPlayer[_TheKillerID] / _ValeurToWin;
-        _bar[_TheKillerID].fillAmount = Amont;
+        if(_CounterPlayer[_TheKillerID] < _ValeurToWin && _havewin == false) {
+            _CounterPlayer[_TheKillerID] = _CounterPlayer[_TheKillerID] + 1;
+            _PointText[_TheKillerID].text = _CounterPlayer[_TheKillerID].ToString();
+            _PointTextInWin[_TheKillerID].text = _PointText[_TheKillerID].text;
+            float Amont = _CounterPlayer[_TheKillerID] / _ValeurToWin;
+            _bar[_TheKillerID].fillAmount = Amont;
+            _barInWin[_TheKillerID].fillAmount = Amont;
+        }
 
         yield return new WaitForSeconds(_TimeRespawnPlayer);
         _P02IsDeath = false;
-        if(_CounterPlayer[_TheKillerID] >= _ValeurToWin)
+        if(_CounterPlayer[_TheKillerID] >= _ValeurToWin && _havewin == false)
         {
             // Afficher le player qui win
-            StartCoroutine(RestartGame());
+            _havewin = true;
+            _CanvasWiner.SetActive(true);
+            _UIWiner[_TheKillerID].SetActive(true);
+            _UIMode.SetActive(false);
         }        
     }
     private IEnumerator SetPoint2()
     {
-        _CounterPlayer[_TheKillerID] = _CounterPlayer[_TheKillerID] + 1;
-        _PointText[_TheKillerID].text = _CounterPlayer[_TheKillerID].ToString();
-        float Amont = _CounterPlayer[_TheKillerID] / _ValeurToWin;
-        _bar[_TheKillerID].fillAmount = Amont;
+        if (_CounterPlayer[_TheKillerID] < _ValeurToWin && _havewin == false) {
+            _CounterPlayer[_TheKillerID] = _CounterPlayer[_TheKillerID] + 1;
+            _PointText[_TheKillerID].text = _CounterPlayer[_TheKillerID].ToString();
+            _PointTextInWin[_TheKillerID].text = _PointText[_TheKillerID].text;
+            float Amont = _CounterPlayer[_TheKillerID] / _ValeurToWin;
+            _bar[_TheKillerID].fillAmount = Amont;
+            _barInWin[_TheKillerID].fillAmount = Amont;
+        }
 
         yield return new WaitForSeconds(_TimeRespawnPlayer);
         _P03IsDeath = false;
-        if(_CounterPlayer[_TheKillerID] >= _ValeurToWin)
+        if(_CounterPlayer[_TheKillerID] >= _ValeurToWin && _havewin == false)
         {
             // Afficher le player qui win
-            StartCoroutine(RestartGame());
+            _havewin = true;
+            _CanvasWiner.SetActive(true);
+            _UIWiner[_TheKillerID].SetActive(true);
+            _UIMode.SetActive(false);
         }        
     }
     private IEnumerator SetPoint3()
     {
-        _CounterPlayer[_TheKillerID] = _CounterPlayer[_TheKillerID] + 1;
-        _PointText[_TheKillerID].text = _CounterPlayer[_TheKillerID].ToString();
-        float Amont = _CounterPlayer[_TheKillerID] / _ValeurToWin;
-        _bar[_TheKillerID].fillAmount = Amont;
+        if (_CounterPlayer[_TheKillerID] < _ValeurToWin && _havewin == false) {
+            _CounterPlayer[_TheKillerID] = _CounterPlayer[_TheKillerID] + 1;
+            _PointText[_TheKillerID].text = _CounterPlayer[_TheKillerID].ToString();
+            _PointTextInWin[_TheKillerID].text = _PointText[_TheKillerID].text;
+            float Amont = _CounterPlayer[_TheKillerID] / _ValeurToWin;
+            _bar[_TheKillerID].fillAmount = Amont;
+            _barInWin[_TheKillerID].fillAmount = Amont;
+        }
 
         yield return new WaitForSeconds(_TimeRespawnPlayer);
         _P04IsDeath = false;
-        if(_CounterPlayer[_TheKillerID] >= _ValeurToWin)
+        if(_CounterPlayer[_TheKillerID] >= _ValeurToWin && _havewin == false)
         {
             // Afficher le player qui win
-            StartCoroutine(RestartGame());
+            _havewin = true;
+            _CanvasWiner.SetActive(true);
+            _UIWiner[_TheKillerID].SetActive(true);
+            _UIMode.SetActive(false);
         }        
     }
 
-    private IEnumerator RestartGame()
-    {
-        yield return new WaitForSeconds(_TimeBeforeRestart);
-        SceneManager.LoadScene("Scenes_Jeff");
-    }
+  
 }

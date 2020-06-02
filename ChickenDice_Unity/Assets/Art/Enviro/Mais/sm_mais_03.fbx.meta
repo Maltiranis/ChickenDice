@@ -9,6 +9,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Mais
     second: {fileID: 2100000, guid: 48f9838d1ed803942909010cd683ce5f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mais_Feuilles
+    second: {fileID: 2100000, guid: f7018e0e586f99946a0c32eed23738cf, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0

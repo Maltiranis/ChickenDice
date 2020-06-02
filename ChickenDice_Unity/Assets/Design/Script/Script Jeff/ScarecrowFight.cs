@@ -9,11 +9,18 @@ public class ScarecrowFight : MonoBehaviour
 {
     [SerializeField] public float[] _CounterPlayer;
     [SerializeField] private float _ValeurToWin = 0;
-    [SerializeField] private float _TimeBeforeRestart = 0f;
-    [Header("UI")]
+    private bool _havewin;
+
+    [Header("UI Game")]
     [SerializeField] private Image[] _bar;
     [SerializeField] private TextMeshProUGUI[] _PointText;
-    [SerializeField] private GameObject[] _UI;
+    [SerializeField] private GameObject _UIMode;
+
+    [Header("UI WINER")]
+    [SerializeField] private GameObject _CanvasWiner;
+    [SerializeField] private GameObject[] _UIWiner;
+    [SerializeField] private Image[] _barInWin;
+    [SerializeField] private TextMeshProUGUI[] _PointTextInWin;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -23,21 +30,23 @@ public class ScarecrowFight : MonoBehaviour
 
             Debug.Log(IdPlayer);
 
-            _CounterPlayer[IdPlayer] = _CounterPlayer[IdPlayer] + 1;
-
-            _PointText[IdPlayer].text = _CounterPlayer[IdPlayer].ToString();
-            float Amont = _CounterPlayer[IdPlayer] / _ValeurToWin;
-            _bar[IdPlayer].fillAmount = Amont;
-            if (_CounterPlayer[IdPlayer] >= _ValeurToWin)
+            if(_CounterPlayer[IdPlayer] < _ValeurToWin && _havewin == false)
             {
-                StartCoroutine(RestartGame());
+                _CounterPlayer[IdPlayer] = _CounterPlayer[IdPlayer] + 1;
+                _PointText[IdPlayer].text = _CounterPlayer[IdPlayer].ToString();
+                _PointTextInWin[IdPlayer].text = _PointText[IdPlayer].text;
+                float Amont = _CounterPlayer[IdPlayer] / _ValeurToWin;
+                _bar[IdPlayer].fillAmount = Amont;
+                _barInWin[IdPlayer].fillAmount = Amont;
+
+            }
+            if (_CounterPlayer[IdPlayer] >= _ValeurToWin && _havewin == false)
+            {
+                _havewin = true;
+                _CanvasWiner.SetActive(true);
+                _UIMode.SetActive(false);
+                _UIWiner[IdPlayer].SetActive(true);
             }
         }
-    }
-
-    private IEnumerator RestartGame()
-    {
-        yield return new WaitForSeconds(_TimeBeforeRestart);
-        SceneManager.LoadScene("Scenes_Jeff");
     }
 }

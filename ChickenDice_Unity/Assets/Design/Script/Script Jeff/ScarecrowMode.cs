@@ -14,11 +14,14 @@ public class ScarecrowMode : MonoBehaviour
     [SerializeField] private bool _Mode02 = false;
     [SerializeField] private bool _Mode03 = false;
 
+    [SerializeField] private GameObject[] _HeadToShow;
+
     private void Start()
     {
         if(_ModeSelect == 1)
         {
             _Mode01 = true;
+            
         }
         if(_ModeSelect == 2)
         {
@@ -28,6 +31,7 @@ public class ScarecrowMode : MonoBehaviour
         {
             _Mode03 = true;
         }
+        _HeadToShow[_ModeSelect - 1].SetActive(true);
     }
     private void Update()
     {
