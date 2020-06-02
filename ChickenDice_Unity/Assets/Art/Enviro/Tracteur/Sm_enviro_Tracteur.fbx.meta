@@ -1,9 +1,14 @@
 fileFormatVersion: 2
-guid: ee62080713922ee4a9fb4cc1b68395ed
+guid: feb5cdc5f7644ef4ca027ccbd232437c
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: L_tracteur
+    second: {fileID: 2100000, guid: cdfd6e91ac4eaf9438163ceb92074c74, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
