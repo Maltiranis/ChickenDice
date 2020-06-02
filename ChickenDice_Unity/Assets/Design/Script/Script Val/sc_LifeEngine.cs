@@ -30,6 +30,7 @@ public class sc_LifeEngine : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        onRepop = false;
         transform.position = _startPosTransform.position;
         startY = _startPosTransform.localEulerAngles.y;
         startLife = _life;
@@ -95,7 +96,11 @@ public class sc_LifeEngine : MonoBehaviour
     public void Respawn()
     {
         UnactivateSystems();
-        StartCoroutine(RespawnIEnumerator());
+        if (onRepop == false)
+        {
+            onRepop = true;
+            StartCoroutine(RespawnIEnumerator());
+        }
     }
 
     public void LaunchSystems(GameObject go)
@@ -104,14 +109,14 @@ public class sc_LifeEngine : MonoBehaviour
         go.GetComponent<sc_ChickenController>().enabled = true;
         go.GetComponent<sc_Peck>().enabled = true;
         go.GetComponent<CapsuleCollider>().enabled = true;
-        rb.constraints = RigidbodyConstraints.None;
-        rb.constraints = RigidbodyConstraints.FreezePositionY |
-                         RigidbodyConstraints.FreezeRotationX |
-                         RigidbodyConstraints.FreezeRotationY |
-                         RigidbodyConstraints.FreezeRotationZ;
         go.GetComponent<sc_LifeEngine>()._life = startLife;
         go.transform.parent = myParent;
         go.name = "A Chicken" + " numeroted " + GetComponent<sc_Chicken_ID>().ID.ToString();
+        go.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+        go.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY |
+                         RigidbodyConstraints.FreezeRotationX |
+                         RigidbodyConstraints.FreezeRotationY |
+                         RigidbodyConstraints.FreezeRotationZ;
     }
 
     public IEnumerator RespawnIEnumerator()
