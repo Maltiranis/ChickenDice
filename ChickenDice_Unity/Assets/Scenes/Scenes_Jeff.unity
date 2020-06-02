@@ -25340,7 +25340,7 @@ PrefabInstance:
     - target: {fileID: 4738407491182901921, guid: 9c9a98ab93b56434ea06e792e20f8a4e,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4738407491182901921, guid: 9c9a98ab93b56434ea06e792e20f8a4e,
         type: 3}
@@ -31828,7 +31828,7 @@ PrefabInstance:
     - target: {fileID: 5776713285029500429, guid: f94b289ee5056624b9ecdf5feeb318d3,
         type: 3}
       propertyPath: _TimeLootPhase
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5776713285029500435, guid: f94b289ee5056624b9ecdf5feeb318d3,
         type: 3}

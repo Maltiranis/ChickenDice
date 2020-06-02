@@ -3,16 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
-public class sc_UIInterPhase : MonoBehaviour
+public class sc_UIWiner : MonoBehaviour
 {
-    int _Id;
-    public PhaseManager _ScPhaseManager;
+    [SerializeField] private float _TimeBeforeRestart;
     [Header("UI")]
     [SerializeField] private GameObject[] _NotReady;
     [SerializeField] private GameObject[] _Ready;
-    [SerializeField] private GameObject[] _ModeToAffiche;
-    bool _Isaffiche;
 
 
     private void Update()
@@ -38,26 +36,24 @@ public class sc_UIInterPhase : MonoBehaviour
             _Ready[3].SetActive(true);
         }
 
-        if(_ScPhaseManager._ModeWin != 0 && _Isaffiche == false)
+        // POUR 4 PLAYER
+        if (_Ready[0].activeSelf && _Ready[1].activeSelf && _Ready[2].activeSelf && _Ready[3].activeSelf)
         {
-            _Isaffiche = true;
-            _ModeToAffiche[_ScPhaseManager._ModeWin -1].SetActive(true);
+            StartCoroutine(RestartGame());
+      
         }
 
-        // POUR 4 PLAYER
-        if(_Ready[0].activeSelf && _Ready[1].activeSelf && _Ready[2].activeSelf && _Ready[3].activeSelf)
-        {
-            _ScPhaseManager.PhaseSetup();
-            _Isaffiche = false;
-        }
         //POUR TEST A 1 Player
         if (_Ready[0].activeSelf)
         {
-            _ScPhaseManager.PhaseSetup();
-
+            StartCoroutine(RestartGame());
+          
         }
-        
     }
 
-
+    private IEnumerator RestartGame()
+    {
+        yield return new WaitForSeconds(_TimeBeforeRestart);
+        SceneManager.LoadScene("Scenes_Jeff");
+    }
 }
