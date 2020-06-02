@@ -95,6 +95,7 @@ public class sc_LifeEngine : MonoBehaviour
 
     public void Respawn()
     {
+        DisapearOnDeath();
         UnactivateSystems();
         if (onRepop == false)
         {

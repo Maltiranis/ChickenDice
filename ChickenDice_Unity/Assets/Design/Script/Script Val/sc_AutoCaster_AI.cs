@@ -23,20 +23,20 @@ public class sc_AutoCaster_AI : MonoBehaviour
     public GameObject _A;
     public GameObject _P1;
     public GameObject _P2;
+    [Space(20)]
+    [SerializeField] private bool _rotate = false;
 
     int a = 0;
     int p1 = 0;
     int p2 = 0;
     int impairator = 1;
 
-    int index;
+    [SerializeField] public int index = 1;
 
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(AutoShoot());
-        //index = gameObject.GetComponent<sc_Chicken_ID>().ID;
-        index = 1;
     }
 
     // Update is called once per frame
@@ -151,7 +151,8 @@ public class sc_AutoCaster_AI : MonoBehaviour
     {
         yield return new WaitForSeconds(_coolDown);
         SpellsAssembler();
-        transform.Rotate(0, 45, 0);
+        if (_rotate)
+            transform.Rotate(0, 45, 0);
         Shoot(_A, _P1, _P2);
         StartCoroutine(AutoShoot());
     }

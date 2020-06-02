@@ -123,7 +123,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e93c7b0346293342bbb23d5c5a1db46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 10
-  _radius: 2
-  _lifeTime: 10
   _isActive: 0
+  _damage: 10
+  _range: 5
+  _speed: 5
+  _radius: 2
+  _lifeTime: 5
+  id: 0
+  _host: {fileID: 0}
+  nonLinear: 0
+  _triple: 0
+  _angle: 30
+  isFirst: 1
+  _doDamage: 1
+  _explosionRadius: 5
+  _onDeath_VFX: {fileID: 0}
+  _aliveVFX: []
+  _VFX_lifetime: 2

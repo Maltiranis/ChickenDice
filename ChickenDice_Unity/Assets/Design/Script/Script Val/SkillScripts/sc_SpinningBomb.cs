@@ -2,61 +2,80 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//[RequireComponent(typeof (sc_VariablesManager))]
 public class sc_SpinningBomb : MonoBehaviour
 {
-    GameObject chicken;
+    [SerializeField] public float _ray = 1f;
+    [SerializeField] public float _maxRay = 7f;
+    [SerializeField] public float _grow = 1f;
+    [SerializeField] public float _delay = 1f;
+    [SerializeField] public float _rSpeed = 10f;
+    [SerializeField] public int _damage = 25;
 
-    public float _ray = 1f;
-    public float _maxRay = 7f;
-    public float _grow = 1f;
-    public float _delay = 1f;
-    public float _rSpeed = 10f;
-    float originRay;
-    float elapsed = 0f;
-    GameObject newPivot;
+    [SerializeField] float elapsed = 0f;
+    [SerializeField] public GameObject _host;
+
+    [SerializeField] public int id;
 
     // Start is called before the first frame update
     void Start()
     {
-        originRay = _ray;
-        chicken = GetComponent<sc_VariablesManager>()._host;
-        newPivot = new GameObject();
-        newPivot.transform.parent = chicken.transform;
-        transform.parent = newPivot.transform;
-        transform.localPosition = Vector3.zero;
+        if (transform.GetComponent<sc_VariablesManager>() != null)
+        {
+            _host = transform.GetComponent<sc_VariablesManager>()._host;
+        }
+
+        if (_host == null)
+        {
+            Destroy(gameObject);
+        }
     }
 
     // Update is called once per frame
-    public void BombIsSpinning()
+    public void Update ()
     {
-
-        elapsed += Time.time;
-        if (elapsed >= _delay)
+        if (_host != null)
         {
-            elapsed = 0f;
-            _ray += _grow;
+            transform.position = _host.transform.position;
+            transform.Rotate(new Vector3(0, _rSpeed * Time.deltaTime, 0), Space.Self);
+
+            elapsed += Time.time;
+            if (elapsed >= _delay)
+            {
+                elapsed = 0f;
+
+                if (_ray >= _maxRay)
+                {
+                    _ray = _maxRay;
+                }
+                else
+                {
+                    _ray += _grow;
+                }
+            }
+
+            //transform.Rotate(Time.deltaTime * transform.up * _rSpeed, Space.Self);
         }
-
-
-        if (Vector3.Distance(transform.localPosition, chicken.transform.position) >= _maxRay)
+        else
         {
-            //Destroy(gameObject);
+            Destroy(gameObject);
         }
-
-        if (_ray >= _maxRay)
-        {
-            Destroy(newPivot);
-        }
-        newPivot.transform.localPosition = Vector3.zero;
-        newPivot.transform.Rotate(new Vector3(0, _rSpeed, 0), Space.Self);
-
-        transform.Translate(newPivot.transform.forward * _ray * Time.deltaTime);
-
-        //transform.Rotate(Time.deltaTime * transform.up * _rSpeed, Space.Self);
     }
-    private void OnDestroy()
+
+    public void BeforeTheEnd() //les fx ect...
     {
-        Destroy(newPivot);
+
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.GetComponent<sc_Chicken_ID>() != null)
+        {
+            if (other.GetComponent<sc_Chicken_ID>().ID != id)
+            {
+                other.GetComponent<sc_LifeEngine>().TakeDamage(_damage, id);
+                BeforeTheEnd();
+                Destroy(gameObject);
+            }
+        }
     }
 }

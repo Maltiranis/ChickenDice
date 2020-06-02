@@ -129,3 +129,14 @@ MonoBehaviour:
   _speed: 100
   _radius: 1
   _lifeTime: 1
+  id: 0
+  _host: {fileID: 0}
+  nonLinear: 0
+  _triple: 0
+  _angle: 30
+  isFirst: 1
+  _doDamage: 1
+  _explosionRadius: 1
+  _onDeath_VFX: {fileID: 0}
+  _aliveVFX: []
+  _VFX_lifetime: 2

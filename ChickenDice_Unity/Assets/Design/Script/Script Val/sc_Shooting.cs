@@ -22,15 +22,19 @@ public class sc_Shooting : MonoBehaviour
     public GameObject _shootOffset;
     [Space(10)]
     [Header("Variables")]
-    private float _refreshValue = 1.0f;
+    private float _refreshValue1 = 1.0f;
+    private float _refreshValue2 = 1.0f;
     [SerializeField] private float _refillSpeed = 0.1f;
+
+    [SerializeField] private bool leftTriggerCD = false;
+    [SerializeField] private bool rightTriggerCD = false;
     //
     [Header("Minimal bullet")]
     [SerializeField] private int _minimalDamage = 10;
     [SerializeField] private float _minimalRange = 10f;
     [SerializeField] private float _minimalSpeed = 10f;
     [SerializeField] private float _minimalRadius = 1f;
-    [SerializeField] private float _coolDown = 1f;
+    [SerializeField] public float _coolDown = 1f;
     [SerializeField] private float _minimalLifeTime = 1f;
     //
     [Space(10)]
@@ -44,7 +48,8 @@ public class sc_Shooting : MonoBehaviour
     void Start()
     {
         _id = _myID.ID;
-        _refreshValue = _coolDown;
+        _refreshValue1 = _coolDown;
+        _refreshValue2 = _coolDown;
 
         foreach (GameObject ui in _UI)
         {
@@ -61,24 +66,47 @@ public class sc_Shooting : MonoBehaviour
 
     public void OnCoolDown ()
     {
-        float amount = _refreshValue;
-        float buttonAngle = amount * 360;
-
-        _bar[_id].fillAmount = amount;
-
-        if (_refreshValue < _coolDown)
+        if (leftTriggerCD)
         {
-            _refreshValue += Time.deltaTime * _refillSpeed;
-            _timeText[_id].text = (_coolDown - System.Math.Round(_refreshValue,1)).ToString();
+            float amount = _refreshValue1;
+            float buttonAngle = amount * 360;
+
+            _bar[_id].fillAmount = amount;
+
+            if (_refreshValue1 < _coolDown)
+            {
+                _refreshValue1 += Time.deltaTime * _refillSpeed;
+                _timeText[_id].text = (_coolDown - System.Math.Round(_refreshValue1, 1)).ToString();
+            }
+            if (_refreshValue1 >= _coolDown)
+            {
+                _refreshValue1 = _coolDown;
+                _timeText[_id].text = "Fire !";
+                leftTriggerCD = false;
+            }
         }
-        if (_refreshValue >= _coolDown)
+        if (rightTriggerCD)
         {
-            _refreshValue = _coolDown;
-            _timeText[_id].text = "Fire !";
+            float amount = _refreshValue2;
+            float buttonAngle = amount * 360;
+
+            _bar[_id].fillAmount = amount;
+
+            if (_refreshValue2 < _coolDown)
+            {
+                _refreshValue2 += Time.deltaTime * _refillSpeed;
+                _timeText[_id].text = (_coolDown - System.Math.Round(_refreshValue2, 1)).ToString();
+            }
+            if (_refreshValue2 >= _coolDown)
+            {
+                _refreshValue2 = _coolDown;
+                _timeText[_id].text = "Fire !";
+                rightTriggerCD = false;
+            }
         }
     }
 
-    public void Shoot(GameObject A, GameObject P1, GameObject P2)
+    public void Shoot(GameObject A, GameObject P1, GameObject P2, string inputUsed)
     {
         GameObject shot = null;
 
@@ -91,6 +119,7 @@ public class sc_Shooting : MonoBehaviour
         float speed = 0f;
         float radius = 0f;
         float lifeTime = 0f;
+        float explosionRadius = 0f;
 
         if (P1 != null)
         {
@@ -100,6 +129,7 @@ public class sc_Shooting : MonoBehaviour
             speed += p1_svm._speed;
             radius += p1_svm._radius;
             lifeTime += p1_svm._lifeTime;
+            explosionRadius += p1_svm._explosionRadius;
         }
         if (P2 != null)
         {
@@ -109,26 +139,53 @@ public class sc_Shooting : MonoBehaviour
             speed += p2_svm._speed;
             radius += p2_svm._radius;
             lifeTime += p2_svm._lifeTime;
+            explosionRadius += p2_svm._explosionRadius;
         }
         if (A != null)
         {
             a_svm = A.GetComponent<sc_VariablesManager>();
-            shot = Instantiate(A, _shootOffset.transform.position, _shootOffset.transform.rotation);
+            if (leftTriggerCD == false && inputUsed == "LT")
+            {
+                shot = Instantiate(A, _shootOffset.transform.position, _shootOffset.transform.rotation);
+
+                _refreshValue1 = 0f;
+                leftTriggerCD = true;
+            }
+            if (rightTriggerCD == false && inputUsed == "RT")
+            {
+                shot = Instantiate(A, _shootOffset.transform.position, _shootOffset.transform.rotation);
+
+                _refreshValue2 = 0f;
+                rightTriggerCD = true;
+            }
 
             dmg += a_svm._damage;
             range += a_svm._range;
             speed += a_svm._speed;
             radius += a_svm._radius;
             lifeTime += a_svm._lifeTime;
+            explosionRadius += a_svm._explosionRadius;
 
-            sc_VariablesManager s_svm = shot.GetComponent<sc_VariablesManager>();
-            s_svm._damage = dmg;
-            s_svm._range = range;
-            s_svm._speed = speed;
-            s_svm._radius = radius;
-            s_svm._lifeTime = lifeTime;
-            s_svm.id = _id;
-            s_svm._host = gameObject;
+            if (shot != null)
+            {
+                sc_VariablesManager s_svm = shot.GetComponent<sc_VariablesManager>();
+
+                if (shot.GetComponent<sc_SpinningBomb>() != null)
+                {
+                    sc_SpinningBomb s_spb;
+                    s_spb = shot.GetComponent<sc_SpinningBomb>();
+                    s_spb._host = gameObject;
+                }
+
+                s_svm._damage = dmg;
+                s_svm._range = range;
+                s_svm._speed = speed;
+                s_svm._radius = radius;
+                s_svm._lifeTime = lifeTime;
+                s_svm._explosionRadius = explosionRadius;
+                s_svm.id = _id;
+                s_svm._host = gameObject;
+            }
             /*
             dmg += _minimalDamage;
             range += _minimalRange;

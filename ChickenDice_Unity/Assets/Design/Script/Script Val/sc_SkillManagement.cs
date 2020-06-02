@@ -215,12 +215,12 @@ public class sc_SkillManagement : MonoBehaviour
         if (_slot == "RT")
         {
             if (_rbActive != null)
-                scs.Shoot(_rbActive, _yPassive, _xPassive);
+                scs.Shoot(_rbActive, _yPassive, _xPassive, "RT");
         }
         if (_slot == "LT")
         {
             if (_lbActive != null)
-                scs.Shoot(_lbActive, _yPassive, _xPassive);
+                scs.Shoot(_lbActive, _yPassive, _xPassive, "LT");
         }
     }
 }
