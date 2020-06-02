@@ -80,8 +80,18 @@ MonoBehaviour:
   isFirst: 1
   _doDamage: 0
   _explosionRadius: 1
-  _onDeath_VFX: {fileID: 0}
-  _aliveVFX: []
+  _onDeath_VFX: {fileID: 4738567880216055823, guid: 58b6e7b495de5ea4884659d6e83db6e7,
+    type: 3}
+  _aliveVFX:
+  - {fileID: 8053468755910553670}
+  - {fileID: 8053468756438124422}
+  - {fileID: 8053468755709357170}
+  - {fileID: 8053468757622081775}
+  - {fileID: 8053468755832623860}
+  - {fileID: 8053468756424992148}
+  - {fileID: 8053468757672303723}
+  - {fileID: 8053468757597405942}
+  - {fileID: 8053468756115727248}
   _VFX_lifetime: 2
 --- !u!1 &8840797056025085991
 GameObject:

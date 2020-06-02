@@ -73,7 +73,6 @@ public class sc_SpinningBomb : MonoBehaviour
             if (other.GetComponent<sc_Chicken_ID>().ID != id)
             {
                 other.GetComponent<sc_LifeEngine>().TakeDamage(_damage, id);
-                BeforeTheEnd();
                 Destroy(gameObject);
             }
         }

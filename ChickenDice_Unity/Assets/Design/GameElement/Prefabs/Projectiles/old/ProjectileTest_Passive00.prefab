@@ -127,7 +127,7 @@ MonoBehaviour:
   _damage: 10
   _range: 5
   _speed: 5
-  _radius: 2
+  _radius: 0.75
   _lifeTime: 5
   id: 0
   _host: {fileID: 0}
@@ -136,7 +136,7 @@ MonoBehaviour:
   _angle: 30
   isFirst: 1
   _doDamage: 1
-  _explosionRadius: 5
+  _explosionRadius: 2
   _onDeath_VFX: {fileID: 0}
   _aliveVFX: []
   _VFX_lifetime: 2

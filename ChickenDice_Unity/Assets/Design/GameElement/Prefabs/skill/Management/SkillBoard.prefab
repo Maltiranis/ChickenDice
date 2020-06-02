@@ -45,12 +45,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _comunActiveSpells:
   - {fileID: 5346944896322327042, guid: 9fb231c0be58a714696dcb59e74e84ee, type: 3}
+  - {fileID: 5836427556394884748, guid: ed4763ebddaefe243971c07a7d86a8a3, type: 3}
   _rareActiveSpells:
   - {fileID: 5346944896322327042, guid: d891b6421ae9bbe40a5412705f90c8ef, type: 3}
   _legActiveSpells:
   - {fileID: 7779532141376980162, guid: 6385cc8f6cde84a46b41fe05eda3fdda, type: 3}
   _comunPassiveSpells:
-  - {fileID: 5836427556394884748, guid: ed4763ebddaefe243971c07a7d86a8a3, type: 3}
+  - {fileID: 405060781911362435, guid: a3dc875fe7af38640bba7819b342335d, type: 3}
   _rarePassiveSpells:
   - {fileID: 405060781911362435, guid: a3dc875fe7af38640bba7819b342335d, type: 3}
   _legPassiveSpells:

@@ -126,7 +126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _isActive: 1
   _damage: 50
-  _range: 5
+  _range: 2.5
   _speed: 30
   _radius: 0.5
   _lifeTime: 2

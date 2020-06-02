@@ -164,7 +164,7 @@ public class sc_VariablesManager : MonoBehaviour
         GameObject E = new GameObject("Explosion_FX");
         GameObject Explosion = Instantiate(E, transform.position, Quaternion.identity);
         Destroy(E);
-        Explosion.name = "Explosion de TEOBALD";
+        Explosion.name = "Explosion de Tangtang";
         Explosion.transform.SetParent(null);
         Explosion.AddComponent<sc_SelfDestruction>();
         GameObject tanguetteFX = Instantiate(_onDeath_VFX, Explosion.transform.position, Quaternion.identity);
@@ -179,9 +179,11 @@ public class sc_VariablesManager : MonoBehaviour
         tanguetteFX.transform.parent = Explosion.transform;
         if (transform.GetComponentInChildren<sc_VariablesManager>() == null)
             Explosion.transform.position = transform.position;
+        else
+            Explosion.transform.position = transform.GetChild(0).position;
         Explosion.GetComponent<sc_SelfDestruction>().DestroyMyself(_VFX_lifetime);
         if (_doDamage == false)
-            Explosion.GetComponent<sc_SelfDestruction>().KillEverybody(_damage, id, _explosionRadius);
+            Explosion.GetComponent<sc_SelfDestruction>().KillEverybody(_damage, id, _range);//_explosionRadius =/= range
 
         Destroy(gameObject);
     }
