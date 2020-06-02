@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
+using UnityEngine.UI;
 
 public class PhaseManager : MonoBehaviour
 {
@@ -18,10 +20,11 @@ public class PhaseManager : MonoBehaviour
     [Header("Selection du mode")]
     [SerializeField] private int _IndexScarcrow01 = 0;
     [SerializeField] private int _IndexScarcrow02 = 0;
-    [SerializeField] private int _ModeWin = 0;
+    [SerializeField] public int _ModeWin = 0;
 
     [Header("Time Phase")]
-    [SerializeField] private int _TimeLootPhase = 0;
+    [SerializeField] private float _TimeLootPhase = 0;
+    private float _TimerLootPhaseDecompt = 0;
     [SerializeField] private int _TimeFightPhase = 0;
 
     [Header("Cover")]
@@ -55,6 +58,12 @@ public class PhaseManager : MonoBehaviour
     [SerializeField] private GameObject _Scarcrow01 = null;
     [SerializeField] private GameObject _Scarcrow02 = null;
 
+    [Header("UI")]
+    [SerializeField] private Image _Timerbar;
+    [SerializeField] private TextMeshProUGUI _TimerPointText;
+    [SerializeField] private GameObject _UITimerLootPhase;
+    [SerializeField] private GameObject _UIInterPhase;
+
     private void Awake()
     {
         SetupScarcrow();
@@ -63,6 +72,39 @@ public class PhaseManager : MonoBehaviour
     private void Start()
     {
         StartCoroutine(LootPhaseTimer());
+        StartCoroutine(Decompte());
+        _TimerLootPhaseDecompt = _TimeLootPhase;
+    }
+
+    private void Update()
+    {
+        if (_Player01 == null)
+        {
+            _Player01 = GameObject.Find("A Chicken numeroted 0");
+        }
+        if (_Player02 == null)
+        {
+            _Player02 = GameObject.Find("A Chicken numeroted 1");          
+        }
+        if (_Player03 == null)
+        {
+            _Player03 = GameObject.Find("A Chicken numeroted 2"); 
+        }
+        if (_Player04 == null)
+        {
+            _Player04 = GameObject.Find("A Chicken numeroted 3");
+        }
+
+        if (_LootArena.activeSelf)
+        {
+            _UITimerLootPhase.SetActive(true);
+         _TimerPointText.text = _TimerLootPhaseDecompt.ToString();
+         _Timerbar.fillAmount = _TimerLootPhaseDecompt / _TimeLootPhase;
+        }
+        else
+        {
+            _UITimerLootPhase.SetActive(false);
+        }
     }
 
     private void SetupScarcrow()
@@ -82,7 +124,17 @@ public class PhaseManager : MonoBehaviour
             _Scarcrow02.GetComponent<ScarecrowMode>()._ModeSelect = _IndexScarcrow02;
         }
     }
-
+    // DECOMPTE POUR UI
+    private IEnumerator Decompte()
+    {
+        _TimerLootPhaseDecompt = _TimerLootPhaseDecompt - 1;
+        yield return new WaitForSeconds(1);
+        if(_TimerLootPhaseDecompt > 0)
+        {
+            StartCoroutine(Decompte());
+        }
+    }
+    // TIME POUR LA LOOT PHASE
     private IEnumerator LootPhaseTimer()
     {
         yield return new WaitForSeconds(_TimeLootPhase);
@@ -91,10 +143,8 @@ public class PhaseManager : MonoBehaviour
         _LootArena.SetActive(false);
         SelectMode();
 
-        //Lancement de la fin du mode fight a supr une fois les modes codés
-       // StartCoroutine(FightPhaseTimer());
     }
-
+    // SELECTION DU MODE 
     private void SelectMode()
     {
         int CompteurSC01 = _Scarcrow01.GetComponent<ScarecrowMode>()._PeckCounter;
@@ -108,13 +158,18 @@ public class PhaseManager : MonoBehaviour
         {
             _ModeWin = _IndexScarcrow02;
         }
-        PhaseSetup();
+        UIInterPhase();
+       // PhaseSetup();
     }
 
- 
-    private void PhaseSetup()
+    private void UIInterPhase()
     {
-
+        _UIInterPhase.SetActive(true);
+    }
+    // TP DES PLAYERS + SPAWN
+    public void PhaseSetup()
+    {
+        _UIInterPhase.SetActive(false);
         Transform _ChangeSpawnP01 = _Player01.GetComponent<sc_LifeEngine>()._startPosTransform;
         Transform _ChangeSpawnP02 = _Player02.GetComponent<sc_LifeEngine>()._startPosTransform;
         Transform _ChangeSpawnP03 = _Player03.GetComponent<sc_LifeEngine>()._startPosTransform;

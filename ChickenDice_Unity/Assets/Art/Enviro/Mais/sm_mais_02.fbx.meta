@@ -1,9 +1,14 @@
 fileFormatVersion: 2
-guid: e0028cd99ba25cb4fba33bacc1ea14ee
+guid: deed6a8ce0a5eba43b3c48b96407668d
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mais
+    second: {fileID: 2100000, guid: 48f9838d1ed803942909010cd683ce5f, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0

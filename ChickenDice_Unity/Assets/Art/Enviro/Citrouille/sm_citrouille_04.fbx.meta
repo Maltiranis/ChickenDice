@@ -1,9 +1,14 @@
 fileFormatVersion: 2
-guid: f721e38c2fe1219489a82cfdd35d4b36
+guid: 3842165e49594c645821c30024d752c8
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Citrouilles_feuilles
+    second: {fileID: 2100000, guid: 3cab9cdf202257f4facc459bb8eeaba0, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
