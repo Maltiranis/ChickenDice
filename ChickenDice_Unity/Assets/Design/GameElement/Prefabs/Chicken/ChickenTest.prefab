@@ -2367,6 +2367,8 @@ MonoBehaviour:
     type: 3}
   _shootOffset: {fileID: 752666748}
   _refillSpeed: 2
+  leftTriggerCD: 0
+  rightTriggerCD: 0
   _minimalDamage: 10
   _minimalRange: 10
   _minimalSpeed: 10

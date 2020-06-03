@@ -105,7 +105,10 @@ public class sc_VariablesManager : MonoBehaviour
         newTime += Time.deltaTime;
 
         if (newTime >= _lifeTime)
+        {
+            Destroy(gameObject);
             BeforeTheEnd();
+        }
     }
 
     void WhatAnActiveObjectMustDoOnStart()
@@ -147,6 +150,7 @@ public class sc_VariablesManager : MonoBehaviour
             if (Vector3.Distance(transform.position, shootPos) >= _range)
             {
                 BeforeTheEnd();
+                Destroy(gameObject);
             }
         }
         else
@@ -167,23 +171,32 @@ public class sc_VariablesManager : MonoBehaviour
         Explosion.name = "Explosion de Tangtang";
         Explosion.transform.SetParent(null);
         Explosion.AddComponent<sc_SelfDestruction>();
-        GameObject tanguetteFX = Instantiate(_onDeath_VFX, Explosion.transform.position, Quaternion.identity);
 
         Vector3 eRadius = new Vector3(_explosionRadius, _explosionRadius, _explosionRadius);
-        //on scale tout les trucs a Tanguette <3
-        for (int i = 0; i < tanguetteFX.transform.childCount; i++)
+        Explosion.transform.localScale = new Vector3(1, 1, 1);
+
+        if (_onDeath_VFX != null)
         {
-            tanguetteFX.transform.GetChild(i).transform.localScale = eRadius;
+            GameObject tanguetteFX = Instantiate(_onDeath_VFX, Explosion.transform.position, Quaternion.identity);
+            tanguetteFX.transform.parent = Explosion.transform;
+            //on scale tout les trucs a Tanguette <3
+            for (int i = 0; i < tanguetteFX.transform.childCount; i++)
+            {
+                tanguetteFX.transform.GetChild(i).transform.localScale = eRadius;
+            }
         }
 
-        tanguetteFX.transform.parent = Explosion.transform;
         if (transform.GetComponentInChildren<sc_VariablesManager>() == null)
             Explosion.transform.position = transform.position;
         else
-            Explosion.transform.position = transform.GetChild(0).position;
+        {
+            if (transform.childCount > 0)
+                Explosion.transform.position = transform.GetChild(0).position;
+        }
         Explosion.GetComponent<sc_SelfDestruction>().DestroyMyself(_VFX_lifetime);
-        if (_doDamage == false)
-            Explosion.GetComponent<sc_SelfDestruction>().KillEverybody(_damage, id, _range);//_explosionRadius =/= range
+        
+        Explosion.GetComponent<sc_SelfDestruction>().KillEverybody(_damage, id, _explosionRadius);//_explosionRadius =/= range
+
 
         Destroy(gameObject);
     }
@@ -197,6 +210,17 @@ public class sc_VariablesManager : MonoBehaviour
                 if (_doDamage == true)
                     other.GetComponent<sc_LifeEngine>().TakeDamage(_damage, id);
                 BeforeTheEnd();
+
+                if (transform.parent != null)
+                {
+                    GameObject par = transform.parent.gameObject;
+                    transform.parent = null;
+                    Destroy(par);
+                }
+                else
+                {
+                    Destroy(gameObject);
+                }
             }
         }
     }
