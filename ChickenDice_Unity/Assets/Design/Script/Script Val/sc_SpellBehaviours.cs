@@ -14,14 +14,13 @@ public class sc_SpellBehaviours : MonoBehaviour
         PumpGun
     }
     [Header("Spell")]
-    [SerializeField] private Profile _getProfile;
+    [SerializeField] public Profile _getProfile;
     [Space(15)]
     private float _speed;
     private float _damages;
     private float _range;
     private GameObject _aVFXparent;
     private GameObject _dVFXparent;
-    private float _dVFX_lifetime = 2.0f;
     #endregion
     //Shield + heal + dash à ajouter !
     #region passive proprieties
@@ -40,8 +39,8 @@ public class sc_SpellBehaviours : MonoBehaviour
         Chain
     }
     [Header("Passive")]
-    [SerializeField] private Passives_L _getPassives_Left;
-    [SerializeField] private Passives_R _getPassives_Right;
+    [SerializeField] public Passives_L _getPassives_Left;
+    [SerializeField] public Passives_R _getPassives_Right;
     #endregion
 
     #region hiddenVars
@@ -87,9 +86,21 @@ public class sc_SpellBehaviours : MonoBehaviour
         [Space(5)]
         [SerializeField] public float _coolDown = 1.0f;
         [SerializeField] public float _lifeTime = 5.0f;
+        [HideInInspector] public float duration = 0f;
         [SerializeField] public float _maxDistance = 10.0f;
         [HideInInspector] public Vector3 startPos;
         [HideInInspector] public int _id;//l'ID du Joueur ayant caster
+        [HideInInspector] public Quaternion qZero = new Quaternion(0, 0, 0, 0);
+        [Space(15)]
+        //pump gun
+        [Header("Orbital")]
+        [Space(5)]
+        [SerializeField] public float _spread = 0f;
+        [SerializeField] public float _spreadSpeed = 5f;
+        [SerializeField] public float _orbitSpeed = 10f;
+        [Space(15)]
+        [Header("Spell")]
+        [SerializeField] public float _dVFX_lifetime = 2.0f;
         [Space(15)]
         //Alchemy
         [Header("Alchemy Mix Result")]
@@ -165,7 +176,7 @@ public class sc_SpellBehaviours : MonoBehaviour
     {
         if (_getProfile != Profile.PASSIVE)
         {
-            GameObject fxs = Instantiate(_aVFXparent, transform.position, Quaternion.identity);
+            GameObject fxs = Instantiate(_aVFXparent, transform.position, _v.qZero);
             fxs.name = _aVFXparent.name;
             fxs.transform.parent = gameObject.transform;
 
@@ -223,6 +234,8 @@ public class sc_SpellBehaviours : MonoBehaviour
             default:
                 break;
         }
+
+        _v._mix = _v._P1value + _v._P2value;
     }
 
     private void CallingMethod() //Start
@@ -233,7 +246,7 @@ public class sc_SpellBehaviours : MonoBehaviour
          * 0 + 2000 = 2000 multi (shot a second projectile)
          * 0 + 3000 = 3000 chain (shot a clone projectile in closest enemy direction)
          * 
-         * 10 + 0 = 10 
+         * 10 + 0 = 10  spin
          * 10 + 1000 = 1010 spin spin (do just P1)
          * 10 + 2000 = 2010 multi spin (spin 2 proj mirrored ?)
          * 10 + 3000 = 3010 chain spin (do just P2 and do a normal chain)
@@ -249,13 +262,9 @@ public class sc_SpellBehaviours : MonoBehaviour
          * 30 + 3000 = 3030 chain chain (shot a clone projectile in closest enemy direction,
          *                               then shot a second at first death)
          * */
-
-        _v.startPos = transform.position;
-
-        Destroy(gameObject, _v._lifeTime);
     }
 
-    private void StartMovementBehaviour() //Update
+    private void StartMovementBehaviour() //Start
     {
         switch (_v._mix)
         {
@@ -265,8 +274,10 @@ public class sc_SpellBehaviours : MonoBehaviour
             case 1000:
                 break;
             case 2000:
+                DefaultMovement();
                 break;
             case 3000:
+                DefaultMovement();
                 break;
             case 10:
                 break;
@@ -277,24 +288,32 @@ public class sc_SpellBehaviours : MonoBehaviour
             case 3010:
                 break;
             case 20:
+                DefaultMovement();
                 break;
             case 1020:
                 break;
             case 2020:
+                DefaultMovement();
                 break;
             case 3020:
+                DefaultMovement();
                 break;
             case 30:
+                DefaultMovement();
                 break;
             case 1030:
                 break;
             case 2030:
+                DefaultMovement();
                 break;
             case 3030:
+                DefaultMovement();
                 break;
             default:
                 break;
         }
+
+        _v.startPos = transform.position;
     }
 
     private void UpdateMovementBehaviour() //Update
@@ -304,22 +323,28 @@ public class sc_SpellBehaviours : MonoBehaviour
             case 0:
                 break;
             case 1000:
+                OrbitalMovement();
                 break;
             case 2000:
                 break;
             case 3000:
                 break;
             case 10:
+                OrbitalMovement();
                 break;
             case 1010:
+                OrbitalMovement();
                 break;
             case 2010:
+                OrbitalMovement();
                 break;
             case 3010:
+                OrbitalMovement();
                 break;
             case 20:
                 break;
             case 1020:
+                OrbitalMovement();
                 break;
             case 2020:
                 break;
@@ -328,6 +353,7 @@ public class sc_SpellBehaviours : MonoBehaviour
             case 30:
                 break;
             case 1030:
+                OrbitalMovement();
                 break;
             case 2030:
                 break;
@@ -336,44 +362,99 @@ public class sc_SpellBehaviours : MonoBehaviour
             default:
                 break;
         }
+
+        _v.duration += Time.deltaTime;
+        _v._spread = _v.duration * _v._spreadSpeed;
+
+        if (_v.duration >= _v._lifeTime)
+        {
+            ActionDone();
+        }
+
+        if (Vector3.Distance(_v.startPos, transform.position) >= _v._maxDistance)
+            ActionDone();
     }
 
-    void DefaultMovement()
+    void DefaultMovement()//Start
     {
         GetComponent<Rigidbody>().AddForce
         (
             transform.forward * _speed, ForceMode.Impulse
         );
-
-        if (Vector3.Distance(_v.startPos, transform.position) >= _v._maxDistance)
-            Destroy(gameObject);
     }
 
-    void OrbitalMovement()
+    void OrbitalMovement()//Update
     {
-        GetComponent<Rigidbody>().AddForce
-        (
-            transform.forward * _speed, ForceMode.Impulse
-        );
+        Vector3 chickenCenter = new Vector3(transform.parent.position.x, transform.position.y, transform.parent.position.z);
+        transform.LookAt(chickenCenter);
 
-        if (Vector3.Distance(_v.startPos, transform.position) >= _v._maxDistance)
-            Destroy(gameObject);
+        float x = -Mathf.Cos(_v.duration * _v._orbitSpeed) * _v._spread;
+        float z = Mathf.Sin(_v.duration * _v._orbitSpeed) * _v._spread;
+
+        Vector3 pos = new Vector3(x, transform.position.y, z);
+        transform.position = pos + transform.parent.position;
+
+        GameObject fxs = transform.GetChild(0).gameObject;
+        Vector3 orbitalPosFB = new Vector3(-1, 0, 0);
+        Vector3 orbitalRotFB = new Vector3(270, 0, 270);
+        fxs.transform.localPosition = orbitalPosFB;
+        fxs.transform.localEulerAngles = orbitalRotFB;
     }
 
     void ActionDone()
     {
         CallDeathVFX();
-        Destroy(gameObject);
     }
 
     void CallDeathVFX()
     {
         if (_getProfile != Profile.PASSIVE)
         {
-            GameObject fxs = Instantiate(_dVFXparent, transform.position, Quaternion.identity);
-            fxs.name = _dVFXparent.name;
-            fxs.transform.parent = gameObject.transform;
-            fxs.transform.forward = transform.forward;
+            GameObject E = new GameObject("Explosion_FX");
+            GameObject Explosion = Instantiate(E, transform.position, _v.qZero);
+            Destroy(E);
+            Explosion.name = "Explosion de Tangtang";
+            Explosion.transform.SetParent(null);
+            Explosion.AddComponent<sc_SelfDestruction>();
+            GameObject tanguetteFX = Instantiate(_dVFXparent, Explosion.transform.position, _v.qZero);
+            tanguetteFX.transform.parent = Explosion.transform;
+
+            Explosion.GetComponent<sc_SelfDestruction>().DestroyMyself(_v._dVFX_lifetime);
+
+            float newDamages = 0f;
+            float newRange = 0f;
+            if (_getProfile == Profile.FireBolt)
+            {
+                newDamages = _v.damagesFB;
+                newRange = _v.rangeFB;
+            }
+            if (_getProfile == Profile.Bowling)
+            {
+                newDamages = _v.damagesBL;
+                newRange = _v.rangeBL;
+            }
+            if (_getProfile == Profile.PumpGun)
+            {
+                newDamages = _v.damagesPG;
+                newRange = _v.rangePG;
+            }
+            Explosion.GetComponent<sc_SelfDestruction>().KillEverybody(Mathf.RoundToInt(newDamages), _v._id, newRange);
+        }
+        Destroy(gameObject);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.GetComponent<sc_Chicken_ID>() != null)
+        {
+            if (other.GetComponent<sc_Chicken_ID>().ID != _v._id)
+            {
+                ActionDone();
+            }
+        }
+        if (other.tag == "WorldCollider")
+        {
+            ActionDone();
         }
     }
 }

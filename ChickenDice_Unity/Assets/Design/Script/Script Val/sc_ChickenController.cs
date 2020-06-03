@@ -40,6 +40,9 @@ public class sc_ChickenController : MonoBehaviour
     bool Jleft = false;
     bool Jright = false;
 
+    bool LtriggerUp = true;
+    bool RtriggerUp = true;
+
     sc_Peck scp;
     sc_SkillManagement scsm;
 
@@ -169,12 +172,27 @@ public class sc_ChickenController : MonoBehaviour
 
         if (Input.GetAxis("RT_" + _id.ToString()) > 0.85f)
         {
-            scsm.UseGem("RT");
-            //scs.Shoot();
+            if (RtriggerUp == true)
+            {
+                scsm.UseGem("RT");
+                RtriggerUp = false;
+            }
+        }
+        else
+        {
+            RtriggerUp = true;
         }
         if (Input.GetAxis("LT_" + _id.ToString()) > 0.85f)
         {
-            scsm.UseGem("LT");
+            if (LtriggerUp == true)
+            {
+                scsm.UseGem("LT");
+                LtriggerUp = false;
+            }
+        }
+        else
+        {
+            LtriggerUp = true;
         }
     }
     void Bumpers ()

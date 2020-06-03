@@ -141,7 +141,7 @@ public class sc_SkillManagement : MonoBehaviour
 
         g.SetActive(true);
         //
-        Debug.Log("On a remplacé le biniou !");
+        //Debug.Log("On a remplacé le biniou !");
         //
     }
 

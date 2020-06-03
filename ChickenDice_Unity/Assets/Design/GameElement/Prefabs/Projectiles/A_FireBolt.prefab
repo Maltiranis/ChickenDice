@@ -143,7 +143,7 @@ MonoBehaviour:
     ajustedRotBL: {x: 270, y: 0, z: 0}
     _aVFXparent_BL: {fileID: 6275700111948553674, guid: 244aff1d2ea5b9e4c8aa90c6080cd557,
       type: 3}
-    _dVFXparent_BL: {fileID: 4738567880216055823, guid: 58b6e7b495de5ea4884659d6e83db6e7,
+    _dVFXparent_BL: {fileID: 6807366042520938871, guid: 58b6e7b495de5ea4884659d6e83db6e7,
       type: 3}
     speedPG: 100
     damagesPG: 20
@@ -155,10 +155,13 @@ MonoBehaviour:
     _dVFXparent_PG: {fileID: 8393755702046044750, guid: 37c7ca20f1b313d469b0428e695fd172,
       type: 3}
     _coolDown: 0.2
-    _lifeTime: 5
-    _maxDistance: 20
+    _lifeTime: 3
+    duration: 0
+    _maxDistance: 10
     startPos: {x: 0, y: 0, z: 0}
     _id: 0
+    _spread: 1
+    _dVFX_lifetime: 2
     _P1value: 0
     _P2value: 0
     _mix: 0

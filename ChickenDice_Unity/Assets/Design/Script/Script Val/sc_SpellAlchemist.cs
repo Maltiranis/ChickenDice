@@ -97,19 +97,7 @@ public class sc_SpellAlchemist : MonoBehaviour
     {
         GameObject shot = null;
         sc_SpellBehaviours s_sbA = A.GetComponent<sc_SpellBehaviours>();
-        sc_SpellBehaviours s_sbP1 = A.GetComponent<sc_SpellBehaviours>();
-        sc_SpellBehaviours s_sbP2 = A.GetComponent<sc_SpellBehaviours>();
 
-        if (P1 != null)
-        {
-            //Profile = PASSIVE
-
-        }
-        if (P2 != null)
-        {
-            //Profile = PASSIVE
-
-        }
         if (A != null)
         {
             if (leftTriggerCD == false && inputUsed == "LT")
@@ -132,7 +120,32 @@ public class sc_SpellAlchemist : MonoBehaviour
             if (shot != null)
             {
                 //si P1 ou P2 c'est la bombe on parente "shot"
+                sc_SpellBehaviours s_sbS = shot.GetComponent<sc_SpellBehaviours>();
+                s_sbS._v._id = _id;
 
+                if (P1 != null)
+                {
+                    sc_SpellBehaviours s_sbP1 = P1.GetComponent<sc_SpellBehaviours>();
+                    //Profile = PASSIVE
+                    if (s_sbP1._getPassives_Left == sc_SpellBehaviours.Passives_L.Spinning ||
+                        s_sbP1._getPassives_Right == sc_SpellBehaviours.Passives_R.Spinning)
+                    {
+                        shot.transform.parent = transform;
+                        s_sbS._getPassives_Left = sc_SpellBehaviours.Passives_L.Spinning;
+                    }
+
+                }
+                if (P2 != null)
+                {
+                    sc_SpellBehaviours s_sbP2 = P2.GetComponent<sc_SpellBehaviours>();
+                    //Profile = PASSIVE
+                    if (s_sbP2._getPassives_Left == sc_SpellBehaviours.Passives_L.Spinning ||
+                        s_sbP2._getPassives_Right == sc_SpellBehaviours.Passives_R.Spinning)
+                    {
+                        shot.transform.parent = transform;
+                        s_sbS._getPassives_Right = sc_SpellBehaviours.Passives_R.Spinning;
+                    }
+                }
             }
         }
     }

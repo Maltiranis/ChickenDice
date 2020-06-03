@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 382042822189917050}
   - component: {fileID: 5726718223416521074}
   m_Layer: 0
-  m_Name: A_PumpGun
+  m_Name: P_Orbital
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -50,7 +50,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 382042822189917053}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -123,9 +123,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf2f4d4de0612ae449f6529955c0c860, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _getProfile: 3
-  _getPassives_Left: 0
-  _getPassives_Right: 0
+  _getProfile: 0
+  _getPassives_Left: 1
+  _getPassives_Right: 1
   _v:
     speedFB: 50
     damagesFB: 50
@@ -140,10 +140,10 @@ MonoBehaviour:
     damagesBL: 75
     rangeBL: 1
     ajustedPosBL: {x: 0, y: 0, z: 0}
-    ajustedRotBL: {x: 270, y: 0, z: 0}
+    ajustedRotBL: {x: 0, y: 0, z: 0}
     _aVFXparent_BL: {fileID: 6275700111948553674, guid: 244aff1d2ea5b9e4c8aa90c6080cd557,
       type: 3}
-    _dVFXparent_BL: {fileID: 6807366042520938871, guid: 58b6e7b495de5ea4884659d6e83db6e7,
+    _dVFXparent_BL: {fileID: 4738567880216055823, guid: 58b6e7b495de5ea4884659d6e83db6e7,
       type: 3}
     speedPG: 100
     damagesPG: 20
@@ -154,10 +154,10 @@ MonoBehaviour:
       type: 3}
     _dVFXparent_PG: {fileID: 8393755702046044750, guid: 37c7ca20f1b313d469b0428e695fd172,
       type: 3}
-    _coolDown: 0.2
-    _lifeTime: 3
+    _coolDown: 1
+    _lifeTime: 1
     duration: 0
-    _maxDistance: 10
+    _maxDistance: 1
     startPos: {x: 0, y: 0, z: 0}
     _id: 0
     _spread: 1

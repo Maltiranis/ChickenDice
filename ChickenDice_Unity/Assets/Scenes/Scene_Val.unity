@@ -3763,7 +3763,7 @@ GameObject:
   - component: {fileID: 590431798}
   m_Layer: 0
   m_Name: FenceRight (2)
-  m_TagString: Untagged
+  m_TagString: WorldCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4580,7 +4580,7 @@ GameObject:
   - component: {fileID: 656613783}
   m_Layer: 0
   m_Name: FenceRight (1)
-  m_TagString: Untagged
+  m_TagString: WorldCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4890,7 +4890,7 @@ GameObject:
   - component: {fileID: 682358047}
   m_Layer: 0
   m_Name: FenceFront (2)
-  m_TagString: Untagged
+  m_TagString: WorldCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7757,7 +7757,7 @@ GameObject:
   - component: {fileID: 1545678641}
   m_Layer: 0
   m_Name: FenceFront (3)
-  m_TagString: Untagged
+  m_TagString: WorldCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9896,7 +9896,7 @@ GameObject:
   - component: {fileID: 1916639529}
   m_Layer: 0
   m_Name: FenceBack
-  m_TagString: Untagged
+  m_TagString: WorldCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20923,19 +20923,19 @@ PrefabInstance:
         type: 3}
       propertyPath: _comunPassiveSpells.Array.data[0]
       value: 
-      objectReference: {fileID: 382042822189917053, guid: c441bd1b23ca9224890065c7e4eec71b,
+      objectReference: {fileID: 382042822189917053, guid: 6b026b0c6dac18646ad9bfe6b0dbfc84,
         type: 3}
     - target: {fileID: 6602390479935859879, guid: 0eb6f8ef691f493489a815ece5c669fa,
         type: 3}
       propertyPath: _rarePassiveSpells.Array.data[0]
       value: 
-      objectReference: {fileID: 382042822189917053, guid: c441bd1b23ca9224890065c7e4eec71b,
+      objectReference: {fileID: 382042822189917053, guid: 6b026b0c6dac18646ad9bfe6b0dbfc84,
         type: 3}
     - target: {fileID: 6602390479935859879, guid: 0eb6f8ef691f493489a815ece5c669fa,
         type: 3}
       propertyPath: _legPassiveSpells.Array.data[0]
       value: 
-      objectReference: {fileID: 382042822189917053, guid: c441bd1b23ca9224890065c7e4eec71b,
+      objectReference: {fileID: 382042822189917053, guid: 6b026b0c6dac18646ad9bfe6b0dbfc84,
         type: 3}
     - target: {fileID: 6602390479935859879, guid: 0eb6f8ef691f493489a815ece5c669fa,
         type: 3}
