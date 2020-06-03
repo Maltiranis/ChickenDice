@@ -54,6 +54,6 @@ public class sc_UIWiner : MonoBehaviour
     private IEnumerator RestartGame()
     {
         yield return new WaitForSeconds(_TimeBeforeRestart);
-        SceneManager.LoadScene("Scenes_Jeff");
+        SceneManager.LoadScene(2);
     }
 }
