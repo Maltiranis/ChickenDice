@@ -2219,7 +2219,7 @@ GameObject:
   - component: {fileID: 1008034808911037756}
   - component: {fileID: 1008034808911037757}
   - component: {fileID: 1008034808911037730}
-  - component: {fileID: 7878372503103714130}
+  - component: {fileID: 22597779575512694}
   - component: {fileID: 1270922325830150318}
   m_Layer: 10
   m_Name: ChickenTest
@@ -2350,7 +2350,7 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0.5, z: 0}
---- !u!114 &7878372503103714130
+--- !u!114 &22597779575512694
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2359,22 +2359,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1008034808911037729}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 299ee3a58806549448632962f775d696, type: 3}
+  m_Script: {fileID: 11500000, guid: 5275504a4cbb4de40886bee753f84b7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _myID: {fileID: 1008034808911037731}
-  _projectilePrefab: {fileID: 7801322916539727426, guid: f81841fe07696ec4483114401413db53,
-    type: 3}
   _shootOffset: {fileID: 752666748}
-  _refillSpeed: 2
+  _refillSpeed: 0.1
   leftTriggerCD: 0
   rightTriggerCD: 0
-  _minimalDamage: 10
-  _minimalRange: 10
-  _minimalSpeed: 10
-  _minimalRadius: 1
-  _coolDown: 1
-  _minimalLifeTime: 1
+  _coolDownR: 1
+  _coolDownL: 1
   _bar:
   - {fileID: 14754424}
   - {fileID: 1759629906}

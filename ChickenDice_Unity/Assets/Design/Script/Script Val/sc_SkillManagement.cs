@@ -35,13 +35,15 @@ public class sc_SkillManagement : MonoBehaviour
     [SerializeField] private GameObject[] nearest = null;
     [SerializeField] private GameObject bestTarget = null;
 
-    sc_Shooting scs;
+    //sc_Shooting scs;
+    sc_SpellAlchemist s_sa;
     sc_Gem_ID id;
 
     // Start is called before the first frame update
     void Start()
     {
-        scs = GetComponent<sc_Shooting>();
+        //scs = GetComponent<sc_Shooting>();
+        s_sa = GetComponent<sc_SpellAlchemist>();
     }
 
     // Update is called once per frame
@@ -215,12 +217,14 @@ public class sc_SkillManagement : MonoBehaviour
         if (_slot == "RT")
         {
             if (_rbActive != null)
-                scs.Shoot(_rbActive, _yPassive, _xPassive, "RT");
+                s_sa.Shoot(_rbActive, _yPassive, _xPassive, "RT");
+                //scs.Shoot(_rbActive, _yPassive, _xPassive, "RT");
         }
         if (_slot == "LT")
         {
             if (_lbActive != null)
-                scs.Shoot(_lbActive, _yPassive, _xPassive, "LT");
+                s_sa.Shoot(_lbActive, _yPassive, _xPassive, "LT");
+                //scs.Shoot(_lbActive, _yPassive, _xPassive, "LT");
         }
     }
 }
