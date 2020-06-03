@@ -44,10 +44,11 @@ public class sc_UIWiner : MonoBehaviour
         }
 
         //POUR TEST A 1 Player
-        if (_Ready[0].activeSelf)
+       
+        if (Input.GetButton("Start"))
         {
             StartCoroutine(RestartGame());
-          
+
         }
     }
 

@@ -51,7 +51,7 @@ public class sc_UIInterPhase : MonoBehaviour
             _Isaffiche = false;
         }
         //POUR TEST A 1 Player
-        if (_Ready[0].activeSelf)
+        if (Input.GetButton("Start"))
         {
             _ScPhaseManager.PhaseSetup();
 
