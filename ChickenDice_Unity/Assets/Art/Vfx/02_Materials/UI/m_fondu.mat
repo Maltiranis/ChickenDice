@@ -89,7 +89,7 @@ Material:
     - _UseUIAlphaClip: 0
     - _ZWrite: 1
     - __dirty: 0
-    - _fondu: 0
+    - _fondu: 0.458
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Color0: {r: 1, g: 0.8726415, b: 0.8726415, a: 0}
