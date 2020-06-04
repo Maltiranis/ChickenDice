@@ -445,11 +445,12 @@ public class sc_SpellBehaviours : MonoBehaviour
 
         //Vector3 chickenCenter = new Vector3(transform.parent.position.x, transform.position.y, transform.parent.position.z);
         Vector3 desiredPosition;
-
-        desiredPosition = (transform.position - transform.parent.position).normalized * _v.duration + transform.parent.position;
+        Vector3 corPos = new Vector3(transform.position.x, 0.5f, transform.position.z);
+        Vector3 parPos = new Vector3(transform.parent.position.x, 0.5f, transform.parent.position.z);
+        desiredPosition = (corPos - parPos).normalized * _v.duration + parPos;
         transform.position = Vector3.MoveTowards(transform.position, desiredPosition, Time.deltaTime * _v._spread);
 
-        transform.RotateAround(transform.parent.position, transform.parent.up, _v._orbitSpeed * Time.deltaTime);
+        transform.RotateAround(transform.parent.position, Vector3.up, _v._orbitSpeed * Time.deltaTime);
         //
         GameObject fxs = transform.GetChild(0).gameObject;
 

@@ -44,15 +44,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _comunActiveSpells:
-  - {fileID: 5346944896322327042, guid: 9fb231c0be58a714696dcb59e74e84ee, type: 3}
-  - {fileID: 5836427556394884748, guid: ed4763ebddaefe243971c07a7d86a8a3, type: 3}
+  - {fileID: 382042822189917053, guid: 4f82e46ea1492ed47b01ad7d8a6adbb5, type: 3}
   _rareActiveSpells:
-  - {fileID: 5346944896322327042, guid: d891b6421ae9bbe40a5412705f90c8ef, type: 3}
+  - {fileID: 382042822189917053, guid: 6c1aab826383c6745bd1d26cd0a4010d, type: 3}
   _legActiveSpells:
-  - {fileID: 7779532141376980162, guid: 6385cc8f6cde84a46b41fe05eda3fdda, type: 3}
+  - {fileID: 382042822189917053, guid: ba50d5f201f82f6438abb669acddb393, type: 3}
   _comunPassiveSpells:
-  - {fileID: 405060781911362435, guid: a3dc875fe7af38640bba7819b342335d, type: 3}
+  - {fileID: 382042822189917053, guid: 6b026b0c6dac18646ad9bfe6b0dbfc84, type: 3}
   _rarePassiveSpells:
-  - {fileID: 405060781911362435, guid: a3dc875fe7af38640bba7819b342335d, type: 3}
+  - {fileID: 382042822189917053, guid: 3007ad977db57f042928e4379f46dfc9, type: 3}
   _legPassiveSpells:
-  - {fileID: 405060781911362435, guid: a3dc875fe7af38640bba7819b342335d, type: 3}
+  - {fileID: 382042822189917053, guid: 8bc677d6f34926d45916101f5747ae29, type: 3}
