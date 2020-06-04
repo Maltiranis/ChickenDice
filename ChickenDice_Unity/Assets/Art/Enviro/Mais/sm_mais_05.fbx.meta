@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2fa049f45b8c46e46be86aaf666231be
+guid: b16480dbcac990340a84defd9f38f3cc
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable: []
@@ -7,8 +7,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: L_objet_03
-    second: {fileID: 2100000, guid: 7e45b144ef16bd048b59e2c018ea3c90, type: 2}
+      name: Mais
+    second: {fileID: 2100000, guid: 48f9838d1ed803942909010cd683ce5f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mais_Feuilles
+    second: {fileID: 2100000, guid: f7018e0e586f99946a0c32eed23738cf, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0

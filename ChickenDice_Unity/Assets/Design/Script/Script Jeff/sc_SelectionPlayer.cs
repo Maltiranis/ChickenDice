@@ -41,8 +41,15 @@ public class sc_SelectionPlayer : MonoBehaviour
             _StartButton.SetActive(false);
         }
 
-        if(Input.GetButtonDown("Start")&& _StartButton == true)
+        if(Input.GetButtonDown("Start")&& _StartButton.activeSelf)
         {
+            //Debug.Log("start");
+            CanvasTuto();
+        }
+
+        if (Input.GetButton("Select"))
+        {
+            //Debug.Log("select");
             CanvasTuto();
         }
     }

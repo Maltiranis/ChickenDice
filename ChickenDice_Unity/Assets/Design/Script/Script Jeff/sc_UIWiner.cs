@@ -45,7 +45,7 @@ public class sc_UIWiner : MonoBehaviour
 
         //POUR TEST A 1 Player
        
-        if (Input.GetButton("Start"))
+        if (Input.GetButton("Select"))
         {
             StartCoroutine(RestartGame());
 

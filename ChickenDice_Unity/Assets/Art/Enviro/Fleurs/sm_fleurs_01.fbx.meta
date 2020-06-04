@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2fa049f45b8c46e46be86aaf666231be
+guid: e34aae8d6f048f242b098ae2669137d5
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable: []
@@ -7,8 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: L_objet_03
-    second: {fileID: 2100000, guid: 7e45b144ef16bd048b59e2c018ea3c90, type: 2}
+      name: "m_fleurs_barri\xE8res"
+    second: {fileID: 2100000, guid: 100ce5463ab1347469029040c3df7392, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
