@@ -160,11 +160,14 @@ MonoBehaviour:
     _maxDistance: 1
     startPos: {x: 0, y: 0, z: 0}
     _id: 0
+    qZero: {x: 0, y: 0, z: 0, w: 0}
     _spread: 1
+    _spreadSpeed: 10
+    _orbitSpeed: 200
     _dVFX_lifetime: 2
     _P1value: 0
     _P2value: 0
     _mix: 0
     _iterationOnLaunch: 0
     _iterationOnDestroyed: 0
-    _timeToWait: 1
+    _timeToWait: 0.2
