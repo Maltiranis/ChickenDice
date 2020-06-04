@@ -90,11 +90,12 @@ public class sc_SpellBehaviours : MonoBehaviour
         [HideInInspector] public float duration = 0f;
         [SerializeField] public float _maxDistance = 10.0f;
         [HideInInspector] public Vector3 startPos;
-        [HideInInspector] public int _id;//l'ID du Joueur ayant caster
+        [SerializeField] public int _id;//l'ID du Joueur ayant caster
         [HideInInspector] public Quaternion qZero = new Quaternion(0, 0, 0, 0);
         //[SerializeField] public GameObject[] nearest;
         [SerializeField] public List<GameObject> nearest = new List<GameObject>();
         [SerializeField] public GameObject bestTarget;
+        [SerializeField] public GameObject Caster;
         [SerializeField] public bool _canCollide = true;
         [Space(15)]
         //pump gun
@@ -128,6 +129,17 @@ public class sc_SpellBehaviours : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameObject[] catched = null;
+        catched = GameObject.FindGameObjectsWithTag("Player");
+
+        foreach (GameObject g in catched)
+        {
+            if (g.GetComponent<sc_Chicken_ID>().ID == _v._id)
+            {
+                _v.Caster = g;
+            }
+        }
+
         SpellAttribution();
         GetVFXs();
         PassiveImpliquations();
@@ -431,13 +443,14 @@ public class sc_SpellBehaviours : MonoBehaviour
     {
         _v._spread = _v.duration * _v._spreadSpeed;
 
-        Vector3 chickenCenter = new Vector3(transform.parent.position.x, transform.position.y, transform.parent.position.z);
+        //Vector3 chickenCenter = new Vector3(transform.parent.position.x, transform.position.y, transform.parent.position.z);
         Vector3 desiredPosition;
 
-        transform.RotateAround(chickenCenter, Vector3.up, _v._orbitSpeed * Time.deltaTime);
-        desiredPosition = (transform.position - chickenCenter).normalized * _v.duration + chickenCenter;
+        desiredPosition = (transform.position - transform.parent.position).normalized * _v.duration + transform.parent.position;
         transform.position = Vector3.MoveTowards(transform.position, desiredPosition, Time.deltaTime * _v._spread);
 
+        transform.RotateAround(transform.parent.position, transform.parent.up, _v._orbitSpeed * Time.deltaTime);
+        //
         GameObject fxs = transform.GetChild(0).gameObject;
 
         Vector3 orbitalPosFB = new Vector3(1, 0, 0);

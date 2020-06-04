@@ -79,6 +79,7 @@ public class sc_LifeEngine : MonoBehaviour
 
     public void DisapearOnDeath ()
     {
+        GetComponent<sc_SpellAlchemist>().DestroyPivot();
         PolySurface.SetActive(false);
         _am.anim.SetInteger("intDeath", 100);
         GetComponent<CapsuleCollider>().enabled = false;

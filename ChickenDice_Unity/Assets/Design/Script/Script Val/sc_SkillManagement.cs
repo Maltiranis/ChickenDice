@@ -36,7 +36,7 @@ public class sc_SkillManagement : MonoBehaviour
     [SerializeField] private GameObject bestTarget = null;
 
     //sc_Shooting scs;
-    sc_SpellAlchemist s_sa;
+    [HideInInspector] public sc_SpellAlchemist s_sa;
     sc_Gem_ID id;
 
     // Start is called before the first frame update

@@ -28,13 +28,14 @@ public class sc_SpellAlchemist : MonoBehaviour
     //
     [SerializeField] public float _coolDownR = 1f;
     [SerializeField] public float _coolDownL = 1f;
+    GameObject pivot;
     //
-    [Space(10)]
-    [Header("UI")]
-    [SerializeField] private Image[] _bar;
-    [SerializeField] private TextMeshProUGUI[] _timeText;
+    //[Space(10)]
+    //[Header("UI")]
+    //[SerializeField] private Image[] _bar;
+    //[SerializeField] private TextMeshProUGUI[] _timeText;
 
-    [SerializeField] private GameObject[] _UI;
+    //[SerializeField] private GameObject[] _UI;
 
     // Start is called before the first frame update
     void Start()
@@ -43,17 +44,26 @@ public class sc_SpellAlchemist : MonoBehaviour
         _refreshValue1 = _coolDownL;
         _refreshValue2 = _coolDownR;
 
-        foreach (GameObject ui in _UI)
+        pivot = new GameObject("pivot Chicken " + _myID.ID.ToString());
+        pivot.transform.SetParent(null);
+        /*foreach (GameObject ui in _UI)
         {
             ui.SetActive(false);
         }
-        _UI[_id].SetActive(true);
+        _UI[_id].SetActive(true);*/
+    }
+
+    public void DestroyPivot ()
+    {
+        Destroy(pivot);
     }
 
     // Update is called once per frame
     void Update()
     {
         OnCoolDown();
+        if (pivot != null)
+            pivot.transform.position = Vector3.Lerp(pivot.transform.position, transform.position, Time.deltaTime * 100000000);
     }
 
     public void OnCoolDown()
@@ -63,17 +73,17 @@ public class sc_SpellAlchemist : MonoBehaviour
             float amount = _refreshValue1 / _coolDownL;
             float buttonAngle = amount * 360;
 
-            _bar[_id].fillAmount = amount;
+            //_bar[_id].fillAmount = amount;
 
             if (_refreshValue1 < _coolDownL)
             {
                 _refreshValue1 += Time.deltaTime * _refillSpeed;
-                _timeText[_id].text = (_coolDownL - System.Math.Round(10 * _refreshValue1, 1)).ToString();
+                //_timeText[_id].text = (_coolDownL - System.Math.Round(10 * _refreshValue1, 1)).ToString();
             }
             if (_refreshValue1 >= _coolDownL)
             {
                 _refreshValue1 = _coolDownL;
-                _timeText[_id].text = "Fire !";
+                //_timeText[_id].text = "Fire !";
                 leftTriggerCD = false;
             }
         }
@@ -82,17 +92,17 @@ public class sc_SpellAlchemist : MonoBehaviour
             float amount = _refreshValue2 / _coolDownR;
             float buttonAngle = amount * 360;
 
-            _bar[_id].fillAmount = (1/_coolDownR) / amount;
+            //_bar[_id].fillAmount = (1/_coolDownR) / amount;
 
             if (_refreshValue2 < _coolDownR)
             {
                 _refreshValue2 += Time.deltaTime * _refillSpeed;
-                _timeText[_id].text = (_coolDownR - System.Math.Round(10 * _refreshValue2, 1)).ToString();
+                //_timeText[_id].text = (_coolDownR - System.Math.Round(10 * _refreshValue2, 1)).ToString();
             }
             if (_refreshValue2 >= _coolDownR)
             {
                 _refreshValue2 = _coolDownR;
-                _timeText[_id].text = "Fire !";
+                //_timeText[_id].text = "Fire !";
                 rightTriggerCD = false;
             }
         }
@@ -135,7 +145,7 @@ public class sc_SpellAlchemist : MonoBehaviour
                     if (s_sbP1._getPassives_Left == sc_SpellBehaviours.Passives_L.Spinning ||
                         s_sbP1._getPassives_Right == sc_SpellBehaviours.Passives_R.Spinning)
                     {
-                        shot.transform.parent = transform;
+                        shot.transform.SetParent(pivot.transform);
                         s_sbS._getPassives_Left = sc_SpellBehaviours.Passives_L.Spinning;
                     }
 
@@ -160,7 +170,7 @@ public class sc_SpellAlchemist : MonoBehaviour
                     if (s_sbP2._getPassives_Left == sc_SpellBehaviours.Passives_L.Spinning ||
                         s_sbP2._getPassives_Right == sc_SpellBehaviours.Passives_R.Spinning)
                     {
-                        shot.transform.parent = transform;
+                        shot.transform.SetParent(pivot.transform);
                         s_sbS._getPassives_Right = sc_SpellBehaviours.Passives_R.Spinning;
                     }
 
@@ -302,7 +312,7 @@ public class sc_SpellAlchemist : MonoBehaviour
                 if (s_sbP1._getPassives_Left == sc_SpellBehaviours.Passives_L.Spinning ||
                     s_sbP1._getPassives_Right == sc_SpellBehaviours.Passives_R.Spinning)
                 {
-                    shot.transform.parent = transform;
+                    shot.transform.SetParent(pivot.transform);
                     s_sbS._getPassives_Left = sc_SpellBehaviours.Passives_L.Spinning;
                 }
 
@@ -327,7 +337,7 @@ public class sc_SpellAlchemist : MonoBehaviour
                 if (s_sbP2._getPassives_Left == sc_SpellBehaviours.Passives_L.Spinning ||
                     s_sbP2._getPassives_Right == sc_SpellBehaviours.Passives_R.Spinning)
                 {
-                    shot.transform.parent = transform;
+                    shot.transform.SetParent(pivot.transform);
                     s_sbS._getPassives_Right = sc_SpellBehaviours.Passives_R.Spinning;
                 }
 
@@ -345,83 +355,6 @@ public class sc_SpellAlchemist : MonoBehaviour
                     s_sbS._getPassives_Right = sc_SpellBehaviours.Passives_R.Chain;
                 }
             }
-            /*#region M + Null / Null + M
-            if (s_sbS._getPassives_Left == sc_SpellBehaviours.Passives_L.Multiple &&
-                s_sbS._getPassives_Right == sc_SpellBehaviours.Passives_R.EMPTY)
-            {
-                s_sbS._v._iterationOnLaunch = 1;
-                StartCoroutine(MultipleCasts(s_sbS._v._timeToWait, A, P1, P2));
-            }
-
-            if (s_sbS._getPassives_Left == sc_SpellBehaviours.Passives_L.EMPTY &&
-                s_sbS._getPassives_Right == sc_SpellBehaviours.Passives_R.Multiple)
-            {
-                s_sbS._v._iterationOnLaunch = 1;
-                StartCoroutine(MultipleCasts(s_sbS._v._timeToWait, A, P1, P2));
-            }
-            #endregion
-            #region M + C / C + M
-            if (s_sbS._getPassives_Left == sc_SpellBehaviours.Passives_L.Multiple &&
-                s_sbS._getPassives_Right == sc_SpellBehaviours.Passives_R.Chain)
-            {
-                s_sbS._v._iterationOnLaunch = 1;
-                s_sbS._v._iterationOnDestroyed = 1;
-                StartCoroutine(MultipleCasts(s_sbS._v._timeToWait, A, P1, P2));
-            }
-
-            if (s_sbS._getPassives_Left == sc_SpellBehaviours.Passives_L.Chain &&
-                s_sbS._getPassives_Right == sc_SpellBehaviours.Passives_R.Multiple)
-            {
-                s_sbS._v._iterationOnLaunch = 1;
-                s_sbS._v._iterationOnDestroyed = 1;
-                StartCoroutine(MultipleCasts(s_sbS._v._timeToWait, A, P1, P2));
-            }
-            #endregion
-            #region S + C / C + S
-            if (s_sbS._getPassives_Left == sc_SpellBehaviours.Passives_L.Spinning &&
-                s_sbS._getPassives_Right == sc_SpellBehaviours.Passives_R.Chain)
-            {
-                s_sbS._v._iterationOnDestroyed = 1;
-                ShootInstance(A, P1, P2, 180);
-            }
-
-            if (s_sbS._getPassives_Left == sc_SpellBehaviours.Passives_L.Chain &&
-                s_sbS._getPassives_Right == sc_SpellBehaviours.Passives_R.Spinning)
-            {
-                s_sbS._v._iterationOnDestroyed = 1;
-                ShootInstance(A, P1, P2, 180);
-            }
-            #endregion
-            #region S + M / M + S
-            if (s_sbS._getPassives_Left == sc_SpellBehaviours.Passives_L.Spinning &&
-                s_sbS._getPassives_Right == sc_SpellBehaviours.Passives_R.Multiple)
-            {
-                ShootInstance(A, P1, P2, 180);
-            }
-            if (s_sbS._getPassives_Left == sc_SpellBehaviours.Passives_L.Multiple &&
-                s_sbS._getPassives_Right == sc_SpellBehaviours.Passives_R.Spinning)
-            {
-                ShootInstance(A, P1, P2, 180);
-            }
-            #endregion
-            #region M + M
-            if (s_sbS._getPassives_Left == sc_SpellBehaviours.Passives_L.Multiple &&
-                s_sbS._getPassives_Right == sc_SpellBehaviours.Passives_R.Multiple)
-            {
-                s_sbS._v._iterationOnLaunch = 2;
-                StartCoroutine(MultipleCasts(s_sbS._v._timeToWait, A, P1, P2));
-                StartCoroutine(MultipleCasts(2 * s_sbS._v._timeToWait, A, P1, P2));
-            }
-            #endregion
-            #region S + S
-            if (s_sbS._getPassives_Left == sc_SpellBehaviours.Passives_L.Spinning &&
-                s_sbS._getPassives_Right == sc_SpellBehaviours.Passives_R.Spinning)
-            {
-                s_sbS._v._iterationOnLaunch = 2;
-                ShootInstance(A, P1, P2, 120);
-                ShootInstance(A, P1, P2, 240);
-            }
-            #endregion*/
         }
     }
 

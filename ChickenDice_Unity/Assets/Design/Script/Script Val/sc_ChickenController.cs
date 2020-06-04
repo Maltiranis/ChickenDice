@@ -176,6 +176,9 @@ public class sc_ChickenController : MonoBehaviour
             {
                 scsm.UseGem("RT");
                 RtriggerUp = false;
+                //04/06/2020 changement : slow sur les spells
+                _newSpeed = _moveSpeed;
+                oldTimer = 0f;
             }
         }
         else
@@ -188,6 +191,9 @@ public class sc_ChickenController : MonoBehaviour
             {
                 scsm.UseGem("LT");
                 LtriggerUp = false;
+                //04/06/2020 changement : slow sur les spells
+                _newSpeed = _moveSpeed;
+                oldTimer = 0f;
             }
         }
         else
