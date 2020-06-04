@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using System.Security.Cryptography;
 
 public class sc_SpellBehaviours : MonoBehaviour
 {
@@ -91,6 +92,10 @@ public class sc_SpellBehaviours : MonoBehaviour
         [HideInInspector] public Vector3 startPos;
         [HideInInspector] public int _id;//l'ID du Joueur ayant caster
         [HideInInspector] public Quaternion qZero = new Quaternion(0, 0, 0, 0);
+        //[SerializeField] public GameObject[] nearest;
+        [SerializeField] public List<GameObject> nearest = new List<GameObject>();
+        [SerializeField] public GameObject bestTarget;
+        [SerializeField] public bool _canCollide = true;
         [Space(15)]
         //pump gun
         [Header("Orbital")]
@@ -134,6 +139,28 @@ public class sc_SpellBehaviours : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        GameObject[] catched = null;
+        catched = GameObject.FindGameObjectsWithTag("Player");
+
+        foreach (GameObject g in catched)
+        {
+            if (g.GetComponent<CapsuleCollider>().enabled == true &&
+                g.GetComponent<sc_Chicken_ID>().ID != _v._id)
+            {
+                if (!_v.nearest.Contains(g))
+                {
+                    _v.nearest.Add(g);
+                }
+            }
+            else
+            {
+                if (_v.nearest.Contains(g))
+                {
+                    _v.nearest.Remove(g);
+                }
+            }
+        }
+        _v.bestTarget = GetClosest();
         UpdateMovementBehaviour();
     }
 
@@ -278,6 +305,7 @@ public class sc_SpellBehaviours : MonoBehaviour
                 break;
             case 3000:
                 DefaultMovement();
+                _v._iterationOnDestroyed = 1;
                 break;
             case 10:
                 break;
@@ -286,6 +314,7 @@ public class sc_SpellBehaviours : MonoBehaviour
             case 2010:
                 break;
             case 3010:
+                _v._iterationOnDestroyed = 1;
                 break;
             case 20:
                 DefaultMovement();
@@ -297,23 +326,29 @@ public class sc_SpellBehaviours : MonoBehaviour
                 break;
             case 3020:
                 DefaultMovement();
+                _v._iterationOnDestroyed = 1;
                 break;
             case 30:
                 DefaultMovement();
+                _v._iterationOnDestroyed = 1;
                 break;
             case 1030:
+                _v._iterationOnDestroyed = 1;
                 break;
             case 2030:
                 DefaultMovement();
+                _v._iterationOnDestroyed = 1;
                 break;
             case 3030:
                 DefaultMovement();
+                _v._iterationOnDestroyed = 2;
                 break;
             default:
                 break;
         }
 
         _v.startPos = transform.position;
+        _v.duration = 0f;
     }
 
     private void UpdateMovementBehaviour() //Update
@@ -364,15 +399,24 @@ public class sc_SpellBehaviours : MonoBehaviour
         }
 
         _v.duration += Time.deltaTime;
-        _v._spread = _v.duration * _v._spreadSpeed;
 
         if (_v.duration >= _v._lifeTime)
         {
+            if (_v._iterationOnDestroyed > 0)
+            {
+                ProjOnDeath(_v._iterationOnDestroyed);
+            }
             ActionDone();
         }
 
         if (Vector3.Distance(_v.startPos, transform.position) >= _v._maxDistance)
+        {
+            if (_v._iterationOnDestroyed > 0)
+            {
+                ProjOnDeath(_v._iterationOnDestroyed);
+            }
             ActionDone();
+        }
     }
 
     void DefaultMovement()//Start
@@ -385,6 +429,8 @@ public class sc_SpellBehaviours : MonoBehaviour
 
     void OrbitalMovement()//Update
     {
+        _v._spread = _v.duration * _v._spreadSpeed;
+
         Vector3 chickenCenter = new Vector3(transform.parent.position.x, transform.position.y, transform.parent.position.z);
         Vector3 desiredPosition;
 
@@ -392,14 +438,6 @@ public class sc_SpellBehaviours : MonoBehaviour
         desiredPosition = (transform.position - chickenCenter).normalized * _v.duration + chickenCenter;
         transform.position = Vector3.MoveTowards(transform.position, desiredPosition, Time.deltaTime * _v._spread);
 
-        /*transform.LookAt(chickenCenter);
-
-        float x = -Mathf.Cos(_v.duration * _v._orbitSpeed) * _v._spread;
-        float z = Mathf.Sin(_v.duration * _v._orbitSpeed) * _v._spread;
-
-        Vector3 pos = new Vector3(x, transform.position.y, z);
-        transform.position = pos + transform.parent.position;
-        */
         GameObject fxs = transform.GetChild(0).gameObject;
 
         Vector3 orbitalPosFB = new Vector3(1, 0, 0);
@@ -459,7 +497,97 @@ public class sc_SpellBehaviours : MonoBehaviour
             }
             Explosion.GetComponent<sc_SelfDestruction>().KillEverybody(Mathf.RoundToInt(newDamages), _v._id, newRange);
         }
-        Destroy(gameObject);
+        /*if (_v._iterationOnDestroyed > 0)
+        {
+            Destroy(gameObject, 2);
+
+        }
+        else*/
+            Destroy(gameObject);
+    }
+
+    public void ProjOnDeath (int iLeft)
+    {
+        if (_v.bestTarget != null)
+        {
+            _v.bestTarget = GetClosest();
+        }
+        //Debug.Log("il reste : " + iLeft + " itération et " + _v._iterationOnDestroyed + " dans les variables");
+        GameObject newItmodel = Instantiate(gameObject, transform.position, _v.qZero);
+        sc_SpellBehaviours s_sb = newItmodel.GetComponent<sc_SpellBehaviours>();
+
+        if (newItmodel.transform.childCount > 0)
+        {
+            for (int i = 0; i < newItmodel.transform.childCount; i++)
+            {
+                Destroy(newItmodel.transform.GetChild(i).gameObject);
+            }
+        }
+        s_sb._getPassives_Right = Passives_R.EMPTY;
+        s_sb._getProfile = _getProfile;
+        if (_v.bestTarget != null)
+            newItmodel.transform.LookAt(_v.bestTarget.transform, Vector3.up);
+        Quaternion goodLook = new Quaternion(0, newItmodel.transform.rotation.y, 0, 0);
+        GameObject newIt = Instantiate(newItmodel, transform.position, goodLook);
+        sc_SpellBehaviours s_sbn = newIt.GetComponent<sc_SpellBehaviours>();
+        if (_v.bestTarget != null)
+            newIt.transform.LookAt(_v.bestTarget.transform, Vector3.up);
+
+        s_sbn.LaunchEnableCol();
+
+        if (iLeft == 2)
+        {
+            _v._iterationOnDestroyed = 1;
+            s_sbn._v._iterationOnDestroyed = 1;
+            s_sb._getPassives_Left = Passives_L.Chain;
+            s_sbn._getPassives_Left = Passives_L.Chain;
+            s_sb._getPassives_Right = Passives_R.EMPTY;//Empty
+            s_sbn._getPassives_Right = Passives_R.EMPTY;//Empty
+        }
+        if (iLeft == 1)
+        {
+            _v._iterationOnDestroyed = 0;
+            s_sbn._v._iterationOnDestroyed = 0;
+            s_sb._getPassives_Right = Passives_R.EMPTY;
+            s_sbn._getPassives_Right = Passives_R.EMPTY;
+            s_sb._getPassives_Left = Passives_L.EMPTY;
+            s_sbn._getPassives_Left = Passives_L.EMPTY;
+        }
+        Destroy(newItmodel);
+        newIt.name = "Chain " + iLeft.ToString();
+
+        Destroy(newIt.transform.GetChild(0).gameObject);
+    }
+
+    GameObject GetClosest()
+    {
+        float lowestDist = Mathf.Infinity;
+        GameObject nearest = null;
+
+        for (int i = 0; i < _v.nearest.Count; i++)
+        {
+            float dist = Vector3.Distance(_v.nearest[i].transform.position, transform.position);
+
+            if (dist < lowestDist)
+            {
+                lowestDist = dist;
+                nearest = _v.nearest[i];
+            }
+        }
+        return nearest;
+    }
+
+    public void LaunchEnableCol ()
+    {
+        gameObject.GetComponent<SphereCollider>().enabled = false;
+        StartCoroutine(enableCol());
+    }
+
+    public IEnumerator enableCol()
+    {
+        yield return new WaitForSeconds(0.2f);
+        if (gameObject != null)
+            gameObject.GetComponent<SphereCollider>().enabled = true;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -468,11 +596,23 @@ public class sc_SpellBehaviours : MonoBehaviour
         {
             if (other.GetComponent<sc_Chicken_ID>().ID != _v._id)
             {
+                if (_v.nearest.Contains(other.gameObject))
+                {
+                    _v.nearest.Remove(other.gameObject);
+                }
+                if (_v._iterationOnDestroyed > 0)
+                {
+                    ProjOnDeath(_v._iterationOnDestroyed);
+                }
                 ActionDone();
             }
         }
         if (other.tag == "WorldCollider")
         {
+            if (_v._iterationOnDestroyed > 0)
+            {
+                ProjOnDeath(_v._iterationOnDestroyed);
+            }
             ActionDone();
         }
     }
