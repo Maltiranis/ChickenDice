@@ -386,19 +386,38 @@ public class sc_SpellBehaviours : MonoBehaviour
     void OrbitalMovement()//Update
     {
         Vector3 chickenCenter = new Vector3(transform.parent.position.x, transform.position.y, transform.parent.position.z);
-        transform.LookAt(chickenCenter);
+        Vector3 desiredPosition;
+
+        transform.RotateAround(chickenCenter, Vector3.up, _v._orbitSpeed * Time.deltaTime);
+        desiredPosition = (transform.position - chickenCenter).normalized * _v.duration + chickenCenter;
+        transform.position = Vector3.MoveTowards(transform.position, desiredPosition, Time.deltaTime * _v._spread);
+
+        /*transform.LookAt(chickenCenter);
 
         float x = -Mathf.Cos(_v.duration * _v._orbitSpeed) * _v._spread;
         float z = Mathf.Sin(_v.duration * _v._orbitSpeed) * _v._spread;
 
         Vector3 pos = new Vector3(x, transform.position.y, z);
         transform.position = pos + transform.parent.position;
-
+        */
         GameObject fxs = transform.GetChild(0).gameObject;
-        Vector3 orbitalPosFB = new Vector3(-1, 0, 0);
-        Vector3 orbitalRotFB = new Vector3(270, 0, 270);
-        fxs.transform.localPosition = orbitalPosFB;
-        fxs.transform.localEulerAngles = orbitalRotFB;
+
+        Vector3 orbitalPosFB = new Vector3(1, 0, 0);
+        Vector3 orbitalRotFB = new Vector3(270, 180, 270);
+
+        Vector3 orbitalPosBL = new Vector3(0, 0, 0);
+        Vector3 orbitalRotBL = new Vector3(-90, 0, 90);
+
+        if (_getProfile == Profile.FireBolt)
+        {
+            fxs.transform.localPosition = orbitalPosFB;
+            fxs.transform.localEulerAngles = orbitalRotFB;
+        }
+        if (_getProfile == Profile.Bowling)
+        {
+            fxs.transform.localPosition = orbitalPosBL;
+            fxs.transform.localEulerAngles = orbitalRotBL;
+        }
     }
 
     void ActionDone()
