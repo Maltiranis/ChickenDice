@@ -10,11 +10,13 @@ public class sc_SpellAlchemist : MonoBehaviour
     [SerializeField] private sc_Chicken_ID _myID;
     int _id;
     [Space(10)]
-    [Header("Objects")]
+    [Header("Offsets")]
     public GameObject _shootOffset_0;
+    public GameObject _shootOffset_30;
     public GameObject _shootOffset_120;
     public GameObject _shootOffset_180;
     public GameObject _shootOffset_240;
+    public GameObject _shootOffset_330;
     [Space(10)]
     [Header("Variables")]
     private float _refreshValue1 = 1.0f;
@@ -176,6 +178,11 @@ public class sc_SpellAlchemist : MonoBehaviour
                         s_sbS._getPassives_Right = sc_SpellBehaviours.Passives_R.Chain;
                     }
                 }
+                if (s_sbS._getProfile == sc_SpellBehaviours.Profile.PumpGun)
+                {
+                    ShootInstance(A, P1, P2, 30);
+                    ShootInstance(A, P1, P2, 330);
+                }
                 #region M + Null / Null + M
                 if (s_sbS._getPassives_Left == sc_SpellBehaviours.Passives_L.Multiple &&
                     s_sbS._getPassives_Right == sc_SpellBehaviours.Passives_R.EMPTY)
@@ -273,15 +280,19 @@ public class sc_SpellAlchemist : MonoBehaviour
         {
             if (angleOffset == 0)
                 shot = Instantiate(A, _shootOffset_0.transform.position, _shootOffset_0.transform.rotation);
+            if (angleOffset == 30)
+                shot = Instantiate(A, _shootOffset_30.transform.position, _shootOffset_30.transform.rotation);
             if (angleOffset == 120)
                 shot = Instantiate(A, _shootOffset_120.transform.position, _shootOffset_120.transform.rotation);
             if (angleOffset == 180)
                 shot = Instantiate(A, _shootOffset_180.transform.position, _shootOffset_180.transform.rotation);
             if (angleOffset == 240)
                 shot = Instantiate(A, _shootOffset_240.transform.position, _shootOffset_240.transform.rotation);
+            if (angleOffset == 330)
+                shot = Instantiate(A, _shootOffset_330.transform.position, _shootOffset_330.transform.rotation);
 
-                //si P1 ou P2 c'est la bombe on parente "shot"
-                sc_SpellBehaviours s_sbS = shot.GetComponent<sc_SpellBehaviours>();
+            //si P1 ou P2 c'est la bombe on parente "shot"
+            sc_SpellBehaviours s_sbS = shot.GetComponent<sc_SpellBehaviours>();
                 s_sbS._v._id = _id;
 
             if (P1 != null)
