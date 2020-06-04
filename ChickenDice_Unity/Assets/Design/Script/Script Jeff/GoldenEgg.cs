@@ -30,7 +30,7 @@ public class GoldenEgg : MonoBehaviour
     [SerializeField] private Image[] _barInWin;
     [SerializeField] private TextMeshProUGUI[] _PointTextInWin;
 
-    private void FixedUpdate()
+    private void Update()
     {
         if(_TargetFollow == null)
         {
@@ -44,15 +44,14 @@ public class GoldenEgg : MonoBehaviour
             if (_PlayerWinPoint == false)
             {
                 _PlayerWinPoint = true;
-                _IdPlayerHaveEgg = _TargetFollow.gameObject.GetComponentInParent<sc_Chicken_ID>().ID;
                 StartCoroutine(SetPoint());
             }
 
-            //LA POULE CREVE ELLE PERD L'OEUF
-            if(_TargetFollow.GetComponent<sc_LifeEngine>()._life <= 0)
-            {
-                _IsPick = false;
-            }
+            ////LA POULE CREVE ELLE PERD L'OEUF
+            //if(_TargetFollow.GetComponent<sc_LifeEngine>()._life <= 0)
+            //{
+            //    _IsPick = false;
+            //}
 
             //LA POULE SE FAIT TOUCHER ELLE PERD L'OEUF
             if (_TargetFollow.GetComponentInChildren<sc_AnimManagement>()._onHit == true)
@@ -106,6 +105,7 @@ public class GoldenEgg : MonoBehaviour
         if (other.gameObject.GetComponent<sc_Peck>() != null && _IsPick == false)
         {
             _TargetFollow = other.gameObject;
+            _IdPlayerHaveEgg = _TargetFollow.gameObject.GetComponentInParent<sc_Chicken_ID>().ID;
             _IsPick = true;
         }
         
