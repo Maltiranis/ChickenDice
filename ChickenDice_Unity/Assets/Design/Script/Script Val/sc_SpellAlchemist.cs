@@ -10,11 +10,13 @@ public class sc_SpellAlchemist : MonoBehaviour
     [SerializeField] private sc_Chicken_ID _myID;
     int _id;
     [Space(10)]
-    [Header("Objects")]
+    [Header("Offsets")]
     public GameObject _shootOffset_0;
+    public GameObject _shootOffset_30;
     public GameObject _shootOffset_120;
     public GameObject _shootOffset_180;
     public GameObject _shootOffset_240;
+    public GameObject _shootOffset_330;
     [Space(10)]
     [Header("Variables")]
     private float _refreshValue1 = 1.0f;
@@ -144,11 +146,17 @@ public class sc_SpellAlchemist : MonoBehaviour
                         s_sbS._getPassives_Left = sc_SpellBehaviours.Passives_L.Multiple;
                     }
 
+                    //Chain
+                    if (s_sbP1._getPassives_Left == sc_SpellBehaviours.Passives_L.Chain ||
+                        s_sbP1._getPassives_Right == sc_SpellBehaviours.Passives_R.Chain)
+                    {
+                        s_sbS._getPassives_Left = sc_SpellBehaviours.Passives_L.Chain;
+                    }
                 }
                 if (P2 != null)
                 {
                     sc_SpellBehaviours s_sbP2 = P2.GetComponent<sc_SpellBehaviours>();
-                    //Profile = PASSIVE
+                    //Spinning
                     if (s_sbP2._getPassives_Left == sc_SpellBehaviours.Passives_L.Spinning ||
                         s_sbP2._getPassives_Right == sc_SpellBehaviours.Passives_R.Spinning)
                     {
@@ -162,6 +170,18 @@ public class sc_SpellAlchemist : MonoBehaviour
                     {
                         s_sbS._getPassives_Right = sc_SpellBehaviours.Passives_R.Multiple;
                     }
+
+                    //Chain
+                    if (s_sbP2._getPassives_Left == sc_SpellBehaviours.Passives_L.Chain ||
+                        s_sbP2._getPassives_Right == sc_SpellBehaviours.Passives_R.Chain)
+                    {
+                        s_sbS._getPassives_Right = sc_SpellBehaviours.Passives_R.Chain;
+                    }
+                }
+                if (s_sbS._getProfile == sc_SpellBehaviours.Profile.PumpGun)
+                {
+                    ShootInstance(A, P1, P2, 30);
+                    ShootInstance(A, P1, P2, 330);
                 }
                 #region M + Null / Null + M
                 if (s_sbS._getPassives_Left == sc_SpellBehaviours.Passives_L.Multiple &&
@@ -171,7 +191,7 @@ public class sc_SpellAlchemist : MonoBehaviour
                     StartCoroutine(MultipleCasts(s_sbS._v._timeToWait, A, P1, P2));
                 }
 
-                if (s_sbS._getPassives_Left != sc_SpellBehaviours.Passives_L.EMPTY &&
+                if (s_sbS._getPassives_Left == sc_SpellBehaviours.Passives_L.EMPTY &&
                     s_sbS._getPassives_Right == sc_SpellBehaviours.Passives_R.Multiple)
                 {
                     s_sbS._v._iterationOnLaunch = 1;
@@ -183,27 +203,42 @@ public class sc_SpellAlchemist : MonoBehaviour
                     s_sbS._getPassives_Right == sc_SpellBehaviours.Passives_R.Chain)
                 {
                     s_sbS._v._iterationOnLaunch = 1;
+                    s_sbS._v._iterationOnDestroyed = 1;
                     StartCoroutine(MultipleCasts(s_sbS._v._timeToWait, A, P1, P2));
                 }
 
-                if (s_sbS._getPassives_Left != sc_SpellBehaviours.Passives_L.Chain &&
+                if (s_sbS._getPassives_Left == sc_SpellBehaviours.Passives_L.Chain &&
                     s_sbS._getPassives_Right == sc_SpellBehaviours.Passives_R.Multiple)
                 {
                     s_sbS._v._iterationOnLaunch = 1;
+                    s_sbS._v._iterationOnDestroyed = 1;
                     StartCoroutine(MultipleCasts(s_sbS._v._timeToWait, A, P1, P2));
+                }
+                #endregion
+                #region S + C / C + S
+                if (s_sbS._getPassives_Left == sc_SpellBehaviours.Passives_L.Spinning &&
+                    s_sbS._getPassives_Right == sc_SpellBehaviours.Passives_R.Chain)
+                {
+                    s_sbS._v._iterationOnDestroyed = 1;
+                    ShootInstance(A, P1, P2, 180);
+                }
+
+                if (s_sbS._getPassives_Left == sc_SpellBehaviours.Passives_L.Chain &&
+                    s_sbS._getPassives_Right == sc_SpellBehaviours.Passives_R.Spinning)
+                {
+                    s_sbS._v._iterationOnDestroyed = 1;
+                    ShootInstance(A, P1, P2, 180);
                 }
                 #endregion
                 #region S + M / M + S
                 if (s_sbS._getPassives_Left == sc_SpellBehaviours.Passives_L.Spinning &&
                     s_sbS._getPassives_Right == sc_SpellBehaviours.Passives_R.Multiple)
                 {
-                    s_sbS._v._iterationOnLaunch = 1;
                     ShootInstance(A, P1, P2, 180);
                 }
                 if (s_sbS._getPassives_Left == sc_SpellBehaviours.Passives_L.Multiple &&
                     s_sbS._getPassives_Right == sc_SpellBehaviours.Passives_R.Spinning)
                 {
-                    s_sbS._v._iterationOnLaunch = 1;
                     ShootInstance(A, P1, P2, 180);
                 }
                 #endregion
@@ -225,6 +260,13 @@ public class sc_SpellAlchemist : MonoBehaviour
                     ShootInstance(A, P1, P2, 240);
                 }
                 #endregion
+                #region C + C
+                if (s_sbS._getPassives_Left == sc_SpellBehaviours.Passives_L.Chain &&
+                    s_sbS._getPassives_Right == sc_SpellBehaviours.Passives_R.Chain)
+                {
+                    s_sbS._v._iterationOnDestroyed = 2;
+                }
+                #endregion
             }
         }
     }
@@ -238,54 +280,148 @@ public class sc_SpellAlchemist : MonoBehaviour
         {
             if (angleOffset == 0)
                 shot = Instantiate(A, _shootOffset_0.transform.position, _shootOffset_0.transform.rotation);
+            if (angleOffset == 30)
+                shot = Instantiate(A, _shootOffset_30.transform.position, _shootOffset_30.transform.rotation);
             if (angleOffset == 120)
                 shot = Instantiate(A, _shootOffset_120.transform.position, _shootOffset_120.transform.rotation);
             if (angleOffset == 180)
                 shot = Instantiate(A, _shootOffset_180.transform.position, _shootOffset_180.transform.rotation);
             if (angleOffset == 240)
                 shot = Instantiate(A, _shootOffset_240.transform.position, _shootOffset_240.transform.rotation);
+            if (angleOffset == 330)
+                shot = Instantiate(A, _shootOffset_330.transform.position, _shootOffset_330.transform.rotation);
 
-                //si P1 ou P2 c'est la bombe on parente "shot"
-                sc_SpellBehaviours s_sbS = shot.GetComponent<sc_SpellBehaviours>();
+            //si P1 ou P2 c'est la bombe on parente "shot"
+            sc_SpellBehaviours s_sbS = shot.GetComponent<sc_SpellBehaviours>();
                 s_sbS._v._id = _id;
 
-                if (P1 != null)
+            if (P1 != null)
+            {
+                sc_SpellBehaviours s_sbP1 = P1.GetComponent<sc_SpellBehaviours>();
+                //Spinning
+                if (s_sbP1._getPassives_Left == sc_SpellBehaviours.Passives_L.Spinning ||
+                    s_sbP1._getPassives_Right == sc_SpellBehaviours.Passives_R.Spinning)
                 {
-                    sc_SpellBehaviours s_sbP1 = P1.GetComponent<sc_SpellBehaviours>();
-                    //Spinning
-                    if (s_sbP1._getPassives_Left == sc_SpellBehaviours.Passives_L.Spinning ||
-                        s_sbP1._getPassives_Right == sc_SpellBehaviours.Passives_R.Spinning)
-                    {
-                        shot.transform.parent = transform;
-                        s_sbS._getPassives_Left = sc_SpellBehaviours.Passives_L.Spinning;
-                    }
-
-                    //Multiple
-                    if (s_sbP1._getPassives_Left == sc_SpellBehaviours.Passives_L.Multiple ||
-                        s_sbP1._getPassives_Right == sc_SpellBehaviours.Passives_R.Multiple)
-                    {
-                        s_sbS._getPassives_Left = sc_SpellBehaviours.Passives_L.Multiple;
-                    }
-
+                    shot.transform.parent = transform;
+                    s_sbS._getPassives_Left = sc_SpellBehaviours.Passives_L.Spinning;
                 }
-                if (P2 != null)
+
+                //Multiple
+                if (s_sbP1._getPassives_Left == sc_SpellBehaviours.Passives_L.Multiple ||
+                    s_sbP1._getPassives_Right == sc_SpellBehaviours.Passives_R.Multiple)
                 {
-                    sc_SpellBehaviours s_sbP2 = P2.GetComponent<sc_SpellBehaviours>();
-                    //Profile = PASSIVE
-                    if (s_sbP2._getPassives_Left == sc_SpellBehaviours.Passives_L.Spinning ||
-                        s_sbP2._getPassives_Right == sc_SpellBehaviours.Passives_R.Spinning)
-                    {
-                        shot.transform.parent = transform;
-                        s_sbS._getPassives_Right = sc_SpellBehaviours.Passives_R.Spinning;
-                    }
-
-                    //Multiple
-                    if (s_sbP2._getPassives_Left == sc_SpellBehaviours.Passives_L.Multiple ||
-                        s_sbP2._getPassives_Right == sc_SpellBehaviours.Passives_R.Multiple)
-                    {
-                        s_sbS._getPassives_Right = sc_SpellBehaviours.Passives_R.Multiple;
-                    }
+                    s_sbS._getPassives_Left = sc_SpellBehaviours.Passives_L.Multiple;
                 }
+
+                //Chain
+                if (s_sbP1._getPassives_Left == sc_SpellBehaviours.Passives_L.Chain ||
+                    s_sbP1._getPassives_Right == sc_SpellBehaviours.Passives_R.Chain)
+                {
+                    s_sbS._getPassives_Left = sc_SpellBehaviours.Passives_L.Chain;
+                }
+            }
+            if (P2 != null)
+            {
+                sc_SpellBehaviours s_sbP2 = P2.GetComponent<sc_SpellBehaviours>();
+                //Spinning
+                if (s_sbP2._getPassives_Left == sc_SpellBehaviours.Passives_L.Spinning ||
+                    s_sbP2._getPassives_Right == sc_SpellBehaviours.Passives_R.Spinning)
+                {
+                    shot.transform.parent = transform;
+                    s_sbS._getPassives_Right = sc_SpellBehaviours.Passives_R.Spinning;
+                }
+
+                //Multiple
+                if (s_sbP2._getPassives_Left == sc_SpellBehaviours.Passives_L.Multiple ||
+                    s_sbP2._getPassives_Right == sc_SpellBehaviours.Passives_R.Multiple)
+                {
+                    s_sbS._getPassives_Right = sc_SpellBehaviours.Passives_R.Multiple;
+                }
+
+                //Chain
+                if (s_sbP2._getPassives_Left == sc_SpellBehaviours.Passives_L.Chain ||
+                    s_sbP2._getPassives_Right == sc_SpellBehaviours.Passives_R.Chain)
+                {
+                    s_sbS._getPassives_Right = sc_SpellBehaviours.Passives_R.Chain;
+                }
+            }
+            /*#region M + Null / Null + M
+            if (s_sbS._getPassives_Left == sc_SpellBehaviours.Passives_L.Multiple &&
+                s_sbS._getPassives_Right == sc_SpellBehaviours.Passives_R.EMPTY)
+            {
+                s_sbS._v._iterationOnLaunch = 1;
+                StartCoroutine(MultipleCasts(s_sbS._v._timeToWait, A, P1, P2));
+            }
+
+            if (s_sbS._getPassives_Left == sc_SpellBehaviours.Passives_L.EMPTY &&
+                s_sbS._getPassives_Right == sc_SpellBehaviours.Passives_R.Multiple)
+            {
+                s_sbS._v._iterationOnLaunch = 1;
+                StartCoroutine(MultipleCasts(s_sbS._v._timeToWait, A, P1, P2));
+            }
+            #endregion
+            #region M + C / C + M
+            if (s_sbS._getPassives_Left == sc_SpellBehaviours.Passives_L.Multiple &&
+                s_sbS._getPassives_Right == sc_SpellBehaviours.Passives_R.Chain)
+            {
+                s_sbS._v._iterationOnLaunch = 1;
+                s_sbS._v._iterationOnDestroyed = 1;
+                StartCoroutine(MultipleCasts(s_sbS._v._timeToWait, A, P1, P2));
+            }
+
+            if (s_sbS._getPassives_Left == sc_SpellBehaviours.Passives_L.Chain &&
+                s_sbS._getPassives_Right == sc_SpellBehaviours.Passives_R.Multiple)
+            {
+                s_sbS._v._iterationOnLaunch = 1;
+                s_sbS._v._iterationOnDestroyed = 1;
+                StartCoroutine(MultipleCasts(s_sbS._v._timeToWait, A, P1, P2));
+            }
+            #endregion
+            #region S + C / C + S
+            if (s_sbS._getPassives_Left == sc_SpellBehaviours.Passives_L.Spinning &&
+                s_sbS._getPassives_Right == sc_SpellBehaviours.Passives_R.Chain)
+            {
+                s_sbS._v._iterationOnDestroyed = 1;
+                ShootInstance(A, P1, P2, 180);
+            }
+
+            if (s_sbS._getPassives_Left == sc_SpellBehaviours.Passives_L.Chain &&
+                s_sbS._getPassives_Right == sc_SpellBehaviours.Passives_R.Spinning)
+            {
+                s_sbS._v._iterationOnDestroyed = 1;
+                ShootInstance(A, P1, P2, 180);
+            }
+            #endregion
+            #region S + M / M + S
+            if (s_sbS._getPassives_Left == sc_SpellBehaviours.Passives_L.Spinning &&
+                s_sbS._getPassives_Right == sc_SpellBehaviours.Passives_R.Multiple)
+            {
+                ShootInstance(A, P1, P2, 180);
+            }
+            if (s_sbS._getPassives_Left == sc_SpellBehaviours.Passives_L.Multiple &&
+                s_sbS._getPassives_Right == sc_SpellBehaviours.Passives_R.Spinning)
+            {
+                ShootInstance(A, P1, P2, 180);
+            }
+            #endregion
+            #region M + M
+            if (s_sbS._getPassives_Left == sc_SpellBehaviours.Passives_L.Multiple &&
+                s_sbS._getPassives_Right == sc_SpellBehaviours.Passives_R.Multiple)
+            {
+                s_sbS._v._iterationOnLaunch = 2;
+                StartCoroutine(MultipleCasts(s_sbS._v._timeToWait, A, P1, P2));
+                StartCoroutine(MultipleCasts(2 * s_sbS._v._timeToWait, A, P1, P2));
+            }
+            #endregion
+            #region S + S
+            if (s_sbS._getPassives_Left == sc_SpellBehaviours.Passives_L.Spinning &&
+                s_sbS._getPassives_Right == sc_SpellBehaviours.Passives_R.Spinning)
+            {
+                s_sbS._v._iterationOnLaunch = 2;
+                ShootInstance(A, P1, P2, 120);
+                ShootInstance(A, P1, P2, 240);
+            }
+            #endregion*/
         }
     }
 
