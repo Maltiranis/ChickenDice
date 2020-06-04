@@ -76,7 +76,7 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _Passedevant: -0.5
+    - _Passedevant: -0.96
     - _PlayerNumber: 2
     - _PowEmiss: 1
     - _SmoothnessTextureChannel: 0
