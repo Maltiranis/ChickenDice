@@ -15,19 +15,19 @@ public class sc_SelectionPlayer : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("xA_0")&&_canbeselect == false)
+        if (Input.GetButtonDown("xA_0") &&   _canbeselect == false)
         {
             _SkinP01.SetActive(!_SkinP01.activeSelf);
         }
-        if (Input.GetButtonDown("xA_1")&&_canbeselect == false)
+        if (Input.GetButtonDown("xA_1") &&   _canbeselect == false)
         {
             _SkinP02.SetActive(!_SkinP01.activeSelf);           
         }
-        if (Input.GetButtonDown("xA_2")&&_canbeselect == false)
+        if (Input.GetButtonDown("xA_2") &&   _canbeselect == false)
         {
             _SkinP03.SetActive(!_SkinP01.activeSelf);           
         }
-        if (Input.GetButtonDown("xA_3")&&_canbeselect == false)
+        if (Input.GetButtonDown("xA_3") &&   _canbeselect == false)
         {
             _SkinP04.SetActive(!_SkinP01.activeSelf);          
         }
@@ -41,13 +41,13 @@ public class sc_SelectionPlayer : MonoBehaviour
             _StartButton.SetActive(false);
         }
 
-        if(Input.GetButtonDown("Start")&& _StartButton.activeSelf)
+        if(Input.GetButtonDown("Start_0")&& _StartButton.activeSelf && _canbeselect == false)
         {
             //Debug.Log("start");
             CanvasTuto();
         }
 
-        if (Input.GetButton("Select"))
+        if (Input.GetButtonDown("Select") && _canbeselect == false)
         {
             //Debug.Log("select");
             CanvasTuto();

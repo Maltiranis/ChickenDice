@@ -789,7 +789,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh263502
+  m_Name: pb_Mesh542290
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1027,7 +1027,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh263990
+  m_Name: pb_Mesh543504
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3297,7 +3297,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh264012
+  m_Name: pb_Mesh543562
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4291,7 +4291,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh263214
+  m_Name: pb_Mesh541916
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -5579,7 +5579,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d4bd29ca69e7a745a9086b067358edc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _TimeBeforeRestart: 5
+  _TimeBeforeRestart: 2
   _NotReady:
   - {fileID: 5947427402600565307}
   - {fileID: 4890375301055986300}
@@ -8060,7 +8060,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh263960
+  m_Name: pb_Mesh543466
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -13885,7 +13885,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh263198
+  m_Name: pb_Mesh541892
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -15982,7 +15982,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh262798
+  m_Name: pb_Mesh541350
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -18418,7 +18418,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh263940
+  m_Name: pb_Mesh543432
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -19350,7 +19350,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh264028
+  m_Name: pb_Mesh543582
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -24999,7 +24999,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh263972
+  m_Name: pb_Mesh543482
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -27581,7 +27581,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh262642
+  m_Name: pb_Mesh541158
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -28013,29 +28013,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _myID: {fileID: 1008034808975944719}
   _shootOffset_0: {fileID: 683581776}
+  _shootOffset_30: {fileID: 0}
   _shootOffset_120: {fileID: 6622780062938265832}
   _shootOffset_180: {fileID: 3200274319947272554}
   _shootOffset_240: {fileID: 4671792795793069611}
+  _shootOffset_330: {fileID: 0}
   _refillSpeed: 0.1
   leftTriggerCD: 0
   rightTriggerCD: 0
   _coolDownR: 1
   _coolDownL: 1
-  _bar:
-  - {fileID: 75713364}
-  - {fileID: 1820572542}
-  - {fileID: 854407603}
-  - {fileID: 1016639027}
-  _timeText:
-  - {fileID: 1878412342}
-  - {fileID: 2081207205}
-  - {fileID: 1060055905}
-  - {fileID: 1317044866}
-  _UI:
-  - {fileID: 823818429}
-  - {fileID: 706515759}
-  - {fileID: 319867256}
-  - {fileID: 913531127}
 --- !u!114 &22597780404820122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28050,29 +28037,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _myID: {fileID: 1008034808127636431}
   _shootOffset_0: {fileID: 2100203152}
+  _shootOffset_30: {fileID: 0}
   _shootOffset_120: {fileID: 6622780061536311080}
   _shootOffset_180: {fileID: 3200274319235301034}
   _shootOffset_240: {fileID: 4671792797192927723}
+  _shootOffset_330: {fileID: 0}
   _refillSpeed: 0.1
   leftTriggerCD: 0
   rightTriggerCD: 0
   _coolDownR: 1
   _coolDownL: 1
-  _bar:
-  - {fileID: 1360225428}
-  - {fileID: 957584574}
-  - {fileID: 1736250995}
-  - {fileID: 1762165235}
-  _timeText:
-  - {fileID: 979788790}
-  - {fileID: 698129509}
-  - {fileID: 1790903457}
-  - {fileID: 454077762}
-  _UI:
-  - {fileID: 1686787965}
-  - {fileID: 2139929839}
-  - {fileID: 1182852792}
-  - {fileID: 1675841335}
 --- !u!114 &22597780660837930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28087,29 +28061,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _myID: {fileID: 1008034807848945023}
   _shootOffset_0: {fileID: 1838352416}
+  _shootOffset_30: {fileID: 0}
   _shootOffset_120: {fileID: 6622780061811790232}
   _shootOffset_180: {fileID: 3200274318960277530}
   _shootOffset_240: {fileID: 4671792796914696027}
+  _shootOffset_330: {fileID: 0}
   _refillSpeed: 0.1
   leftTriggerCD: 0
   rightTriggerCD: 0
   _coolDownR: 1
   _coolDownL: 1
-  _bar:
-  - {fileID: 1101980196}
-  - {fileID: 699273742}
-  - {fileID: 2009108675}
-  - {fileID: 2041907011}
-  _timeText:
-  - {fileID: 719054150}
-  - {fileID: 958470869}
-  - {fileID: 2046984721}
-  - {fileID: 195898354}
-  _UI:
-  - {fileID: 1949815245}
-  - {fileID: 1865497183}
-  - {fileID: 1446862856}
-  - {fileID: 1935591815}
 --- !u!114 &173221859549392876
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29116,7 +29077,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!136 &1008034807848945022
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -29646,7 +29607,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!136 &1008034808127636430
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -30564,7 +30525,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!136 &1008034808975944718
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -31348,6 +31309,7 @@ MonoBehaviour:
   _actionRange: 2
   nearest: []
   bestTarget: {fileID: 0}
+  s_sa: {fileID: 0}
 --- !u!114 &1270922326924847346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31378,6 +31340,7 @@ MonoBehaviour:
   _actionRange: 2
   nearest: []
   bestTarget: {fileID: 0}
+  s_sa: {fileID: 0}
 --- !u!114 &1270922327198690882
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31408,6 +31371,7 @@ MonoBehaviour:
   _actionRange: 2
   nearest: []
   bestTarget: {fileID: 0}
+  s_sa: {fileID: 0}
 --- !u!1 &1431121057707993223
 GameObject:
   m_ObjectHideFlags: 0
@@ -33598,6 +33562,7 @@ MonoBehaviour:
   _actionRange: 2
   nearest: []
   bestTarget: {fileID: 0}
+  s_sa: {fileID: 0}
 --- !u!223 &7842692208684366084
 Canvas:
   m_ObjectHideFlags: 0
@@ -34607,7 +34572,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!136 &8089967529349836050
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -39596,26 +39561,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _myID: {fileID: 8089967529349836051}
   _shootOffset_0: {fileID: 9059013515550171212}
+  _shootOffset_30: {fileID: 0}
   _shootOffset_120: {fileID: 2760921712086448628}
   _shootOffset_180: {fileID: 5895700380220199030}
   _shootOffset_240: {fileID: 4426367732418844471}
+  _shootOffset_330: {fileID: 0}
   _refillSpeed: 0.1
   leftTriggerCD: 0
   rightTriggerCD: 0
   _coolDownR: 1
   _coolDownL: 1
-  _bar:
-  - {fileID: 9059013515215981128}
-  - {fileID: 9059013516692404834}
-  - {fileID: 9059013515444435119}
-  - {fileID: 9059013515350814511}
-  _timeText:
-  - {fileID: 9059013516704107818}
-  - {fileID: 9059013516415382201}
-  - {fileID: 9059013515356220029}
-  - {fileID: 9059013516189139870}
-  _UI:
-  - {fileID: 9059013515392612769}
-  - {fileID: 9059013515577561651}
-  - {fileID: 9059013514889971812}
-  - {fileID: 9059013515504345579}

@@ -8,17 +8,17 @@ using UnityEngine.UI;
 public class GoldenEgg : MonoBehaviour
 {
 
-    [SerializeField] public float[] _CounterPlayer;
-    [SerializeField] public int _IdPlayerHaveEgg;
-
     [SerializeField] private float _ValeurToWin = 0f;
     [SerializeField] private float _TimeBeforeSetPoint = 0f;
-
     [SerializeField] private GameObject _GoldenEgg = null;
+   
+    [Header("auto")]
     [SerializeField] private GameObject _TargetFollow = null;
-    [SerializeField] private bool _IsPick = false;
     [SerializeField] private bool _PlayerWinPoint = false;
+    [SerializeField] private bool _IsPick = false;
     private bool _havewin;
+    [SerializeField] public float[] _CounterPlayer;
+    [SerializeField] public int _IdPlayerHaveEgg;
     [Header("UI")]
     [SerializeField] private Image[] _bar;  
     [SerializeField] private TextMeshProUGUI[] _PointText;
@@ -39,6 +39,8 @@ public class GoldenEgg : MonoBehaviour
 
         if(_IsPick == true)
         {
+           
+
             _GoldenEgg.transform.position = _TargetFollow.transform.position + new Vector3(0,1,0);
 
             if (_PlayerWinPoint == false)
@@ -56,6 +58,7 @@ public class GoldenEgg : MonoBehaviour
             //LA POULE SE FAIT TOUCHER ELLE PERD L'OEUF
             if (_TargetFollow.GetComponentInChildren<sc_AnimManagement>()._onHit == true)
             {
+                _GoldenEgg.transform.position = new Vector3(_GoldenEgg.transform.position.x, 0.5f, _GoldenEgg.transform.position.z);
                 _IsPick = false;
 
             }

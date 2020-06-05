@@ -17,22 +17,22 @@ public class sc_UIInterPhase : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButton("xA_0"))
+        if (Input.GetButton("Start_0"))
         {
             _NotReady[0].SetActive(false);
             _Ready[0].SetActive(true);
         }
-        if (Input.GetButton("xA_1"))
+        if (Input.GetButton("Start_1"))
         {
             _NotReady[1].SetActive(false);
             _Ready[1].SetActive(true);
         }
-        if (Input.GetButton("xA_2"))
+        if (Input.GetButton("Start_2"))
         {
             _NotReady[2].SetActive(false);
             _Ready[2].SetActive(true);
         }
-        if (Input.GetButton("xA_3"))
+        if (Input.GetButton("Start_3"))
         {
             _NotReady[3].SetActive(false);
             _Ready[3].SetActive(true);

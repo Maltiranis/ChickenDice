@@ -22,6 +22,7 @@ public class ScarecrowFight : MonoBehaviour
     [SerializeField] private Image[] _barInWin;
     [SerializeField] private TextMeshProUGUI[] _PointTextInWin;
 
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.GetComponent<sc_Peck>() != null)

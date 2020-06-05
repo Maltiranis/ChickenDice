@@ -7,11 +7,6 @@ using UnityEngine.UI;
 
 public class PhaseManager : MonoBehaviour
 {
-    [Header("Prefab Players")]
-    [SerializeField] public GameObject _Player01 = null;
-    [SerializeField] public GameObject _Player02 = null;
-    [SerializeField] public GameObject _Player03 = null;
-    [SerializeField] public GameObject _Player04 = null;
 
     [Header("Prefab Arena")]
     [SerializeField] private GameObject _LootArena = null;
@@ -64,6 +59,14 @@ public class PhaseManager : MonoBehaviour
     [SerializeField] private GameObject _UITimerLootPhase;
     [SerializeField] private GameObject _UIInterPhase;
 
+    [Header("Menu")]
+    [SerializeField] private GameObject _MenuPause = null;
+
+    [Header("Prefab Players Automatique")]
+    [SerializeField] public GameObject _Player01 = null;
+    [SerializeField] public GameObject _Player02 = null;
+    [SerializeField] public GameObject _Player03 = null;
+    [SerializeField] public GameObject _Player04 = null;
     private void Awake()
     {
         SetupScarcrow();
@@ -74,6 +77,7 @@ public class PhaseManager : MonoBehaviour
         StartCoroutine(LootPhaseTimer());
         StartCoroutine(Decompte());
         _TimerLootPhaseDecompt = _TimeLootPhase;
+        _MenuPause.SetActive(true);
     }
 
     private void Update()
@@ -164,11 +168,13 @@ public class PhaseManager : MonoBehaviour
 
     private void UIInterPhase()
     {
+        _MenuPause.SetActive(false);
         _UIInterPhase.SetActive(true);
     }
     // TP DES PLAYERS + SPAWN
     public void PhaseSetup()
     {
+        _MenuPause.SetActive(true);
         _UIInterPhase.SetActive(false);
         Transform _ChangeSpawnP01 = _Player01.GetComponent<sc_LifeEngine>()._startPosTransform;
         Transform _ChangeSpawnP02 = _Player02.GetComponent<sc_LifeEngine>()._startPosTransform;
