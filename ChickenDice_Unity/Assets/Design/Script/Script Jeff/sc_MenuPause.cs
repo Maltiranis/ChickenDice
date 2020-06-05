@@ -12,7 +12,7 @@ public class sc_MenuPause : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("Start_0")|| Input.GetButtonDown("Start_2") || Input.GetButtonDown("Start_2") || Input.GetButtonDown("Start_3"))
+        if (Input.GetButtonDown("Start_0")|| Input.GetButtonDown("Start_1") || Input.GetButtonDown("Start_2") || Input.GetButtonDown("Start_3"))
         {
             _MenuPause.SetActive(!_MenuPause.activeSelf);
 

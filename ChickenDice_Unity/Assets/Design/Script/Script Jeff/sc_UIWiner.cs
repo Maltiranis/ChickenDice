@@ -18,7 +18,11 @@ public class sc_UIWiner : MonoBehaviour
 
     private void Start()
     {
-        _MenuPause.SetActive(false);
+        if(_MenuPause != null)
+        {
+            _MenuPause.SetActive(false);
+
+        }
     }
     private void Update()
     {
