@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 382042822189917050}
   - component: {fileID: 5726718223416521074}
   m_Layer: 0
-  m_Name: A_PumpGun
+  m_Name: AS_Heal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf2f4d4de0612ae449f6529955c0c860, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _getProfile: 3
+  _getProfile: 5
   _getPassives_Left: 0
   _getPassives_Right: 0
   _v:

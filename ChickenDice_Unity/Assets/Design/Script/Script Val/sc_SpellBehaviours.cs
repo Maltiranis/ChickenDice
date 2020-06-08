@@ -12,7 +12,10 @@ public class sc_SpellBehaviours : MonoBehaviour
         PASSIVE,
         FireBolt,
         Bowling,
-        PumpGun
+        PumpGun,
+        Shield,
+        Heal,
+        Dash
     }
     [Header("Spell")]
     [SerializeField] public Profile _getProfile;
@@ -50,6 +53,38 @@ public class sc_SpellBehaviours : MonoBehaviour
     {
         //fire bolt
         [Space(15)]
+        [Header("Shield")]
+        [Space(5)]
+        [SerializeField] public float shieldLife;
+        [SerializeField] public float shieldTime;
+        [SerializeField] public Vector3 ajustedPosShield = new Vector3(0, 0, 0);
+        [SerializeField] public Vector3 ajustedRotShield = new Vector3(0, 0, 0);
+        [SerializeField] public GameObject[] _aVFXparent_Shield;
+        [SerializeField] public GameObject[] _dVFXparent_Shield;
+        [Space(15)]
+        //fire bolt
+        [Space(15)]
+        [Header("Heal")]
+        [Space(5)]
+        [SerializeField] public float healValue;
+        [SerializeField] public Vector3 ajustedPosHeal = new Vector3(0, 0, 0);
+        [SerializeField] public Vector3 ajustedRotHeal = new Vector3(0, 0, 0);
+        [SerializeField] public GameObject[] _aVFXparent_Heal;
+        [SerializeField] public GameObject[] _dVFXparent_Heal;
+        [Space(15)]
+        //fire bolt
+        [Space(15)]
+        [Header("Dash")]
+        [Space(5)]
+        [SerializeField] public float speedDash;
+        [SerializeField] public float rangeDash;
+        [SerializeField] public Vector3 ajustedPosDash = new Vector3(0, 0, 0);
+        [SerializeField] public Vector3 ajustedRotDash = new Vector3(0, 0, 0);
+        [SerializeField] public GameObject[] _aVFXparent_Dash;
+        [SerializeField] public GameObject[] _dVFXparent_Dash;
+        [Space(15)]
+        //fire bolt
+        [Space(15)]
         [Header("FireBolt")]
         [Space(5)]
         [SerializeField] public float speedFB;
@@ -57,8 +92,8 @@ public class sc_SpellBehaviours : MonoBehaviour
         [SerializeField] public float rangeFB;
         [SerializeField] public Vector3 ajustedPosFB = new Vector3(0, 0, 1);
         [SerializeField] public Vector3 ajustedRotFB = new Vector3(270, 0, 0);
-        [SerializeField] public GameObject _aVFXparent_FB;
-        [SerializeField] public GameObject _dVFXparent_FB;
+        [SerializeField] public GameObject[] _aVFXparent_FB;
+        [SerializeField] public GameObject[] _dVFXparent_FB;
         [Space(15)]
         //bowling
         [Header("Bowling")]
@@ -68,8 +103,8 @@ public class sc_SpellBehaviours : MonoBehaviour
         [SerializeField] public float rangeBL;
         [SerializeField] public Vector3 ajustedPosBL;
         [SerializeField] public Vector3 ajustedRotBL;
-        [SerializeField] public GameObject _aVFXparent_BL;
-        [SerializeField] public GameObject _dVFXparent_BL;
+        [SerializeField] public GameObject[] _aVFXparent_BL;
+        [SerializeField] public GameObject[] _dVFXparent_BL;
         [Space(15)]
         //pump gun
         [Header("PumpGun")]
@@ -79,8 +114,8 @@ public class sc_SpellBehaviours : MonoBehaviour
         [SerializeField] public float rangePG;
         [SerializeField] public Vector3 ajustedPosPG;
         [SerializeField] public Vector3 ajustedRotPG;
-        [SerializeField] public GameObject _aVFXparent_PG;
-        [SerializeField] public GameObject _dVFXparent_PG;
+        [SerializeField] public GameObject[] _aVFXparent_PG;
+        [SerializeField] public GameObject[] _dVFXparent_PG;
         [Space(15)]
         //pump gun
         [Header("Global Variable")]
@@ -187,24 +222,45 @@ public class sc_SpellBehaviours : MonoBehaviour
                 _speed = _v.speedFB;
                 _damages = _v.damagesFB;
                 _range = _v.rangeFB;
-                _aVFXparent = _v._aVFXparent_FB;
-                _dVFXparent = _v._dVFXparent_FB;
+                _aVFXparent = _v._aVFXparent_FB[_v._id];
+                _dVFXparent = _v._dVFXparent_FB[_v._id];
                 break;
             case Profile.Bowling:
                 _speed = _v.speedBL;
                 _damages = _v.damagesBL;
                 _range = _v.rangeBL;
-                _aVFXparent = _v._aVFXparent_BL;
-                _dVFXparent = _v._dVFXparent_BL;
+                _aVFXparent = _v._aVFXparent_BL[_v._id];
+                _dVFXparent = _v._dVFXparent_BL[_v._id];
                 break;
             case Profile.PumpGun:
                 _speed = _v.speedPG;
                 _damages = _v.damagesPG;
                 _range = _v.rangePG;
-                _aVFXparent = _v._aVFXparent_PG;
-                _dVFXparent = _v._dVFXparent_PG;
+                _aVFXparent = _v._aVFXparent_PG[_v._id];
+                _dVFXparent = _v._dVFXparent_PG[_v._id];
 
                 _v._iterationOnLaunch = 2;
+                break;
+            case Profile.Shield:
+                _speed = 0;
+                _damages = 0;
+                _range = 0;
+                _aVFXparent = _v._aVFXparent_Shield[_v._id];
+                _dVFXparent = null;
+                break;
+            case Profile.Heal:
+                _speed = 0;
+                _damages = 0;
+                _range = 0;
+                _aVFXparent = _v._aVFXparent_Heal[_v._id];
+                _dVFXparent = null;
+                break;
+            case Profile.Dash:
+                _speed = 0;
+                _damages = 0;
+                _range = 0;
+                _aVFXparent = _v._aVFXparent_Dash[_v._id];
+                _dVFXparent = null;
                 break;
             default:
                 break;
@@ -213,7 +269,7 @@ public class sc_SpellBehaviours : MonoBehaviour
 
     private void GetVFXs()
     {
-        if (_getProfile != Profile.PASSIVE)
+        if (_getProfile != Profile.PASSIVE && _aVFXparent != null)
         {
             GameObject fxs = Instantiate(_aVFXparent, transform.position, _v.qZero);
             fxs.name = _aVFXparent.name;
@@ -233,6 +289,21 @@ public class sc_SpellBehaviours : MonoBehaviour
             {
                 fxs.transform.localPosition = _v.ajustedPosPG;
                 fxs.transform.localEulerAngles = _v.ajustedRotPG;
+            }
+            if (_getProfile == Profile.Shield)
+            {
+                fxs.transform.localPosition = _v.ajustedPosShield;
+                fxs.transform.localEulerAngles = _v.ajustedRotShield;
+            }
+            if (_getProfile == Profile.Heal)
+            {
+                fxs.transform.localPosition = _v.ajustedPosHeal;
+                fxs.transform.localEulerAngles = _v.ajustedRotHeal;
+            }
+            if (_getProfile == Profile.Dash)
+            {
+                fxs.transform.localPosition = _v.ajustedPosDash;
+                fxs.transform.localEulerAngles = _v.ajustedRotDash;
             }
         }
     }
@@ -368,7 +439,21 @@ public class sc_SpellBehaviours : MonoBehaviour
         switch (_v._mix)
         {
             case 0:
-                break;
+                if (_getProfile == Profile.Shield ||
+                     _getProfile == Profile.Heal ||
+                     _getProfile == Profile.Dash)
+                {
+                    Vector3 parPos = new Vector3(transform.parent.position.x, 0.5f, transform.parent.position.z);
+                    transform.position = parPos;
+                    //
+                    GameObject fxs = transform.GetChild(0).gameObject;
+
+                    Transform c = _v.Caster.GetComponent<sc_SpellAlchemist>()._shootOffset_0.transform;
+
+                    fxs.transform.localPosition = new Vector3(0, 0, 0);
+                    fxs.transform.localEulerAngles = new Vector3(57.6f, c.rotation.y + 180f, 0f);
+                }
+                    break;
             case 1000:
                 OrbitalMovement();
                 break;
@@ -433,10 +518,19 @@ public class sc_SpellBehaviours : MonoBehaviour
 
     void DefaultMovement()//Start
     {
-        GetComponent<Rigidbody>().AddForce
-        (
-            transform.forward * _speed, ForceMode.Impulse
-        );
+        if (_getProfile == Profile.Shield ||
+            _getProfile == Profile.Heal ||
+            _getProfile == Profile.Dash)
+        {
+            //Dans l'Update maintenant
+        }
+        else
+        {
+            GetComponent<Rigidbody>().AddForce
+            (
+                transform.forward * _speed, ForceMode.Impulse
+            );
+        }
     }
 
     void OrbitalMovement()//Update
@@ -474,7 +568,17 @@ public class sc_SpellBehaviours : MonoBehaviour
 
     void ActionDone()
     {
-        CallDeathVFX();
+        if (_getProfile == Profile.Shield ||
+            _getProfile == Profile.Heal ||
+            _getProfile == Profile.Dash)
+        {
+            //No death FX...
+            Destroy(gameObject);
+        }
+        else
+        {
+            CallDeathVFX();
+        }
     }
 
     void CallDeathVFX()
