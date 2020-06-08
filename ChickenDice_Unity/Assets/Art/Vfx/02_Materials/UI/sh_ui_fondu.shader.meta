@@ -3,8 +3,10 @@ guid: 5b4142cd39a36ed4c8df71f2b2607f20
 ShaderImporter:
   externalObjects: {}
   defaultTextures:
-  - _t_ui_fond_menu_start: {fileID: 2800000, guid: c067e37722fe3bd40b9dcfeb1764d4df,
-      type: 3}
+  - _t_ui_fond_3: {fileID: 2800000, guid: 45fc67aa3c908134fa429224edd60659, type: 3}
+  - _t_ui_fond_2: {fileID: 2800000, guid: 75830149669840d4889744eee8cecf35, type: 3}
+  - _t_ui_fond_1: {fileID: 2800000, guid: f3daccba0abc87146b9542b7a4a1a2a4, type: 3}
+  - _t_ui_fond_0: {fileID: 2800000, guid: d7c6ac8ab9737eb4294bcf71c7a2a9e2, type: 3}
   - _t_ui_fond: {fileID: 2800000, guid: c8f225f4e51d1ec4689ce5323de3e176, type: 3}
   - _TextureSample0: {fileID: 2800000, guid: 0abc1b991c06f2245a24f850affece9f, type: 3}
   nonModifiableTextures: []

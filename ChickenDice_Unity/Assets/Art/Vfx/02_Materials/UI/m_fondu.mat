@@ -67,6 +67,22 @@ Material:
         m_Texture: {fileID: 2800000, guid: c8f225f4e51d1ec4689ce5323de3e176, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _t_ui_fond_0:
+        m_Texture: {fileID: 2800000, guid: d7c6ac8ab9737eb4294bcf71c7a2a9e2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _t_ui_fond_1:
+        m_Texture: {fileID: 2800000, guid: f3daccba0abc87146b9542b7a4a1a2a4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _t_ui_fond_2:
+        m_Texture: {fileID: 2800000, guid: 75830149669840d4889744eee8cecf35, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _t_ui_fond_3:
+        m_Texture: {fileID: 2800000, guid: 45fc67aa3c908134fa429224edd60659, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _t_ui_fond_menu_start:
         m_Texture: {fileID: 2800000, guid: c067e37722fe3bd40b9dcfeb1764d4df, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -103,8 +119,8 @@ Material:
     - _UseUIAlphaClip: 0
     - _ZWrite: 1
     - __dirty: 0
-    - _fondu: 0.629
-    - _icone: 0
+    - _fondu: 0
+    - _icone: 3
     - _tilling: 3.75
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
