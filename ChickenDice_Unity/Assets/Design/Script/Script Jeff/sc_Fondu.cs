@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class sc_Fondu : MonoBehaviour
 {
@@ -20,13 +21,13 @@ public class sc_Fondu : MonoBehaviour
             StartCoroutine(StartFondu());
         }
 
-        if (!_CanvasActive.activeSelf && _Index > 0)
-        {
-            _Index = 0;
-            var myMat = _Fondu.GetComponent<Image>().material;
-            myMat.SetFloat("_fondu",_Index);
-            _AnimationCanvas.SetActive(false);
-        }
+        //if (!_CanvasActive.activeSelf && _Index > 0)
+        //{
+        //    _Index = 0;
+        //    var myMat = _Fondu.GetComponent<Image>().material;
+        //    myMat.SetFloat("_fondu",_Index);
+        //    _AnimationCanvas.SetActive(false);
+        //}
     }
 
 
@@ -47,9 +48,9 @@ public class sc_Fondu : MonoBehaviour
         {
             _FonduActive = false;
             _AnimationCanvas.SetActive(true);
-
         }
     }
+
 
     private IEnumerator BackFondu()
     {
@@ -69,4 +70,6 @@ public class sc_Fondu : MonoBehaviour
             _FonduActive = false;
         }
     }
+
+   
 }
