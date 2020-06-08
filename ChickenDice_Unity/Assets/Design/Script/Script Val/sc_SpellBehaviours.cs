@@ -66,7 +66,7 @@ public class sc_SpellBehaviours : MonoBehaviour
         [Space(15)]
         [Header("Heal")]
         [Space(5)]
-        [SerializeField] public float healValue;
+        [SerializeField] public int healValue;
         [SerializeField] public Vector3 ajustedPosHeal = new Vector3(0, 0, 0);
         [SerializeField] public Vector3 ajustedRotHeal = new Vector3(0, 0, 0);
         [SerializeField] public GameObject[] _aVFXparent_Heal;
@@ -447,11 +447,17 @@ public class sc_SpellBehaviours : MonoBehaviour
                     transform.position = parPos;
                     //
                     GameObject fxs = transform.GetChild(0).gameObject;
+                    Transform c = _v.Caster.transform.GetChild(0).transform;
 
-                    Transform c = _v.Caster.GetComponent<sc_SpellAlchemist>()._shootOffset_0.transform;
+                    fxs.transform.localPosition = new Vector3(0, .5f, 0);
 
-                    fxs.transform.localPosition = new Vector3(0, 0, 0);
-                    fxs.transform.localEulerAngles = new Vector3(57.6f, c.rotation.y + 180f, 0f);
+                    fxs.transform.forward = c.forward;
+                    fxs.transform.localEulerAngles = new Vector3
+                    (
+                        fxs.transform.localEulerAngles.x + 270f,
+                        fxs.transform.localEulerAngles.y,
+                        fxs.transform.localEulerAngles.z
+                    );
                 }
                     break;
             case 1000:
@@ -522,7 +528,8 @@ public class sc_SpellBehaviours : MonoBehaviour
             _getProfile == Profile.Heal ||
             _getProfile == Profile.Dash)
         {
-            //Dans l'Update maintenant
+            if (GetComponent<SphereCollider>() != null)
+                GetComponent<SphereCollider>().enabled = false;
         }
         else
         {
@@ -583,7 +590,10 @@ public class sc_SpellBehaviours : MonoBehaviour
 
     void CallDeathVFX()
     {
-        if (_getProfile != Profile.PASSIVE)
+        if (_getProfile != Profile.Shield ||
+            _getProfile != Profile.Heal ||
+            _getProfile != Profile.Dash ||
+            _getProfile != Profile.PASSIVE)
         {
             GameObject E = new GameObject("Explosion_FX");
             GameObject Explosion = Instantiate(E, transform.position, _v.qZero);
@@ -651,7 +661,7 @@ public class sc_SpellBehaviours : MonoBehaviour
         if (_v.bestTarget != null)
             newIt.transform.LookAt(_v.bestTarget.transform, Vector3.up);
 
-        s_sbn.LaunchEnableCol();
+        //s_sbn.LaunchEnableCol();
 
         if (iLeft == 2)
         {
@@ -710,28 +720,54 @@ public class sc_SpellBehaviours : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<sc_Chicken_ID>() != null)
+        if (_getProfile == Profile.Shield)
         {
-            if (other.GetComponent<sc_Chicken_ID>().ID != _v._id)
+            return;
+        }
+        if (_getProfile == Profile.Heal)
+        {
+            return;
+        }
+        if (_getProfile == Profile.Dash)
+        {
+            return;
+        }
+        if (other.GetComponent<sc_SpellBehaviours>() != null)
+        {
+            if (other.GetComponent<sc_SpellBehaviours>()._v._id == _v._id)
+                return;
+        }
+        else
+        {
+            if (other.GetComponent<sc_Chicken_ID>() != null)
             {
-                if (_v.nearest.Contains(other.gameObject))
+                if (other.GetComponent<sc_Chicken_ID>().ID != _v._id)
                 {
-                    _v.nearest.Remove(other.gameObject);
+                    if (_v.nearest.Contains(other.gameObject))
+                    {
+                        _v.nearest.Remove(other.gameObject);
+                    }
+                    if (_v._iterationOnDestroyed > 0)
+                    {
+                        ProjOnDeath(_v._iterationOnDestroyed);
+                    }
+                    ActionDone();
                 }
+            }
+            if (other.tag == "WorldCollider")
+            {
                 if (_v._iterationOnDestroyed > 0)
                 {
                     ProjOnDeath(_v._iterationOnDestroyed);
                 }
                 ActionDone();
             }
-        }
-        if (other.tag == "WorldCollider")
-        {
-            if (_v._iterationOnDestroyed > 0)
+            if (other.tag == "ProjectileAbsorber")
             {
-                ProjOnDeath(_v._iterationOnDestroyed);
+                if (other.transform.parent.parent.GetComponent<sc_SpellBehaviours>() != null)
+                    if (other.transform.parent.parent.GetComponent<sc_SpellBehaviours>()._v._id != _v._id)
+                        Destroy(gameObject);
             }
-            ActionDone();
         }
     }
 }

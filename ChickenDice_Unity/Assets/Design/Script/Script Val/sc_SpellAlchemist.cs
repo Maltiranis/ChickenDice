@@ -213,6 +213,26 @@ public class sc_SpellAlchemist : MonoBehaviour
                             _shootOffset_0.transform.forward * s_sbS._v.speedDash, ForceMode.Impulse
                         );
                     }
+
+                    if (s_sbS._getProfile == sc_SpellBehaviours.Profile.Heal)
+                    {
+                        sc_LifeEngine le = GetComponent<sc_LifeEngine>();
+                        if (le._life >= le.startLife)
+                        {
+                            le._life = le.startLife;
+                        }
+                        else
+                        {
+                            if (le._life + s_sbS._v.healValue > le.startLife)
+                            {
+                                le._life = le.startLife;
+                            }
+                            else
+                            {
+                                le._life += s_sbS._v.healValue;
+                            }
+                        }
+                    }
                 }
 
                 #region M + Null / Null + M

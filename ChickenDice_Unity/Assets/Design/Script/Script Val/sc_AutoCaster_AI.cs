@@ -13,7 +13,8 @@ public class sc_AutoCaster_AI : MonoBehaviour
     [SerializeField] private float _minimalRadius = 1f;
     [SerializeField] private float _coolDown = 1f;
     [SerializeField] private float _minimalLifeTime = 1f;
-
+    [SerializeField] private float _rotationValue = 15f;
+    
     [Header("Offsets")]
     public GameObject _shootOffset_0;
     public GameObject _shootOffset_30;
@@ -89,10 +90,13 @@ public class sc_AutoCaster_AI : MonoBehaviour
     IEnumerator AutoShoot ()
     {
         yield return new WaitForSeconds(_coolDown);
-        SpellsAssembler();
-        if (_rotate)
-            transform.Rotate(0, 45, 0);
-        GetComponent<sc_SkillManagement>().s_sa.Shoot(_A, _P1, _P2, "RT");
-        StartCoroutine(AutoShoot());
+        if (GetComponent<sc_LifeEngine>()._life > 0)
+        {
+            SpellsAssembler();
+            if (_rotate)
+                transform.Rotate(0, _rotationValue * UnityEngine.Random.Range(0f, 360 / _rotationValue), 0);
+            GetComponent<sc_SkillManagement>().s_sa.Shoot(_A, _P1, _P2, "RT");
+            StartCoroutine(AutoShoot());
+        }
     }
 }

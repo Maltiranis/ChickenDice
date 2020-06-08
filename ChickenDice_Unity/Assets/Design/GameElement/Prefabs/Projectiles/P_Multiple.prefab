@@ -141,7 +141,7 @@ MonoBehaviour:
     - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
-    healValue: 0
+    healValue: 20
     ajustedPosHeal: {x: 0, y: 0, z: 0}
     ajustedRotHeal: {x: 0, y: 0, z: 0}
     _aVFXparent_Heal:

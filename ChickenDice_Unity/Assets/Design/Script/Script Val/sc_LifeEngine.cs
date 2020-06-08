@@ -15,7 +15,7 @@ public class sc_LifeEngine : MonoBehaviour
     [Header("Respawn Management")]
     public Transform _startPosTransform;
     float startY;
-    int startLife;
+    [HideInInspector] public int startLife;
     [HideInInspector]
     [SerializeField] public bool onRepop = false;
     Rigidbody rb;
