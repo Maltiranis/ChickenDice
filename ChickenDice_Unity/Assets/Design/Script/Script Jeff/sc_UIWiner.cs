@@ -9,6 +9,7 @@ public class sc_UIWiner : MonoBehaviour
 {
     [SerializeField] private float _TimeBeforeRestart;
     private bool _havePressSelect;
+    public sc_Fondu _ScFondu;
     [Header("UI")]
     [SerializeField] private GameObject[] _NotReady;
     [SerializeField] private GameObject[] _Ready;
@@ -48,6 +49,8 @@ public class sc_UIWiner : MonoBehaviour
         }
 
         // POUR 4 PLAYER
+
+
         if (_Ready[0].activeSelf && _Ready[1].activeSelf && _Ready[2].activeSelf && _Ready[3].activeSelf)
         {
             StartCoroutine(RestartGame());
