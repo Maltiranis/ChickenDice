@@ -7,6 +7,7 @@ public class sc_Fondu : MonoBehaviour
 {
     [SerializeField] private GameObject _CanvasActive = null;
     [SerializeField] private GameObject _Fondu = null;
+    [SerializeField] private GameObject _AnimationCanvas = null;
     [SerializeField] private bool _FonduActive;
     [SerializeField] private float _SpeedCoroutine;
     [SerializeField] private float _SpeedFondu;
@@ -24,6 +25,7 @@ public class sc_Fondu : MonoBehaviour
             _Index = 0;
             var myMat = _Fondu.GetComponent<Image>().material;
             myMat.SetFloat("_fondu",_Index);
+            _AnimationCanvas.SetActive(false);
         }
     }
 
@@ -44,6 +46,8 @@ public class sc_Fondu : MonoBehaviour
         else
         {
             _FonduActive = false;
+            _AnimationCanvas.SetActive(true);
+
         }
     }
 
