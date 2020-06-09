@@ -601,8 +601,11 @@ public class sc_SpellBehaviours : MonoBehaviour
             Explosion.name = "Explosion de Tangtang";
             Explosion.transform.SetParent(null);
             Explosion.AddComponent<sc_SelfDestruction>();
-            GameObject tanguetteFX = Instantiate(_dVFXparent, Explosion.transform.position, _v.qZero);
-            tanguetteFX.transform.parent = Explosion.transform;
+            if (_dVFXparent != null)
+            {
+                GameObject tanguetteFX = Instantiate(_dVFXparent, Explosion.transform.position, _v.qZero);
+                tanguetteFX.transform.parent = Explosion.transform;
+            }
 
             Explosion.GetComponent<sc_SelfDestruction>().DestroyMyself(_v._dVFX_lifetime);
 
