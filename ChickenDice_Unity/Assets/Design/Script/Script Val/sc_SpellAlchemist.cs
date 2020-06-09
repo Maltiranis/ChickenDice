@@ -207,7 +207,6 @@ public class sc_SpellAlchemist : MonoBehaviour
 
                     if (s_sbS._getProfile == sc_SpellBehaviours.Profile.Dash)
                     {
-                        forceDirection = -Vector3.right;
                         GetComponent<Rigidbody>().AddForce
                         (
                             _shootOffset_0.transform.forward * s_sbS._v.speedDash, ForceMode.Impulse
