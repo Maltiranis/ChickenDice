@@ -119,6 +119,10 @@ public class sc_LifeEngine : MonoBehaviour
                          RigidbodyConstraints.FreezeRotationX |
                          RigidbodyConstraints.FreezeRotationY |
                          RigidbodyConstraints.FreezeRotationZ;
+        if (_am.gameObject.GetComponent<sc_LaunchFx>() != null)
+        {
+            _am.gameObject.GetComponent<sc_LaunchFx>().LaunchFx(3);
+        }
     }
 
     public IEnumerator RespawnIEnumerator()
