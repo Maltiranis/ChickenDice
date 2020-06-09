@@ -42,7 +42,7 @@ public class sc_RootUIsol : MonoBehaviour
             StartCoroutine(SpawnUI());
        }
 
-        if (_LePlayer.GetComponentInChildren<sc_AnimManagement>()._onHit == true)
+        if (_LePlayer.GetComponentInChildren<sc_AnimManagement>()._onHit == true || _LePlayer.GetComponent<sc_LifeEngine>()._respawn)
         {
             var myMat = _VfxLife.GetComponent<Renderer>().material;
 

@@ -142,9 +142,9 @@ public class PhaseManager : MonoBehaviour
     private IEnumerator LootPhaseTimer()
     {
         yield return new WaitForSeconds(_TimeLootPhase);
-        _LootCam.SetActive(false);
-        _FightCam.SetActive(true);
-        _LootArena.SetActive(false);
+       // _LootCam.SetActive(false);
+       // _FightCam.SetActive(true);
+        // _LootArena.SetActive(false);
         SelectMode();
 
     }
@@ -172,8 +172,15 @@ public class PhaseManager : MonoBehaviour
         _UIInterPhase.SetActive(true);
     }
     // TP DES PLAYERS + SPAWN
-    public void PhaseSetup()
+
+
+
+    public IEnumerator PhaseSetup()
     {
+        yield return new WaitForSeconds(3f);
+        _LootCam.SetActive(false);
+        _FightCam.SetActive(true);
+        _LootArena.SetActive(false);
         _MenuPause.SetActive(true);
         _UIInterPhase.SetActive(false);
         Transform _ChangeSpawnP01 = _Player01.GetComponent<sc_LifeEngine>()._startPosTransform;
@@ -231,8 +238,6 @@ public class PhaseManager : MonoBehaviour
         }
 
     }
-
-
 
     //Lancement de la fin du mode fight a supprimer une fois les modes codés
     //private IEnumerator FightPhaseTimer()

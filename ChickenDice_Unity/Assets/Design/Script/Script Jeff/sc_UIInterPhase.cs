@@ -8,6 +8,8 @@ public class sc_UIInterPhase : MonoBehaviour
 {
     int _Id;
     public PhaseManager _ScPhaseManager;
+    public sc_Fondu[] _ScFondu;
+    private bool _havePressSelect;
     [Header("UI")]
     [SerializeField] private GameObject[] _NotReady;
     [SerializeField] private GameObject[] _Ready;
@@ -46,15 +48,18 @@ public class sc_UIInterPhase : MonoBehaviour
 
         // POUR 4 PLAYER
         if(_Ready[0].activeSelf && _Ready[1].activeSelf && _Ready[2].activeSelf && _Ready[3].activeSelf)
-        {
-            _ScPhaseManager.PhaseSetup();
+        { 
             _Isaffiche = false;
+            _ScFondu[_ScPhaseManager._ModeWin - 1].BackAnim();
+            StartCoroutine(_ScPhaseManager.PhaseSetup());
         }
         //POUR TEST A 1 Player
-        if (Input.GetButton("Select"))
+        if (Input.GetButtonDown("Select") && _havePressSelect == false)
         {
-            _ScPhaseManager.PhaseSetup();
+            _havePressSelect = true;
 
+            _ScFondu[_ScPhaseManager._ModeWin - 1].BackAnim();
+            StartCoroutine(_ScPhaseManager.PhaseSetup());
         }
         
     }

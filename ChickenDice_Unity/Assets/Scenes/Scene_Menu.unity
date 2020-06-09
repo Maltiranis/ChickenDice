@@ -592,7 +592,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh135454
+  m_Name: pb_Mesh-1805318
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1058,7 +1058,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh135480
+  m_Name: pb_Mesh-1805300
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2706,7 +2706,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh135424
+  m_Name: pb_Mesh-1805284
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3713,7 +3713,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh135556
+  m_Name: pb_Mesh-1805326
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3876,7 +3876,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh134800
+  m_Name: pb_Mesh-1805474
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4810,7 +4810,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh135404
+  m_Name: pb_Mesh-1805290
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -5192,7 +5192,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh135496
+  m_Name: pb_Mesh-1805304
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -6582,7 +6582,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh135436
+  m_Name: pb_Mesh-1805270
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -7112,29 +7112,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _myID: {fileID: 1008034807673719445}
   _shootOffset_0: {fileID: 1444726730}
+  _shootOffset_30: {fileID: 0}
   _shootOffset_120: {fileID: 6622780062223244914}
   _shootOffset_180: {fileID: 3200274319655663600}
   _shootOffset_240: {fileID: 4671792796571267249}
+  _shootOffset_330: {fileID: 0}
+  forceDirection: {x: 0, y: 0, z: 0}
   _refillSpeed: 0.1
   leftTriggerCD: 0
   rightTriggerCD: 0
   _coolDownR: 1
   _coolDownL: 1
-  _bar:
-  - {fileID: 2048994766}
-  - {fileID: 304209380}
-  - {fileID: 1280270121}
-  - {fileID: 1111148713}
-  _timeText:
-  - {fileID: 290728620}
-  - {fileID: 45012287}
-  - {fileID: 1099779579}
-  - {fileID: 807592984}
-  _UI:
-  - {fileID: 1337466407}
-  - {fileID: 1421800885}
-  - {fileID: 1840426978}
-  - {fileID: 1221658221}
 --- !u!114 &22597781274351237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7149,29 +7137,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _myID: {fileID: 1008034807386557904}
   _shootOffset_0: {fileID: 1224900751}
+  _shootOffset_30: {fileID: 0}
   _shootOffset_120: {fileID: 6622780062406367543}
   _shootOffset_180: {fileID: 3200274319439507637}
   _shootOffset_240: {fileID: 4671792796318152692}
+  _shootOffset_330: {fileID: 0}
+  forceDirection: {x: 0, y: 0, z: 0}
   _refillSpeed: 0.1
   leftTriggerCD: 0
   rightTriggerCD: 0
   _coolDownR: 1
   _coolDownL: 1
-  _bar:
-  - {fileID: 1698654859}
-  - {fileID: 222272161}
-  - {fileID: 1397823596}
-  - {fileID: 1562677228}
-  _timeText:
-  - {fileID: 239758825}
-  - {fileID: 498111098}
-  - {fileID: 1586694846}
-  - {fileID: 792503133}
-  _UI:
-  - {fileID: 1353079138}
-  - {fileID: 1268822768}
-  - {fileID: 1923934375}
-  - {fileID: 1473200424}
 --- !u!1 &687917549283697366
 GameObject:
   m_ObjectHideFlags: 0
@@ -7429,6 +7405,7 @@ MonoBehaviour:
   _killer_ID: 100
   _startPosTransform: {fileID: 8619882222999326833, guid: 1aa09dd5515f4594f98cee90b172df71,
     type: 3}
+  startLife: 0
   onRepop: 0
   _am: {fileID: 1008034808297039088}
   PolySurface: {fileID: 1008034807796941759}
@@ -7866,6 +7843,7 @@ MonoBehaviour:
   _killer_ID: 100
   _startPosTransform: {fileID: 8619882222999326833, guid: 1aa09dd5515f4594f98cee90b172df71,
     type: 3}
+  startLife: 0
   onRepop: 0
   _am: {fileID: 1008034807845249973}
   PolySurface: {fileID: 1008034807275914490}
@@ -9188,6 +9166,7 @@ MonoBehaviour:
   _actionRange: 2
   nearest: []
   bestTarget: {fileID: 0}
+  s_sa: {fileID: 0}
 --- !u!114 &1270922326547375896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9218,6 +9197,7 @@ MonoBehaviour:
   _actionRange: 2
   nearest: []
   bestTarget: {fileID: 0}
+  s_sa: {fileID: 0}
 --- !u!114 &2074734002371793785
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10846,6 +10826,7 @@ MonoBehaviour:
   _actionRange: 2
   nearest: []
   bestTarget: {fileID: 0}
+  s_sa: {fileID: 0}
 --- !u!114 &7789870371919048370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10876,6 +10857,7 @@ MonoBehaviour:
   _actionRange: 2
   nearest: []
   bestTarget: {fileID: 0}
+  s_sa: {fileID: 0}
 --- !u!114 &7789870372063559838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10906,6 +10888,7 @@ MonoBehaviour:
   _actionRange: 2
   nearest: []
   bestTarget: {fileID: 0}
+  s_sa: {fileID: 0}
 --- !u!114 &7789870373113864910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10936,6 +10919,7 @@ MonoBehaviour:
   _actionRange: 2
   nearest: []
   bestTarget: {fileID: 0}
+  s_sa: {fileID: 0}
 --- !u!223 &7842692208684366084
 Canvas:
   m_ObjectHideFlags: 0
@@ -12462,6 +12446,7 @@ MonoBehaviour:
   _respawnDelay: 3
   _killer_ID: 100
   _startPosTransform: {fileID: 0}
+  startLife: 0
   onRepop: 0
   _am: {fileID: 8089967527279126115}
   PolySurface: {fileID: 8089967527781433644}
@@ -12771,6 +12756,7 @@ MonoBehaviour:
   _killer_ID: 100
   _startPosTransform: {fileID: 8619882222999326833, guid: 1aa09dd5515f4594f98cee90b172df71,
     type: 3}
+  startLife: 0
   onRepop: 0
   _am: {fileID: 8089967529287984553}
   PolySurface: {fileID: 8089967528716452582}
@@ -13561,6 +13547,7 @@ MonoBehaviour:
   _killer_ID: 100
   _startPosTransform: {fileID: 8619882224268896884, guid: 1aa09dd5515f4594f98cee90b172df71,
     type: 3}
+  startLife: 0
   onRepop: 0
   _am: {fileID: 8089967528768662047}
   PolySurface: {fileID: 8089967529335852368}
@@ -14595,6 +14582,7 @@ MonoBehaviour:
   _killer_ID: 100
   _startPosTransform: {fileID: 8619882222139264961, guid: 1aa09dd5515f4594f98cee90b172df71,
     type: 3}
+  startLife: 0
   onRepop: 0
   _am: {fileID: 8089967528372077619}
   PolySurface: {fileID: 8089967528943641468}
@@ -22381,29 +22369,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _myID: {fileID: 8089967529349836051}
   _shootOffset_0: {fileID: 9059013515550171212}
+  _shootOffset_30: {fileID: 0}
   _shootOffset_120: {fileID: 2760921712086448628}
   _shootOffset_180: {fileID: 5895700380220199030}
   _shootOffset_240: {fileID: 4426367732418844471}
+  _shootOffset_330: {fileID: 0}
+  forceDirection: {x: 0, y: 0, z: 0}
   _refillSpeed: 0.1
   leftTriggerCD: 0
   rightTriggerCD: 0
   _coolDownR: 1
   _coolDownL: 1
-  _bar:
-  - {fileID: 9059013515215981128}
-  - {fileID: 9059013516692404834}
-  - {fileID: 9059013515444435119}
-  - {fileID: 9059013515350814511}
-  _timeText:
-  - {fileID: 9059013516704107818}
-  - {fileID: 9059013516415382201}
-  - {fileID: 9059013515356220029}
-  - {fileID: 9059013516189139870}
-  _UI:
-  - {fileID: 9059013515392612769}
-  - {fileID: 9059013515577561651}
-  - {fileID: 9059013514889971812}
-  - {fileID: 9059013515504345579}
 --- !u!114 &9072602896815921258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22418,29 +22394,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _myID: {fileID: 8089967528940667711}
   _shootOffset_0: {fileID: 9059013515393093216}
+  _shootOffset_30: {fileID: 0}
   _shootOffset_120: {fileID: 2760921712197375960}
   _shootOffset_180: {fileID: 5895700380075589210}
   _shootOffset_240: {fileID: 4426367732311718171}
+  _shootOffset_330: {fileID: 0}
+  forceDirection: {x: 0, y: 0, z: 0}
   _refillSpeed: 0.1
   leftTriggerCD: 0
   rightTriggerCD: 0
   _coolDownR: 1
   _coolDownL: 1
-  _bar:
-  - {fileID: 9059013514786120804}
-  - {fileID: 9059013516530996302}
-  - {fileID: 9059013515555395203}
-  - {fileID: 9059013515726143747}
-  _timeText:
-  - {fileID: 9059013516580561670}
-  - {fileID: 9059013516807494805}
-  - {fileID: 9059013515786208337}
-  - {fileID: 9059013516027620786}
-  _UI:
-  - {fileID: 9059013515550070669}
-  - {fileID: 9059013515432819743}
-  - {fileID: 9059013515047183944}
-  - {fileID: 9059013515632316359}
 --- !u!114 &9072602897336784860
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22455,29 +22419,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _myID: {fileID: 8089967528318651529}
   _shootOffset_0: {fileID: 9059013514972299734}
+  _shootOffset_30: {fileID: 0}
   _shootOffset_120: {fileID: 2760921712716732526}
   _shootOffset_180: {fileID: 5895700380731224556}
   _shootOffset_240: {fileID: 4426367731857897133}
+  _shootOffset_330: {fileID: 0}
+  forceDirection: {x: 0, y: 0, z: 0}
   _refillSpeed: 0.1
   leftTriggerCD: 0
   rightTriggerCD: 0
   _coolDownR: 1
   _coolDownL: 1
-  _bar:
-  - {fileID: 9059013515307576274}
-  - {fileID: 9059013515978611704}
-  - {fileID: 9059013515069659445}
-  - {fileID: 9059013515171663541}
-  _timeText:
-  - {fileID: 9059013515924991152}
-  - {fileID: 9059013516254581539}
-  - {fileID: 9059013515132701671}
-  - {fileID: 9059013516481864196}
-  _UI:
-  - {fileID: 9059013515096348731}
-  - {fileID: 9059013514944918441}
-  - {fileID: 9059013515600030206}
-  - {fileID: 9059013515010818161}
 --- !u!114 &9072602897736078358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22492,26 +22444,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _myID: {fileID: 8089967528181075779}
   _shootOffset_0: {fileID: 9059013516713673244}
+  _shootOffset_30: {fileID: 0}
   _shootOffset_120: {fileID: 2760921710976408484}
   _shootOffset_180: {fileID: 5895700379258319398}
   _shootOffset_240: {fileID: 4426367733607265639}
+  _shootOffset_330: {fileID: 0}
+  forceDirection: {x: 0, y: 0, z: 0}
   _refillSpeed: 0.1
   leftTriggerCD: 0
   rightTriggerCD: 0
   _coolDownR: 1
   _coolDownL: 1
-  _bar:
-  - {fileID: 9059013516242167832}
-  - {fileID: 9059013515571058738}
-  - {fileID: 9059013516551117567}
-  - {fileID: 9059013516375641471}
-  _timeText:
-  - {fileID: 9059013515526188922}
-  - {fileID: 9059013515311599849}
-  - {fileID: 9059013516337334317}
-  - {fileID: 9059013515000439246}
-  _UI:
-  - {fileID: 9059013516568730609}
-  - {fileID: 9059013516686291043}
-  - {fileID: 9059013515997620788}
-  - {fileID: 9059013516490671035}
