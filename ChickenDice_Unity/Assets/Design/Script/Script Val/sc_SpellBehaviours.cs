@@ -661,7 +661,7 @@ public class sc_SpellBehaviours : MonoBehaviour
         if (_v.bestTarget != null)
             newIt.transform.LookAt(_v.bestTarget.transform, Vector3.up);
 
-        //s_sbn.LaunchEnableCol();
+        s_sbn.LaunchEnableCol();
 
         if (iLeft == 2)
         {
@@ -713,7 +713,7 @@ public class sc_SpellBehaviours : MonoBehaviour
 
     public IEnumerator enableCol()
     {
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.1f);
         if (gameObject != null)
             gameObject.GetComponent<SphereCollider>().enabled = true;
     }
