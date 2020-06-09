@@ -1,0 +1,11 @@
+fileFormatVersion: 2
+guid: 710163be24ecbb54c945c05676e1e1fd
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures:
+  - _t_fleurs_color_01: {fileID: 2800000, guid: d05175dc829cd0f41a0c04ee2620389e,
+      type: 3}
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
