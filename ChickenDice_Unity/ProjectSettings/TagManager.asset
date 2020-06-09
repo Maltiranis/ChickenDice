@@ -8,6 +8,7 @@ TagManager:
   - Gem
   - ActiveGemList
   - WorldCollider
+  - ProjectileAbsorber
   layers:
   - Default
   - TransparentFX

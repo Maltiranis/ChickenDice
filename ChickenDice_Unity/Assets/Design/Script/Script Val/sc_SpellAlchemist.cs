@@ -21,6 +21,7 @@ public class sc_SpellAlchemist : MonoBehaviour
     [Header("Variables")]
     private float _refreshValue1 = 1.0f;
     private float _refreshValue2 = 1.0f;
+    [HideInInspector] public Vector3 forceDirection;
     [SerializeField] private float _refillSpeed = 0.1f;
 
     [SerializeField] private bool leftTriggerCD = false;
@@ -193,6 +194,47 @@ public class sc_SpellAlchemist : MonoBehaviour
                     ShootInstance(A, P1, P2, 30);
                     ShootInstance(A, P1, P2, 330);
                 }
+
+                //Dash Shield Heal
+                if (s_sbS._getProfile == sc_SpellBehaviours.Profile.Shield ||
+                    s_sbS._getProfile == sc_SpellBehaviours.Profile.Heal ||
+                    s_sbS._getProfile == sc_SpellBehaviours.Profile.Dash)
+                {
+                    s_sbS._getPassives_Left = sc_SpellBehaviours.Passives_L.EMPTY;
+                    s_sbS._getPassives_Right = sc_SpellBehaviours.Passives_R.EMPTY;
+
+                    shot.transform.SetParent(pivot.transform);
+
+                    if (s_sbS._getProfile == sc_SpellBehaviours.Profile.Dash)
+                    {
+                        forceDirection = -Vector3.right;
+                        GetComponent<Rigidbody>().AddForce
+                        (
+                            _shootOffset_0.transform.forward * s_sbS._v.speedDash, ForceMode.Impulse
+                        );
+                    }
+
+                    if (s_sbS._getProfile == sc_SpellBehaviours.Profile.Heal)
+                    {
+                        sc_LifeEngine le = GetComponent<sc_LifeEngine>();
+                        if (le._life >= le.startLife)
+                        {
+                            le._life = le.startLife;
+                        }
+                        else
+                        {
+                            if (le._life + s_sbS._v.healValue > le.startLife)
+                            {
+                                le._life = le.startLife;
+                            }
+                            else
+                            {
+                                le._life += s_sbS._v.healValue;
+                            }
+                        }
+                    }
+                }
+
                 #region M + Null / Null + M
                 if (s_sbS._getPassives_Left == sc_SpellBehaviours.Passives_L.Multiple &&
                     s_sbS._getPassives_Right == sc_SpellBehaviours.Passives_R.EMPTY)
