@@ -96,12 +96,12 @@ public class sc_LifeEngine : MonoBehaviour
 
     public void Respawn()
     {
-        DisapearOnDeath();
         UnactivateSystems();
         if (onRepop == false)
         {
             onRepop = true;
             StartCoroutine(RespawnIEnumerator());
+            StartCoroutine(RespawnVFX_IEnumerator());
         }
     }
 
@@ -119,19 +119,34 @@ public class sc_LifeEngine : MonoBehaviour
                          RigidbodyConstraints.FreezeRotationX |
                          RigidbodyConstraints.FreezeRotationY |
                          RigidbodyConstraints.FreezeRotationZ;
+    }
+
+    public void StartingVFX()
+    {
         if (_am.gameObject.GetComponent<sc_LaunchFx>() != null)
         {
             _am.gameObject.GetComponent<sc_LaunchFx>().LaunchFx(3);
         }
     }
 
-    public IEnumerator RespawnIEnumerator()
+    public IEnumerator RespawnVFX_IEnumerator()
     {
         yield return new WaitForSeconds(_respawnDelay);
+        StartingVFX();
+    }
+
+    public IEnumerator RespawnIEnumerator()
+    {
+        yield return new WaitForSeconds(_respawnDelay + 1);
         Quaternion trueRot = Quaternion.Euler(0, startY, 0);
         GameObject jesusChicken = Instantiate(_myOriginalPrefab, _startPosTransform.position, trueRot);
         jesusChicken.GetComponent<sc_Chicken_ID>().ID = gameObject.GetComponent<sc_Chicken_ID>().ID;
         LaunchSystems(jesusChicken);
         Destroy(gameObject);
+
+        if (_am.gameObject.GetComponent<sc_LaunchFx>() != null)
+        {
+            _am.gameObject.GetComponent<sc_LaunchFx>().SetEye(2);
+        }
     }
 }
