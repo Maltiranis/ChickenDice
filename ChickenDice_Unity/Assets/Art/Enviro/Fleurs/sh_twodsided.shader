@@ -4,16 +4,14 @@ Shader "sh_twodsided"
 {
 	Properties
 	{
-		_Cutoff( "Mask Clip Value", Float ) = 0.5
 		_t_fleurs_color_01("t_fleurs_color_01", 2D) = "white" {}
-		[HDR]_Color0("Color 0", Color) = (0,0,0,0)
 		[HideInInspector] _texcoord( "", 2D ) = "white" {}
 		[HideInInspector] __dirty( "", Int ) = 1
 	}
 
 	SubShader
 	{
-		Tags{ "RenderType" = "TransparentCutout"  "Queue" = "Transparent+0" "IgnoreProjector" = "True" "IsEmissive" = "true"  }
+		Tags{ "RenderType" = "Transparent"  "Queue" = "Transparent+0" "IgnoreProjector" = "True" "IsEmissive" = "true"  }
 		Cull Off
 		CGINCLUDE
 		#include "UnityPBSLighting.cginc"
@@ -26,22 +24,21 @@ Shader "sh_twodsided"
 
 		uniform sampler2D _t_fleurs_color_01;
 		uniform float4 _t_fleurs_color_01_ST;
-		uniform float4 _Color0;
-		uniform float _Cutoff = 0.5;
 
 		void surf( Input i , inout SurfaceOutputStandard o )
 		{
 			float2 uv_t_fleurs_color_01 = i.uv_texcoord * _t_fleurs_color_01_ST.xy + _t_fleurs_color_01_ST.zw;
 			float4 tex2DNode1 = tex2D( _t_fleurs_color_01, uv_t_fleurs_color_01 );
 			o.Albedo = tex2DNode1.rgb;
-			o.Emission = ( _Color0 * tex2DNode1 ).rgb;
-			o.Alpha = tex2DNode1.a;
-			clip( tex2DNode1.a - _Cutoff );
+			float4 color43 = IsGammaSpace() ? float4(0.1226415,0.05707179,0.02256141,1) : float4(0.01390275,0.004602409,0.001746239,1);
+			o.Emission = color43.rgb;
+			float clampResult5 = clamp( tex2DNode1.a , 0.0 , 1.0 );
+			o.Alpha = clampResult5;
 		}
 
 		ENDCG
 		CGPROGRAM
-		#pragma surface surf Standard keepalpha fullforwardshadows 
+		#pragma surface surf Standard alpha:fade keepalpha fullforwardshadows 
 
 		ENDCG
 		Pass
@@ -118,16 +115,15 @@ Shader "sh_twodsided"
 }
 /*ASEBEGIN
 Version=17700
--1858;166;1691;853;978.6602;336.9231;1;True;True
-Node;AmplifyShaderEditor.SamplerNode;1;-774.8043,144.7858;Inherit;True;Property;_t_fleurs_color_01;t_fleurs_color_01;1;0;Create;True;0;0;False;0;-1;d05175dc829cd0f41a0c04ee2620389e;d05175dc829cd0f41a0c04ee2620389e;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;6;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.ColorNode;4;-471.1915,-182.2705;Inherit;False;Property;_Color0;Color 0;2;1;[HDR];Create;True;0;0;False;0;0,0,0,0;0.516296,0.411305,0.2800663,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.SimpleMultiplyOpNode;2;-273.1915,83.72946;Inherit;False;2;2;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;1;COLOR;0
-Node;AmplifyShaderEditor.StandardSurfaceOutputNode;0;11.31854,-84.08057;Float;False;True;-1;2;ASEMaterialInspector;0;0;Standard;sh_twodsided;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;False;False;False;False;False;False;Off;0;False;-1;0;False;-1;False;0;False;-1;0;False;-1;False;0;Custom;0.5;True;True;0;True;TransparentCutout;;Transparent;All;14;all;True;True;True;True;0;False;-1;False;0;False;-1;255;False;-1;255;False;-1;0;False;-1;0;False;-1;0;False;-1;0;False;-1;0;False;-1;0;False;-1;0;False;-1;0;False;-1;False;2;15;10;25;False;0.5;True;0;5;False;-1;10;False;-1;0;0;False;-1;0;False;-1;0;False;-1;0;False;-1;0;False;0;0,0,0,0;VertexOffset;True;False;Cylindrical;False;Relative;0;;0;-1;-1;-1;0;False;0;0;False;-1;-1;0;False;-1;0;0;0;False;0.1;False;-1;0;False;-1;16;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;2;FLOAT3;0,0,0;False;3;FLOAT;0;False;4;FLOAT;0;False;5;FLOAT;0;False;6;FLOAT3;0,0,0;False;7;FLOAT3;0,0,0;False;8;FLOAT;0;False;9;FLOAT;0;False;10;FLOAT;0;False;13;FLOAT3;0,0,0;False;11;FLOAT3;0,0,0;False;12;FLOAT3;0,0,0;False;14;FLOAT4;0,0,0,0;False;15;FLOAT3;0,0,0;False;0
-WireConnection;2;0;4;0
-WireConnection;2;1;1;0
-WireConnection;0;0;1;0
-WireConnection;0;2;2;0
-WireConnection;0;9;1;4
-WireConnection;0;10;1;4
+358;1019;1587;709;2614.561;913.0623;2.942508;True;True
+Node;AmplifyShaderEditor.SamplerNode;1;-955.2769,79.02044;Inherit;True;Property;_t_fleurs_color_01;t_fleurs_color_01;0;0;Create;True;0;0;False;0;-1;d05175dc829cd0f41a0c04ee2620389e;d05175dc829cd0f41a0c04ee2620389e;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;6;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.ClampOpNode;5;-685.7673,309.0797;Inherit;True;3;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;1;False;1;FLOAT;0
+Node;AmplifyShaderEditor.ColorNode;43;-487.2855,-210.9922;Inherit;False;Constant;_Color0;Color 0;2;0;Create;True;0;0;False;0;0.1226415,0.05707179,0.02256141,1;0,0,0,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.StandardSurfaceOutputNode;42;85.06348,-120.0918;Float;False;True;-1;2;ASEMaterialInspector;0;0;Standard;sh_twodsided;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;False;False;False;False;False;False;Off;0;False;-1;0;False;-1;False;0;False;-1;0;False;-1;False;0;Transparent;0.5;True;True;0;False;Transparent;;Transparent;All;14;all;True;True;True;True;0;False;-1;False;0;False;-1;255;False;-1;255;False;-1;0;False;-1;0;False;-1;0;False;-1;0;False;-1;0;False;-1;0;False;-1;0;False;-1;0;False;-1;False;2;15;10;25;False;0.5;True;2;5;False;-1;10;False;-1;0;0;False;-1;0;False;-1;0;False;-1;0;False;-1;0;False;0;0,0,0,0;VertexOffset;True;False;Cylindrical;False;Relative;0;;0;-1;-1;-1;0;False;0;0;False;-1;-1;0;False;-1;0;0;0;False;0.1;False;-1;0;False;-1;16;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;2;FLOAT3;0,0,0;False;3;FLOAT;0;False;4;FLOAT;0;False;5;FLOAT;0;False;6;FLOAT3;0,0,0;False;7;FLOAT3;0,0,0;False;8;FLOAT;0;False;9;FLOAT;0;False;10;FLOAT;0;False;13;FLOAT3;0,0,0;False;11;FLOAT3;0,0,0;False;12;FLOAT3;0,0,0;False;14;FLOAT4;0,0,0,0;False;15;FLOAT3;0,0,0;False;0
+WireConnection;5;0;1;4
+WireConnection;42;0;1;0
+WireConnection;42;2;43;0
+WireConnection;42;9;5;0
+WireConnection;42;10;5;0
 ASEEND*/
-//CHKSM=809BDD4C305428E241DCF2AC2D2DCB851FE6496F
+//CHKSM=0DD5C3D9D1958DE89B13943D56506D284131B219
