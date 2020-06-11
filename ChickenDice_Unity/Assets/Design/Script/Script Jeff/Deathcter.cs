@@ -102,6 +102,8 @@ public class Deathcter : MonoBehaviour
             _havewin = true;
             _CanvasWiner.SetActive(true);
             _UIWiner[_TheKillerID].SetActive(true);
+            GameObject _PlayerWin = GameObject.Find("A Chicken numeroted "+_TheKillerID.ToString());
+            _PlayerWin.transform.position = _PlayerWin.transform.position + new Vector3(_PlayerWin.transform.position.x, 100, _PlayerWin.transform.position.z);
             _UIMode.SetActive(false);
         }        
     }
@@ -125,11 +127,14 @@ public class Deathcter : MonoBehaviour
             _CanvasWiner.SetActive(true);
             _UIWiner[_TheKillerID].SetActive(true);
             _UIMode.SetActive(false);
+            GameObject _PlayerWin = GameObject.Find("A Chicken numeroted " + _TheKillerID.ToString());
+            _PlayerWin.transform.position = _PlayerWin.transform.position + new Vector3(_PlayerWin.transform.position.x, 100, _PlayerWin.transform.position.z);
         }        
     }
     private IEnumerator SetPoint2()
     {
-        if (_CounterPlayer[_TheKillerID] < _ValeurToWin && _havewin == false) {
+        if (_CounterPlayer[_TheKillerID] < _ValeurToWin && _havewin == false)
+        {
             _CounterPlayer[_TheKillerID] = _CounterPlayer[_TheKillerID] + 1;
             _PointText[_TheKillerID].text = _CounterPlayer[_TheKillerID].ToString();
             _PointTextInWin[_TheKillerID].text = _PointText[_TheKillerID].text;
@@ -147,6 +152,8 @@ public class Deathcter : MonoBehaviour
             _CanvasWiner.SetActive(true);
             _UIWiner[_TheKillerID].SetActive(true);
             _UIMode.SetActive(false);
+            GameObject _PlayerWin = GameObject.Find("A Chicken numeroted " + _TheKillerID.ToString());
+            _PlayerWin.transform.position = _PlayerWin.transform.position + new Vector3(_PlayerWin.transform.position.x, 100, _PlayerWin.transform.position.z);
         }        
     }
     private IEnumerator SetPoint3()
@@ -158,6 +165,7 @@ public class Deathcter : MonoBehaviour
             float Amont = _CounterPlayer[_TheKillerID] / _ValeurToWin;
             _bar[_TheKillerID].fillAmount = Amont;
             _barInWin[_TheKillerID].fillAmount = Amont;
+
         }
 
         yield return new WaitForSeconds(_TimeRespawnPlayer);
@@ -169,6 +177,8 @@ public class Deathcter : MonoBehaviour
             _CanvasWiner.SetActive(true);
             _UIWiner[_TheKillerID].SetActive(true);
             _UIMode.SetActive(false);
+            GameObject _PlayerWin = GameObject.Find("A Chicken numeroted " + _TheKillerID.ToString());
+            _PlayerWin.transform.position = _PlayerWin.transform.position + new Vector3(_PlayerWin.transform.position.x, 100, _PlayerWin.transform.position.z);
         }        
     }
 

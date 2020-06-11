@@ -47,6 +47,9 @@ public class ScarecrowFight : MonoBehaviour
                 _CanvasWiner.SetActive(true);
                 _UIMode.SetActive(false);
                 _UIWiner[IdPlayer].SetActive(true);
+                //Tp de la poulet qui win
+                GameObject _PlayerWin = GameObject.Find("A Chicken numeroted " + IdPlayer.ToString());
+                _PlayerWin.transform.position = other.transform.position + new Vector3(other.transform.position.x, 100, other.transform.position.z);
             }
         }
     }

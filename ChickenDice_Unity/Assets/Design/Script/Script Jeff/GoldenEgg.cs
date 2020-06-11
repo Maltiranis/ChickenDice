@@ -89,6 +89,8 @@ public class GoldenEgg : MonoBehaviour
                 _UIMode.SetActive(false);
                 _CanvasWiner.SetActive(true);
                 _UIWiner[_IdPlayerHaveEgg].SetActive(true);
+                // TP de la poulet qui win
+                _TargetFollow.transform.position = _TargetFollow.transform.position + new Vector3(_TargetFollow.transform.position.x, 100, _TargetFollow.transform.position.z);
             }
             //Si le joueur a toujour l'oeuf + pas  gagné
             else

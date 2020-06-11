@@ -4,10 +4,12 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class sc_MenuPause : MonoBehaviour
 {
     [SerializeField] private GameObject _MenuPause = null;
+    public GameObject  _PauseFirstButton;
     int _Id;
 
     private void Update()
@@ -18,6 +20,9 @@ public class sc_MenuPause : MonoBehaviour
 
             if(Time.timeScale == 1)
             {
+                EventSystem.current.SetSelectedGameObject(null);
+                EventSystem.current.SetSelectedGameObject(_PauseFirstButton);
+
                 Time.timeScale = 0;
             }
             else
