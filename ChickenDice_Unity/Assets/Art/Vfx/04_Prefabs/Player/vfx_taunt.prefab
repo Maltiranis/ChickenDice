@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8163990891657945631}
   - component: {fileID: 8163990891657945625}
   - component: {fileID: 8163990891657945624}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: vfx_taunt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4767,7 +4767,7 @@ GameObject:
   - component: {fileID: 8163990892648281989}
   - component: {fileID: 8163990892648281991}
   - component: {fileID: 8163990892648281990}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: vfx_traitup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9588,7 +9588,7 @@ GameObject:
   - component: {fileID: 8163990893187212034}
   - component: {fileID: 8163990893187212044}
   - component: {fileID: 8163990893187212035}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: vfx_note
   m_TagString: Untagged
   m_Icon: {fileID: 0}

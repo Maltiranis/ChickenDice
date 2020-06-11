@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1504658841340745334}
   - component: {fileID: 1504658841340745328}
   - component: {fileID: 1504658841340745335}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: vfx_partsspwna
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4823,7 +4823,7 @@ GameObject:
   - component: {fileID: 1504658841666459919}
   - component: {fileID: 1504658841666459913}
   - component: {fileID: 1504658841666459912}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: vfx_proj_ball (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9635,7 +9635,7 @@ GameObject:
   - component: {fileID: 1504658841702543995}
   - component: {fileID: 1504658841702543989}
   - component: {fileID: 1504658841702543988}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: vfx_proj_ball (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14447,7 +14447,7 @@ GameObject:
   - component: {fileID: 1504658842127566676}
   - component: {fileID: 1504658842127566678}
   - component: {fileID: 1504658842127566677}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: vfx_proj_ball (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19259,7 +19259,7 @@ GameObject:
   - component: {fileID: 1504658842235674298}
   - component: {fileID: 1504658842235674297}
   - component: {fileID: 1504658842235674296}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: vfx_proj0_fireball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24023,7 +24023,7 @@ GameObject:
   - component: {fileID: 1504658842522456935}
   - component: {fileID: 1504658842522456929}
   - component: {fileID: 1504658842522456928}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: vfx_proj_ball (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28835,7 +28835,7 @@ GameObject:
   - component: {fileID: 1504658842634986591}
   - component: {fileID: 1504658842634986585}
   - component: {fileID: 1504658842634986584}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: vfx_proj_ball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33647,7 +33647,7 @@ GameObject:
   - component: {fileID: 1504658842659391718}
   - component: {fileID: 1504658842659391712}
   - component: {fileID: 1504658842659391719}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: vfx_proj_shot_white (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38468,7 +38468,7 @@ GameObject:
   - component: {fileID: 1504658842971918654}
   - component: {fileID: 1504658842971918648}
   - component: {fileID: 1504658842971918655}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: vfx_proj_shot_white
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43289,7 +43289,7 @@ GameObject:
   - component: {fileID: 1504658843382223571}
   - component: {fileID: 1504658843382223597}
   - component: {fileID: 1504658843382223596}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: vfx_proj_ball (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48101,7 +48101,7 @@ GameObject:
   - component: {fileID: 1504658843399829175}
   - component: {fileID: 1504658843399829169}
   - component: {fileID: 1504658843399829168}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: vfx_partsspwn
   m_TagString: Untagged
   m_Icon: {fileID: 0}

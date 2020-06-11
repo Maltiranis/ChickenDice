@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7427245683244255773}
   - component: {fileID: 7427245683244255774}
   - component: {fileID: 7427245683244255775}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Vfx_hitglow (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4837,7 +4837,7 @@ GameObject:
   - component: {fileID: 7427245683246440236}
   - component: {fileID: 7427245683246440234}
   - component: {fileID: 7427245683246440235}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: vfx_traitup (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9659,7 +9659,7 @@ GameObject:
   - component: {fileID: 7427245683429036665}
   - component: {fileID: 7427245683429036666}
   - component: {fileID: 7427245683429036667}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Vfx_star
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14493,7 +14493,7 @@ GameObject:
   - component: {fileID: 7427245683880948995}
   - component: {fileID: 7427245683880948993}
   - component: {fileID: 7427245683880948994}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: vfx_partsspwn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19305,7 +19305,7 @@ GameObject:
   - component: {fileID: 7427245684690938480}
   - component: {fileID: 7427245684690938494}
   - component: {fileID: 7427245684690938495}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: vfx_slice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24118,7 +24118,7 @@ GameObject:
   - component: {fileID: 7427245684891908702}
   - component: {fileID: 7427245684891908703}
   - component: {fileID: 7427245684891908688}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Vfx_hitglow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28944,7 +28944,7 @@ GameObject:
   - component: {fileID: 7427245685029494030}
   - component: {fileID: 7427245685029494031}
   - component: {fileID: 7427245685029494016}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Vfx_flare
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33769,7 +33769,7 @@ GameObject:
   - component: {fileID: 7427245685073978682}
   - component: {fileID: 7427245685073978680}
   - component: {fileID: 7427245685073978681}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: vfx_hitfeather
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38590,7 +38590,7 @@ GameObject:
   - component: {fileID: 7427245685083242955}
   - component: {fileID: 7427245685083242953}
   - component: {fileID: 7427245685083242954}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: vfx_traitup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43411,7 +43411,7 @@ GameObject:
   - component: {fileID: 7427245685145151239}
   - component: {fileID: 7427245685145151237}
   - component: {fileID: 7427245685145151238}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: vfx_spawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48175,7 +48175,7 @@ GameObject:
   - component: {fileID: 7427245685322835480}
   - component: {fileID: 7427245685322835494}
   - component: {fileID: 7427245685322835495}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: vfx_traitup (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

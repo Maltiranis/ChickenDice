@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1666932329451524134}
   - component: {fileID: 1666932329451524132}
   - component: {fileID: 1666932329451524135}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: vfx_dash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4767,7 +4767,7 @@ GameObject:
   - component: {fileID: 1666932330531718862}
   - component: {fileID: 1666932330531718860}
   - component: {fileID: 1666932330531718863}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: vfx_partsspwn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9579,7 +9579,7 @@ GameObject:
   - component: {fileID: 5996253696860799616}
   - component: {fileID: 8480302857380726193}
   - component: {fileID: 5619684449927920838}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: vfx_echo
   m_TagString: Untagged
   m_Icon: {fileID: 0}

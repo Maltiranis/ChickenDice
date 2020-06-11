@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6807366041407006842}
   - component: {fileID: 6807366041407006840}
   - component: {fileID: 6807366041407006841}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: vfx_proj_traits
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4841,7 +4841,7 @@ GameObject:
   - component: {fileID: 6807366041648530572}
   - component: {fileID: 6807366041648530570}
   - component: {fileID: 6807366041648530571}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: vfx_proj_eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9662,7 +9662,7 @@ GameObject:
   - component: {fileID: 6807366041698273949}
   - component: {fileID: 6807366041698273947}
   - component: {fileID: 6807366041698273948}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: vfx_proj_shot_white (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14483,7 +14483,7 @@ GameObject:
   - component: {fileID: 6807366041893727899}
   - component: {fileID: 6807366041893727897}
   - component: {fileID: 6807366041893727898}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: vfx_screen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19304,7 +19304,7 @@ GameObject:
   - component: {fileID: 6807366041922868522}
   - component: {fileID: 6807366041922868520}
   - component: {fileID: 6807366041922868521}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: vfx_proj_shot_white (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24125,7 +24125,7 @@ GameObject:
   - component: {fileID: 6807366041934499280}
   - component: {fileID: 6807366041934499310}
   - component: {fileID: 6807366041934499311}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: vfx_proj_body (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28946,7 +28946,7 @@ GameObject:
   - component: {fileID: 6807366042227502481}
   - component: {fileID: 6807366042227502511}
   - component: {fileID: 6807366042227502480}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: vfx_proj_body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33767,7 +33767,7 @@ GameObject:
   - component: {fileID: 6807366042242538131}
   - component: {fileID: 6807366042242538129}
   - component: {fileID: 6807366042242538130}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: vfx_proj_ball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38588,7 +38588,7 @@ GameObject:
   - component: {fileID: 6807366042520938868}
   - component: {fileID: 6807366042520938869}
   - component: {fileID: 6807366042520938870}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: vfx_hit0_bowl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43356,7 +43356,7 @@ GameObject:
   - component: {fileID: 6807366042603011735}
   - component: {fileID: 6807366042603011733}
   - component: {fileID: 6807366042603011734}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: vfx_disto
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48177,7 +48177,7 @@ GameObject:
   - component: {fileID: 6807366042873017989}
   - component: {fileID: 6807366042873017987}
   - component: {fileID: 6807366042873017988}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: vfx_proj_shot_white
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52998,7 +52998,7 @@ GameObject:
   - component: {fileID: 6807366043018066955}
   - component: {fileID: 6807366043018066953}
   - component: {fileID: 6807366043018066954}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: vfx_proj_bec
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57819,7 +57819,7 @@ GameObject:
   - component: {fileID: 6807366043134201771}
   - component: {fileID: 6807366043134201769}
   - component: {fileID: 6807366043134201770}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: vfx_proj_shot_white (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62640,7 +62640,7 @@ GameObject:
   - component: {fileID: 6807366043183104768}
   - component: {fileID: 6807366043183104798}
   - component: {fileID: 6807366043183104799}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: vfx_impact
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67452,7 +67452,7 @@ GameObject:
   - component: {fileID: 6807366043404161478}
   - component: {fileID: 6807366043404161476}
   - component: {fileID: 6807366043404161477}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: vfx_partsspwn
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6464160372625133659}
   - component: {fileID: 6464160372625133657}
   - component: {fileID: 6464160372625133656}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: vfx_vitesse
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4823,7 +4823,7 @@ GameObject:
   - component: {fileID: 6464160372729506373}
   - component: {fileID: 6464160372729506379}
   - component: {fileID: 6464160372729506378}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: vfx_groundpeck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9635,7 +9635,7 @@ GameObject:
   - component: {fileID: 6464160373241611256}
   - component: {fileID: 6464160373241611262}
   - component: {fileID: 6464160373241611257}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: vfx_traitpeck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14447,7 +14447,7 @@ GameObject:
   - component: {fileID: 6464160373361086637}
   - component: {fileID: 6464160373361086611}
   - component: {fileID: 6464160373361086610}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: vfx_groundpart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19268,7 +19268,7 @@ GameObject:
   - component: {fileID: 6464160373560290326}
   - component: {fileID: 6464160373560290324}
   - component: {fileID: 6464160373560290327}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: vfx_peck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
