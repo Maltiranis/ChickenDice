@@ -37,6 +37,7 @@ public class sc_MenuPause : MonoBehaviour
     public void MainMenu()
     {
         SceneManager.LoadScene(0);
+        Time.timeScale = 1;
     }
 
     public void Exit()
