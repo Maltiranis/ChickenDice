@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5639280302270287268}
   - component: {fileID: 5639280302270287322}
   - component: {fileID: 5639280302270287269}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: fx_beamddeath
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4823,7 +4823,7 @@ GameObject:
   - component: {fileID: 5639280302319157596}
   - component: {fileID: 5639280302319157586}
   - component: {fileID: 5639280302319157597}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: vfx_hitfeather (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9644,7 +9644,7 @@ GameObject:
   - component: {fileID: 5639280302331100830}
   - component: {fileID: 5639280302331100828}
   - component: {fileID: 5639280302331100831}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: vfx_fireworksholder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14463,7 +14463,7 @@ GameObject:
   - component: {fileID: 5639280302536351100}
   - component: {fileID: 5639280302536351103}
   - component: {fileID: 5639280302536351102}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Vfx_hitglow (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19288,7 +19288,7 @@ GameObject:
   - component: {fileID: 5639280302576600277}
   - component: {fileID: 5639280302576600267}
   - component: {fileID: 5639280302576600266}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: vfx_fireworks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24109,7 +24109,7 @@ GameObject:
   - component: {fileID: 5639280302706759981}
   - component: {fileID: 5639280302706759971}
   - component: {fileID: 5639280302706759970}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: fx_traithit (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28921,7 +28921,7 @@ GameObject:
   - component: {fileID: 5639280302709587297}
   - component: {fileID: 5639280302709587303}
   - component: {fileID: 5639280302709587302}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: vfx_fireworksholder (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33740,7 +33740,7 @@ GameObject:
   - component: {fileID: 5639280302808816555}
   - component: {fileID: 5639280302808816554}
   - component: {fileID: 5639280302808816565}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Vfx_flare
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38565,7 +38565,7 @@ GameObject:
   - component: {fileID: 5639280302910991217}
   - component: {fileID: 5639280302910991223}
   - component: {fileID: 5639280302910991222}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: fx_traithit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43377,7 +43377,7 @@ GameObject:
   - component: {fileID: 5639280302914750057}
   - component: {fileID: 5639280302914750063}
   - component: {fileID: 5639280302914750062}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: vfx_hitfeather
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48198,7 +48198,7 @@ GameObject:
   - component: {fileID: 5639280302983956335}
   - component: {fileID: 5639280302983956333}
   - component: {fileID: 5639280302983956332}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: vfx_death
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52968,7 +52968,7 @@ GameObject:
   - component: {fileID: 5639280303088468041}
   - component: {fileID: 5639280303088468047}
   - component: {fileID: 5639280303088468046}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: fx_traithit (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57780,7 +57780,7 @@ GameObject:
   - component: {fileID: 5639280303428407255}
   - component: {fileID: 5639280303428407253}
   - component: {fileID: 5639280303428407252}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: fx_beamddeath (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62593,7 +62593,7 @@ GameObject:
   - component: {fileID: 5639280303635965857}
   - component: {fileID: 5639280303635965856}
   - component: {fileID: 5639280303635965859}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Vfx_hitglow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67418,7 +67418,7 @@ GameObject:
   - component: {fileID: 5639280303897936993}
   - component: {fileID: 5639280303897936999}
   - component: {fileID: 5639280303897936998}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: vfx_fireworksholder (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72237,7 +72237,7 @@ GameObject:
   - component: {fileID: 5639280303951453180}
   - component: {fileID: 5639280303951453183}
   - component: {fileID: 5639280303951453182}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Vfx_star
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -77062,7 +77062,7 @@ GameObject:
   - component: {fileID: 5639280303971688867}
   - component: {fileID: 5639280303971688865}
   - component: {fileID: 5639280303971688864}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: vfx_fireworks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -81883,7 +81883,7 @@ GameObject:
   - component: {fileID: 5639280304113317048}
   - component: {fileID: 5639280304113317054}
   - component: {fileID: 5639280304113317049}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: vfx_fireworks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86704,7 +86704,7 @@ GameObject:
   - component: {fileID: 5639280304161231922}
   - component: {fileID: 5639280304161231920}
   - component: {fileID: 5639280304161231923}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: vfx_fireworks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91525,7 +91525,7 @@ GameObject:
   - component: {fileID: 5639280304188405524}
   - component: {fileID: 5639280304188405514}
   - component: {fileID: 5639280304188405525}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: fx_traithit (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

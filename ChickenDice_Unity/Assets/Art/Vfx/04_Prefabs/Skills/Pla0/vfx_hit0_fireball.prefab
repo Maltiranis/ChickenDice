@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2094415758229987189}
   - component: {fileID: 2094415758229987195}
   - component: {fileID: 2094415758229987194}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: vfx_proj_ball (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4832,7 +4832,7 @@ GameObject:
   - component: {fileID: 2094415758435771374}
   - component: {fileID: 2094415758435771372}
   - component: {fileID: 2094415758435771375}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: vfx_proj_shot_white (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9653,7 +9653,7 @@ GameObject:
   - component: {fileID: 2094415758602071439}
   - component: {fileID: 2094415758602071437}
   - component: {fileID: 2094415758602071436}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: vfx_partsspwn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14465,7 +14465,7 @@ GameObject:
   - component: {fileID: 2094415758744544008}
   - component: {fileID: 2094415758744544014}
   - component: {fileID: 2094415758744544009}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: vfx_proj_ball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19286,7 +19286,7 @@ GameObject:
   - component: {fileID: 2094415758933515422}
   - component: {fileID: 2094415758933515420}
   - component: {fileID: 2094415758933515423}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: vfx_proj_shot_white (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24107,7 +24107,7 @@ GameObject:
   - component: {fileID: 2094415759156191701}
   - component: {fileID: 2094415759156191707}
   - component: {fileID: 2094415759156191706}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: vfx_proj_shot_white
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28928,7 +28928,7 @@ GameObject:
   - component: {fileID: 2094415759217909570}
   - component: {fileID: 2094415759217909568}
   - component: {fileID: 2094415759217909571}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: vfx_proj_traits
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33758,7 +33758,7 @@ GameObject:
   - component: {fileID: 2094415759420949280}
   - component: {fileID: 2094415759420949286}
   - component: {fileID: 2094415759420949281}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: vfx_impact
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38570,7 +38570,7 @@ GameObject:
   - component: {fileID: 2094415759456619635}
   - component: {fileID: 2094415759456619634}
   - component: {fileID: 2094415759456619629}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: vfx_hit0_fireball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43334,7 +43334,7 @@ GameObject:
   - component: {fileID: 2094415759675928355}
   - component: {fileID: 2094415759675928353}
   - component: {fileID: 2094415759675928352}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: vfx_proj_shot_white (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48155,7 +48155,7 @@ GameObject:
   - component: {fileID: 2094415759948631164}
   - component: {fileID: 2094415759948631106}
   - component: {fileID: 2094415759948631165}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: vfx_disto
   m_TagString: Untagged
   m_Icon: {fileID: 0}

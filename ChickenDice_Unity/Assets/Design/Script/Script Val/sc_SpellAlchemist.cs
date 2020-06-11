@@ -29,7 +29,13 @@ public class sc_SpellAlchemist : MonoBehaviour
     //
     [SerializeField] public float _coolDownR = 1f;
     [SerializeField] public float _coolDownL = 1f;
+    [Space(10)]
+    [Header("Additional Objects")]
+    [SerializeField] public GameObject[] _dashGhost;
+    [SerializeField] public float _objectTimer = 0.5f;
+    [SerializeField] public float _rateOverDist = 2f;
     GameObject pivot;
+    ParticleSystem.EmissionModule em;
     //
     //[Space(10)]
     //[Header("UI")]
@@ -47,6 +53,12 @@ public class sc_SpellAlchemist : MonoBehaviour
 
         pivot = new GameObject("pivot Chicken " + _myID.ID.ToString());
         pivot.transform.SetParent(null);
+        foreach (GameObject d in _dashGhost)
+        {
+            ParticleSystem.EmissionModule dem = d.GetComponent<ParticleSystem>().emission;
+            dem.rateOverDistance = 0;
+        }
+        em = _dashGhost[_id].GetComponent<ParticleSystem>().emission;
         /*foreach (GameObject ui in _UI)
         {
             ui.SetActive(false);
@@ -56,6 +68,7 @@ public class sc_SpellAlchemist : MonoBehaviour
 
     public void DestroyPivot ()
     {
+        em.rateOverDistance = 0f;
         Destroy(pivot);
     }
 
@@ -203,15 +216,19 @@ public class sc_SpellAlchemist : MonoBehaviour
                     s_sbS._getPassives_Left = sc_SpellBehaviours.Passives_L.EMPTY;
                     s_sbS._getPassives_Right = sc_SpellBehaviours.Passives_R.EMPTY;
 
-                    shot.transform.SetParent(pivot.transform);
 
                     if (s_sbS._getProfile == sc_SpellBehaviours.Profile.Dash)
                     {
+                        em.rateOverDistance = _rateOverDist;
+                        StartCoroutine(DashDuration(_objectTimer));
+
                         GetComponent<Rigidbody>().AddForce
                         (
                             _shootOffset_0.transform.forward * s_sbS._v.speedDash, ForceMode.Impulse
                         );
                     }
+                    
+                   shot.transform.SetParent(pivot.transform);
 
                     if (s_sbS._getProfile == sc_SpellBehaviours.Profile.Heal)
                     {
@@ -399,10 +416,15 @@ public class sc_SpellAlchemist : MonoBehaviour
         }
     }
 
-    public IEnumerator MultipleCasts (float timer, GameObject A, GameObject P1, GameObject P2)
+    public IEnumerator MultipleCasts(float timer, GameObject A, GameObject P1, GameObject P2)
     {
         yield return new WaitForSeconds(timer);
 
         ShootInstance(A, P1, P2, 0);
+    }
+    public IEnumerator DashDuration(float timer)
+    {
+        yield return new WaitForSeconds(timer);
+        em.rateOverDistance = 0f;
     }
 }

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1112810079783738215}
   - component: {fileID: 1112810079783738209}
   - component: {fileID: 1112810079783738208}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: vfx_heal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4841,7 +4841,7 @@ GameObject:
   - component: {fileID: 1112810080547960996}
   - component: {fileID: 1112810080547960998}
   - component: {fileID: 1112810080547960997}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: vfx_partsspwn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9653,7 +9653,7 @@ GameObject:
   - component: {fileID: 1112810080689784016}
   - component: {fileID: 1112810080689784018}
   - component: {fileID: 1112810080689784017}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: vfx_heal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14410,7 +14410,7 @@ GameObject:
   - component: {fileID: 1112810080734057254}
   - component: {fileID: 1112810080734057248}
   - component: {fileID: 1112810080734057255}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: vfx_fil
   m_TagString: Untagged
   m_Icon: {fileID: 0}

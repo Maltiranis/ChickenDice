@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9021516118103752869}
   - component: {fileID: 9021516118103752871}
   - component: {fileID: 9021516118103752870}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: vfx_shielddd (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4823,7 +4823,7 @@ GameObject:
   - component: {fileID: 9021516118189731920}
   - component: {fileID: 9021516118189731922}
   - component: {fileID: 9021516118189731921}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: vfx_shield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9581,7 +9581,7 @@ GameObject:
   - component: {fileID: 9021516118678285072}
   - component: {fileID: 9021516118678285074}
   - component: {fileID: 9021516118678285073}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: vfx_shielddd
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14402,7 +14402,7 @@ GameObject:
   - component: {fileID: 9021516119797489141}
   - component: {fileID: 9021516119797489143}
   - component: {fileID: 9021516119797489142}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: vfx_partsspwn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19219,6 +19219,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: collider_shield
+      objectReference: {fileID: 0}
+    - target: {fileID: 6657252509789872666, guid: 87a915314e521804e897de08806d8b0d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7653892006112694281, guid: 87a915314e521804e897de08806d8b0d,
         type: 3}

@@ -443,13 +443,23 @@ public class sc_SpellBehaviours : MonoBehaviour
                      _getProfile == Profile.Heal ||
                      _getProfile == Profile.Dash)
                 {
-                    Vector3 parPos = new Vector3(transform.parent.position.x, 0.5f, transform.parent.position.z);
+                    Vector3 parPos = Vector3.zero;
+
+                    parPos = new Vector3(transform.parent.position.x, 0.5f, transform.parent.position.z);
+
                     transform.position = parPos;
                     //
                     GameObject fxs = transform.GetChild(0).gameObject;
                     Transform c = _v.Caster.transform.GetChild(0).transform;
 
-                    fxs.transform.localPosition = new Vector3(0, .5f, 0);
+                    if (_getProfile != Profile.Dash)
+                    {
+                        fxs.transform.localPosition = new Vector3(0, 0.5f, 0);
+                    }
+                    else
+                    {
+                        fxs.transform.localPosition = new Vector3(0, -0.5f, 0);
+                    }
 
                     fxs.transform.forward = c.forward;
                     fxs.transform.localEulerAngles = new Vector3
