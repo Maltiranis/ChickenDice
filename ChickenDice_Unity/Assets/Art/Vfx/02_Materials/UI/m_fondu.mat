@@ -119,7 +119,7 @@ Material:
     - _UseUIAlphaClip: 0
     - _ZWrite: 1
     - __dirty: 0
-    - _fondu: 1.0049993
+    - _fondu: 0
     - _icone: 0
     - _tilling: 1
     m_Colors:

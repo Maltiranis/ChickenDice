@@ -62792,6 +62792,11 @@ PrefabInstance:
       propertyPath: _Scarcrow02
       value: 
       objectReference: {fileID: 1840961136}
+    - target: {fileID: 5776713285029500429, guid: f94b289ee5056624b9ecdf5feeb318d3,
+        type: 3}
+      propertyPath: _TimeLootPhase
+      value: 120
+      objectReference: {fileID: 0}
     - target: {fileID: 5776713285029500435, guid: f94b289ee5056624b9ecdf5feeb318d3,
         type: 3}
       propertyPath: m_Name
