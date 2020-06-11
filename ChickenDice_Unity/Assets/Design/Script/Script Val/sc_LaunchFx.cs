@@ -7,6 +7,7 @@ public class sc_LaunchFx : MonoBehaviour
     public GameObject[] _FXs;
     public float _fxLifetime = 2f;
     public GameObject _rootFX;
+    public GameObject _rootHead;
 
     public GameObject[] _eyes;
     public GameObject[] _dustRun;
@@ -35,12 +36,9 @@ public class sc_LaunchFx : MonoBehaviour
 
     public void SetEye (int i)//0 : mort , 1 : pleure, 2 : plisse
     {
-        foreach (GameObject e in _eyes)
-        {
-            e.SetActive(false);
-        }
-
-        _eyes[i].SetActive(true);
-        _eyes[i].GetComponent<ParticleSystem>().Play(); //sinon on prends tout
+        GameObject newEyeFx = Instantiate(_eyes[i], _rootHead.transform.position, _rootHead.transform.rotation);
+        newEyeFx.transform.SetParent(_rootHead.transform);
+        newEyeFx.SetActive(true);
+        Destroy(newEyeFx, _fxLifetime);
     }
 }

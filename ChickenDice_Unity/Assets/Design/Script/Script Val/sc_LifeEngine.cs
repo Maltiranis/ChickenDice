@@ -22,10 +22,13 @@ public class sc_LifeEngine : MonoBehaviour
     [SerializeField] private sc_AnimManagement _am;
     GameObject skin;
     [SerializeField] public GameObject PolySurface;
+    [SerializeField] public GameObject _UItoHide1;
+    [SerializeField] public GameObject _UItoHide2;
     [Header("Chicken Prefab")]
     [SerializeField] public GameObject _myOriginalPrefab;
     string myName;
     Transform myParent;
+    [HideInInspector] public GameObject jesusChicken = null;
 
     // Start is called before the first frame update
     void Start()
@@ -37,7 +40,9 @@ public class sc_LifeEngine : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         skin = GetComponent<sc_ChickenController>().gameObject;
 
-        skin.transform.localEulerAngles = new Vector3(0, startY, 0);
+        transform.localEulerAngles = new Vector3(0, startY, 0);
+        _UItoHide2.transform.localEulerAngles = new Vector3(0, startY, 0);
+
         name = gameObject.name;
         myParent = transform.parent;
         gameObject.name = "A Chicken" + " numeroted " + GetComponent<sc_Chicken_ID>().ID.ToString();
@@ -87,7 +92,8 @@ public class sc_LifeEngine : MonoBehaviour
 
     void UnactivateSystems ()
     {
-        //gameObject.SetActive(false);
+        _UItoHide1.SetActive(false);
+        _UItoHide2.SetActive(false);
         GetComponent<sc_ChickenController>().enabled = false;
         GetComponent<sc_Peck>().enabled = false;
 
@@ -112,41 +118,39 @@ public class sc_LifeEngine : MonoBehaviour
         go.GetComponent<sc_Peck>().enabled = true;
         go.GetComponent<CapsuleCollider>().enabled = true;
         go.GetComponent<sc_LifeEngine>()._life = startLife;
-        go.transform.parent = myParent;
         go.name = "A Chicken" + " numeroted " + GetComponent<sc_Chicken_ID>().ID.ToString();
         go.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
         go.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY |
                          RigidbodyConstraints.FreezeRotationX |
                          RigidbodyConstraints.FreezeRotationY |
                          RigidbodyConstraints.FreezeRotationZ;
-    }
-
-    public void StartingVFX()
-    {
-        if (_am.gameObject.GetComponent<sc_LaunchFx>() != null)
-        {
-            _am.gameObject.GetComponent<sc_LaunchFx>().LaunchFx(3);
-        }
+        go.GetComponent<sc_LifeEngine>()._UItoHide1.SetActive(true);
+        go.GetComponent<sc_LifeEngine>()._UItoHide2.SetActive(true);
     }
 
     public IEnumerator RespawnVFX_IEnumerator()
     {
-        yield return new WaitForSeconds(_respawnDelay);
-        StartingVFX();
+        yield return new WaitForSeconds(_respawnDelay + 0.5f);
+        Quaternion trueRot = Quaternion.Euler(0, startY, 0);
+        jesusChicken = Instantiate(_myOriginalPrefab, _startPosTransform.position, Quaternion.Inverse(trueRot));
+        jesusChicken.GetComponent<sc_ChickenController>()._skin.transform.rotation = trueRot;
+        jesusChicken.GetComponent<sc_Chicken_ID>().ID = gameObject.GetComponent<sc_Chicken_ID>().ID;
+        jesusChicken.transform.position = _startPosTransform.position;
+        jesusChicken.transform.parent = myParent;
+        jesusChicken.GetComponent<sc_LifeEngine>()._am.gameObject.GetComponent<sc_LaunchFx>().LaunchFx(3);
     }
 
     public IEnumerator RespawnIEnumerator()
     {
         yield return new WaitForSeconds(_respawnDelay + 1);
-        Quaternion trueRot = Quaternion.Euler(0, startY, 0);
-        GameObject jesusChicken = Instantiate(_myOriginalPrefab, _startPosTransform.position, trueRot);
-        jesusChicken.GetComponent<sc_Chicken_ID>().ID = gameObject.GetComponent<sc_Chicken_ID>().ID;
-        LaunchSystems(jesusChicken);
-        Destroy(gameObject);
+        if (jesusChicken != null)
+            LaunchSystems(jesusChicken);
 
         if (_am.gameObject.GetComponent<sc_LaunchFx>() != null)
         {
             _am.gameObject.GetComponent<sc_LaunchFx>().SetEye(2);
         }
+
+        Destroy(gameObject);
     }
 }

@@ -39,6 +39,11 @@ public class sc_SkillManagement : MonoBehaviour
     [HideInInspector] public sc_SpellAlchemist s_sa;
     sc_Gem_ID id;
 
+    int rarityLB = 0;
+    int rarityRB = 0;
+    int rarityX = 0;
+    int rarityY = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -52,6 +57,42 @@ public class sc_SkillManagement : MonoBehaviour
         nearest = null;
         nearest = GameObject.FindGameObjectsWithTag("Gem");
         bestTarget = GetClosest();
+    }
+
+    private void LateUpdate()
+    {
+        if (_lbActive != null)
+        {
+            GetComponent<sc_ChickenUI>().SocketsSelection(3, rarityLB);
+        }
+        else
+        {
+            GetComponent<sc_ChickenUI>().SocketsSelection(3, 0);
+        }
+        if (_rbActive != null)
+        {
+            GetComponent<sc_ChickenUI>().SocketsSelection(0, rarityRB);
+        }
+        else
+        {
+            GetComponent<sc_ChickenUI>().SocketsSelection(0, 0);
+        }
+        if (_xPassive != null)
+        {
+            GetComponent<sc_ChickenUI>().SocketsSelection(2, rarityX);
+        }
+        else
+        {
+            GetComponent<sc_ChickenUI>().SocketsSelection(2, 0);
+        }
+        if (_yPassive != null)
+        {
+            GetComponent<sc_ChickenUI>().SocketsSelection(1, rarityY);
+        }
+        else
+        {
+            GetComponent<sc_ChickenUI>().SocketsSelection(1, 0);
+        }
     }
     /*
      * X: ramasse ou échange gemme PASSIVE déjà équipée
@@ -90,6 +131,7 @@ public class sc_SkillManagement : MonoBehaviour
     {
         if (_slot == "X" && id._type == "P" && bestTarget.GetComponent<sc_Gem_ID>()._type == "P")
         {
+            rarityX = bestTarget.GetComponent<sc_Gem_ID>()._rarity + 1;
             if (_Xempty == false)
             {
                 SwitchGems(_previous_x_Gem, bestTarget.transform);//On echange les gemmes
@@ -101,6 +143,7 @@ public class sc_SkillManagement : MonoBehaviour
         }
         if (_slot == "Y" && id._type == "P" && bestTarget.GetComponent<sc_Gem_ID>()._type == "P")
         {
+            rarityY = bestTarget.GetComponent<sc_Gem_ID>()._rarity + 1;
             if (_Yempty == false)
             {
                 SwitchGems(_previous_y_Gem, bestTarget.transform);//On echange les gemmes
@@ -112,6 +155,7 @@ public class sc_SkillManagement : MonoBehaviour
         }
         if (_slot == "LB" && id._type == "A" && bestTarget.GetComponent<sc_Gem_ID>()._type == "A")
         {
+            rarityLB = bestTarget.GetComponent<sc_Gem_ID>()._rarity + 1;
             if (_lbEmpty == false)
             {
                 SwitchGems(_previous_lb_Gem, bestTarget.transform);//On echange les gemmes
@@ -123,6 +167,7 @@ public class sc_SkillManagement : MonoBehaviour
         }
         if (_slot == "RB" && id._type == "A" && bestTarget.GetComponent<sc_Gem_ID>()._type == "A")
         {
+            rarityRB = bestTarget.GetComponent<sc_Gem_ID>()._rarity + 1;
             if (_rbEmpty == false)
             {
                 SwitchGems(_previous_rb_Gem, bestTarget.transform);//On echange les gemmes
