@@ -32,6 +32,7 @@ public class sc_Fondu : MonoBehaviour
     {
         var myMat = _Fondu.GetComponent<Image>().material;
         myMat.SetFloat("_fondu", _Index);
+        _FonduActive = false;
     }
     private void Update()
     {
@@ -64,13 +65,15 @@ public class sc_Fondu : MonoBehaviour
 
     public IEnumerator StartFondu()
     {
+        //Debug.Log("dans la coroutine startfondu");
+        //Debug.Log("le temp est a "+Time.timeScale);
         var myMat = _Fondu.GetComponent<Image>().material;
 
         yield return new WaitForSeconds(_SpeedCoroutine);
 
         if(_Index < 1)
         {
-            //Debug.Log("nombre de lancement");
+           // Debug.Log("nombre de lancement start fondu");
             _Index = _Index + _SpeedFondu;
             myMat.SetFloat("_fondu",_Index);
             StartCoroutine(StartFondu());
@@ -132,7 +135,7 @@ public class sc_Fondu : MonoBehaviour
         if (_Index > 0)
         {
             //Time.timeScale = 0;
-            Debug.Log("nombre de lancement");
+            //Debug.Log("nombre de lancement");
             _Index = _Index - _SpeedFondu;
             myMat.SetFloat("_fondu", _Index);
             StartCoroutine(BackFondu());
