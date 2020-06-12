@@ -30,7 +30,7 @@ public class sc_LifeEngine : MonoBehaviour
     [SerializeField] public GameObject _myOriginalPrefab;
     string myName;
     Transform myParent;
-    [HideInInspector] public GameObject jesusChicken = null;
+    //[HideInInspector] public GameObject jesusChicken = null;
     GameObject _lifeBar;
     float percentLife = 0f;
     float whiteLife = 0f;
@@ -75,19 +75,22 @@ public class sc_LifeEngine : MonoBehaviour
 
     public void TakeDamage(int dmg, int id)
     {
-        if (_life - dmg <= 0)
+        if (onRepop == false)
         {
-            _life = 0;
-            Death(id);
-        }
-        else
-        {
-            _life -= dmg;
-            _am.Hitted();
-
-            if (_am.gameObject.GetComponent<sc_LaunchFx>() != null)
+            if (_life - dmg <= 0)
             {
-                _am.gameObject.GetComponent<sc_LaunchFx>().SetEye(1);
+                _life = 0;
+                Death(id);
+            }
+            else
+            {
+                _life -= dmg;
+                _am.Hitted();
+
+                if (_am.gameObject.GetComponent<sc_LaunchFx>() != null)
+                {
+                    _am.gameObject.GetComponent<sc_LaunchFx>().SetEye(1);
+                }
             }
         }
     }
@@ -112,21 +115,16 @@ public class sc_LifeEngine : MonoBehaviour
         }
     }
 
-    public void DisapearOnDeath ()
-    {
-        GetComponent<sc_SpellAlchemist>().DestroyPivot();
-        PolySurface.SetActive(false);
-        _am.anim.SetInteger("intDeath", 100);
-        GetComponent<CapsuleCollider>().enabled = false;
-    }
-
     void UnactivateSystems ()
     {
         _UItoHide1.SetActive(false);
         _UItoHide2.SetActive(false);
         GetComponent<sc_ChickenController>().enabled = false;
         GetComponent<sc_Peck>().enabled = false;
-        DisapearOnDeath();
+        GetComponent<sc_SpellAlchemist>().DestroyPivot();
+        PolySurface.SetActive(false);
+        _am.anim.SetInteger("intDeath", 100);
+        GetComponent<CapsuleCollider>().enabled = false;
         rb.constraints = RigidbodyConstraints.FreezeAll;
     }
 
@@ -137,12 +135,6 @@ public class sc_LifeEngine : MonoBehaviour
         {
             onRepop = true;
 
-            Quaternion trueRot = Quaternion.Euler(0, startY, 0);
-
-            jesusChicken = Instantiate(_myOriginalPrefab, _startPosTransform.position, Quaternion.Inverse(trueRot));
-            jesusChicken.GetComponent<sc_ChickenController>()._skin.transform.rotation = trueRot;
-
-            StartCoroutine(RespawnIEnumerator());
             StartCoroutine(RespawnVFX_IEnumerator());
         }
     }
@@ -166,24 +158,24 @@ public class sc_LifeEngine : MonoBehaviour
 
     public IEnumerator RespawnVFX_IEnumerator()
     {
-        yield return new WaitForSeconds(_respawnDelay + 0.7f);
+        yield return new WaitForSeconds(_respawnDelay);
+
+        Quaternion trueRot = Quaternion.Euler(0, startY, 0);
+
+        GameObject jesusChicken = Instantiate(_myOriginalPrefab, _startPosTransform.position, Quaternion.Inverse(trueRot));
+        jesusChicken.GetComponent<sc_ChickenController>()._skin.transform.rotation = trueRot;
         jesusChicken.GetComponent<sc_Chicken_ID>().ID = gameObject.GetComponent<sc_Chicken_ID>().ID;
         jesusChicken.transform.position = _startPosTransform.position;
         jesusChicken.transform.parent = myParent;
+
         jesusChicken.GetComponent<sc_LifeEngine>()._am.gameObject.GetComponent<sc_LaunchFx>().LaunchFx(3);
-    }
 
-    public IEnumerator RespawnIEnumerator()
-    {
-        yield return new WaitForSeconds(_respawnDelay + 1);
-        if (jesusChicken != null)
-            LaunchSystems(jesusChicken);
-
-        if (_am.gameObject.GetComponent<sc_LaunchFx>() != null)
+        if (jesusChicken.GetComponent<sc_LifeEngine>()._am.gameObject.GetComponent<sc_LaunchFx>() != null)
         {
-            _am.gameObject.GetComponent<sc_LaunchFx>().SetEye(2);
+            jesusChicken.GetComponent<sc_LifeEngine>()._am.gameObject.GetComponent<sc_LaunchFx>().SetEye(2);
         }
 
+        LaunchSystems(jesusChicken); 
         Destroy(gameObject);
     }
 }
