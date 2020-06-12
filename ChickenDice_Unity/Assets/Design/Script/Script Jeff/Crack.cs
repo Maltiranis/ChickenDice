@@ -96,7 +96,7 @@ public class Crack : MonoBehaviour
             _Vfx30RarityToShow = _VFXCommun30;
             _Vfx60RarityToShow = _VFXCommun60;
             int _RandomRange = Random.Range(0, _CommunGem.Length);
-            Debug.Log(_CommunGem[_RandomRange]);
+            //Debug.Log(_CommunGem[_RandomRange]);
             _GemToLoot = _CommunGem[_RandomRange];
         }
 
@@ -105,7 +105,7 @@ public class Crack : MonoBehaviour
             _Vfx30RarityToShow = _VFXRare30;
             _Vfx60RarityToShow = _VFXRare60;
             int _RandomRange = Random.Range(0, _RareGem.Length);
-            Debug.Log(_RareGem[_RandomRange]);
+            //Debug.Log(_RareGem[_RandomRange]);
             _GemToLoot = _RareGem[_RandomRange];    
         }
 
@@ -114,7 +114,7 @@ public class Crack : MonoBehaviour
             _Vfx30RarityToShow = _VFXLeg30;
             _Vfx60RarityToShow = _VFXLeg60;
             int _RandomRange = Random.Range(0, _LegendaryGem.Length);
-            Debug.Log(_LegendaryGem[_RandomRange]);
+            //Debug.Log(_LegendaryGem[_RandomRange]);
             _GemToLoot = _LegendaryGem[_RandomRange];
         }
     }
