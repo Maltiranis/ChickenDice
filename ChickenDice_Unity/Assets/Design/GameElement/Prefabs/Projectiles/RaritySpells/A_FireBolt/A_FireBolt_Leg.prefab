@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 382042822189917051}
   - component: {fileID: 382042822189917050}
   - component: {fileID: 5726718223416521074}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: A_FireBolt_Leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -220,6 +220,8 @@ MonoBehaviour:
     _lifeTime: 3
     duration: 0
     _maxDistance: 10
+    speedAddPassive: 0
+    damage: 0
     startPos: {x: 0, y: 0, z: 0}
     _id: 0
     qZero: {x: 0, y: 0, z: 0, w: 0}
