@@ -19,6 +19,7 @@ public class ScarecrowFight : MonoBehaviour
     [SerializeField] private GameObject _UIMode;
 
     [Header("UI WINER")]
+    [SerializeField] private GameObject[] _CameraWiner;
     [SerializeField] private GameObject _CanvasWiner;
     [SerializeField] private GameObject[] _UIWiner;
     [SerializeField] private Image[] _barInWin;
@@ -49,6 +50,7 @@ public class ScarecrowFight : MonoBehaviour
                 _CanvasWiner.SetActive(true);
                 _UIMode.SetActive(false);
                 _UIWiner[IdPlayer].SetActive(true);
+                _CameraWiner[IdPlayer].SetActive(true);
                 //Tp de la poulet qui win
                 _PlayerWin = GameObject.Find("A Chicken numeroted " + IdPlayer.ToString());
                 StartCoroutine(TpPlayerWin());

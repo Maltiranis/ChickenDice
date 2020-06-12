@@ -18,7 +18,7 @@ public class Deathcter : MonoBehaviour
     private bool _P02IsDeath;
     private bool _P03IsDeath;
     private bool _P04IsDeath;
-
+    private GameObject _PlayerWin;
     private bool _havewin;
 
     [SerializeField] private float _ValeurToWin = 0;
@@ -32,6 +32,7 @@ public class Deathcter : MonoBehaviour
     [SerializeField] private GameObject _UIMode;
 
     [Header("UI WINER")]
+    [SerializeField] private GameObject[] _CameraWiner;
     [SerializeField] private GameObject _CanvasWiner;
     [SerializeField] private GameObject[] _UIWiner;
     [SerializeField] private Image[] _barInWin;
@@ -102,9 +103,10 @@ public class Deathcter : MonoBehaviour
             _havewin = true;
             _CanvasWiner.SetActive(true);
             _UIWiner[_TheKillerID].SetActive(true);
-            GameObject _PlayerWin = GameObject.Find("A Chicken numeroted "+_TheKillerID.ToString());
-            _PlayerWin.transform.position = _PlayerWin.transform.position + new Vector3(_PlayerWin.transform.position.x, 100, _PlayerWin.transform.position.z);
+            _PlayerWin = GameObject.Find("A Chicken numeroted "+_TheKillerID.ToString());
+            StartCoroutine(TpPlayerWin());
             _UIMode.SetActive(false);
+            _CameraWiner[_TheKillerID].SetActive(true);
         }        
     }
     private IEnumerator SetPoint1()
@@ -127,8 +129,9 @@ public class Deathcter : MonoBehaviour
             _CanvasWiner.SetActive(true);
             _UIWiner[_TheKillerID].SetActive(true);
             _UIMode.SetActive(false);
-            GameObject _PlayerWin = GameObject.Find("A Chicken numeroted " + _TheKillerID.ToString());
-            _PlayerWin.transform.position = _PlayerWin.transform.position + new Vector3(_PlayerWin.transform.position.x, 100, _PlayerWin.transform.position.z);
+            _PlayerWin = GameObject.Find("A Chicken numeroted " + _TheKillerID.ToString());
+            StartCoroutine(TpPlayerWin());
+            _CameraWiner[_TheKillerID].SetActive(true);
         }        
     }
     private IEnumerator SetPoint2()
@@ -152,8 +155,9 @@ public class Deathcter : MonoBehaviour
             _CanvasWiner.SetActive(true);
             _UIWiner[_TheKillerID].SetActive(true);
             _UIMode.SetActive(false);
-            GameObject _PlayerWin = GameObject.Find("A Chicken numeroted " + _TheKillerID.ToString());
-            _PlayerWin.transform.position = _PlayerWin.transform.position + new Vector3(_PlayerWin.transform.position.x, 100, _PlayerWin.transform.position.z);
+            _PlayerWin = GameObject.Find("A Chicken numeroted " + _TheKillerID.ToString());
+            StartCoroutine(TpPlayerWin());
+            _CameraWiner[_TheKillerID].SetActive(true);
         }        
     }
     private IEnumerator SetPoint3()
@@ -177,10 +181,18 @@ public class Deathcter : MonoBehaviour
             _CanvasWiner.SetActive(true);
             _UIWiner[_TheKillerID].SetActive(true);
             _UIMode.SetActive(false);
-            GameObject _PlayerWin = GameObject.Find("A Chicken numeroted " + _TheKillerID.ToString());
-            _PlayerWin.transform.position = _PlayerWin.transform.position + new Vector3(_PlayerWin.transform.position.x, 100, _PlayerWin.transform.position.z);
+            _PlayerWin = GameObject.Find("A Chicken numeroted " + _TheKillerID.ToString());
+            StartCoroutine(TpPlayerWin());
+            _CameraWiner[_TheKillerID].SetActive(true);
         }        
     }
 
-  
+    private IEnumerator TpPlayerWin()
+    {
+        yield return new WaitForSeconds(3f);
+
+        _PlayerWin.transform.position = _PlayerWin.transform.position + new Vector3(_PlayerWin.transform.position.x, 100, _PlayerWin.transform.position.z);
+
+    }
+
 }

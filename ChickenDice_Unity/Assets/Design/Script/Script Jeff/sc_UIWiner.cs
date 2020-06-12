@@ -13,6 +13,8 @@ public class sc_UIWiner : MonoBehaviour
     [Header("UI")]
     [SerializeField] private GameObject[] _NotReady;
     [SerializeField] private GameObject[] _Ready;
+  
+
 
     [Header("MenuPause")]
     [SerializeField] private GameObject _MenuPause;
