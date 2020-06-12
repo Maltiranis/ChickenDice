@@ -7,6 +7,7 @@ using TreeEditor;
 
 public class sc_SpellBehaviours : MonoBehaviour
 {
+    [SerializeField] public string _completeName = "";
     #region profile
     public enum Profile
     {

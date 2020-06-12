@@ -123,6 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf2f4d4de0612ae449f6529955c0c860, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _completeName: Bowling
   _getProfile: 2
   _getPassives_Left: 0
   _getPassives_Right: 0
