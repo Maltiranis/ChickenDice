@@ -20,6 +20,7 @@ public class sc_AnimManagement : MonoBehaviour
     [SerializeField] public bool _onTaunt;
 
     [SerializeField] private GameObject chicken;
+    [SerializeField] private GameObject _deadChicken;
     [SerializeField] private Rigidbody rb;
     [SerializeField] private sc_ChickenController _cc;
     [SerializeField] private sc_Peck _pk;
@@ -116,8 +117,9 @@ public class sc_AnimManagement : MonoBehaviour
     public void RandomDeath()
     {
         newDeath = Random.Range(0, 3);
-
-        anim.SetInteger("intDeath", newDeath);
+        GameObject deadClone = Instantiate(_deadChicken, transform.position, transform.rotation);
+        deadClone.GetComponent<Animator>().SetInteger("intDeath", newDeath);
+        //anim.SetInteger("intDeath", newDeath);
     }
 
     public void Hitted()

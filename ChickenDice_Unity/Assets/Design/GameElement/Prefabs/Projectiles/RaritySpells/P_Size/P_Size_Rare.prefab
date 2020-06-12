@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 382042822189917050}
   - component: {fileID: 5726718223416521074}
   m_Layer: 10
-  m_Name: A_PumpGun
+  m_Name: P_Size_Rare
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -123,9 +123,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf2f4d4de0612ae449f6529955c0c860, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _getProfile: 3
-  _getPassives_Left: 0
-  _getPassives_Right: 0
+  _getProfile: 0
+  _getPassives_Left: 4
+  _getPassives_Right: 4
   _v:
     shieldLife: 0
     shieldTime: 0
@@ -187,7 +187,7 @@ MonoBehaviour:
     damagesBL: 75
     rangeBL: 1
     ajustedPosBL: {x: 0, y: 0, z: 0}
-    ajustedRotBL: {x: 270, y: 0, z: 0}
+    ajustedRotBL: {x: 0, y: 0, z: 0}
     _aVFXparent_BL:
     - {fileID: 6275700111948553674, guid: 244aff1d2ea5b9e4c8aa90c6080cd557, type: 3}
     - {fileID: 9054898031565582010, guid: 038cf6f554f878948bdd5fd9e4696594, type: 3}
@@ -213,10 +213,15 @@ MonoBehaviour:
     - {fileID: 7273706752537906696, guid: d25f79f52c3177a46a196b6591122695, type: 3}
     - {fileID: 2240344806387549165, guid: f4a1e43f1593ab54ab8dfb802842a648, type: 3}
     - {fileID: 5210089531137173602, guid: d6b597e390fb52d459ee61a63408a1f1, type: 3}
-    _coolDown: 0.2
-    _lifeTime: 3
+    _addThisSize: 0.25
+    _startSize: {x: 0.5, y: 0.5, z: 0.5}
+    _mySize: {x: 0.5, y: 0.5, z: 0.5}
+    _coolDown: 1.5
+    _lifeTime: 1
     duration: 0
-    _maxDistance: 10
+    _maxDistance: 1
+    speedAddPassive: 5
+    damage: 10
     startPos: {x: 0, y: 0, z: 0}
     _id: 0
     qZero: {x: 0, y: 0, z: 0, w: 0}
@@ -226,7 +231,7 @@ MonoBehaviour:
     _canCollide: 1
     _spread: 1
     _spreadSpeed: 10
-    _orbitSpeed: 200
+    _orbitSpeed: 150
     _dVFX_lifetime: 2
     _P1value: 0
     _P2value: 0

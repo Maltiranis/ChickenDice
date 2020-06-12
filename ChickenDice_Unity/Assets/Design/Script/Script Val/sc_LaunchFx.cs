@@ -25,6 +25,7 @@ public class sc_LaunchFx : MonoBehaviour
 
         //code hyper crade
         _dustRun[transform.parent.parent.gameObject.GetComponent<sc_Chicken_ID>().ID].SetActive(true);
+
     }
 
     public void LaunchFx (int i)
@@ -34,11 +35,36 @@ public class sc_LaunchFx : MonoBehaviour
         Destroy(newFx, _fxLifetime);
     }
 
-    public void SetEye (int i)//0 : mort , 1 : pleure, 2 : plisse
+    public void SetEye (int e)//0 : mort , 1 : pleure, 2 : plisse
     {
-        GameObject newEyeFx = Instantiate(_eyes[i], _rootHead.transform.position, _rootHead.transform.rotation);
+        GameObject newEyeFx = Instantiate(_eyes[e], _rootHead.transform.position, _rootHead.transform.rotation);
         newEyeFx.transform.SetParent(_rootHead.transform);
         newEyeFx.SetActive(true);
-        Destroy(newEyeFx, _fxLifetime);
+        newEyeFx.GetComponent<ParticleSystem>().Play();
+
+
+        int eyeChilds = newEyeFx.transform.childCount;
+
+        List<GameObject> eyeList = new List<GameObject>();
+
+        for (int i = 0; i < eyeChilds; i++)
+        {
+            eyeList.Add(newEyeFx.transform.GetChild(i).gameObject);
+        }
+
+        foreach (GameObject g in eyeList)
+        {
+            g.GetComponent<ParticleSystem>().Play();
+        }
+
+        StartCoroutine(TimedDestroyAndCleanList(newEyeFx, _fxLifetime, eyeList));
+    }
+
+    public IEnumerator TimedDestroyAndCleanList(GameObject g, float time, List<GameObject> l)
+    {
+        yield return new WaitForSeconds(time);
+
+        l.Clear();
+        Destroy(g);
     }
 }

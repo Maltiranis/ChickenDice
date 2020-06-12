@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 382042822189917050}
   - component: {fileID: 5726718223416521074}
   m_Layer: 10
-  m_Name: A_Bowling
+  m_Name: A_Bowling_Leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -183,8 +183,8 @@ MonoBehaviour:
     - {fileID: 2466399375929694642, guid: 25e4b88420711934ba712f6a7aacbe18, type: 3}
     - {fileID: 8390237530770467647, guid: bdb43975ab1d61941b6f87b1c49b1352, type: 3}
     - {fileID: 214848388759698082, guid: 271f49887e1a2e44facc896420c09ea1, type: 3}
-    speedBL: 20
-    damagesBL: 75
+    speedBL: 50
+    damagesBL: 20
     rangeBL: 1
     ajustedPosBL: {x: 0, y: 0, z: 0}
     ajustedRotBL: {x: 270, y: 0, z: 0}
@@ -213,7 +213,10 @@ MonoBehaviour:
     - {fileID: 7273706752537906696, guid: d25f79f52c3177a46a196b6591122695, type: 3}
     - {fileID: 2240344806387549165, guid: f4a1e43f1593ab54ab8dfb802842a648, type: 3}
     - {fileID: 5210089531137173602, guid: d6b597e390fb52d459ee61a63408a1f1, type: 3}
-    _coolDown: 0.2
+    _addThisSize: 0.5
+    _startSize: {x: 0.5, y: 0.5, z: 0.5}
+    _mySize: {x: 0.5, y: 0.5, z: 0.5}
+    _coolDown: 1.5
     _lifeTime: 3
     duration: 0
     _maxDistance: 10
@@ -226,7 +229,7 @@ MonoBehaviour:
     _canCollide: 1
     _spread: 1
     _spreadSpeed: 10
-    _orbitSpeed: 200
+    _orbitSpeed: 250
     _dVFX_lifetime: 2
     _P1value: 0
     _P2value: 0

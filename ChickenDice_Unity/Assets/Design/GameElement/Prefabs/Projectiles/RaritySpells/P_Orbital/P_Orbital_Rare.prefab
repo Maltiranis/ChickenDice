@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 382042822189917050}
   - component: {fileID: 5726718223416521074}
   m_Layer: 10
-  m_Name: _Spell_Instance
+  m_Name: P_Orbital_Rare
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -124,8 +124,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _getProfile: 0
-  _getPassives_Left: 0
-  _getPassives_Right: 0
+  _getPassives_Left: 1
+  _getPassives_Right: 1
   _v:
     shieldLife: 0
     shieldTime: 0
@@ -220,6 +220,8 @@ MonoBehaviour:
     _lifeTime: 1
     duration: 0
     _maxDistance: 1
+    speedAddPassive: 15
+    damage: 15
     startPos: {x: 0, y: 0, z: 0}
     _id: 0
     qZero: {x: 0, y: 0, z: 0, w: 0}
@@ -227,13 +229,13 @@ MonoBehaviour:
     bestTarget: {fileID: 0}
     Caster: {fileID: 0}
     _canCollide: 1
-    _spread: 0
-    _spreadSpeed: 5
-    _orbitSpeed: 10
+    _spread: 1
+    _spreadSpeed: 10
+    _orbitSpeed: 150
     _dVFX_lifetime: 2
     _P1value: 0
     _P2value: 0
     _mix: 0
     _iterationOnLaunch: 0
     _iterationOnDestroyed: 0
-    _timeToWait: 1
+    _timeToWait: 0.2

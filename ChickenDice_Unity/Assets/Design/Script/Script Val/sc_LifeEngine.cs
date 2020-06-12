@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +9,7 @@ public class sc_LifeEngine : MonoBehaviour
     [SerializeField] public int _life = 100;
     [SerializeField] public bool _respawn = true;
     [SerializeField] public float _respawnDelay = 2.0f;
+    [SerializeField] public float _whiteBarSpeed = 0.5f;
     [Space(10)]
     [Header("Who killed me ???")]
     [SerializeField] public int _killer_ID = 100;
@@ -29,6 +31,9 @@ public class sc_LifeEngine : MonoBehaviour
     string myName;
     Transform myParent;
     [HideInInspector] public GameObject jesusChicken = null;
+    GameObject _lifeBar;
+    float percentLife = 0f;
+    float whiteLife = 0f;
 
     // Start is called before the first frame update
     void Start()
@@ -41,17 +46,31 @@ public class sc_LifeEngine : MonoBehaviour
         skin = GetComponent<sc_ChickenController>().gameObject;
 
         transform.localEulerAngles = new Vector3(0, startY, 0);
+
         _UItoHide2.transform.localEulerAngles = new Vector3(0, startY, 0);
 
         name = gameObject.name;
         myParent = transform.parent;
         gameObject.name = "A Chicken" + " numeroted " + GetComponent<sc_Chicken_ID>().ID.ToString();
+
+        _lifeBar = _UItoHide2.transform.GetChild(0).gameObject;
+
+        percentLife = _life / 100f;
+        whiteLife = percentLife;
     }
 
     // Update is called once per frame
     void Update()
     {
         startY = _startPosTransform.localEulerAngles.y;
+
+        percentLife = _life / 100f;
+        whiteLife = Mathf.Lerp(whiteLife, percentLife, Time.deltaTime * _whiteBarSpeed);
+
+        _lifeBar.GetComponent<Renderer>().material.SetFloat("_life", percentLife);
+        _lifeBar.GetComponent<Renderer>().material.SetFloat("_life2", whiteLife);
+
+        _UItoHide2.transform.forward = Vector3.forward;
     }
 
     public void TakeDamage(int dmg, int id)
@@ -65,6 +84,11 @@ public class sc_LifeEngine : MonoBehaviour
         {
             _life -= dmg;
             _am.Hitted();
+
+            if (_am.gameObject.GetComponent<sc_LaunchFx>() != null)
+            {
+                _am.gameObject.GetComponent<sc_LaunchFx>().SetEye(1);
+            }
         }
     }
 
@@ -72,6 +96,12 @@ public class sc_LifeEngine : MonoBehaviour
     {
         _killer_ID = id;
         _am.RandomDeath();
+
+        if (_am.gameObject.GetComponent<sc_LaunchFx>() != null)
+        {
+            _am.gameObject.GetComponent<sc_LaunchFx>().SetEye(0);
+        }
+
         if (_respawn == true)
         {
             Respawn();
@@ -96,7 +126,7 @@ public class sc_LifeEngine : MonoBehaviour
         _UItoHide2.SetActive(false);
         GetComponent<sc_ChickenController>().enabled = false;
         GetComponent<sc_Peck>().enabled = false;
-
+        DisapearOnDeath();
         rb.constraints = RigidbodyConstraints.FreezeAll;
     }
 
@@ -106,6 +136,11 @@ public class sc_LifeEngine : MonoBehaviour
         if (onRepop == false)
         {
             onRepop = true;
+
+            Quaternion trueRot = Quaternion.Euler(0, startY, 0);
+            jesusChicken = Instantiate(_myOriginalPrefab, _startPosTransform.position, Quaternion.Inverse(trueRot));
+            jesusChicken.GetComponent<sc_ChickenController>()._skin.transform.rotation = trueRot;
+
             StartCoroutine(RespawnIEnumerator());
             StartCoroutine(RespawnVFX_IEnumerator());
         }
@@ -117,7 +152,7 @@ public class sc_LifeEngine : MonoBehaviour
         go.GetComponent<sc_ChickenController>().enabled = true;
         go.GetComponent<sc_Peck>().enabled = true;
         go.GetComponent<CapsuleCollider>().enabled = true;
-        go.GetComponent<sc_LifeEngine>()._life = startLife;
+        go.GetComponent<sc_LifeEngine>()._life = 100;
         go.name = "A Chicken" + " numeroted " + GetComponent<sc_Chicken_ID>().ID.ToString();
         go.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
         go.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY |
@@ -130,10 +165,7 @@ public class sc_LifeEngine : MonoBehaviour
 
     public IEnumerator RespawnVFX_IEnumerator()
     {
-        yield return new WaitForSeconds(_respawnDelay + 0.5f);
-        Quaternion trueRot = Quaternion.Euler(0, startY, 0);
-        jesusChicken = Instantiate(_myOriginalPrefab, _startPosTransform.position, Quaternion.Inverse(trueRot));
-        jesusChicken.GetComponent<sc_ChickenController>()._skin.transform.rotation = trueRot;
+        yield return new WaitForSeconds(_respawnDelay + 0.7f);
         jesusChicken.GetComponent<sc_Chicken_ID>().ID = gameObject.GetComponent<sc_Chicken_ID>().ID;
         jesusChicken.transform.position = _startPosTransform.position;
         jesusChicken.transform.parent = myParent;
