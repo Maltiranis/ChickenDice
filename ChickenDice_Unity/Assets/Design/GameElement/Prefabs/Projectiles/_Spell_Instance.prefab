@@ -50,7 +50,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 382042822189917053}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -213,7 +213,10 @@ MonoBehaviour:
     - {fileID: 7273706752537906696, guid: d25f79f52c3177a46a196b6591122695, type: 3}
     - {fileID: 2240344806387549165, guid: f4a1e43f1593ab54ab8dfb802842a648, type: 3}
     - {fileID: 5210089531137173602, guid: d6b597e390fb52d459ee61a63408a1f1, type: 3}
-    _coolDown: 1
+    _addThisSize: 0.5
+    _startSize: {x: 0.5, y: 0.5, z: 0.5}
+    _mySize: {x: 0.5, y: 0.5, z: 0.5}
+    _coolDown: 1.5
     _lifeTime: 1
     duration: 0
     _maxDistance: 1

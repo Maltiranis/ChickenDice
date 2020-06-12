@@ -36,6 +36,14 @@ public class sc_SpellAlchemist : MonoBehaviour
     [SerializeField] public float _rateOverDist = 2f;
     GameObject pivot;
     ParticleSystem.EmissionModule em;
+
+    float sizeP1 = 0f;
+    float sizeP2 = 0f;
+    float speedP1 = 0f;
+    float speedP2 = 0f;
+    float dmgP1 = 0f;
+    float dmgP2 = 0f;
+
     //
     //[Space(10)]
     //[Header("UI")]
@@ -155,6 +163,9 @@ public class sc_SpellAlchemist : MonoBehaviour
                 if (P1 != null)
                 {
                     sc_SpellBehaviours s_sbP1 = P1.GetComponent<sc_SpellBehaviours>();
+                    speedP1 = s_sbP1._v.speedAddPassive;
+                    dmgP1 = s_sbP1._v.damage;
+
                     //Spinning
                     if (s_sbP1._getPassives_Left == sc_SpellBehaviours.Passives_L.Spinning ||
                         s_sbP1._getPassives_Right == sc_SpellBehaviours.Passives_R.Spinning)
@@ -176,10 +187,21 @@ public class sc_SpellAlchemist : MonoBehaviour
                     {
                         s_sbS._getPassives_Left = sc_SpellBehaviours.Passives_L.Chain;
                     }
+
+                    //Size
+                    if (s_sbP1._getPassives_Left == sc_SpellBehaviours.Passives_L.Size ||
+                        s_sbP1._getPassives_Right == sc_SpellBehaviours.Passives_R.Size)
+                    {
+                        s_sbS._getPassives_Left = sc_SpellBehaviours.Passives_L.Size;
+                        sizeP1 = s_sbP1._v._addThisSize;
+                    }
                 }
                 if (P2 != null)
                 {
                     sc_SpellBehaviours s_sbP2 = P2.GetComponent<sc_SpellBehaviours>();
+                    speedP2 = s_sbP2._v.speedAddPassive;
+                    dmgP2 = s_sbP2._v.damage;
+
                     //Spinning
                     if (s_sbP2._getPassives_Left == sc_SpellBehaviours.Passives_L.Spinning ||
                         s_sbP2._getPassives_Right == sc_SpellBehaviours.Passives_R.Spinning)
@@ -201,7 +223,33 @@ public class sc_SpellAlchemist : MonoBehaviour
                     {
                         s_sbS._getPassives_Right = sc_SpellBehaviours.Passives_R.Chain;
                     }
+
+                    //Size
+                    if (s_sbP2._getPassives_Left == sc_SpellBehaviours.Passives_L.Size ||
+                        s_sbP2._getPassives_Right == sc_SpellBehaviours.Passives_R.Size)
+                    {
+                        s_sbS._getPassives_Right = sc_SpellBehaviours.Passives_R.Size;
+                        sizeP2 = s_sbP2._v._addThisSize;
+                    }
                 }
+                float sizeSums = sizeP1 + sizeP2;
+                float speedSums = speedP1 + speedP2;
+                float dmgSums = dmgP1 + dmgP2;
+
+                //TOUT CE JOUE ICI AVEC LES PASSIF
+                Vector3 bistromatic = new Vector3
+                (
+                    s_sbS._v._startSize.x + sizeSums,
+                    s_sbS._v._startSize.y + sizeSums,
+                    s_sbS._v._startSize.z + sizeSums
+                );
+                s_sbS._v._mySize = bistromatic;
+                s_sbS._v.speedAddPassive = speedSums;
+                s_sbS._v._spreadSpeed = speedSums/2;
+                s_sbS._v._orbitSpeed = speedSums;
+                s_sbS._v.damage = dmgSums;
+                //ET C'EST TRES HOT !!!
+                //
                 if (s_sbS._getProfile == sc_SpellBehaviours.Profile.PumpGun)
                 {
                     ShootInstance(A, P1, P2, 30);

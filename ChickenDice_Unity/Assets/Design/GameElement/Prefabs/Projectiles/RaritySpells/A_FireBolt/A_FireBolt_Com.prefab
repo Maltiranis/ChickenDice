@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 382042822189917050}
   - component: {fileID: 5726718223416521074}
   m_Layer: 10
-  m_Name: A_FireBolt
+  m_Name: A_FireBolt_Com
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -169,7 +169,7 @@ MonoBehaviour:
     - {fileID: 0}
     - {fileID: 0}
     speedFB: 50
-    damagesFB: 50
+    damagesFB: 10
     rangeFB: 1
     ajustedPosFB: {x: 0, y: 0, z: 1}
     ajustedRotFB: {x: 270, y: 0, z: 0}
@@ -213,7 +213,10 @@ MonoBehaviour:
     - {fileID: 7273706752537906696, guid: d25f79f52c3177a46a196b6591122695, type: 3}
     - {fileID: 2240344806387549165, guid: f4a1e43f1593ab54ab8dfb802842a648, type: 3}
     - {fileID: 5210089531137173602, guid: d6b597e390fb52d459ee61a63408a1f1, type: 3}
-    _coolDown: 0.2
+    _addThisSize: 0.5
+    _startSize: {x: 0.5, y: 0.5, z: 0.5}
+    _mySize: {x: 0.5, y: 0.5, z: 0.5}
+    _coolDown: 1.5
     _lifeTime: 3
     duration: 0
     _maxDistance: 10
@@ -226,7 +229,7 @@ MonoBehaviour:
     _canCollide: 1
     _spread: 1
     _spreadSpeed: 10
-    _orbitSpeed: 200
+    _orbitSpeed: 150
     _dVFX_lifetime: 2
     _P1value: 0
     _P2value: 0

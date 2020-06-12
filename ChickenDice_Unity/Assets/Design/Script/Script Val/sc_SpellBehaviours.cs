@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 using System.Security.Cryptography;
+using TreeEditor;
 
 public class sc_SpellBehaviours : MonoBehaviour
 {
@@ -33,14 +34,16 @@ public class sc_SpellBehaviours : MonoBehaviour
         EMPTY,
         Spinning,
         Multiple,
-        Chain
+        Chain,
+        Size
     }
     public enum Passives_R
     {
         EMPTY,
         Spinning,
         Multiple,
-        Chain
+        Chain,
+        Size
     }
     [Header("Passive")]
     [SerializeField] public Passives_L _getPassives_Left;
@@ -117,13 +120,22 @@ public class sc_SpellBehaviours : MonoBehaviour
         [SerializeField] public GameObject[] _aVFXparent_PG;
         [SerializeField] public GameObject[] _dVFXparent_PG;
         [Space(15)]
-        //pump gun
+        //Size de tout
+        [Header("Size")]
+        [Space(5)]
+        [SerializeField] public float _addThisSize = 1.5f;
+        [SerializeField] public Vector3 _startSize;
+        [SerializeField] public Vector3 _mySize;
+        //Globals
+        [Space(15)]
         [Header("Global Variable")]
         [Space(5)]
         [SerializeField] public float _coolDown = 1.0f;
         [SerializeField] public float _lifeTime = 5.0f;
         [HideInInspector] public float duration = 0f;
         [SerializeField] public float _maxDistance = 10.0f;
+        [SerializeField] public float speedAddPassive = 0.0f;
+        [SerializeField] public float damage = 0.0f;
         [HideInInspector] public Vector3 startPos;
         [SerializeField] public int _id;//l'ID du Joueur ayant caster
         [HideInInspector] public Quaternion qZero = new Quaternion(0, 0, 0, 0);
@@ -164,6 +176,10 @@ public class sc_SpellBehaviours : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _v._startSize = transform.localScale;
+        if (GetComponent<SphereCollider>() != null)
+            GetComponent<SphereCollider>().radius = _v._mySize.x;
+
         GameObject[] catched = null;
         catched = GameObject.FindGameObjectsWithTag("Player");
 
@@ -274,6 +290,34 @@ public class sc_SpellBehaviours : MonoBehaviour
             GameObject fxs = Instantiate(_aVFXparent, transform.position, _v.qZero);
             fxs.name = _aVFXparent.name;
             fxs.transform.parent = gameObject.transform;
+
+            int fxChilds = fxs.transform.childCount;
+
+            List <GameObject> fxList = new List<GameObject>();
+
+            for (int i = 0; i < fxChilds; i++)
+            {
+                fxList.Add(fxs.transform.GetChild(i).gameObject);
+            }
+
+            foreach (GameObject g in fxList)
+            {
+                g.transform.localScale = new Vector3
+                (
+                    _v._mySize.x,
+                    _v._mySize.y,
+                    _v._mySize.z
+                );
+                if (g.GetComponent<MeshCollider>() != null)
+                {
+                    g.transform.localScale = new Vector3
+                    (
+                        _v._mySize.x / 3,
+                        _v._mySize.y / 3,
+                        _v._mySize.z / 3
+                    );
+                }
+            }
 
             if (_getProfile == Profile.FireBolt)
             {
@@ -449,25 +493,33 @@ public class sc_SpellBehaviours : MonoBehaviour
 
                     transform.position = parPos;
                     //
-                    GameObject fxs = transform.GetChild(0).gameObject;
+                    GameObject fxs = null;
+                    if (transform.childCount > 0)
+                        fxs = transform.GetChild(0).gameObject;
                     Transform c = _v.Caster.transform.GetChild(0).transform;
-
-                    if (_getProfile != Profile.Dash)
+                    if (fxs != null)
                     {
-                        fxs.transform.localPosition = new Vector3(0, 0.5f, 0);
-                    }
-                    else
-                    {
-                        fxs.transform.localPosition = new Vector3(0, -0.5f, 0);
-                    }
+                        if (_getProfile == Profile.Shield)
+                        {
+                            fxs.transform.localPosition = new Vector3(0, 0f, 0f);
+                        }
+                        if (_getProfile == Profile.Heal)
+                        {
+                            fxs.transform.localPosition = new Vector3(0, 0f, 0f);
+                        }
+                        if (_getProfile == Profile.Dash)
+                        {
+                            fxs.transform.localPosition = new Vector3(0, 0f, 0f);
+                        }
 
-                    fxs.transform.forward = c.forward;
-                    fxs.transform.localEulerAngles = new Vector3
-                    (
-                        fxs.transform.localEulerAngles.x + 270f,
-                        fxs.transform.localEulerAngles.y,
-                        fxs.transform.localEulerAngles.z
-                    );
+                        fxs.transform.forward = c.forward;
+                        fxs.transform.localEulerAngles = new Vector3
+                        (
+                            fxs.transform.localEulerAngles.x + 270f,
+                            fxs.transform.localEulerAngles.y,
+                            fxs.transform.localEulerAngles.z
+                        );
+                    }
                 }
                     break;
             case 1000:
@@ -545,7 +597,7 @@ public class sc_SpellBehaviours : MonoBehaviour
         {
             GetComponent<Rigidbody>().AddForce
             (
-                transform.forward * _speed, ForceMode.Impulse
+                transform.forward * (_speed + _v.speedAddPassive), ForceMode.Impulse
             );
         }
     }
@@ -615,12 +667,40 @@ public class sc_SpellBehaviours : MonoBehaviour
             {
                 GameObject tanguetteFX = Instantiate(_dVFXparent, Explosion.transform.position, _v.qZero);
                 tanguetteFX.transform.parent = Explosion.transform;
+                //Attention ! ------------------------------------------ /!\
+                int fxChilds = tanguetteFX.transform.childCount;
+
+                List<GameObject> fxList = new List<GameObject>();
+
+                for (int i = 0; i < fxChilds; i++)
+                {
+                    fxList.Add(tanguetteFX.transform.GetChild(i).gameObject);
+                }
+
+                foreach (GameObject g in fxList)
+                {
+                    g.transform.localScale = new Vector3
+                    (
+                        _v._mySize.x,
+                        _v._mySize.y,
+                        _v._mySize.z
+                    );
+                    if (g.GetComponent<MeshCollider>() != null)
+                    {
+                        g.transform.localScale = new Vector3
+                        (
+                            _v._mySize.x / 3,
+                            _v._mySize.y / 3,
+                            _v._mySize.z / 3
+                        );
+                    }
+                }
+                //VIRE TOUT SI LES FX DE MORT SONT CLAKEZ AU SOL !!!
             }
 
-            Explosion.GetComponent<sc_SelfDestruction>().DestroyMyself(_v._dVFX_lifetime);
 
-            float newDamages = 0f;
-            float newRange = 0f;
+            float newDamages = 10f;
+            float newRange = 2f;
             if (_getProfile == Profile.FireBolt)
             {
                 newDamages = _v.damagesFB;
@@ -636,7 +716,8 @@ public class sc_SpellBehaviours : MonoBehaviour
                 newDamages = _v.damagesPG;
                 newRange = _v.rangePG;
             }
-            Explosion.GetComponent<sc_SelfDestruction>().KillEverybody(Mathf.RoundToInt(newDamages), _v._id, newRange);
+            Explosion.GetComponent<sc_SelfDestruction>().DestroyMyself(_v._dVFX_lifetime);
+            Explosion.GetComponent<sc_SelfDestruction>().KillEverybody(Mathf.RoundToInt(newDamages + _v.damage), _v._id, newRange);
         }
         /*if (_v._iterationOnDestroyed > 0)
         {
