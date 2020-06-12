@@ -41,8 +41,10 @@ public class sc_SpellAlchemist : MonoBehaviour
     float sizeP2 = 0f;
     float speedP1 = 0f;
     float speedP2 = 0f;
-    float dmgP1 = 0f;
-    float dmgP2 = 0f;
+    int dmgP1 = 0;
+    int dmgP2 = 0; 
+    float distP1 = 0f; 
+    float distP2 = 0f; 
 
     //
     //[Space(10)]
@@ -163,8 +165,9 @@ public class sc_SpellAlchemist : MonoBehaviour
                 if (P1 != null)
                 {
                     sc_SpellBehaviours s_sbP1 = P1.GetComponent<sc_SpellBehaviours>();
-                    speedP1 = s_sbP1._v.speedAddPassive;
-                    dmgP1 = s_sbP1._v.damage;
+                    speedP1 = s_sbP1._v._speed;
+                    dmgP1 = s_sbP1._v._damage;
+                    distP1 = s_sbP1._v._maxDistance;
 
                     //Spinning
                     if (s_sbP1._getPassives_Left == sc_SpellBehaviours.Passives_L.Spinning ||
@@ -199,8 +202,9 @@ public class sc_SpellAlchemist : MonoBehaviour
                 if (P2 != null)
                 {
                     sc_SpellBehaviours s_sbP2 = P2.GetComponent<sc_SpellBehaviours>();
-                    speedP2 = s_sbP2._v.speedAddPassive;
-                    dmgP2 = s_sbP2._v.damage;
+                    speedP2 = s_sbP2._v._speed;
+                    dmgP2 = s_sbP2._v._damage;
+                    distP2 = s_sbP2._v._maxDistance;
 
                     //Spinning
                     if (s_sbP2._getPassives_Left == sc_SpellBehaviours.Passives_L.Spinning ||
@@ -232,9 +236,11 @@ public class sc_SpellAlchemist : MonoBehaviour
                         sizeP2 = s_sbP2._v._addThisSize;
                     }
                 }
-                float sizeSums = sizeP1 + sizeP2;
-                float speedSums = speedP1 + speedP2;
-                float dmgSums = dmgP1 + dmgP2;
+                float sizeSums = sizeP1 + sizeP2 + s_sbS._v._mySize.x;
+                float speedSums = speedP1 + speedP2 + s_sbS._v._speed;
+                int dmgSums = dmgP1 + dmgP2 + s_sbS._v._damage;
+                float distSums = distP1 + distP2 + s_sbS._v._maxDistance;
+                Debug.Log("distSums = " + distSums);
 
                 //TOUT CE JOUE ICI AVEC LES PASSIF
                 Vector3 bistromatic = new Vector3
@@ -244,16 +250,19 @@ public class sc_SpellAlchemist : MonoBehaviour
                     s_sbS._v._startSize.z + sizeSums
                 );
                 s_sbS._v._mySize = bistromatic;
-                s_sbS._v.speedAddPassive = speedSums;
-                s_sbS._v._spreadSpeed = speedSums/2;
-                s_sbS._v._orbitSpeed = speedSums;
-                s_sbS._v.damage = dmgSums;
+                s_sbS._v._speed = speedSums * 10;//enlever les x10
+                s_sbS._v._spreadSpeed = speedSums/2 *10;
+                s_sbS._v._orbitSpeed = speedSums * 10;
+                s_sbS._v._damage = dmgSums;
+                s_sbS._v._maxDistance = distSums;
                 //ET C'EST TRES HOT !!!
                 //
                 if (s_sbS._getProfile == sc_SpellBehaviours.Profile.PumpGun)
                 {
-                    ShootInstance(A, P1, P2, 30);
-                    ShootInstance(A, P1, P2, 330);
+                    //ShootInstance(A, P1, P2, 30);
+                    //ShootInstance(A, P1, P2, 330);
+                    newShootInstance(shot, 30);
+                    newShootInstance(shot, 330);
                 }
 
                 //Dash Shield Heal
@@ -304,14 +313,17 @@ public class sc_SpellAlchemist : MonoBehaviour
                     s_sbS._getPassives_Right == sc_SpellBehaviours.Passives_R.EMPTY)
                 {
                     s_sbS._v._iterationOnLaunch = 1;
-                    StartCoroutine(MultipleCasts(s_sbS._v._timeToWait, A, P1, P2));
+                    //StartCoroutine(MultipleCasts(s_sbS._v._timeToWait, A, P1, P2));
+                    StartCoroutine(newMultipleCasts(s_sbS._v._timeToWait, shot));
+                    
                 }
 
                 if (s_sbS._getPassives_Left == sc_SpellBehaviours.Passives_L.EMPTY &&
                     s_sbS._getPassives_Right == sc_SpellBehaviours.Passives_R.Multiple)
                 {
                     s_sbS._v._iterationOnLaunch = 1;
-                    StartCoroutine(MultipleCasts(s_sbS._v._timeToWait, A, P1, P2));
+                    //StartCoroutine(MultipleCasts(s_sbS._v._timeToWait, A, P1, P2));
+                    StartCoroutine(newMultipleCasts(s_sbS._v._timeToWait, shot));
                 }
                 #endregion
                 #region M + C / C + M
@@ -336,26 +348,30 @@ public class sc_SpellAlchemist : MonoBehaviour
                     s_sbS._getPassives_Right == sc_SpellBehaviours.Passives_R.Chain)
                 {
                     s_sbS._v._iterationOnDestroyed = 1;
-                    ShootInstance(A, P1, P2, 180);
+                    //ShootInstance(A, P1, P2, 180);
+                    newShootInstance(shot, 180);
                 }
 
                 if (s_sbS._getPassives_Left == sc_SpellBehaviours.Passives_L.Chain &&
                     s_sbS._getPassives_Right == sc_SpellBehaviours.Passives_R.Spinning)
                 {
                     s_sbS._v._iterationOnDestroyed = 1;
-                    ShootInstance(A, P1, P2, 180);
+                    //ShootInstance(A, P1, P2, 180);
+                    newShootInstance(shot, 180);
                 }
                 #endregion
                 #region S + M / M + S
                 if (s_sbS._getPassives_Left == sc_SpellBehaviours.Passives_L.Spinning &&
                     s_sbS._getPassives_Right == sc_SpellBehaviours.Passives_R.Multiple)
                 {
-                    ShootInstance(A, P1, P2, 180);
+                    //ShootInstance(A, P1, P2, 180);
+                    newShootInstance(shot, 180);
                 }
                 if (s_sbS._getPassives_Left == sc_SpellBehaviours.Passives_L.Multiple &&
                     s_sbS._getPassives_Right == sc_SpellBehaviours.Passives_R.Spinning)
                 {
-                    ShootInstance(A, P1, P2, 180);
+                    //ShootInstance(A, P1, P2, 180);
+                    newShootInstance(shot, 180);
                 }
                 #endregion
                 #region M + M
@@ -372,8 +388,10 @@ public class sc_SpellAlchemist : MonoBehaviour
                     s_sbS._getPassives_Right == sc_SpellBehaviours.Passives_R.Spinning)
                 {
                     s_sbS._v._iterationOnLaunch = 2;
-                    ShootInstance(A, P1, P2, 120);
-                    ShootInstance(A, P1, P2, 240);
+                    //ShootInstance(A, P1, P2, 120);
+                    //ShootInstance(A, P1, P2, 240);
+                    newShootInstance(shot, 120);
+                    newShootInstance(shot, 240);
                 }
                 #endregion
                 #region C + C
@@ -386,6 +404,25 @@ public class sc_SpellAlchemist : MonoBehaviour
             }
         }
     }
+
+    public void newShootInstance(GameObject shot, int angleOffset)
+    {
+        GameObject nshot = null;
+
+        if (angleOffset == 0)
+            nshot = Instantiate(shot, _shootOffset_0.transform.position, _shootOffset_0.transform.rotation);
+        if (angleOffset == 30)
+            nshot = Instantiate(shot, _shootOffset_30.transform.position, _shootOffset_30.transform.rotation);
+        if (angleOffset == 120)
+            nshot = Instantiate(shot, _shootOffset_120.transform.position, _shootOffset_120.transform.rotation);
+        if (angleOffset == 180)
+            nshot = Instantiate(shot, _shootOffset_180.transform.position, _shootOffset_180.transform.rotation);
+        if (angleOffset == 240)
+            nshot = Instantiate(shot, _shootOffset_240.transform.position, _shootOffset_240.transform.rotation);
+        if (angleOffset == 330)
+            nshot = Instantiate(shot, _shootOffset_330.transform.position, _shootOffset_330.transform.rotation);
+    }
+
 
     public void ShootInstance(GameObject A, GameObject P1, GameObject P2, int angleOffset)
     {
@@ -409,7 +446,7 @@ public class sc_SpellAlchemist : MonoBehaviour
 
             //si P1 ou P2 c'est la bombe on parente "shot"
             sc_SpellBehaviours s_sbS = shot.GetComponent<sc_SpellBehaviours>();
-                s_sbS._v._id = _id;
+            s_sbS._v._id = _id;
 
             if (P1 != null)
             {
@@ -469,6 +506,12 @@ public class sc_SpellAlchemist : MonoBehaviour
         yield return new WaitForSeconds(timer);
 
         ShootInstance(A, P1, P2, 0);
+    }
+    public IEnumerator newMultipleCasts(float timer, GameObject shot)
+    {
+        yield return new WaitForSeconds(timer);
+
+        newShootInstance(shot, 0);
     }
     public IEnumerator DashDuration(float timer)
     {

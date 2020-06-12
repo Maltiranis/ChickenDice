@@ -58,8 +58,6 @@ public class sc_SpellBehaviours : MonoBehaviour
         [Space(15)]
         [Header("Shield")]
         [Space(5)]
-        [SerializeField] public float shieldLife;
-        [SerializeField] public float shieldTime;
         [SerializeField] public Vector3 ajustedPosShield = new Vector3(0, 0, 0);
         [SerializeField] public Vector3 ajustedRotShield = new Vector3(0, 0, 0);
         [SerializeField] public GameObject[] _aVFXparent_Shield;
@@ -80,7 +78,6 @@ public class sc_SpellBehaviours : MonoBehaviour
         [Header("Dash")]
         [Space(5)]
         [SerializeField] public float speedDash;
-        [SerializeField] public float rangeDash;
         [SerializeField] public Vector3 ajustedPosDash = new Vector3(0, 0, 0);
         [SerializeField] public Vector3 ajustedRotDash = new Vector3(0, 0, 0);
         [SerializeField] public GameObject[] _aVFXparent_Dash;
@@ -90,9 +87,6 @@ public class sc_SpellBehaviours : MonoBehaviour
         [Space(15)]
         [Header("FireBolt")]
         [Space(5)]
-        [SerializeField] public float speedFB;
-        [SerializeField] public float damagesFB;
-        [SerializeField] public float rangeFB;
         [SerializeField] public Vector3 ajustedPosFB = new Vector3(0, 0, 1);
         [SerializeField] public Vector3 ajustedRotFB = new Vector3(270, 0, 0);
         [SerializeField] public GameObject[] _aVFXparent_FB;
@@ -101,9 +95,6 @@ public class sc_SpellBehaviours : MonoBehaviour
         //bowling
         [Header("Bowling")]
         [Space(5)]
-        [SerializeField] public float speedBL;
-        [SerializeField] public float damagesBL;
-        [SerializeField] public float rangeBL;
         [SerializeField] public Vector3 ajustedPosBL;
         [SerializeField] public Vector3 ajustedRotBL;
         [SerializeField] public GameObject[] _aVFXparent_BL;
@@ -112,9 +103,6 @@ public class sc_SpellBehaviours : MonoBehaviour
         //pump gun
         [Header("PumpGun")]
         [Space(5)]
-        [SerializeField] public float speedPG;
-        [SerializeField] public float damagesPG;
-        [SerializeField] public float rangePG;
         [SerializeField] public Vector3 ajustedPosPG;
         [SerializeField] public Vector3 ajustedRotPG;
         [SerializeField] public GameObject[] _aVFXparent_PG;
@@ -130,12 +118,12 @@ public class sc_SpellBehaviours : MonoBehaviour
         [Space(15)]
         [Header("Global Variable")]
         [Space(5)]
-        [SerializeField] public float _coolDown = 1.0f;
-        [SerializeField] public float _lifeTime = 5.0f;
-        [HideInInspector] public float duration = 0f;
+        [SerializeField] public int _damage = 0;
+        [SerializeField] public float _speed = 0.0f;
         [SerializeField] public float _maxDistance = 10.0f;
-        [SerializeField] public float speedAddPassive = 0.0f;
-        [SerializeField] public float damage = 0.0f;
+        [SerializeField] public float _lifeTime = 5.0f;
+        [SerializeField] public float _coolDown = 1.0f;
+        [HideInInspector] public float duration = 0f;
         [HideInInspector] public Vector3 startPos;
         [SerializeField] public int _id;//l'ID du Joueur ayant caster
         [HideInInspector] public Quaternion qZero = new Quaternion(0, 0, 0, 0);
@@ -235,23 +223,14 @@ public class sc_SpellBehaviours : MonoBehaviour
 
                 break;
             case Profile.FireBolt:
-                _speed = _v.speedFB;
-                _damages = _v.damagesFB;
-                _range = _v.rangeFB;
                 _aVFXparent = _v._aVFXparent_FB[_v._id];
                 _dVFXparent = _v._dVFXparent_FB[_v._id];
                 break;
             case Profile.Bowling:
-                _speed = _v.speedBL;
-                _damages = _v.damagesBL;
-                _range = _v.rangeBL;
                 _aVFXparent = _v._aVFXparent_BL[_v._id];
                 _dVFXparent = _v._dVFXparent_BL[_v._id];
                 break;
             case Profile.PumpGun:
-                _speed = _v.speedPG;
-                _damages = _v.damagesPG;
-                _range = _v.rangePG;
                 _aVFXparent = _v._aVFXparent_PG[_v._id];
                 _dVFXparent = _v._dVFXparent_PG[_v._id];
 
@@ -576,6 +555,7 @@ public class sc_SpellBehaviours : MonoBehaviour
 
         if (Vector3.Distance(_v.startPos, transform.position) >= _v._maxDistance)
         {
+            Debug.Log(Vector3.Distance(_v.startPos, transform.position));
             if (_v._iterationOnDestroyed > 0)
             {
                 ProjOnDeath(_v._iterationOnDestroyed);
@@ -597,7 +577,7 @@ public class sc_SpellBehaviours : MonoBehaviour
         {
             GetComponent<Rigidbody>().AddForce
             (
-                transform.forward * (_speed + _v.speedAddPassive), ForceMode.Impulse
+                transform.forward * (_speed + _v._speed), ForceMode.Impulse
             );
         }
     }
@@ -699,25 +679,8 @@ public class sc_SpellBehaviours : MonoBehaviour
             }
 
 
-            float newDamages = 10f;
-            float newRange = 2f;
-            if (_getProfile == Profile.FireBolt)
-            {
-                newDamages = _v.damagesFB;
-                newRange = _v.rangeFB;
-            }
-            if (_getProfile == Profile.Bowling)
-            {
-                newDamages = _v.damagesBL;
-                newRange = _v.rangeBL;
-            }
-            if (_getProfile == Profile.PumpGun)
-            {
-                newDamages = _v.damagesPG;
-                newRange = _v.rangePG;
-            }
             Explosion.GetComponent<sc_SelfDestruction>().DestroyMyself(_v._dVFX_lifetime);
-            Explosion.GetComponent<sc_SelfDestruction>().KillEverybody(Mathf.RoundToInt(newDamages + _v.damage), _v._id, newRange);
+            Explosion.GetComponent<sc_SelfDestruction>().KillEverybody(_v._damage, _v._id, _v._mySize.x +1);
         }
         /*if (_v._iterationOnDestroyed > 0)
         {
@@ -788,12 +751,15 @@ public class sc_SpellBehaviours : MonoBehaviour
 
         for (int i = 0; i < _v.nearest.Count; i++)
         {
-            float dist = Vector3.Distance(_v.nearest[i].transform.position, transform.position);
+            float dist = 0f;
+            if (_v.nearest[i] != null)
+               dist = Vector3.Distance(_v.nearest[i].transform.position, transform.position);
 
             if (dist < lowestDist)
             {
                 lowestDist = dist;
-                nearest = _v.nearest[i];
+                if (_v.nearest[i] != null)
+                    nearest = _v.nearest[i];
             }
         }
         return nearest;

@@ -138,6 +138,7 @@ public class sc_LifeEngine : MonoBehaviour
             onRepop = true;
 
             Quaternion trueRot = Quaternion.Euler(0, startY, 0);
+
             jesusChicken = Instantiate(_myOriginalPrefab, _startPosTransform.position, Quaternion.Inverse(trueRot));
             jesusChicken.GetComponent<sc_ChickenController>()._skin.transform.rotation = trueRot;
 
