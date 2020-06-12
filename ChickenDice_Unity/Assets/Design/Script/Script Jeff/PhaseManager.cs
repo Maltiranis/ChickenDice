@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class PhaseManager : MonoBehaviour
 {
-
+    public int _Phase = 0;
     [Header("Prefab Arena")]
     [SerializeField] private GameObject _LootArena = null;
     [SerializeField] private GameObject _FightArena = null;
@@ -102,11 +102,17 @@ public class PhaseManager : MonoBehaviour
         if (_LootArena.activeSelf)
         {
             _UITimerLootPhase.SetActive(true);
-         _TimerPointText.text = _TimerLootPhaseDecompt.ToString();
-         _Timerbar.fillAmount = _TimerLootPhaseDecompt / _TimeLootPhase;
+            _TimerPointText.text = _TimerLootPhaseDecompt.ToString();
+            _Timerbar.fillAmount = _TimerLootPhaseDecompt / _TimeLootPhase;
+            _Player01.GetComponent<sc_LifeEngine>()._life = 100;
+            _Player02.GetComponent<sc_LifeEngine>()._life = 100;
+            _Player03.GetComponent<sc_LifeEngine>()._life = 100;
+            _Player04.GetComponent<sc_LifeEngine>()._life = 100;
+            _Phase = 0;
         }
         else
         {
+            _Phase = 1;
             _UITimerLootPhase.SetActive(false);
         }
     }

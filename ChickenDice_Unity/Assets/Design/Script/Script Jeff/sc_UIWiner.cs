@@ -51,10 +51,11 @@ public class sc_UIWiner : MonoBehaviour
         // POUR 4 PLAYER
 
 
-        if (_Ready[0].activeSelf && _Ready[1].activeSelf && _Ready[2].activeSelf && _Ready[3].activeSelf)
+        if (_Ready[0].activeSelf && _Ready[1].activeSelf && _Ready[2].activeSelf && _Ready[3].activeSelf && _havePressSelect == false)
         {
             StartCoroutine(RestartGame());
             _ScFondu.BackAnim();
+            _havePressSelect = true;
       
         }
 

@@ -10,6 +10,8 @@ public class ScarecrowFight : MonoBehaviour
     [SerializeField] public float[] _CounterPlayer;
     [SerializeField] private float _ValeurToWin = 0;
     private bool _havewin;
+    private GameObject _PlayerWin;
+    private GameObject _PlayerhavePeck;
 
     [Header("UI Game")]
     [SerializeField] private Image[] _bar;
@@ -25,10 +27,10 @@ public class ScarecrowFight : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.GetComponent<sc_Peck>() != null)
+        if (other.gameObject.GetComponent<sc_Peck>() != null && _havewin == false)
         {
             int IdPlayer = other.gameObject.GetComponentInParent<sc_Chicken_ID>().ID;
-
+            _PlayerhavePeck = other.gameObject;
             Debug.Log(IdPlayer);
 
             if(_CounterPlayer[IdPlayer] < _ValeurToWin && _havewin == false)
@@ -48,9 +50,17 @@ public class ScarecrowFight : MonoBehaviour
                 _UIMode.SetActive(false);
                 _UIWiner[IdPlayer].SetActive(true);
                 //Tp de la poulet qui win
-                GameObject _PlayerWin = GameObject.Find("A Chicken numeroted " + IdPlayer.ToString());
-                _PlayerWin.transform.position = other.transform.position + new Vector3(other.transform.position.x, 100, other.transform.position.z);
+                _PlayerWin = GameObject.Find("A Chicken numeroted " + IdPlayer.ToString());
+                StartCoroutine(TpPlayerWin());
             }
         }
+    }
+
+    private IEnumerator TpPlayerWin()
+    {
+        yield return new WaitForSeconds(3f);
+
+        _PlayerWin.transform.position = _PlayerhavePeck.transform.position + new Vector3(_PlayerhavePeck.transform.position.x, 100, _PlayerhavePeck.transform.position.z);
+
     }
 }
