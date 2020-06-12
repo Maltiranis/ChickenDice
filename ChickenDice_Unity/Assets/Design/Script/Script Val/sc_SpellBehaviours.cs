@@ -555,7 +555,7 @@ public class sc_SpellBehaviours : MonoBehaviour
 
         if (Vector3.Distance(_v.startPos, transform.position) >= _v._maxDistance)
         {
-            Debug.Log(Vector3.Distance(_v.startPos, transform.position));
+            //Debug.Log(Vector3.Distance(_v.startPos, transform.position));
             if (_v._iterationOnDestroyed > 0)
             {
                 ProjOnDeath(_v._iterationOnDestroyed);

@@ -108,12 +108,6 @@ public class sc_AnimManagement : MonoBehaviour
         StartCoroutine(ChickenBrain(Random.Range(1f, 2.0f)));
     }
 
-    public void DisapearOnDeath()
-    {
-        _le.DisapearOnDeath();
-        newDeath = 100;
-    }
-
     public void RandomDeath()
     {
         newDeath = Random.Range(0, 3);
