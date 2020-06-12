@@ -200,7 +200,7 @@ public class sc_SkillManagement : MonoBehaviour
             }
             else
             {
-                _newActive = bestTarget.GetComponent<sc_Gem_ID>().RandomSelectedSpell();
+                _newActive = bestTarget.GetComponent<sc_Gem_ID>().popedGem;
             }
 
             if (s == "LB")
@@ -218,7 +218,7 @@ public class sc_SkillManagement : MonoBehaviour
             }
             else
             {
-                _newPassive = bestTarget.GetComponent<sc_Gem_ID>().RandomSelectedSpell();
+                _newPassive = bestTarget.GetComponent<sc_Gem_ID>().popedGem;
             }
 
             if (s == "X")

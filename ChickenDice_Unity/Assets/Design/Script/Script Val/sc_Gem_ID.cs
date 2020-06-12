@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
+using TMPro;
 
 public class sc_Gem_ID : MonoBehaviour
 {
@@ -11,12 +13,15 @@ public class sc_Gem_ID : MonoBehaviour
     sc_SkillBoard scs;
     [HideInInspector]
     [SerializeField] public GameObject _preEstablishedSpell = null;
+    [HideInInspector] public GameObject popedGem;
 
     // Start is called before the first frame update
     void Start()
     {
         scs = GameObject.Find("SkillBoard").GetComponent<sc_SkillBoard>();
         GetSpell();
+        popedGem = RandomSelectedSpell();
+        transform.GetChild(1).GetComponentInChildren<TextMeshProUGUI>().text = popedGem.GetComponent<sc_SpellBehaviours>()._completeName;
     }
 
     void GetSpell ()
