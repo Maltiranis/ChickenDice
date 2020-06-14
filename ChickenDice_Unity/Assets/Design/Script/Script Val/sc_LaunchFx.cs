@@ -31,6 +31,13 @@ public class sc_LaunchFx : MonoBehaviour
     public void LaunchFx (int i)
     {
         GameObject newFx = Instantiate(_FXs[i], _rootFX.transform.position, _rootFX.transform.rotation);
+        if (i == 4)
+        {
+            GameObject clonedParticle = Instantiate(_FXs[i].transform.GetChild(1).gameObject, _rootFX.transform.position, _rootFX.transform.rotation);
+            clonedParticle.transform.parent = gameObject.transform;
+            Destroy(clonedParticle, _fxLifetime);
+            newFx.transform.GetChild(1).gameObject.SetActive(false);
+        }
 
         Destroy(newFx, _fxLifetime);
     }

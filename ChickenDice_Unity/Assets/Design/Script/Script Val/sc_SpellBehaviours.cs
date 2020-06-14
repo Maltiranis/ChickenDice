@@ -167,7 +167,7 @@ public class sc_SpellBehaviours : MonoBehaviour
     {
         _v._startSize = transform.localScale;
         if (GetComponent<SphereCollider>() != null)
-            GetComponent<SphereCollider>().radius = _v._mySize.x;
+            GetComponent<SphereCollider>().radius = _v._mySize.x/2;
 
         GameObject[] catched = null;
         catched = GameObject.FindGameObjectsWithTag("Player");
@@ -681,7 +681,7 @@ public class sc_SpellBehaviours : MonoBehaviour
 
 
             Explosion.GetComponent<sc_SelfDestruction>().DestroyMyself(_v._dVFX_lifetime);
-            Explosion.GetComponent<sc_SelfDestruction>().KillEverybody(_v._damage, _v._id, _v._mySize.x +1);
+            Explosion.GetComponent<sc_SelfDestruction>().KillEverybody(_v._damage, _v._id, _v._mySize.x/2);//J'ai mis le /2
         }
         /*if (_v._iterationOnDestroyed > 0)
         {

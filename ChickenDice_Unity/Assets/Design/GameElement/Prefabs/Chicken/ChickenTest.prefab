@@ -12422,7 +12422,6 @@ MonoBehaviour:
   _UItoHide1: {fileID: 199048352259403394}
   _UItoHide2: {fileID: 1066137417245342064}
   _myOriginalPrefab: {fileID: 1008034808911037729}
-  jesusChicken: {fileID: 0}
 --- !u!54 &1008034808911037757
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -22572,7 +22571,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5002203869187016575}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8643899996401325136}
@@ -23629,7 +23628,7 @@ PrefabInstance:
     - target: {fileID: 5921162934393497369, guid: 5234643624222004585691b2c1ec9f2c,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7368725477762355427, guid: 5234643624222004585691b2c1ec9f2c,
         type: 3}
