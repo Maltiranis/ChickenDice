@@ -23,6 +23,10 @@ public class sc_ChickenUI : MonoBehaviour
 
     [SerializeField] public GameObject[] _cam;
 
+    public GameObject[] _objectSwitchOnPhase;
+    int phase = 0;
+    GameObject pm;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,12 +47,24 @@ public class sc_ChickenUI : MonoBehaviour
         }
 
         _cam[id].SetActive(true);
+        if (GameObject.Find("PhaseManager") != null)
+        {
+            pm = GameObject.Find("PhaseManager");
+        }
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-
+        if (pm != null)
+        {
+            phase = pm.GetComponent<PhaseManager>()._Phase;
+        }
+        foreach (GameObject g in _objectSwitchOnPhase)
+        {
+            g.SetActive(false);
+        }
+        _objectSwitchOnPhase[phase].SetActive(true);
     }
 
     public void SocketsSelection (int socket, int mat)
