@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class sc_LaunchFx : MonoBehaviour
 {
-    public GameObject[] _FXs;
+    public GameObject[] _FXs; 
+    public GameObject[] _Sounds; 
     public float _fxLifetime = 2f;
     public GameObject _rootFX;
     public GameObject _rootHead;
@@ -28,7 +29,7 @@ public class sc_LaunchFx : MonoBehaviour
 
     }
 
-    public void LaunchFx (int i)
+    public void LaunchFx(int i)
     {
         GameObject newFx = Instantiate(_FXs[i], _rootFX.transform.position, _rootFX.transform.rotation);
         if (i == 4)
@@ -40,6 +41,13 @@ public class sc_LaunchFx : MonoBehaviour
         }
 
         Destroy(newFx, _fxLifetime);
+    }
+
+    public void LaunchSounds(int i)
+    {
+        GameObject newSound = Instantiate(_Sounds[i], _rootFX.transform.position, _rootFX.transform.rotation);
+
+        Destroy(newSound, _fxLifetime);
     }
 
     public void SetEye (int e)//0 : mort , 1 : pleure, 2 : plisse
