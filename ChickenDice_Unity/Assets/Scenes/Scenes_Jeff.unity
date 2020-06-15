@@ -4845,7 +4845,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-829098
+  m_Name: pb_Mesh-1486232
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -25112,7 +25112,7 @@ PrefabInstance:
     - target: {fileID: 2024177482737661115, guid: 98d40847d0b13f940ab6454fbf14c064,
         type: 3}
       propertyPath: _ValeurToWin
-      value: 5
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 3231936569402804291, guid: 98d40847d0b13f940ab6454fbf14c064,
         type: 3}

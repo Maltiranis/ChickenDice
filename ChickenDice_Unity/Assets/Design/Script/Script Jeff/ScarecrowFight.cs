@@ -32,7 +32,7 @@ public class ScarecrowFight : MonoBehaviour
         {
             int IdPlayer = other.gameObject.GetComponentInParent<sc_Chicken_ID>().ID;
             _PlayerhavePeck = other.gameObject;
-            Debug.Log(IdPlayer);
+            //SDebug.Log(IdPlayer);
 
             if(_CounterPlayer[IdPlayer] < _ValeurToWin && _havewin == false)
             {
