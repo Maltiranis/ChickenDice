@@ -75,6 +75,10 @@ public class Crack : MonoBehaviour
             _CanbeDesactive = true;
             _CrackLife = _CrackLifeBase;
             gameObject.SetActive(false);
+            _Vfx30RarityToShow.SetActive(false);
+            _Vfx30RarityToShow = null;
+            _Vfx60RarityToShow.SetActive(false);
+            _Vfx60RarityToShow = null;
         }
     }
 
@@ -138,7 +142,6 @@ public class Crack : MonoBehaviour
             {
                 _Vfx30RarityToShow.transform.LookAt(camPos);
             }
-
         }
 
         if(_CrackLife<= _CrackLifeBase *40 / 100 && !_Vfx60RarityToShow.activeSelf)
