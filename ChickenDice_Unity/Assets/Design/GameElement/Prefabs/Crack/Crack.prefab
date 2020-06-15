@@ -162,6 +162,7 @@ MonoBehaviour:
   _CrackLife: 100
   _SpawnGem: {fileID: 9197276300927480216}
   _RarityDef: 0
+  _MainCam: {fileID: 0}
   _RarityPick: 0
   _GemToLoot: {fileID: 0}
   _Vfx30RarityToShow: {fileID: 0}
