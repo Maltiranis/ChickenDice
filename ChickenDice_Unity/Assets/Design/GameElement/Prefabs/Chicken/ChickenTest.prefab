@@ -12257,6 +12257,7 @@ MonoBehaviour:
   - {fileID: 6464160373560290321, guid: 230a23da024aec24aacc9c1e7e851802, type: 3}
   - {fileID: 7427245685145151480, guid: f72b4b7b1fc96cc46a03c9566d44a037, type: 3}
   - {fileID: 8163990891657945630, guid: 09796fd461b9ad24a8a8b702253ac888, type: 3}
+  _Sounds: []
   _fxLifetime: 2
   _rootFX: {fileID: 1260479638}
   _rootHead: {fileID: 1008034808073918151}
@@ -12567,6 +12568,9 @@ MonoBehaviour:
   - {fileID: 2097265428}
   - {fileID: 1451591169}
   - {fileID: 1195592066}
+  _objectSwitchOnPhase:
+  - {fileID: 8143709463842868363}
+  - {fileID: 482970518107677684}
 --- !u!1 &1008034809165226732
 GameObject:
   m_ObjectHideFlags: 0
