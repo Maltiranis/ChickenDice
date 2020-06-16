@@ -8,7 +8,7 @@ public class sc_LaunchFx : MonoBehaviour
     public GameObject[] _Sounds; 
     public float _fxLifetime = 2f;
     public GameObject _rootFX;
-    public GameObject _rootHead;
+    public GameObject _rootEyesFx;
 
     public GameObject[] _eyes;
     public GameObject[] _dustRun;
@@ -23,7 +23,7 @@ public class sc_LaunchFx : MonoBehaviour
         {
             e.SetActive(false);
         }
-
+        SetEye(2);
         //code hyper crade
         _dustRun[transform.parent.parent.gameObject.GetComponent<sc_Chicken_ID>().ID].SetActive(true);
 
@@ -52,8 +52,18 @@ public class sc_LaunchFx : MonoBehaviour
 
     public void SetEye (int e)//0 : mort , 1 : pleure, 2 : plisse
     {
-        GameObject newEyeFx = Instantiate(_eyes[e], _rootHead.transform.position, _rootHead.transform.rotation);
-        newEyeFx.transform.SetParent(_rootHead.transform);
+        foreach (GameObject ey in _eyes)
+        {
+            ey.SetActive(false);
+        }
+
+        _eyes[e].SetActive(true);
+        _eyes[e].GetComponent<ParticleSystem>().Play();
+
+        /*GameObject newEyeFx = Instantiate(_eyes[e], _rootEyesFx.transform.position, _rootEyesFx.transform.rotation);
+        newEyeFx.transform.SetParent(_rootEyesFx.transform);
+        newEyeFx.transform.position = newEyeFx.transform.parent.position;
+        newEyeFx.transform.localScale = new Vector3(1, 1, 1);
         newEyeFx.SetActive(true);
         newEyeFx.GetComponent<ParticleSystem>().Play();
 
@@ -72,10 +82,18 @@ public class sc_LaunchFx : MonoBehaviour
             g.GetComponent<ParticleSystem>().Play();
         }
 
-        StartCoroutine(TimedDestroyAndCleanList(newEyeFx, _fxLifetime, eyeList));
+        StartCoroutine(TimedDestroyAndCleanList(newEyeFx, _fxLifetime, eyeList));*/
     }
 
-    public IEnumerator TimedDestroyAndCleanList(GameObject g, float time, List<GameObject> l)
+    public void CleanEye()
+    {
+        foreach (GameObject ey in _eyes)
+        {
+            ey.SetActive(false);
+        }
+    }
+
+        public IEnumerator TimedDestroyAndCleanList(GameObject g, float time, List<GameObject> l)
     {
         yield return new WaitForSeconds(time);
 
