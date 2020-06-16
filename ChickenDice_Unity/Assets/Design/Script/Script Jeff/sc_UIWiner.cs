@@ -13,8 +13,9 @@ public class sc_UIWiner : MonoBehaviour
     [Header("UI")]
     [SerializeField] private GameObject[] _NotReady;
     [SerializeField] private GameObject[] _Ready;
-  
 
+    [Header("SFX")]
+    [SerializeField] private AudioSource[] _SFX;
 
     [Header("MenuPause")]
     [SerializeField] private GameObject _MenuPause;
@@ -29,25 +30,29 @@ public class sc_UIWiner : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetButtonDown("Start_0"))
+        if (Input.GetButton("Start_0") && !_Ready[0].activeSelf)
         {
             _NotReady[0].SetActive(false);
             _Ready[0].SetActive(true);
+            _SFX[0].Play();
         }
-        if (Input.GetButtonDown("Start_1"))
+        if (Input.GetButton("Start_1") && !_Ready[1].activeSelf)
         {
             _NotReady[1].SetActive(false);
             _Ready[1].SetActive(true);
+            _SFX[0].Play();
         }
-        if (Input.GetButtonDown("Start_2"))
+        if (Input.GetButton("Start_2") && !_Ready[2].activeSelf)
         {
             _NotReady[2].SetActive(false);
             _Ready[2].SetActive(true);
+            _SFX[0].Play();
         }
-        if (Input.GetButtonDown("Start_3"))
+        if (Input.GetButton("Start_3") && !_Ready[3].activeSelf)
         {
             _NotReady[3].SetActive(false);
             _Ready[3].SetActive(true);
+            _SFX[0].Play();
         }
 
         // POUR 4 PLAYER
@@ -55,6 +60,7 @@ public class sc_UIWiner : MonoBehaviour
 
         if (_Ready[0].activeSelf && _Ready[1].activeSelf && _Ready[2].activeSelf && _Ready[3].activeSelf && _havePressSelect == false)
         {
+            _SFX[1].Play();
             StartCoroutine(RestartGame());
             _ScFondu.BackAnim();
             _havePressSelect = true;
@@ -66,7 +72,8 @@ public class sc_UIWiner : MonoBehaviour
 
         if (Input.GetButtonDown("Select") && _havePressSelect == false)
         {
-           //Debug.Log("ok");
+            _SFX[1].Play();
+            //Debug.Log("ok");
             _havePressSelect = true;
             _ScFondu.BackAnim();
             StartCoroutine(RestartGame());
