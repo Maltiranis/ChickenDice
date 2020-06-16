@@ -372,6 +372,19 @@ public class sc_SpellAlchemist : MonoBehaviour
                         newShootInstance(shot, 180);
                 }
                 #endregion
+                #region Size + C / C + Size
+                if (s_sbS._getPassives_Left == sc_SpellBehaviours.Passives_L.Size &&
+                    s_sbS._getPassives_Right == sc_SpellBehaviours.Passives_R.Chain)
+                {
+                    s_sbS._v._iterationOnDestroyed = 1;
+                }
+
+                if (s_sbS._getPassives_Left == sc_SpellBehaviours.Passives_L.Chain &&
+                    s_sbS._getPassives_Right == sc_SpellBehaviours.Passives_R.Size)
+                {
+                    s_sbS._v._iterationOnDestroyed = 1;
+                }
+                #endregion
                 #region S + M / M + S
                 if (s_sbS._getPassives_Left == sc_SpellBehaviours.Passives_L.Spinning &&
                     s_sbS._getPassives_Right == sc_SpellBehaviours.Passives_R.Multiple)
@@ -386,6 +399,20 @@ public class sc_SpellAlchemist : MonoBehaviour
                     //ShootInstance(A, P1, P2, 180);
                     if (shot != null)
                         newShootInstance(shot, 180);
+                }
+                #endregion
+                #region Size + M / M + Size
+                if (s_sbS._getPassives_Left == sc_SpellBehaviours.Passives_L.Size &&
+                    s_sbS._getPassives_Right == sc_SpellBehaviours.Passives_R.Multiple)
+                {
+                    if (shot != null)
+                        StartCoroutine(newMultipleCasts(s_sbS._v._timeToWait, shot));
+                }
+                if (s_sbS._getPassives_Left == sc_SpellBehaviours.Passives_L.Multiple &&
+                    s_sbS._getPassives_Right == sc_SpellBehaviours.Passives_R.Size)
+                {
+                    if (shot != null)
+                        StartCoroutine(newMultipleCasts(s_sbS._v._timeToWait, shot));
                 }
                 #endregion
                 #region M + M

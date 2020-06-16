@@ -1,9 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System;
 using UnityEngine;
-using System.Security.Cryptography;
-using TreeEditor;
 
 public class sc_SpellBehaviours : MonoBehaviour
 {

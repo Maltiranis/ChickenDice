@@ -12257,10 +12257,22 @@ MonoBehaviour:
   - {fileID: 6464160373560290321, guid: 230a23da024aec24aacc9c1e7e851802, type: 3}
   - {fileID: 7427245685145151480, guid: f72b4b7b1fc96cc46a03c9566d44a037, type: 3}
   - {fileID: 8163990891657945630, guid: 09796fd461b9ad24a8a8b702253ac888, type: 3}
-  _Sounds: []
+  _Sounds:
+  - {fileID: 7341216827471227366, guid: cb3a5dee467992045b24b36b995caac1, type: 3}
+  - {fileID: 3493331611129764496, guid: e8fd49d33a93041489f1a45dd63312bc, type: 3}
+  - {fileID: 9048334447988283548, guid: faca784af1e8ca4428cdc86b677b12da, type: 3}
+  - {fileID: 3734828068035189217, guid: c42d9053bfdf0d541930f045affe121f, type: 3}
+  - {fileID: 5243808359824351747, guid: e9e3a5628f23481458c80b4b3bfd9f6a, type: 3}
+  - {fileID: 2632221361858046792, guid: 16f5b1b41ee2f4c419c0cd2e4990048f, type: 3}
+  - {fileID: 8744657998006013303, guid: 45a13f8fcda61484bb46d185b13c6258, type: 3}
+  - {fileID: 2139967891692837070, guid: 9dbedae71cdbdb044a85f9d1c63cac3c, type: 3}
+  - {fileID: 4386708786551305625, guid: 617cb4a8e5e6ac64286db25d4b0f0fb8, type: 3}
+  - {fileID: 7428180429149003013, guid: 23f72fed5e54c5c4982de47dec5933f6, type: 3}
+  - {fileID: 4920806497005265438, guid: 86b310bbb1a6c5f46983102d7e16be80, type: 3}
+  - {fileID: 6402103238303811859, guid: 98f4553c14626ae4fa098ee981ff8c14, type: 3}
   _fxLifetime: 2
   _rootFX: {fileID: 1260479638}
-  _rootHead: {fileID: 1008034808073918151}
+  _rootEyesFx: {fileID: 5134854001187910298}
   _eyes:
   - {fileID: 5493296921442647977, guid: 23be26ea6aa2fbf46b462ee2de6aab1d, type: 3}
   - {fileID: 2675507972556952508, guid: 97764d2d00147b34c8e0c96f3e8bf782, type: 3}
