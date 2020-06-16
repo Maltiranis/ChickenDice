@@ -9,6 +9,7 @@ TagManager:
   - ActiveGemList
   - WorldCollider
   - ProjectileAbsorber
+  - music
   layers:
   - Default
   - TransparentFX

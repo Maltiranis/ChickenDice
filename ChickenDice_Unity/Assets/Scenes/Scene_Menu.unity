@@ -1337,24 +1337,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 811590119}
   m_CullTransparentMesh: 0
---- !u!1 &841984093 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4363780278936140588, guid: fac40d7e992e00b4a97fd7e133b2c035,
-    type: 3}
-  m_PrefabInstance: {fileID: 908077324}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &841984096
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 841984093}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57b88750738697543967374c26321d50, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &875303757
 GameObject:
   m_ObjectHideFlags: 0
@@ -1398,30 +1380,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1356300856082596584, guid: fac40d7e992e00b4a97fd7e133b2c035,
-        type: 3}
-      propertyPath: Loop
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4363780278936140588, guid: fac40d7e992e00b4a97fd7e133b2c035,
         type: 3}
       propertyPath: m_Name
       value: MusicManager
       objectReference: {fileID: 0}
-    - target: {fileID: 4405174728419395426, guid: fac40d7e992e00b4a97fd7e133b2c035,
+    - target: {fileID: 4363780278936140588, guid: fac40d7e992e00b4a97fd7e133b2c035,
         type: 3}
-      propertyPath: Loop
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7262723805848653081, guid: fac40d7e992e00b4a97fd7e133b2c035,
-        type: 3}
-      propertyPath: Loop
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7544577997461600339, guid: fac40d7e992e00b4a97fd7e133b2c035,
-        type: 3}
-      propertyPath: _musicSelected
-      value: 2
+      propertyPath: m_TagString
+      value: music
       objectReference: {fileID: 0}
     - target: {fileID: 7731291340598708901, guid: fac40d7e992e00b4a97fd7e133b2c035,
         type: 3}
@@ -2511,7 +2478,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: c7dae525bbfdde643988288563768d3e, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 2752646cd81b3324ca49e4d49f1f4a4f, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.278
   m_Pitch: 1

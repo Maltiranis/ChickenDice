@@ -22,7 +22,14 @@ public class sc_UIWiner : MonoBehaviour
 
     private void Start()
     {
-        if(_MenuPause != null)
+        GameObject _MusicManager = GameObject.Find("MusicManager");
+        if (_MusicManager != null)
+        {
+            _MusicManager.GetComponent<sc_MusicManager>()._musicSelected = 2;
+        }
+
+
+        if (_MenuPause != null)
         {
             _MenuPause.SetActive(false);
 
@@ -85,6 +92,13 @@ public class sc_UIWiner : MonoBehaviour
     {
         yield return new WaitForSeconds(_TimeBeforeRestart);
         _havePressSelect = false;
+
+        Debug.Log("On passe sur la 1");
+        GameObject _MusicManager = GameObject.Find("MusicManager");
+        if (_MusicManager != null)
+        {
+            _MusicManager.GetComponent<sc_MusicManager>()._musicSelected = 1;
+        }
         SceneManager.LoadScene(2);
     }
 }

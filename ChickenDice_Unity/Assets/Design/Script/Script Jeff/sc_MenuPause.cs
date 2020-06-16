@@ -41,6 +41,11 @@ public class sc_MenuPause : MonoBehaviour
 
     public void MainMenu()
     {
+        GameObject _MusicManager = GameObject.Find("MusicManager");
+        if(_MusicManager != null)
+        {
+            _MusicManager.GetComponent<sc_MusicManager>()._musicSelected = 2;
+        }
         SceneManager.LoadScene(0);
         Time.timeScale = 1;
     }
