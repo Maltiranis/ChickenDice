@@ -8829,6 +8829,7 @@ MonoBehaviour:
   _gasgasgasTimer: 2
   _timerAjustement: 0.8
   _gasgasgasSpeed: 100
+  launchFX: {fileID: 0}
   _skin: {fileID: 995580211}
 --- !u!54 &444147742
 Rigidbody:
@@ -8946,6 +8947,7 @@ MonoBehaviour:
   _dashGhost: []
   _objectTimer: 0.5
   _rateOverDist: 2
+  launchFX: {fileID: 0}
 --- !u!136 &444147746
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -18944,6 +18946,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1961471731, guid: 7c1da6a24e77d694196bac36a484c2ab, type: 3}
+      propertyPath: _eyes.Array.data[0]
+      value: 
+      objectReference: {fileID: 1344799664}
     - target: {fileID: 1008034807822611951, guid: 7c1da6a24e77d694196bac36a484c2ab,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -26043,6 +26049,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1326454437}
   m_CullTransparentMesh: 0
+--- !u!1 &1344799664 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5918421862783483250, guid: 7c1da6a24e77d694196bac36a484c2ab,
+    type: 3}
+  m_PrefabInstance: {fileID: 947433569}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1350920482
 GameObject:
   m_ObjectHideFlags: 0
@@ -29686,6 +29698,7 @@ MonoBehaviour:
   _gasgasgasTimer: 2
   _timerAjustement: 0.8
   _gasgasgasSpeed: 100
+  launchFX: {fileID: 0}
   _skin: {fileID: 602695084}
 --- !u!54 &1791194465
 Rigidbody:
@@ -29803,6 +29816,7 @@ MonoBehaviour:
   _dashGhost: []
   _objectTimer: 0.5
   _rateOverDist: 2
+  launchFX: {fileID: 0}
 --- !u!136 &1791194469
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -39341,6 +39355,7 @@ MonoBehaviour:
   _dashGhost: []
   _objectTimer: 0.5
   _rateOverDist: 2
+  launchFX: {fileID: 0}
 --- !u!4 &3739132837255989254
 Transform:
   m_ObjectHideFlags: 0
@@ -39745,6 +39760,7 @@ MonoBehaviour:
   _gasgasgasTimer: 2
   _timerAjustement: 0.8
   _gasgasgasSpeed: 100
+  launchFX: {fileID: 0}
   _skin: {fileID: 4562488702654017175}
 --- !u!114 &4562488701770965063
 MonoBehaviour:

@@ -12263,6 +12263,8 @@ MonoBehaviour:
   - {fileID: 9048334447988283548, guid: faca784af1e8ca4428cdc86b677b12da, type: 3}
   - {fileID: 3734828068035189217, guid: c42d9053bfdf0d541930f045affe121f, type: 3}
   - {fileID: 5243808359824351747, guid: e9e3a5628f23481458c80b4b3bfd9f6a, type: 3}
+  - {fileID: 5243808359824351747, guid: ed8c7f51d77e12b4a883c59dd82314dc, type: 3}
+  - {fileID: 5243808359824351747, guid: ec1aebe34db73f44c9ef2b6133e2a340, type: 3}
   - {fileID: 2632221361858046792, guid: 16f5b1b41ee2f4c419c0cd2e4990048f, type: 3}
   - {fileID: 8744657998006013303, guid: 45a13f8fcda61484bb46d185b13c6258, type: 3}
   - {fileID: 2139967891692837070, guid: 9dbedae71cdbdb044a85f9d1c63cac3c, type: 3}
@@ -12387,6 +12389,7 @@ MonoBehaviour:
   _gasgasgasTimer: 2
   _timerAjustement: 0.8
   _gasgasgasSpeed: 100
+  launchFX: {fileID: 1961471731}
   _skin: {fileID: 1008034808199728111}
 --- !u!114 &1008034808911037759
 MonoBehaviour:
@@ -12497,6 +12500,7 @@ MonoBehaviour:
   - {fileID: 1979371651966796032}
   _objectTimer: 0.25
   _rateOverDist: 2
+  launchFX: {fileID: 1961471731}
 --- !u!114 &1270922325830150318
 MonoBehaviour:
   m_ObjectHideFlags: 0

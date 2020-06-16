@@ -46,8 +46,6 @@ public class sc_LaunchFx : MonoBehaviour
     public void LaunchSounds(int i)
     {
         GameObject newSound = Instantiate(_Sounds[i], _rootFX.transform.position, _rootFX.transform.rotation);
-
-        Destroy(newSound, _fxLifetime);
     }
 
     public void SetEye (int e)//0 : mort , 1 : pleure, 2 : plisse
