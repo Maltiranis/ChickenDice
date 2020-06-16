@@ -23,7 +23,7 @@ public class sc_LaunchFx : MonoBehaviour
         {
             e.SetActive(false);
         }
-
+        SetEye(2);
         //code hyper crade
         _dustRun[transform.parent.parent.gameObject.GetComponent<sc_Chicken_ID>().ID].SetActive(true);
 
@@ -58,6 +58,7 @@ public class sc_LaunchFx : MonoBehaviour
         }
 
         _eyes[e].SetActive(true);
+        _eyes[e].GetComponent<ParticleSystem>().Play();
 
         /*GameObject newEyeFx = Instantiate(_eyes[e], _rootEyesFx.transform.position, _rootEyesFx.transform.rotation);
         newEyeFx.transform.SetParent(_rootEyesFx.transform);
@@ -84,7 +85,15 @@ public class sc_LaunchFx : MonoBehaviour
         StartCoroutine(TimedDestroyAndCleanList(newEyeFx, _fxLifetime, eyeList));*/
     }
 
-    public IEnumerator TimedDestroyAndCleanList(GameObject g, float time, List<GameObject> l)
+    public void CleanEye()
+    {
+        foreach (GameObject ey in _eyes)
+        {
+            ey.SetActive(false);
+        }
+    }
+
+        public IEnumerator TimedDestroyAndCleanList(GameObject g, float time, List<GameObject> l)
     {
         yield return new WaitForSeconds(time);
 

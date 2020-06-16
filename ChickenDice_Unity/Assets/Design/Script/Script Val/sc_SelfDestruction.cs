@@ -8,9 +8,9 @@ public class sc_SelfDestruction : MonoBehaviour
 
     public void KillEverybody(int _dmg, int _index, float _range)
     {
-        if (_range < 1)
+        if (_range < 1f)
         {
-            _range += 1;
+            _range += 0.5f;
         }
         //chopper tout les joueurs à porter et leur coller un TakeDamage + dégat
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
