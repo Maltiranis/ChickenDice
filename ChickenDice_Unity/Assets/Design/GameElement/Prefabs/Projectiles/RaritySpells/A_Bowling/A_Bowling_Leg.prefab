@@ -202,14 +202,19 @@ MonoBehaviour:
     - {fileID: 7273706752537906696, guid: d25f79f52c3177a46a196b6591122695, type: 3}
     - {fileID: 2240344806387549165, guid: f4a1e43f1593ab54ab8dfb802842a648, type: 3}
     - {fileID: 5210089531137173602, guid: d6b597e390fb52d459ee61a63408a1f1, type: 3}
-    _addThisSize: 0.25
-    _startSize: {x: 0.5, y: 0.5, z: 0.5}
-    _mySize: {x: 0.5, y: 0.5, z: 0.5}
-    _damage: 5
+    _addThisSize: 1
+    _addAoeSize: 1
+    _startSize: {x: 1, y: 1, z: 1}
+    _mySize: {x: 1, y: 1, z: 1}
+    _damage: 10
     _speed: 5
-    _maxDistance: 10
+    _maxDistance: 5
     _lifeTime: 5
-    _coolDown: 1.5
+    _coolDown: 2.5
+    _aoeRadius: 1
+    _addSpread: 1
+    _addSpreadSpeed: 1
+    _addOrbitSpeed: 1
     duration: 0
     startPos: {x: 0, y: 0, z: 0}
     _id: 0

@@ -6,7 +6,7 @@ using UnityEngine;
 public class sc_LifeEngine : MonoBehaviour
 {
     [Header("Variables")]
-    [SerializeField] public int _life = 100;
+    [SerializeField] public float _life = 100;
     [SerializeField] public bool _respawn = true;
     [SerializeField] public float _respawnDelay = 2.0f;
     [SerializeField] public float _whiteBarSpeed = 0.5f;
@@ -17,7 +17,7 @@ public class sc_LifeEngine : MonoBehaviour
     [Header("Respawn Management")]
     public Transform _startPosTransform;
     float startY;
-    [HideInInspector] public int startLife;
+    [HideInInspector] public float startLife;
     [HideInInspector]
     [SerializeField] public bool onRepop = false;
     Rigidbody rb;
@@ -73,7 +73,7 @@ public class sc_LifeEngine : MonoBehaviour
         _UItoHide2.transform.forward = Vector3.forward;
     }
 
-    public void TakeDamage(int dmg, int id)
+    public void TakeDamage(float dmg, int id)
     {
         if (onRepop == false)
         {

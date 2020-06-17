@@ -8,7 +8,7 @@ public class sc_SelfDestruction : MonoBehaviour
     public bool timedDestroy = false;
     public float _timeLeft = 2f;
 
-    public void KillEverybody(int _dmg, int _index, float _range)
+    public void KillEverybody(float _dmg, int _index, float _range)
     {
         if (_range < 1f)
         {

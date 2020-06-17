@@ -138,6 +138,11 @@ PrefabInstance:
       propertyPath: Loop
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7339909544603925871, guid: 22c6c3005f5c84545b891f6184cf000c,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.17
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22c6c3005f5c84545b891f6184cf000c, type: 3}
 --- !u!4 &2687485515755085791 stripped
@@ -167,6 +172,11 @@ PrefabInstance:
         type: 3}
       propertyPath: Loop
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848973673073476593, guid: 91f6ff26af6e4bc448ca7674ae5a0e30,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 6352717353845723447, guid: 91f6ff26af6e4bc448ca7674ae5a0e30,
         type: 3}
@@ -297,6 +307,11 @@ PrefabInstance:
         type: 3}
       propertyPath: Loop
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6005178725005075772, guid: 61ea388018491f841aa578902a900cf0,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.17
       objectReference: {fileID: 0}
     - target: {fileID: 6030387715034191563, guid: 61ea388018491f841aa578902a900cf0,
         type: 3}

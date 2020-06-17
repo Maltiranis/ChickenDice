@@ -205,9 +205,9 @@ MonoBehaviour:
     _addThisSize: 0.25
     _startSize: {x: 0.5, y: 0.5, z: 0.5}
     _mySize: {x: 0.5, y: 0.5, z: 0.5}
-    _damage: 5
-    _speed: 5
-    _maxDistance: 10
+    _damage: 8
+    _speed: 10
+    _maxDistance: 2
     _lifeTime: 5
     _coolDown: 1.5
     duration: 0
