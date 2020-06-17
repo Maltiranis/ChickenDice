@@ -70,7 +70,8 @@ MonoBehaviour:
   - {fileID: 1811744398439601936}
   - {fileID: 1811744397659150643}
   - {fileID: 1811744396778640665}
-  _TimeBetweenCrack: 10
+  _TimeBetweenCrack: 8
+  _TimeBeforStartToSpawn: 0
   _RandomCrack: 0
 --- !u!1001 &2721574789563025409
 PrefabInstance:

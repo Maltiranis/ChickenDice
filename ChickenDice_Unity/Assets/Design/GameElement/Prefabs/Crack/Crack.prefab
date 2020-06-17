@@ -167,12 +167,12 @@ MonoBehaviour:
   _GemToLoot: {fileID: 0}
   _Vfx30RarityToShow: {fileID: 0}
   _Vfx60RarityToShow: {fileID: 0}
-  _RangeCommun: 50
+  _RangeCommun: 60
   _VFXCommun30: {fileID: 1443696404862113152}
   _VFXCommun60: {fileID: 5296493469538290311}
   _CommunGem:
   - {fileID: 2727020384961002940, guid: 6903bf434550c9d4c8f24158f83c8fd4, type: 3}
-  _RangeRare: 85
+  _RangeRare: 90
   _VFXRare30: {fileID: 7447368895102349196}
   _VFXRare60: {fileID: 6859879842156460575}
   _RareGem:

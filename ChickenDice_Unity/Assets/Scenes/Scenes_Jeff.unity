@@ -3493,7 +3493,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 30
   field of view: 65
   orthographic: 0
   orthographic size: 5
@@ -5171,7 +5171,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1137442
+  m_Name: pb_Mesh-4078648
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -13432,7 +13432,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 30
   field of view: 65
   orthographic: 0
   orthographic size: 5
@@ -24958,7 +24958,7 @@ PrefabInstance:
     - target: {fileID: 2721574790736944351, guid: 6df026d48ca7b8041960629548bf9543,
         type: 3}
       propertyPath: _TimeBetweenCrack
-      value: 10
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3033213469825777512, guid: 6df026d48ca7b8041960629548bf9543,
         type: 3}
@@ -27656,7 +27656,7 @@ PrefabInstance:
     - target: {fileID: 1829825638667914875, guid: 57cf0e1abac3a364288c41ff362cb65a,
         type: 3}
       propertyPath: _TimeBetweenCrack
-      value: 10
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2703490791206196062, guid: 57cf0e1abac3a364288c41ff362cb65a,
         type: 3}
@@ -31635,7 +31635,7 @@ PrefabInstance:
     - target: {fileID: 7263417355338122583, guid: c4be71762a898824cb0b449cf70887be,
         type: 3}
       propertyPath: _TimeBetweenCrack
-      value: 10
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7714681379340574658, guid: c4be71762a898824cb0b449cf70887be,
         type: 3}
@@ -32045,7 +32045,7 @@ PrefabInstance:
     - target: {fileID: 5776713285029500429, guid: f94b289ee5056624b9ecdf5feeb318d3,
         type: 3}
       propertyPath: _TimeLootPhase
-      value: 120
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 5776713285029500435, guid: f94b289ee5056624b9ecdf5feeb318d3,
         type: 3}
@@ -32310,6 +32310,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3352117958320626477, guid: 32bebf14388d71449b0249a839464cd1,
+        type: 3}
+      propertyPath: _ValeurToWin
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 3859156184387567556, guid: 32bebf14388d71449b0249a839464cd1,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -32512,7 +32517,7 @@ PrefabInstance:
     - target: {fileID: 6230694399564611012, guid: 0b65aa0116b8ca2409f24dbe62986670,
         type: 3}
       propertyPath: _TimeBetweenCrack
-      value: 10
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6230694399564611014, guid: 0b65aa0116b8ca2409f24dbe62986670,
         type: 3}

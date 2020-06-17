@@ -70,7 +70,7 @@ MonoBehaviour:
   - {fileID: 7680816317737974803}
   - {fileID: 7680816317939473693}
   - {fileID: 8450191069096793010}
-  _TimeBetweenCrack: 16
+  _TimeBetweenCrack: 8
   _TimeBeforStartToSpawn: 1
   _RandomCrack: 0
 --- !u!1001 &1108424692317381713
