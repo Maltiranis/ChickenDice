@@ -454,9 +454,7 @@ public class sc_SpellAlchemist : MonoBehaviour
                     //ShootInstance(A, P1, P2, 120);
                     //ShootInstance(A, P1, P2, 240);
                     if (shot != null)
-                        newShootInstance(shot, 120);
-                    if (shot != null)
-                        newShootInstance(shot, 240);
+                        newShootInstance(shot, 180);
                 }
                 #endregion
                 #region C + C
