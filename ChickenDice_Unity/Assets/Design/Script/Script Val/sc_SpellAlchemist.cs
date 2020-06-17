@@ -382,18 +382,12 @@ public class sc_SpellAlchemist : MonoBehaviour
                     s_sbS._getPassives_Right == sc_SpellBehaviours.Passives_R.Chain)
                 {
                     s_sbS._v._iterationOnDestroyed = 1;
-                    //ShootInstance(A, P1, P2, 180);
-                    if (shot != null)
-                        newShootInstance(shot, 180);
                 }
 
                 if (s_sbS._getPassives_Left == sc_SpellBehaviours.Passives_L.Chain &&
                     s_sbS._getPassives_Right == sc_SpellBehaviours.Passives_R.Spinning)
                 {
                     s_sbS._v._iterationOnDestroyed = 1;
-                    //ShootInstance(A, P1, P2, 180);
-                    if (shot != null)
-                        newShootInstance(shot, 180);
                 }
                 #endregion
                 #region Size + C / C + Size
