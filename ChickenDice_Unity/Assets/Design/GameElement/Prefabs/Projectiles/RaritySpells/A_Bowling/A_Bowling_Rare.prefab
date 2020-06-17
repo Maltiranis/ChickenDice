@@ -218,6 +218,10 @@ MonoBehaviour:
     bestTarget: {fileID: 0}
     Caster: {fileID: 0}
     _canCollide: 1
+    _Sounds:
+    - {fileID: 7428180429149003013, guid: 23f72fed5e54c5c4982de47dec5933f6, type: 3}
+    - {fileID: 4920806497005265438, guid: 86b310bbb1a6c5f46983102d7e16be80, type: 3}
+    - {fileID: 6402103238303811859, guid: 98f4553c14626ae4fa098ee981ff8c14, type: 3}
     _spread: 1
     _spreadSpeed: 10
     _orbitSpeed: 200

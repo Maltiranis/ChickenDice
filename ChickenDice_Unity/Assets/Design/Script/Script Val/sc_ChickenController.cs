@@ -18,6 +18,7 @@ public class sc_ChickenController : MonoBehaviour
     [SerializeField] private float _gasgasgasSpeed = 2f;
     float oldTimer = 0f;
     private float _newSpeed = 0f;
+    [SerializeField] public sc_LaunchFx launchFX;
     [Space(10)]
     [Header("Rotating Child")]
     public GameObject _skin;
@@ -125,6 +126,12 @@ public class sc_ChickenController : MonoBehaviour
         if (Input.GetButtonDown("xA_" + _id.ToString()))
         {
             scp.Pecking();
+
+            //7 - 10
+            int rndm = 0;
+            rndm = Random.Range(7, 11);
+            launchFX.LaunchSounds(rndm);
+
             _newSpeed = _moveSpeed;
             oldTimer = 0f;
         }
@@ -137,6 +144,11 @@ public class sc_ChickenController : MonoBehaviour
         if (Input.GetButtonDown("xB_" + _id.ToString()))
         {
             scp._am.Taunted();
+
+            //2 - 6
+            int rndm = 0;
+            rndm = Random.Range(2, 7);
+            launchFX.LaunchSounds(rndm);
         }
 
         //speed ajustement

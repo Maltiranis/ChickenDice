@@ -36,6 +36,7 @@ public class sc_SpellAlchemist : MonoBehaviour
     [SerializeField] public float _rateOverDist = 2f;
     GameObject pivot;
     ParticleSystem.EmissionModule em;
+    [SerializeField] public sc_LaunchFx launchFX;
 
     float sizeP1 = 0f;
     float sizeP2 = 0f;
