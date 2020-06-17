@@ -39,13 +39,21 @@ public class sc_SpellAlchemist : MonoBehaviour
     [SerializeField] public sc_LaunchFx launchFX;
 
     float sizeP1 = 0f;
-    float sizeP2 = 0f;
+    float sizeP2 = 0f; 
+    float aoeSizeP1 = 0f; 
+    float aoeSizeP2 = 0f; 
     float speedP1 = 0f;
     float speedP2 = 0f;
-    int dmgP1 = 0;
-    int dmgP2 = 0;
+    float dmgP1 = 0;
+    float dmgP2 = 0;
     float distP1 = 0f;
     float distP2 = 0f;
+    float spreadP1 = 0f;
+    float spreadP2 = 0f;
+    float spreadSpeedP1 = 0f;
+    float spreadSpeedP2 = 0f;
+    float orbitSpeedP1 = 0f;
+    float orbitSpeedP2 = 0f;
 
     //
     //[Space(10)]
@@ -169,6 +177,9 @@ public class sc_SpellAlchemist : MonoBehaviour
                     speedP1 = s_sbP1._v._speed;
                     dmgP1 = s_sbP1._v._damage;
                     distP1 = s_sbP1._v._maxDistance;
+                    spreadP1 = s_sbP1._v._addSpread;
+                    spreadSpeedP1 = s_sbP1._v._addSpreadSpeed;
+                    orbitSpeedP1 = s_sbP1._v._addOrbitSpeed;
 
                     //Spinning
                     if (s_sbP1._getPassives_Left == sc_SpellBehaviours.Passives_L.Spinning ||
@@ -199,6 +210,7 @@ public class sc_SpellAlchemist : MonoBehaviour
                     {
                         s_sbS._getPassives_Left = sc_SpellBehaviours.Passives_L.Size;
                         sizeP1 = s_sbP1._v._addThisSize;
+                        aoeSizeP1 = s_sbP1._v._addAoeSize;
                     }
                 }
                 if (P2 != null)
@@ -207,6 +219,9 @@ public class sc_SpellAlchemist : MonoBehaviour
                     speedP2 = s_sbP2._v._speed;
                     dmgP2 = s_sbP2._v._damage;
                     distP2 = s_sbP2._v._maxDistance;
+                    spreadP2 = s_sbP2._v._addSpread;
+                    spreadSpeedP2 = s_sbP2._v._addSpreadSpeed;
+                    orbitSpeedP2 = s_sbP2._v._addOrbitSpeed;
 
                     //Spinning
                     if (s_sbP2._getPassives_Left == sc_SpellBehaviours.Passives_L.Spinning ||
@@ -237,26 +252,34 @@ public class sc_SpellAlchemist : MonoBehaviour
                     {
                         s_sbS._getPassives_Right = sc_SpellBehaviours.Passives_R.Size;
                         sizeP2 = s_sbP2._v._addThisSize;
+                        aoeSizeP2 = s_sbP2._v._addAoeSize;
                     }
                 }
-                float sizeSums = sizeP1 + sizeP2 + s_sbS._v._mySize.x;
-                float speedSums = speedP1 + speedP2 + s_sbS._v._speed;
-                int dmgSums = dmgP1 + dmgP2 + s_sbS._v._damage;
-                float distSums = distP1 + distP2 + s_sbS._v._maxDistance;
+                float sizeSums = sizeP1 * sizeP2 * s_sbS._v._startSize.x;
+                float aoeSizeSums = aoeSizeP1 * aoeSizeP2 * s_sbS._v._aoeRadius;
+                float speedSums = speedP1 * speedP2 * s_sbS._v._speed;
+                float dmgSums = dmgP1 * dmgP2 * s_sbS._v._damage;
+                float distSums = distP1 * distP2 * s_sbS._v._maxDistance;
+                float spreadSums = spreadP1 * spreadP2 * s_sbS._v._spread;
+                float spreadSpeedSums = spreadSpeedP1 * spreadSpeedP2 * s_sbS._v._spreadSpeed;
+                float orbitSpeedSums = orbitSpeedP1 * orbitSpeedP2 * s_sbS._v._orbitSpeed;
 
                 //TOUT CE JOUE ICI AVEC LES PASSIF
                 Vector3 bistromatic = new Vector3
                 (
-                    s_sbS._v._startSize.x + sizeSums,
-                    s_sbS._v._startSize.y + sizeSums,
-                    s_sbS._v._startSize.z + sizeSums
+                    sizeSums,
+                    sizeSums,
+                    sizeSums
                 );
                 s_sbS._v._mySize = bistromatic;
-                s_sbS._v._speed = speedSums * 10;//enlever les x10
-                s_sbS._v._spreadSpeed = speedSums / 2 * 10;
-                s_sbS._v._orbitSpeed = speedSums * 10;
+                s_sbS._v._aoeRadius = aoeSizeSums;
+                s_sbS._v._speed = speedSums;
+                s_sbS._v._spread = spreadSums;
+                s_sbS._v._spreadSpeed = spreadSpeedSums;
+                s_sbS._v._orbitSpeed = orbitSpeedSums;
                 s_sbS._v._damage = dmgSums;
                 s_sbS._v._maxDistance = distSums;
+
                 //ET C'EST TRES HOT !!!
                 //
                 if (s_sbS._getProfile == sc_SpellBehaviours.Profile.PumpGun)

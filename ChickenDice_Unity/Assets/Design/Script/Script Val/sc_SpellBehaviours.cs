@@ -110,17 +110,22 @@ public class sc_SpellBehaviours : MonoBehaviour
         [Header("Size")]
         [Space(5)]
         [SerializeField] public float _addThisSize = 1.5f;
+        [SerializeField] public float _addAoeSize = 0.5f;
         [SerializeField] public Vector3 _startSize;
         [SerializeField] public Vector3 _mySize;
         //Globals
         [Space(15)]
         [Header("Global Variable")]
         [Space(5)]
-        [SerializeField] public int _damage = 0;
+        [SerializeField] public float _damage = 0;
         [SerializeField] public float _speed = 0.0f;
         [SerializeField] public float _maxDistance = 10.0f;
         [SerializeField] public float _lifeTime = 5.0f;
-        [SerializeField] public float _coolDown = 1.0f;
+        [SerializeField] public float _coolDown = 1.0f; 
+        [SerializeField] public float _aoeRadius = 1.0f;
+        [SerializeField] public float _addSpread = 1f;//Orbital
+        [SerializeField] public float _addSpreadSpeed = 1f;//
+        [SerializeField] public float _addOrbitSpeed = 1f;//
         [HideInInspector] public float duration = 0f;
         [HideInInspector] public Vector3 startPos;
         [SerializeField] public int _id;//l'ID du Joueur ayant caster
@@ -690,7 +695,7 @@ public class sc_SpellBehaviours : MonoBehaviour
             GameObject newSound = Instantiate(_v._Sounds[rndm], transform.position, transform.rotation);
 
             Explosion.GetComponent<sc_SelfDestruction>().DestroyMyself(_v._dVFX_lifetime);
-            Explosion.GetComponent<sc_SelfDestruction>().KillEverybody(_v._damage, _v._id, _v._mySize.x/2);//J'ai mis le /2
+            Explosion.GetComponent<sc_SelfDestruction>().KillEverybody(_v._damage, _v._id, _v._aoeRadius);
         }
         /*if (_v._iterationOnDestroyed > 0)
         {
