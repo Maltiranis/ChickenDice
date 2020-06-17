@@ -12405,7 +12405,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _myID: {fileID: 1008034808911037731}
   _id: 0
-  _damages: 10
+  _damages: 6
   _pushForce: 200
   _radius: 2
   _pecking: 0

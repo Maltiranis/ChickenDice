@@ -145,8 +145,8 @@ MonoBehaviour:
     _damage: 5
     _speed: 5
     _maxDistance: 10
-    _lifeTime: 3
-    _coolDown: 1.5
+    _lifeTime: 2
+    _coolDown: 5
     duration: 0
     startPos: {x: 0, y: 0, z: 0}
     _id: 0
