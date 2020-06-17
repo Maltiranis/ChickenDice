@@ -59,12 +59,12 @@ public class sc_ChickenUI : MonoBehaviour
         if (pm != null)
         {
             phase = pm.GetComponent<PhaseManager>()._Phase;
+            foreach (GameObject g in _objectSwitchOnPhase)
+            {
+                g.SetActive(false);
+            }
+            _objectSwitchOnPhase[phase].SetActive(true);
         }
-        foreach (GameObject g in _objectSwitchOnPhase)
-        {
-            g.SetActive(false);
-        }
-        _objectSwitchOnPhase[phase].SetActive(true);
     }
 
     public void SocketsSelection (int socket, int mat)
