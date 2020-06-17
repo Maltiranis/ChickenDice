@@ -180,6 +180,8 @@ public class sc_SpellAlchemist : MonoBehaviour
                     spreadP1 = s_sbP1._v._addSpread;
                     spreadSpeedP1 = s_sbP1._v._addSpreadSpeed;
                     orbitSpeedP1 = s_sbP1._v._addOrbitSpeed;
+                    sizeP1 = s_sbP1._v._addThisSize;
+                    aoeSizeP1 = s_sbP1._v._addAoeSize;
 
                     //Spinning
                     if (s_sbP1._getPassives_Left == sc_SpellBehaviours.Passives_L.Spinning ||
@@ -209,8 +211,6 @@ public class sc_SpellAlchemist : MonoBehaviour
                         s_sbP1._getPassives_Right == sc_SpellBehaviours.Passives_R.Size)
                     {
                         s_sbS._getPassives_Left = sc_SpellBehaviours.Passives_L.Size;
-                        sizeP1 = s_sbP1._v._addThisSize;
-                        aoeSizeP1 = s_sbP1._v._addAoeSize;
                     }
                 }
                 if (P2 != null)
@@ -222,6 +222,8 @@ public class sc_SpellAlchemist : MonoBehaviour
                     spreadP2 = s_sbP2._v._addSpread;
                     spreadSpeedP2 = s_sbP2._v._addSpreadSpeed;
                     orbitSpeedP2 = s_sbP2._v._addOrbitSpeed;
+                    sizeP2 = s_sbP2._v._addThisSize;
+                    aoeSizeP2 = s_sbP2._v._addAoeSize;
 
                     //Spinning
                     if (s_sbP2._getPassives_Left == sc_SpellBehaviours.Passives_L.Spinning ||
@@ -251,8 +253,6 @@ public class sc_SpellAlchemist : MonoBehaviour
                         s_sbP2._getPassives_Right == sc_SpellBehaviours.Passives_R.Size)
                     {
                         s_sbS._getPassives_Right = sc_SpellBehaviours.Passives_R.Size;
-                        sizeP2 = s_sbP2._v._addThisSize;
-                        aoeSizeP2 = s_sbP2._v._addAoeSize;
                     }
                 }
                 float sizeSums = sizeP1 * sizeP2 * s_sbS._v._startSize.x;
