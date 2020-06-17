@@ -2267,7 +2267,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.7
+      scalar: 0.4
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -2320,7 +2320,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.1
+      scalar: 0.5
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -2436,7 +2436,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.01
+      scalar: 0.009
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -7052,7 +7052,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.7
+      scalar: 0.4
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -7105,7 +7105,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.1
+      scalar: 0.5
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -7221,7 +7221,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.01
+      scalar: 0.009
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -12369,7 +12369,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53d0a09b61f239145ad8f6253fffcf2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 0
+  ID: 3
 --- !u!114 &1008034808911037758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12987,7 +12987,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.7
+      scalar: 0.4
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -13040,7 +13040,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.1
+      scalar: 0.5
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -13156,7 +13156,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.01
+      scalar: 0.009
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -17930,7 +17930,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.7
+      scalar: 0.4
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -17983,7 +17983,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.1
+      scalar: 0.5
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -18099,7 +18099,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.01
+      scalar: 0.009
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -24240,7 +24240,7 @@ PrefabInstance:
     - target: {fileID: 6063038546715513080, guid: d5330c24d5e5ed64a81918c4bbda5362,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5330c24d5e5ed64a81918c4bbda5362, type: 3}
