@@ -12425,7 +12425,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e0c23a28a65bba4d95fcfac8494b3dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _life: 100
+  _life: 150
   _respawn: 1
   _respawnDelay: 3
   _whiteBarSpeed: 1
