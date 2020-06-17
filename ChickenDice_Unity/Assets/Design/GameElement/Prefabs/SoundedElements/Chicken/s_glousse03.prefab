@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8815893118651667725}
   - component: {fileID: 5461677808887422500}
+  - component: {fileID: 8623130530002933822}
   m_Layer: 0
-  m_Name: s_glousse2
+  m_Name: s_glousse03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40,7 +41,8 @@ AudioSource:
   m_GameObject: {fileID: 5243808359824351747}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 31e47aaa866ccd9428ef4f2fb2df8a3c,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 561d67cc69edfe44b81dec135ab3ee1c, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -127,3 +129,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8623130530002933822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5243808359824351747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b658dca96b41cd47b1c123d09949b16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timedDestroy: 1
+  _timeLeft: 2

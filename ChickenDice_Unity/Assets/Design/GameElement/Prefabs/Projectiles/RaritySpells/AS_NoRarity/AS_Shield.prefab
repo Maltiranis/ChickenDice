@@ -155,6 +155,10 @@ MonoBehaviour:
     bestTarget: {fileID: 0}
     Caster: {fileID: 0}
     _canCollide: 1
+    _Sounds:
+    - {fileID: 9048334447988283548, guid: faca784af1e8ca4428cdc86b677b12da, type: 3}
+    - {fileID: 5243808359824351747, guid: e9e3a5628f23481458c80b4b3bfd9f6a, type: 3}
+    - {fileID: 5243808359824351747, guid: ec1aebe34db73f44c9ef2b6133e2a340, type: 3}
     _spread: 1
     _spreadSpeed: 10
     _orbitSpeed: 150

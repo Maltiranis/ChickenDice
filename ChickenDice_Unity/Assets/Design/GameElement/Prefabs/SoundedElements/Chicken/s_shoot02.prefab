@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8563542539014509840}
   - component: {fileID: 5135316902653812281}
+  - component: {fileID: 4773121067671673563}
   m_Layer: 0
   m_Name: s_shoot02
   m_TagString: Untagged
@@ -40,7 +41,8 @@ AudioSource:
   m_GameObject: {fileID: 4920806497005265438}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 4fc5a3579af37474db4af666cc8db14d,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 1252e00d009186b49bdeef91ce7044ce, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -127,3 +129,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4773121067671673563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4920806497005265438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b658dca96b41cd47b1c123d09949b16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timedDestroy: 1
+  _timeLeft: 2

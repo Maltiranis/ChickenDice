@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3400031399520055232}
   - component: {fileID: 2214866778658727145}
+  - component: {fileID: -1736497247471100619}
   m_Layer: 0
   m_Name: s_peck03
   m_TagString: Untagged
@@ -40,10 +41,11 @@ AudioSource:
   m_GameObject: {fileID: 2139967891692837070}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 6bb3cd8c204013e4a9a25dab221d8d42,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 26899abfcb5db22499795f2c7b4fd610, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.695
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -127,3 +129,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-1736497247471100619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2139967891692837070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b658dca96b41cd47b1c123d09949b16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timedDestroy: 1
+  _timeLeft: 2

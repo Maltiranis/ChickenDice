@@ -102,7 +102,8 @@ public class sc_LifeEngine : MonoBehaviour
 
         if (_am.gameObject.GetComponent<sc_LaunchFx>() != null)
         {
-            _am.gameObject.GetComponent<sc_LaunchFx>().SetEye(0);
+            _am.gameObject.GetComponent<sc_LaunchFx>().CleanEye();
+            _am.gameObject.GetComponent<sc_LaunchFx>().LaunchSounds(1);
         }
 
         if (_respawn == true)

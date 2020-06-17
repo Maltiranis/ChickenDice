@@ -1,8 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System;
 using UnityEngine;
-
 
 public class sc_SpellBehaviours : MonoBehaviour
 {
@@ -132,6 +130,7 @@ public class sc_SpellBehaviours : MonoBehaviour
         [SerializeField] public GameObject bestTarget;
         [SerializeField] public GameObject Caster;
         [SerializeField] public bool _canCollide = true;
+        public GameObject[] _Sounds;
         [Space(15)]
         //pump gun
         [Header("Orbital")]
@@ -164,6 +163,13 @@ public class sc_SpellBehaviours : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Le Sound Design !
+
+        //11 - 14
+        int rndm = 0;
+        rndm = Random.Range(0, 3);
+        GameObject newSound = Instantiate(_v._Sounds[rndm], transform.position, transform.rotation);
+
         _v._startSize = transform.localScale;
         if (GetComponent<SphereCollider>() != null)
             GetComponent<SphereCollider>().radius = _v._mySize.x/2;
@@ -678,6 +684,10 @@ public class sc_SpellBehaviours : MonoBehaviour
                 //VIRE TOUT SI LES FX DE MORT SONT CLAKEZ AU SOL !!!
             }
 
+            //11 - 14
+            int rndm = 0;
+            rndm = Random.Range(0, 3);
+            GameObject newSound = Instantiate(_v._Sounds[rndm], transform.position, transform.rotation);
 
             Explosion.GetComponent<sc_SelfDestruction>().DestroyMyself(_v._dVFX_lifetime);
             Explosion.GetComponent<sc_SelfDestruction>().KillEverybody(_v._damage, _v._id, _v._mySize.x/2);//J'ai mis le /2
