@@ -38,22 +38,22 @@ public class sc_SpellAlchemist : MonoBehaviour
     ParticleSystem.EmissionModule em;
     [SerializeField] public sc_LaunchFx launchFX;
 
-    float sizeP1 = 0f;
-    float sizeP2 = 0f; 
-    float aoeSizeP1 = 0f; 
-    float aoeSizeP2 = 0f; 
-    float speedP1 = 0f;
-    float speedP2 = 0f;
-    float dmgP1 = 0;
-    float dmgP2 = 0;
-    float distP1 = 0f;
-    float distP2 = 0f;
-    float spreadP1 = 0f;
-    float spreadP2 = 0f;
-    float spreadSpeedP1 = 0f;
-    float spreadSpeedP2 = 0f;
-    float orbitSpeedP1 = 0f;
-    float orbitSpeedP2 = 0f;
+    float sizeP1 = 1f;
+    float sizeP2 = 1f; 
+    float aoeSizeP1 = 1f; 
+    float aoeSizeP2 = 1f; 
+    float speedP1 = 1f;
+    float speedP2 = 1f;
+    float dmgP1 = 1;
+    float dmgP2 = 1;
+    float distP1 = 1f;
+    float distP2 = 1f;
+    float spreadP1 = 1f;
+    float spreadP2 = 1f;
+    float spreadSpeedP1 = 1f;
+    float spreadSpeedP2 = 1f;
+    float orbitSpeedP1 = 1f;
+    float orbitSpeedP2 = 1f;
 
     //
     //[Space(10)]
