@@ -14,6 +14,7 @@ public class GoldenEgg : MonoBehaviour
    
     [Header("auto")]
     [SerializeField] private GameObject _TargetFollow = null;
+    [SerializeField] private GameObject _ChikenToTp = null;
     [SerializeField] private bool _PlayerWinPoint = false;
     [SerializeField] private bool _IsPick = false;
     private bool _havewin;
@@ -92,6 +93,7 @@ public class GoldenEgg : MonoBehaviour
                 _UIWiner[_IdPlayerHaveEgg].SetActive(true);
                 _CameraWiner[_IdPlayerHaveEgg].SetActive(true);
                 // TP de la poulet qui win
+                _ChikenToTp = _TargetFollow;
                 StartCoroutine(TpPlayerWin());
             }
             //Si le joueur a toujour l'oeuf + pas  gagné
@@ -121,6 +123,6 @@ public class GoldenEgg : MonoBehaviour
     private IEnumerator TpPlayerWin()
     {
         yield return new WaitForSeconds(3f);
-        _TargetFollow.transform.position = _TargetFollow.transform.position + new Vector3(_TargetFollow.transform.position.x, 100, _TargetFollow.transform.position.z);
+        _ChikenToTp.transform.position = _ChikenToTp.transform.position + new Vector3(_ChikenToTp.transform.position.x, 100, _ChikenToTp.transform.position.z);
     }
 }
