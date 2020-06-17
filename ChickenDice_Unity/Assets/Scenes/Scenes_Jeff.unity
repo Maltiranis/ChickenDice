@@ -20868,6 +20868,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChickenTest
       objectReference: {fileID: 0}
+    - target: {fileID: 1008034808911037731, guid: 7c1da6a24e77d694196bac36a484c2ab,
+        type: 3}
+      propertyPath: ID
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1008034808911037756, guid: 7c1da6a24e77d694196bac36a484c2ab,
         type: 3}
       propertyPath: _startPosTransform
